@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sistema de IA + Meta Ads para pymes de la V Región. Instalamos un agente de IA en tu WhatsApp y lanzamos los anuncios que traen clientes. El sistema trabaja solo. Tú cierras ventas.">
+<title>Top Kreativa — Sistema IA + Meta Ads para tu negocio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* === TOKENS === */
+:root{
+  --bg:#0D0D0D;
+  --bg2:#111111;
+  --card:#161616;
+  --card2:#1C1C1C;
+  --border:#2A2A2A;
+  --border2:#333;
+  --text:#F5F5F0;
+  --muted:#888;
+  --muted2:#555;
+  --accent:#D6006E;
+  --accent-hover:#B8005C;
+  --accent-glow:rgba(214,0,110,0.18);
+  --accent-light:rgba(214,0,110,0.08);
+  --white:#FFFFFF;
+  --green:#00C853;
+  --radius:12px;
+  --radius-sm:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.65;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* === TYPOGRAPHY === */
+.display{
+  font-family:'DM Sans',sans-serif;
+  font-weight:700;
+  line-height:1.08;
+  letter-spacing:-.03em;
+}
+.eyebrow{
+  font-size:11px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--accent);
+}
+h2.section-title{
+  font-family:'DM Sans',sans-serif;
+  font-size:clamp(28px,5vw,44px);
+  font-weight:700;
+  line-height:1.12;
+  letter-spacing:-.025em;
+  color:var(--text);
+}
+h3.card-title{
+  font-family:'DM Sans',sans-serif;
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:-.015em;
+  margin-bottom:.4rem;
+}
+p.body{font-size:15px;color:var(--muted);line-height:1.7}
+p.body-lg{font-size:17px;color:var(--muted);line-height:1.7}
+
+/* === LAYOUT === */
+.container{max-width:1080px;margin:0 auto;padding:0 24px}
+.container-sm{max-width:720px;margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+section.tight{padding:64px 0}
+
+/* === NAV === */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(13,13,13,0.88);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  max-width:1080px;margin:0 auto;padding:0 24px;
+  height:60px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{
+  font-family:'DM Sans',sans-serif;
+  font-weight:700;font-size:18px;
+  color:var(--text);
+  text-decoration:none;
+  letter-spacing:-.02em;
+}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{
+  font-size:13.5px;font-weight:500;
+  color:var(--muted);text-decoration:none;
+  transition:color .15s;
+}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{
+  background:var(--accent);color:#fff;
+  padding:.45rem 1.1rem;border-radius:6px;
+  font-size:13.5px;font-weight:600;
+  text-decoration:none;
+  transition:background .15s;
+  white-space:nowrap;
+}
+.nav-cta:hover{background:var(--accent-hover);color:#fff}
+.nav-mobile-cta{display:none}
+
+/* === HERO === */
+.hero{
+  padding-top:140px;padding-bottom:100px;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;top:-200px;right:-100px;
+  width:600px;height:600px;
+  background:radial-gradient(circle,var(--accent-glow) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:64px;
+  align-items:center;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--accent-light);
+  border:1px solid rgba(214,0,110,0.25);
+  border-radius:20px;
+  padding:.3rem .9rem;
+  font-size:12px;font-weight:600;color:var(--accent);
+  margin-bottom:1.5rem;
+}
+.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+.hero h1{
+  font-size:clamp(38px,6vw,64px);
+  margin-bottom:1.5rem;
+}
+.hero h1 .accent-text{color:var(--accent)}
+.hero-sub{
+  font-size:18px;color:var(--muted);line-height:1.65;
+  margin-bottom:2.5rem;
+  max-width:500px;
+}
+.hero-actions{display:flex;gap:.85rem;flex-wrap:wrap;align-items:center}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--accent);color:#fff;
+  padding:.85rem 1.75rem;border-radius:var(--radius-sm);
+  font-size:15px;font-weight:600;
+  text-decoration:none;
+  transition:background .15s, transform .1s;
+  white-space:nowrap;
+}
+.btn-primary:hover{background:var(--accent-hover);transform:translateY(-1px)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:.5rem;
+  color:var(--muted);
+  font-size:15px;font-weight:500;
+  text-decoration:none;
+  transition:color .15s;
+}
+.btn-ghost:hover{color:var(--text)}
+.hero-proof{
+  display:flex;align-items:center;gap:1.5rem;
+  margin-top:2rem;padding-top:2rem;
+  border-top:1px solid var(--border);
+}
+.proof-item{text-align:center}
+.proof-num{
+  font-family:'DM Sans',sans-serif;
+  font-size:28px;font-weight:700;
+  color:var(--text);
+  display:block;
+}
+.proof-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+
+/* === CHAT DEMO === */
+.chat-demo{
+  background:#0B1014;
+  border:1px solid #1E2428;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 40px 100px rgba(0,0,0,.7);
+  position:relative;
+  user-select:none;
+}
+/* barra de estado */
+.chat-statusbar{
+  background:#0B1014;
+  padding:6px 16px 4px;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:11px;font-weight:600;color:#fff;
+}
+.statusbar-icons{display:flex;align-items:center;gap:6px;color:#fff}
+.battery{
+  width:22px;height:10px;border:1.5px solid rgba(255,255,255,.6);border-radius:2px;
+  position:relative;padding:1px;
+}
+.battery::after{
+  content:'';position:absolute;right:-4px;top:50%;transform:translateY(-50%);
+  width:2.5px;height:5px;background:rgba(255,255,255,.6);border-radius:0 1px 1px 0;
+}
+.battery-fill{height:100%;background:#4CD964;border-radius:1px;transition:width .5s}
+/* header */
+.chat-header{
+  background:#1F2C34;
+  padding:10px 14px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:.5rem;
+  border-bottom:none;
+}
+.chat-avatar-wrap{position:relative;flex-shrink:0}
+.chat-avatar{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'DM Sans',sans-serif;
+  font-weight:700;font-size:13px;color:#fff;
+}
+.avatar-online{
+  position:absolute;bottom:0;right:0;
+  width:9px;height:9px;border-radius:50%;
+  background:#4CD964;border:1.5px solid #1F2C34;
+}
+.chat-info{min-width:0}
+.chat-name{font-size:13.5px;font-weight:600;color:#fff;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chat-status-line{font-size:11px;color:#8696A0;transition:color .3s}
+.chat-status-line.typing-active{color:#4CD964}
+/* fecha */
+.chat-date-label{
+  text-align:center;font-size:11px;color:#8696A0;
+  background:#0D1418;
+  padding:8px 0 6px;
+  letter-spacing:.04em;
+}
+/* mensajes */
+.chat-body{
+  padding:12px 14px;
+  min-height:290px;
+  max-height:290px;
+  overflow-y:auto;
+  display:flex;flex-direction:column;gap:6px;
+  background:#0D1418;
+  scroll-behavior:smooth;
+}
+.chat-body::-webkit-scrollbar{width:3px}
+.chat-body::-webkit-scrollbar-thumb{background:#2A3942;border-radius:3px}
+.msg{
+  max-width:80%;
+  border-radius:10px;
+  padding:8px 12px;
+  font-size:13px;line-height:1.55;
+  position:relative;
+  word-break:break-word;
+}
+.msg-in{
+  background:#202C33;color:#E9EDEF;
+  border-top-left-radius:2px;
+  align-self:flex-start;
+}
+.msg-in::before{
+  content:'';position:absolute;top:0;left:-6px;
+  width:0;height:0;
+  border-top:8px solid #202C33;
+  border-left:6px solid transparent;
+}
+.msg-out{
+  background:#005C4B;color:#E9EDEF;
+  border-top-right-radius:2px;
+  align-self:flex-end;
+}
+.msg-out::after{
+  content:'';position:absolute;top:0;right:-6px;
+  width:0;height:0;
+  border-top:8px solid #005C4B;
+  border-right:6px solid transparent;
+}
+.msg-footer{
+  display:flex;align-items:center;justify-content:flex-end;
+  gap:3px;margin-top:4px;
+}
+.msg-time-inner{font-size:10px;color:rgba(233,237,239,.55)}
+.msg-ticks{font-size:12px;color:#53BDEB;line-height:1}
+/* typing indicator */
+.msg-typing{
+  display:flex;align-items:center;gap:4px;
+  padding:10px 14px;
+  background:#202C33;
+  border-radius:10px;border-top-left-radius:2px;
+  align-self:flex-start;
+  width:58px;
+  position:relative;
+}
+.msg-typing::before{
+  content:'';position:absolute;top:0;left:-6px;
+  width:0;height:0;
+  border-top:8px solid #202C33;
+  border-left:6px solid transparent;
+}
+.dot{
+  width:6px;height:6px;border-radius:50%;background:#8696A0;
+  animation:wabounce 1.2s ease-in-out infinite;
+}
+.dot:nth-child(2){animation-delay:.2s}
+.dot:nth-child(3){animation-delay:.4s}
+@keyframes wabounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+/* input bar */
+.chat-inputbar{
+  background:#1F2C34;
+  padding:8px 10px;
+  display:flex;align-items:center;gap:8px;
+}
+.chat-input-field{
+  flex:1;
+  background:#2A3942;
+  border-radius:20px;
+  padding:8px 14px;
+  display:flex;align-items:center;gap:8px;
+  min-height:36px;
+  font-size:13px;color:#E9EDEF;
+}
+.chat-input-text{flex:1;color:#E9EDEF;font-size:13px}
+.chat-cursor{
+  width:1px;height:14px;background:#E9EDEF;
+  display:inline-block;vertical-align:middle;
+  animation:blink .8s step-end infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.chat-input-icons{display:flex;align-items:center;gap:8px}
+.mic-btn{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+/* notificación flotante */
+.chat-notification{
+  position:absolute;top:12px;left:50%;transform:translateX(-50%) translateY(-120px);
+  background:rgba(31,44,52,.96);
+  backdrop-filter:blur(8px);
+  border:1px solid #2A3942;
+  border-radius:14px;
+  padding:10px 14px;
+  display:flex;align-items:center;gap:10px;
+  width:88%;
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1);
+  z-index:10;
+  pointer-events:none;
+}
+.chat-notification.show{transform:translateX(-50%) translateY(0)}
+.notif-avatar{
+  width:32px;height:32px;border-radius:8px;
+  background:var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;color:#fff;flex-shrink:0;
+}
+.notif-body{min-width:0}
+.notif-title{font-size:11px;font-weight:600;color:#8696A0;margin-bottom:1px}
+.notif-text{font-size:12px;color:#E9EDEF;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* entrada de mensajes */
+@keyframes msgIn{from{opacity:0;transform:translateY(6px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.msg{animation:msgIn .25s ease-out forwards}
+.msg-typing{animation:msgIn .2s ease-out forwards}
+
+/* === PROBLEMA === */
+.problema-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:48px;align-items:center;
+}
+.cost-table{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.cost-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px 20px;border-bottom:1px solid var(--border);
+  font-size:14px;
+}
+.cost-row:last-child{border-bottom:none}
+.cost-row.total{background:rgba(214,0,110,.06);border-top:1px solid rgba(214,0,110,.2)}
+.cost-label{color:var(--muted)}
+.cost-val{font-weight:600;color:var(--text)}
+.cost-row.total .cost-label{color:var(--text);font-weight:600}
+.cost-row.total .cost-val{color:var(--accent);font-size:16px}
+.vs-badge{
+  display:flex;align-items:center;gap:1rem;
+  margin:1.5rem 0;
+}
+.vs-line{flex:1;height:1px;background:var(--border)}
+.vs-text{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
+.tk-price{
+  background:var(--accent);
+  border-radius:var(--radius);
+  padding:20px;
+  text-align:center;
+}
+.tk-price-label{font-size:12px;color:rgba(255,255,255,.7);margin-bottom:.3rem}
+.tk-price-num{
+  font-family:'DM Sans',sans-serif;
+  font-size:36px;font-weight:700;color:#fff;
+  line-height:1;
+}
+.tk-price-sub{font-size:13px;color:rgba(255,255,255,.7);margin-top:.3rem}
+
+/* === SISTEMA === */
+.sistema-steps{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:0;
+  position:relative;
+  margin-top:3rem;
+}
+.sistema-steps::before{
+  content:'';
+  position:absolute;
+  top:28px;left:10%;right:10%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--border2),var(--border2),var(--border2),transparent);
+  z-index:0;
+}
+.sistema-step{
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;
+  padding:0 8px;
+  position:relative;z-index:1;
+}
+.step-icon{
+  width:56px;height:56px;border-radius:50%;
+  border:2px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;
+  background:var(--card);
+  margin-bottom:1rem;
+  transition:border-color .3s;
+}
+.sistema-step:hover .step-icon{border-color:var(--accent)}
+.step-num{
+  font-family:'DM Sans',sans-serif;
+  font-size:11px;font-weight:700;
+  color:var(--accent);
+  margin-bottom:.35rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.step-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:.3rem;line-height:1.3}
+.step-desc{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* === PRUEBA === */
+.proof-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  margin-top:2.5rem;
+}
+.proof-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:28px;
+  position:relative;
+  overflow:hidden;
+}
+.proof-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;
+  height:3px;
+  background:var(--accent);
+}
+.proof-big-num{
+  font-family:'DM Sans',sans-serif;
+  font-size:52px;font-weight:700;
+  color:var(--text);
+  letter-spacing:-.04em;
+  line-height:1;
+  margin-bottom:.4rem;
+}
+.proof-big-num span{color:var(--accent)}
+.proof-card-label{font-size:14px;color:var(--muted);line-height:1.5}
+
+.testimonial-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:32px;
+  margin-top:24px;
+  position:relative;
+}
+.testimonial-quote{
+  font-size:15px;
+  color:var(--text);
+  line-height:1.7;
+  font-style:italic;
+  margin-bottom:1.25rem;
+}
+.testimonial-quote::before{
+  content:'"';
+  font-family:'DM Sans',sans-serif;
+  font-size:48px;font-weight:700;
+  color:var(--accent);
+  line-height:.8;
+  display:block;margin-bottom:.5rem;
+}
+.testimonial-author{display:flex;align-items:center;gap:.75rem}
+.author-avatar{
+  width:40px;height:40px;border-radius:50%;
+  background:var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:15px;color:#fff;
+  flex-shrink:0;
+}
+.author-name{font-size:14px;font-weight:600;color:var(--text)}
+.author-role{font-size:12px;color:var(--muted)}
+
+/* === CÓMO FUNCIONA === */
+.proceso-steps{
+  display:flex;flex-direction:column;gap:0;
+  margin-top:2.5rem;
+}
+.proceso-step{
+  display:grid;
+  grid-template-columns:56px 1fr;
+  gap:24px;
+  padding-bottom:36px;
+  position:relative;
+}
+.proceso-step:not(:last-child)::before{
+  content:'';
+  position:absolute;
+  left:27px;top:56px;bottom:0;
+  width:2px;background:var(--border);
+}
+.proceso-num{
+  width:56px;height:56px;border-radius:50%;
+  background:var(--accent);
+  color:#fff;
+  font-family:'DM Sans',sans-serif;
+  font-weight:700;font-size:18px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  position:relative;z-index:1;
+}
+.proceso-content{padding-top:14px}
+.proceso-content h3{
+  font-family:'DM Sans',sans-serif;
+  font-size:18px;font-weight:700;
+  margin-bottom:.4rem;
+}
+.proceso-content p{font-size:14.5px;color:var(--muted);line-height:1.65}
+.proceso-detail{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:12px 16px;
+  margin-top:.75rem;
+  font-size:13px;color:var(--muted);
+}
+
+/* === PRICING === */
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  margin-top:2.5rem;
+}
+.pricing-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:28px;
+  display:flex;flex-direction:column;
+  transition:border-color .2s;
+}
+.pricing-card:hover{border-color:var(--border2)}
+.pricing-card.featured{
+  border-color:var(--accent);
+  position:relative;
+}
+.featured-badge{
+  position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  background:var(--accent);color:#fff;
+  font-size:11px;font-weight:700;
+  padding:.3rem .85rem;border-radius:20px;
+  white-space:nowrap;letter-spacing:.04em;text-transform:uppercase;
+}
+.plan-name{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.75rem}
+.plan-price{
+  font-family:'DM Sans',sans-serif;
+  font-size:36px;font-weight:700;
+  color:var(--text);letter-spacing:-.03em;
+  line-height:1;
+  margin-bottom:.2rem;
+}
+.plan-price sub{font-size:14px;font-weight:400;color:var(--muted);vertical-align:baseline}
+.plan-setup{font-size:12px;color:var(--muted);margin-bottom:1.5rem}
+.plan-features{list-style:none;flex:1;margin-bottom:1.5rem}
+.plan-features li{
+  display:flex;align-items:flex-start;gap:.6rem;
+  font-size:13.5px;color:var(--muted);
+  padding:.45rem 0;
+  border-bottom:1px solid var(--border);
+}
+.plan-features li:last-child{border-bottom:none}
+.plan-features li::before{
+  content:'✓';color:var(--accent);font-weight:700;
+  flex-shrink:0;margin-top:1px;
+}
+.plan-features li.no::before{content:'—';color:var(--muted2)}
+.plan-btn{
+  display:block;text-align:center;
+  padding:.75rem;border-radius:var(--radius-sm);
+  font-size:14px;font-weight:600;
+  text-decoration:none;
+  transition:all .15s;
+}
+.plan-btn-outline{
+  border:1px solid var(--border2);color:var(--text);
+}
+.plan-btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.plan-btn-fill{background:var(--accent);color:#fff}
+.plan-btn-fill:hover{background:var(--accent-hover)}
+.pricing-note{
+  text-align:center;margin-top:1.5rem;
+  font-size:13px;color:var(--muted);
+}
+
+/* === CTA FINAL === */
+.cta-section{
+  background:var(--card);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:96px 0;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta-section::before{
+  content:'';
+  position:absolute;top:-150px;left:50%;transform:translateX(-50%);
+  width:500px;height:400px;
+  background:radial-gradient(circle,var(--accent-glow) 0%,transparent 65%);
+  pointer-events:none;
+}
+.cta-section h2{margin-bottom:1rem}
+.cta-section p{font-size:18px;color:var(--muted);margin-bottom:2.5rem;max-width:500px;margin-left:auto;margin-right:auto}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.cta-sub{font-size:13px;color:var(--muted2);margin-top:1.25rem}
+
+/* === FOOTER === */
+footer{
+  padding:48px 0;
+  border-top:1px solid var(--border);
+}
+.footer-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;
+}
+.footer-logo{
+  font-family:'DM Sans',sans-serif;
+  font-weight:700;font-size:17px;
+  color:var(--text);
+  text-decoration:none;
+}
+.footer-logo span{color:var(--accent)}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.footer-links a{font-size:13px;color:var(--muted);text-decoration:none}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{font-size:12px;color:var(--muted2)}
+
+/* === WA FLOAT === */
+.wa-float{
+  position:fixed;bottom:28px;right:28px;z-index:200;
+  width:56px;height:56px;border-radius:50%;
+  background:#25D366;
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;
+  box-shadow:0 4px 20px rgba(37,211,102,.35);
+  transition:transform .2s;
+}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:28px;height:28px;fill:#fff}
+
+/* === DIVIDER === */
+.divider{border:none;border-top:1px solid var(--border);margin:0}
+
+/* === RESPONSIVE === */
+@media(max-width:880px){
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .chat-demo{max-width:420px}
+  .problema-grid{grid-template-columns:1fr}
+  .sistema-steps{grid-template-columns:1fr 1fr;gap:24px}
+  .sistema-steps::before{display:none}
+  .proof-grid{grid-template-columns:1fr 1fr}
+  .pricing-grid{grid-template-columns:1fr;max-width:400px;margin-left:auto;margin-right:auto}
+  .nav-links{display:none}
+  .nav-mobile-cta{
+    display:inline-flex;
+    background:var(--accent);color:#fff;
+    padding:.4rem .9rem;border-radius:6px;
+    font-size:13px;font-weight:600;text-decoration:none;
+  }
+  section{padding:64px 0}
+  .hero{padding-top:100px;padding-bottom:64px}
+}
+@media(max-width:600px){
+  .proof-grid{grid-template-columns:1fr}
+  .sistema-steps{grid-template-columns:1fr}
+  .hero-proof{flex-wrap:wrap;gap:1rem}
+  .cta-actions{flex-direction:column;align-items:center}
+  .footer-inner{flex-direction:column;text-align:center}
+  .footer-links{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#inicio" class="nav-logo">Top<span>Kreativa</span></a>
+    <div class="nav-links">
+      <a href="#sistema">El sistema</a>
+      <a href="#prueba">Casos reales</a>
+      <a href="#proceso">Cómo funciona</a>
+      <a href="#precios">Precios</a>
+      <a href="https://wa.me/56938740153?text=Hola%20Top%20Kreativa%2C%20quiero%20ver%20c%C3%B3mo%20funciona%20el%20sistema." class="nav-cta" target="_blank">Ver demo →</a>
+    </div>
+    <a href="https://wa.me/56938740153?text=Hola%20Top%20Kreativa%2C%20quiero%20ver%20c%C3%B3mo%20funciona%20el%20sistema." class="nav-mobile-cta" target="_blank">Demo →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-tag">Sistema IA + Meta Ads · V Región, Chile</div>
+        <h1 class="display">
+          Tu negocio pierde clientes<br>
+          cada vez que<br>
+          <span class="accent-text">tarda en responder.</span>
+        </h1>
+        <p class="hero-sub">Instalamos un agente de IA en tu WhatsApp y lanzamos los anuncios de Meta que traen los leads. El sistema responde en 30 segundos, 24/7. Tú solo cierras ventas.</p>
+        <div class="hero-actions">
+          <a href="https://wa.me/56938740153?text=Hola%20Top%20Kreativa%2C%20quiero%20ver%20c%C3%B3mo%20funciona%20el%20sistema%20en%20mi%20negocio." class="btn-primary" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.065 23.454a.5.5 0 00.613.612l5.652-1.486A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.971 0-3.818-.572-5.376-1.558l-.389-.241-4.015 1.056 1.07-3.92-.254-.404A9.946 9.946 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Quiero ver cómo funciona
+          </a>
+          <a href="#sistema" class="btn-ghost">¿Cómo funciona? ↓</a>
+        </div>
+        <div class="hero-proof">
+          <div class="proof-item">
+            <span class="proof-num">30s</span>
+            <span class="proof-label">Primera respuesta</span>
+          </div>
+          <div class="proof-item">
+            <span class="proof-num">24/7</span>
+            <span class="proof-label">Sin intervención</span>
+          </div>
+          <div class="proof-item">
+            <span class="proof-num">391%</span>
+            <span class="proof-label">Más conversión en 60s</span>
+          </div>
+          <div class="proof-item">
+            <span class="proof-num">5 días</span>
+            <span class="proof-label">Para estar activo</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHAT DEMO -->
+      <div class="chat-demo" id="chat-demo-wrap">
+        <div class="chat-statusbar">
+          <span id="chat-clock">22:41</span>
+          <div class="statusbar-icons">
+            <svg width="13" height="10" viewBox="0 0 14 10" fill="currentColor"><rect x="0" y="3" width="3" height="7" rx="1"/><rect x="4" y="2" width="3" height="8" rx="1"/><rect x="8" y="0" width="3" height="10" rx="1"/><rect x="12" y="0" width="2" height="10" rx="1" opacity=".3"/></svg>
+            <svg width="14" height="11" viewBox="0 0 20 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 4.5C4 1.5 8 0 10 0s6 1.5 9 4.5"/><path d="M3.5 7C5.5 5 7.5 4 10 4s4.5 1 6.5 3"/><path d="M6.5 9.5C7.5 8.5 8.5 8 10 8s2.5.5 3.5 1.5"/><circle cx="10" cy="12" r="1.5" fill="currentColor"/></svg>
+            <div class="battery"><div class="battery-fill" id="bat-fill" style="width:72%"></div></div>
+          </div>
+        </div>
+        <div class="chat-header">
+          <div style="display:flex;align-items:center;gap:.6rem;flex:1;min-width:0">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="color:var(--muted);flex-shrink:0"><polyline points="15 18 9 12 15 6"/></svg>
+            <div class="chat-avatar-wrap">
+              <div class="chat-avatar">SK</div>
+              <div class="avatar-online"></div>
+            </div>
+            <div class="chat-info" style="min-width:0">
+              <div class="chat-name">Kristal ✨ Spa &amp; Bienestar</div>
+              <div class="chat-status-line" id="chat-status-text">en línea</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:center;flex-shrink:0">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="color:var(--muted)"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.95 11.63a19.79 19.79 0 01-3.07-8.67A2 2 0 012.86 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--muted)"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+          </div>
+        </div>
+        <div class="chat-date-label">HOY</div>
+        <div class="chat-body" id="chat-body"></div>
+        <div class="chat-inputbar">
+          <div class="chat-input-field">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--muted2);flex-shrink:0"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+            <span class="chat-input-text" id="input-text"></span><span class="chat-cursor" id="chat-cursor">|</span>
+          </div>
+          <div class="chat-input-icons">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--muted2)"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>
+            <div class="mic-btn">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3zM19 10v2a7 7 0 01-14 0v-2H3v2a9 9 0 008 8.94V23H9v2h6v-2h-2v-2.06A9 9 0 0021 12v-2h-2z"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="chat-notification" id="chat-notif">
+          <div class="notif-avatar">SK</div>
+          <div class="notif-body">
+            <div class="notif-title">Kristal ✨ Spa &amp; Bienestar</div>
+            <div class="notif-text" id="notif-text"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- EL PROBLEMA -->
+<section id="problema">
+  <div class="container">
+    <div class="problema-grid">
+      <div>
+        <div class="eyebrow" style="margin-bottom:1rem">El problema real</div>
+        <h2 class="section-title">Lo que le cuesta<br>a tu negocio<br>hoy.</h2>
+        <p class="body-lg" style="margin-top:1.25rem;margin-bottom:2rem">Para captar y atender clientes de forma profesional, los negocios tienen que contratar todo esto por separado — y aún así obtienen atención solo en horario de oficina, sin integración entre las piezas.</p>
+        <div class="vs-badge">
+          <div class="vs-line"></div>
+          <div class="vs-text">Nosotros entregamos todo integrado</div>
+          <div class="vs-line"></div>
+        </div>
+        <div class="tk-price">
+          <div class="tk-price-label">Top Kreativa — sistema completo</div>
+          <div class="tk-price-num">$250.000<sub style="font-size:16px;color:rgba(255,255,255,.7)">/mes</sub></div>
+          <div class="tk-price-sub">+ pauta publicitaria (la defines tú)</div>
+        </div>
+      </div>
+      <div>
+        <div class="cost-table">
+          <div class="cost-row">
+            <span class="cost-label">Ejecutivo/a de atención al cliente</span>
+            <span class="cost-val">$394K–$700K</span>
+          </div>
+          <div class="cost-row">
+            <span class="cost-label">Community Manager + redes</span>
+            <span class="cost-val">$300K–$500K</span>
+          </div>
+          <div class="cost-row">
+            <span class="cost-label">Gestión Meta Ads (agencia básica)</span>
+            <span class="cost-val">$300K–$500K</span>
+          </div>
+          <div class="cost-row">
+            <span class="cost-label">Presupuesto de pauta</span>
+            <span class="cost-val">$250K–$500K</span>
+          </div>
+          <div class="cost-row">
+            <span class="cost-label">CRM / software de seguimiento</span>
+            <span class="cost-val">$50K–$150K</span>
+          </div>
+          <div class="cost-row total">
+            <span class="cost-label">Total que pagas hoy</span>
+            <span class="cost-val">$1,3M–$2,35M/mes</span>
+          </div>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin-top:.75rem;text-align:center">Y además, atención solo en horario de oficina. Sin integración entre piezas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- EL SISTEMA -->
+<section id="sistema">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto">
+      <div class="eyebrow" style="margin-bottom:1rem">Las 5 capas del sistema</div>
+      <h2 class="section-title">Todos venden una pieza.<br>Nosotros entregamos<br>la máquina completa.</h2>
+      <p class="body-lg" style="margin-top:1.25rem">Cada capa está diseñada para comunicarse con la anterior. El anuncio alimenta al agente. El agente alimenta el CRM. El CRM alimenta el remarketing. Una rueda que nunca para.</p>
+    </div>
+    <div class="sistema-steps">
+      <div class="sistema-step">
+        <div class="step-icon">📢</div>
+        <div class="step-num">Capa 1</div>
+        <div class="step-title">Captación</div>
+        <div class="step-desc">Meta Ads dirige leads directamente a tu WhatsApp. Sin formularios, sin fricción.</div>
+      </div>
+      <div class="sistema-step">
+        <div class="step-icon">🤖</div>
+        <div class="step-num">Capa 2</div>
+        <div class="step-title">Primer contacto</div>
+        <div class="step-desc">El agente de IA responde en &lt;30 segundos. 24/7, incluso de madrugada.</div>
+      </div>
+      <div class="sistema-step">
+        <div class="step-icon">📋</div>
+        <div class="step-num">Capa 3</div>
+        <div class="step-title">Calificación</div>
+        <div class="step-desc">La IA hace las preguntas correctas y registra todo en el CRM automáticamente.</div>
+      </div>
+      <div class="sistema-step">
+        <div class="step-icon">🔄</div>
+        <div class="step-num">Capa 4</div>
+        <div class="step-title">Seguimiento</div>
+        <div class="step-desc">Si el lead no respondió, el sistema hace seguimiento a las 24h y 48h. Solo.</div>
+      </div>
+      <div class="sistema-step">
+        <div class="step-icon">🎯</div>
+        <div class="step-num">Capa 5</div>
+        <div class="step-title">Remarketing</div>
+        <div class="step-desc">Los que llegaron pero no compraron reciben anuncios de recordatorio. El ciclo cierra.</div>
+      </div>
+    </div>
+
+    <!-- COMPARATIVA -->
+    <div style="margin-top:4rem;overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;min-width:560px">
+        <thead>
+          <tr>
+            <th style="padding:14px 16px;text-align:left;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border-bottom:1px solid var(--border)"></th>
+            <th style="padding:14px 16px;text-align:center;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border-bottom:1px solid var(--border)">Agencia de ads</th>
+            <th style="padding:14px 16px;text-align:center;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border-bottom:1px solid var(--border)">Chatbot genérico</th>
+            <th style="padding:14px 16px;text-align:center;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);border-bottom:2px solid var(--accent);background:var(--accent-light)">Top Kreativa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:13px 16px;font-size:14px;color:var(--muted)">Trae leads (anuncios)</td>
+            <td style="padding:13px 16px;text-align:center;color:var(--green)">✓</td>
+            <td style="padding:13px 16px;text-align:center;color:var(--muted2)">—</td>
+            <td style="padding:13px 16px;text-align:center;color:var(--accent);font-weight:700;background:var(--accent-light)">✓</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:13px 16px;font-size:14px;color:var(--muted)">Responde al lead en segundos</td>
+            <td style="padding:13px 16px;text-align:center;color:var(--muted2)">—</td>
+            <td style="padding:13px 16px;text-align:center;color:var(--green)">✓</td>
+            <td style="padding:13px 16px;text-align:center;color:var(--accent);font-weight:700;background:var(--accent-light)">✓</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:13px 16px;font-size:14px;color:var(--muted)">Califica y registra en CRM</td>
+            <td style="padding:13px 16px;text-align:center;color:var(--muted2)">—</td>
+            <td style="padding:13px 16px;text-align:center;color:var(--muted2)">A veces</td>
+            <td style="padding:13px 16px;text-align:center;color:var(--accent);font-weight:700;background:var(--accent-light)">✓</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:13px 16px;font-size:14px;color:var(--muted)">Seguimiento automático</td>
+            <td style="padding:13px 16px;text-align:center;color:var(--muted2)">—</td>
+            <td style="padding:13px 16px;text-align:center;color:var(--muted2)">—</td>
+            <td style="padding:13px 16px;text-align:center;color:var(--accent);font-weight:700;background:var(--accent-light)">✓</td>
+          </tr>
+          <tr>
+            <td style="padding:13px 16px;font-size:14px;color:var(--muted)">Remarketing integrado</td>
+            <td style="padding:13px 16px;text-align:center;color:var(--muted2)">—</td>
+            <td style="padding:13px 16px;text-align:center;color:var(--muted2)">—</td>
+            <td style="padding:13px 16px;text-align:center;color:var(--accent);font-weight:700;background:var(--accent-light)">✓</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PRUEBA SOCIAL -->
+<section id="prueba">
+  <div class="container">
+    <div class="eyebrow" style="margin-bottom:1rem">Caso real — no proyecciones</div>
+    <h2 class="section-title">Ladys Lavandería, Concón.<br>4 meses de sistema activo.</h2>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="proof-big-num">30<span>s</span></div>
+        <div class="proof-card-label">Tiempo promedio de primera respuesta, cualquier hora del día</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-big-num">100<span>%</span></div>
+        <div class="proof-card-label">Mensajes fuera de horario atendidos automáticamente sin intervención</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-big-num">24<span>/7</span></div>
+        <div class="proof-card-label">Días y horario de operación. Incluyendo domingos y feriados</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-big-num">391<span>%</span></div>
+        <div class="proof-card-label">Más probabilidad de conversión respondiendo en 60s vs. 24 horas</div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-quote">
+        Con el sistema de Top Kreativa, Ladys atiende clientes desde las 6 AM hasta pasada la medianoche sin que nadie tenga que estar pendiente del teléfono. El agente agenda retiros, responde preguntas de precios, y avisa cuando un cliente necesita atención humana. Lo que antes nos tomaba 2 horas al día, ahora es cero.
+      </div>
+      <div class="testimonial-author">
+        <div class="author-avatar">LL</div>
+        <div>
+          <div class="author-name">Ladys Lavandería Concón</div>
+          <div class="author-role">Cliente activo · Sistema instalado desde 2025</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CÓMO FUNCIONA -->
+<section id="proceso">
+  <div class="container-sm">
+    <div class="eyebrow" style="margin-bottom:1rem">Proceso</div>
+    <h2 class="section-title">De cero a sistema<br>activo en 5 días.</h2>
+    <div class="proceso-steps">
+      <div class="proceso-step">
+        <div class="proceso-num">1</div>
+        <div class="proceso-content">
+          <h3>Te escuchamos</h3>
+          <p>Sesión de 45 minutos donde definimos juntos el nombre del agente, el tono de voz, las preguntas frecuentes de tus clientes, los precios a comunicar, y el flujo de escalada a humano.</p>
+          <div class="proceso-detail">Duración: 45 min · Sin costo · Por videollamada o en persona en Concón</div>
+        </div>
+      </div>
+      <div class="proceso-step">
+        <div class="proceso-num">2</div>
+        <div class="proceso-content">
+          <h3>Instalamos y entrenamos</h3>
+          <p>Configuramos el agente en tu WhatsApp Business, conectamos el CRM, instalamos el pixel de Meta en tu sitio y lanzamos la primera versión del agente en modo prueba para ajustar antes de ir en vivo.</p>
+          <div class="proceso-detail">Duración: 3–4 días hábiles · Sin que toques nada técnico</div>
+        </div>
+      </div>
+      <div class="proceso-step">
+        <div class="proceso-num">3</div>
+        <div class="proceso-content">
+          <h3>Lanzamos los anuncios</h3>
+          <p>Configuramos la campaña de Meta Ads con Advantage+ usando el material gráfico que nos proporcionas (fotos o videos de tu negocio). La ponemos activa y el agente empieza a recibir los primeros leads.</p>
+          <div class="proceso-detail">Pauta: la pagas tú directamente a Meta · Material gráfico: lo provees tú · Te decimos exactamente qué necesitamos</div>
+        </div>
+      </div>
+      <div class="proceso-step">
+        <div class="proceso-num">4</div>
+        <div class="proceso-content">
+          <h3>Optimizamos cada mes</h3>
+          <p>Revisamos las conversaciones del agente, ajustamos el prompt si hay respuestas que mejorar, optimizamos los anuncios según los datos, y te enviamos un reporte simple con lo que importa: leads, demos, cierres.</p>
+          <div class="proceso-detail">Reporte mensual · Ajustes incluidos en todos los planes</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PRECIOS -->
+<section id="precios">
+  <div class="container">
+    <div style="text-align:center;max-width:560px;margin:0 auto">
+      <div class="eyebrow" style="margin-bottom:1rem">Precios</div>
+      <h2 class="section-title">Transparentes.<br>Sin sorpresas.</h2>
+      <p class="body-lg" style="margin-top:1rem">Lo que ves abajo es solo el fee del sistema. <strong style="color:var(--text)">No incluye</strong> el presupuesto de pauta publicitaria (lo pagas tú directamente a Meta, sin intermediarios) ni el material gráfico para los anuncios (fotos y videos de tu negocio los provees tú). Sin sorpresas.</p>
+    </div>
+    <div class="pricing-grid">
+      <!-- STARTER -->
+      <div class="pricing-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">$250K<sub>/mes</sub></div>
+        <div class="plan-setup">+ $200.000 setup inicial</div>
+        <ul class="plan-features">
+          <li>Agente de IA en WhatsApp Business</li>
+          <li>Prompt personalizado para tu rubro</li>
+          <li>Escalada automática a humano</li>
+          <li>1 ajuste de prompt por mes</li>
+          <li class="no">Gestión de Meta Ads</li>
+          <li class="no">CRM y pipeline de ventas</li>
+          <li class="no">Remarketing</li>
+        </ul>
+        <a href="https://wa.me/56938740153?text=Hola%2C%20me%20interesa%20el%20plan%20Starter%20de%20Top%20Kreativa." class="plan-btn plan-btn-outline" target="_blank">Quiero el Starter</a>
+      </div>
+      <!-- SISTEMA -->
+      <div class="pricing-card featured">
+        <div class="featured-badge">Más elegido</div>
+        <div class="plan-name">Sistema</div>
+        <div class="plan-price">$390K<sub>/mes</sub></div>
+        <div class="plan-setup">+ $350.000 setup inicial</div>
+        <ul class="plan-features">
+          <li>Agente de IA en WhatsApp Business</li>
+          <li>Prompt personalizado para tu rubro</li>
+          <li>Escalada automática a humano</li>
+          <li>Gestión y configuración de Meta Ads</li>
+          <li>CRM y pipeline de ventas activo</li>
+          <li>2 ajustes de prompt por mes</li>
+          <li>Reporte mensual de resultados</li>
+          <li class="no">Remarketing avanzado</li>
+        </ul>
+        <a href="https://wa.me/56938740153?text=Hola%2C%20me%20interesa%20el%20plan%20Sistema%20de%20Top%20Kreativa." class="plan-btn plan-btn-fill" target="_blank">Quiero el Sistema</a>
+      </div>
+      <!-- PRO -->
+      <div class="pricing-card">
+        <div class="plan-name">Sistema Pro</div>
+        <div class="plan-price">$590K<sub>/mes</sub></div>
+        <div class="plan-setup">+ $600.000 setup inicial</div>
+        <ul class="plan-features">
+          <li>Todo el plan Sistema</li>
+          <li>Remarketing automatizado</li>
+          <li>Seguimiento activo de leads fríos</li>
+          <li>2 canales (WhatsApp + Instagram)</li>
+          <li>Ajustes ilimitados de prompt</li>
+          <li>Reporte semanal de resultados</li>
+          <li>Soporte prioritario</li>
+        </ul>
+        <a href="https://wa.me/56938740153?text=Hola%2C%20me%20interesa%20el%20plan%20Pro%20de%20Top%20Kreativa." class="plan-btn plan-btn-outline" target="_blank">Quiero el Pro</a>
+      </div>
+    </div>
+    <p class="pricing-note">
+      Todos los planes incluyen <strong style="color:var(--text)">garantía de 15 días</strong> — si el agente no funciona como acordamos, devolvemos el setup.
+    </p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:1.25rem;max-width:640px;margin-left:auto;margin-right:auto">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;font-size:13px;color:var(--muted)">
+        <strong style="color:var(--text);display:block;margin-bottom:.3rem">Pauta publicitaria</strong>
+        La pagas tú directamente a Meta (Facebook/Instagram). Nosotros la configuramos y optimizamos, pero el dinero va de tu tarjeta a Meta. Cero comisión de nuestra parte. Mínimo recomendado: $150.000/mes.
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;font-size:13px;color:var(--muted)">
+        <strong style="color:var(--text);display:block;margin-bottom:.3rem">Material gráfico</strong>
+        Las fotos y videos de tu negocio los provees tú. Con eso construimos los anuncios. Si no tienes material, te decimos exactamente qué grabar con tu teléfono — no necesitas producción profesional.
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+  <div class="container-sm">
+    <div class="eyebrow" style="margin-bottom:1rem;display:block">Empieza esta semana</div>
+    <h2 class="section-title">¿Tu negocio recibe mensajes que no siempre puedes responder a tiempo?</h2>
+    <p>Cuéntanos sobre tu negocio. Te mostramos el sistema en vivo con un caso similar al tuyo — 20 minutos, sin compromiso.</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/56938740153?text=Hola%20Top%20Kreativa%2C%20quiero%20ver%20c%C3%B3mo%20funciona%20el%20sistema%20en%20mi%20negocio.%20%C2%BFCu%C3%A1ndo%20podemos%20agendar%20una%20demo%3F" class="btn-primary" target="_blank">
+        Quiero la demo gratuita →
+      </a>
+    </div>
+    <p class="cta-sub">Solo 3 cupos disponibles este mes en la V Región · +56 9 3874 0153</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a href="#inicio" class="footer-logo">Top<span>Kreativa</span></a>
+      <div class="footer-links">
+        <a href="#sistema">El sistema</a>
+        <a href="#prueba">Casos reales</a>
+        <a href="#proceso">Cómo funciona</a>
+        <a href="#precios">Precios</a>
+        <a href="https://www.instagram.com/topkreativa" target="_blank">@topkreativa</a>
+      </div>
+      <p class="footer-copy">© 2025 Top Kreativa · Concón, V Región</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOTANTE -->
+<a href="https://wa.me/56938740153?text=Hola%20Top%20Kreativa%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20sistema%20de%20IA." class="wa-float" target="_blank" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.065 23.454a.5.5 0 00.613.612l5.652-1.486A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.971 0-3.818-.572-5.376-1.558l-.389-.241-4.015 1.056 1.07-3.92-.254-.404A9.946 9.946 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+
+<script>
+/* ============================================================
+   CHAT ANIMADO — Kristal Spa
+   Loop infinito: secuencia → pausa → limpia → repite
+   ============================================================ */
+(function(){
+
+const MSGS = [
+  {type:'in',  text:'Hola! Quiero saber los precios de masajes 😊', typingMs:600},
+  {type:'out', text:'¡Hola! Soy Kristal 😊 ¿Buscas un masaje relajante, deportivo o descontracturante?', typingMs:1800},
+  {type:'in',  text:'Descontracturante para la espalda, ¿cuánto cuesta?', typingMs:900},
+  {type:'out', text:'El descontracturante de espalda completa dura 60 min y vale $35.000. También hay 45 min por $28.000. ¿Cuál te acomoda?', typingMs:2200},
+  {type:'in',  text:'El de 60 min! ¿Tienen hora el sábado? 🙏', typingMs:700},
+  {type:'out', text:'¡Sí! Tenemos el sábado a las 11:00, 14:30 y 17:00 hrs. ¿Cuál prefieres? Te lo reservo ahora mismo 📅', typingMs:2000},
+  {type:'in',  text:'A las 14:30 perfecto!', typingMs:500},
+  {type:'out', text:'¡Listo! Reserva confirmada para el sábado 14:30 🎉 ¿Nombre completo para la reserva?', typingMs:1600},
+];
+
+const chatBody   = document.getElementById('chat-body');
+const statusText = document.getElementById('chat-status-text');
+const inputText  = document.getElementById('input-text');
+const chatCursor = document.getElementById('chat-cursor');
+const notif      = document.getElementById('chat-notif');
+const notifText  = document.getElementById('notif-text');
+const clockEl    = document.getElementById('chat-clock');
+
+/* Reloj en vivo */
+function updateClock(){
+  const d = new Date();
+  clockEl.textContent = d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0');
+}
+updateClock();
+setInterval(updateClock, 15000);
+
+let msgTime = new Date();
+function getTime(){
+  msgTime = new Date(msgTime.getTime() + 28000);
+  return msgTime.getHours().toString().padStart(2,'0')+':'+msgTime.getMinutes().toString().padStart(2,'0');
+}
+
+/* Muestra notificación flotante */
+function showNotif(text){
+  notifText.textContent = text.length > 44 ? text.slice(0,41)+'…' : text;
+  notif.classList.add('show');
+  setTimeout(()=>notif.classList.remove('show'), 3200);
+}
+
+/* Indicador "escribiendo..." en el header */
+function setTypingStatus(active){
+  if(active){
+    statusText.textContent = 'escribiendo…';
+    statusText.classList.add('typing-active');
+  } else {
+    statusText.textContent = 'en línea';
+    statusText.classList.remove('typing-active');
+  }
+}
+
+/* Añade burbuja al chat */
+function addBubble(m, time){
+  const isOut = m.type === 'out';
+  const div = document.createElement('div');
+  div.className = 'msg ' + (isOut ? 'msg-out' : 'msg-in');
+  const footer = `<div class="msg-footer">
+    <span class="msg-time-inner">${time}</span>
+    ${isOut ? '<span class="msg-ticks">✓✓</span>' : ''}
+  </div>`;
+  div.innerHTML = m.text + footer;
+  chatBody.appendChild(div);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+/* Indicador de puntos de escritura en el body */
+function showTypingBubble(){
+  removeTy();
+  const t = document.createElement('div');
+  t.className = 'msg-typing'; t.id = 'ty';
+  t.innerHTML = '<div class="dot"></div><div class="dot"></div><div class="dot"></div>';
+  chatBody.appendChild(t);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+function removeTy(){
+  const old = document.getElementById('ty');
+  if(old) old.remove();
+}
+
+/* Animación de escritura en el input bar (mensajes del cliente) */
+function typeInInput(text, cb){
+  inputText.textContent = '';
+  chatCursor.style.display = 'inline-block';
+  let i = 0;
+  const speed = Math.min(55, Math.max(28, 900 / text.length));
+  const iv = setInterval(()=>{
+    if(i < text.length){
+      inputText.textContent += text[i++];
+    } else {
+      clearInterval(iv);
+      setTimeout(()=>{
+        chatCursor.style.display = 'none';
+        inputText.textContent = '';
+        cb();
+      }, 320);
+    }
+  }, speed);
+}
+
+/* Pausa entre mensajes */
+function wait(ms){ return new Promise(r => setTimeout(r, ms)); }
+
+/* Delay acumulado para encadenar promesas */
+let running = false;
+
+async function runSequence(){
+  if(running) return;
+  running = true;
+  chatBody.innerHTML = '';
+  msgTime = new Date();
+  msgTime.setHours(22, 30, 0);
+
+  for(let i = 0; i < MSGS.length; i++){
+    const m = MSGS[i];
+    const t = getTime();
+
+    if(m.type === 'in'){
+      /* Cliente escribe en el input */
+      await wait(i === 0 ? 800 : 1000);
+      chatCursor.style.display = 'inline-block';
+      await new Promise(r => typeInInput(m.text, r));
+      addBubble(m, t);
+      await wait(400);
+    } else {
+      /* Bot — mostrar "escribiendo..." */
+      await wait(600);
+      setTypingStatus(true);
+      showTypingBubble();
+      await wait(m.typingMs);
+      removeTy();
+      setTypingStatus(false);
+      addBubble(m, t);
+      showNotif(m.text);
+      await wait(500);
+    }
+  }
+
+  /* Pausa al final antes de reiniciar */
+  await wait(3500);
+
+  /* Fade out y limpia */
+  chatBody.style.transition = 'opacity .6s';
+  chatBody.style.opacity = '0';
+  await wait(650);
+  chatBody.innerHTML = '';
+  chatBody.style.opacity = '1';
+  running = false;
+
+  /* Reinicia el loop */
+  setTimeout(runSequence, 800);
+}
+
+/* Arranca cuando el hero es visible */
+const heroObs = new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting && !running) runSequence();
+}, {threshold: 0.3});
+heroObs.observe(document.getElementById('chat-demo-wrap'));
+
+})();
+
+/* SCROLL REVEAL */
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.style.opacity='1';
+      e.target.style.transform='translateY(0)';
+    }
+  });
+},{threshold:.1});
+
+document.querySelectorAll('.proof-card,.pricing-card,.proceso-step,.sistema-step').forEach(el=>{
+  el.style.opacity='0';
+  el.style.transform='translateY(20px)';
+  el.style.transition='opacity .5s, transform .5s';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
