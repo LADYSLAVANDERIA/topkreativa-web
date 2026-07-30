@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Automatización e IA en producción</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E6EBEE; --panel:#F4F7F8; --ink:#0C1720; --ink-2:#16242F;
+  --muted:#5A6B77; --rule:#C7D1D8; --teal:#0B6E63; --rust:#B04A2A;
+  --d-text:#D9E2E7; --d-dim:#6E8290; --d-rule:#22323E;
+  --d-ok:#52C4AC; --d-bad:#E0705A; --d-warn:#E0A05A;
+  --maxw:1000px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+  font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+
+.top{padding:32px 0 0}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--teal);display:inline-block;flex:none}
+.hero{padding:28px 0 42px}
+h1{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;
+  font-size:clamp(2.15rem,7.8vw,4.15rem);line-height:1.0;letter-spacing:-.032em;margin:0 0 22px;max-width:16ch}
+.lede{font-size:clamp(1.02rem,2.7vw,1.16rem);max-width:57ch;margin:0}
+.lede b{font-weight:600}
+
+/* ===== machine ===== */
+.machine{background:var(--ink);color:var(--d-text);padding:52px 0 56px;margin-bottom:58px}
+.machine .sec-head{border-top-color:var(--d-rule);color:var(--d-dim)}
+.machine h2.big{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:700;
+  font-size:clamp(1.55rem,4.6vw,2.35rem);line-height:1.1;letter-spacing:-.024em;margin:0 0 14px;max-width:23ch;color:#fff}
+.machine .sub{color:var(--d-dim);max-width:58ch;margin:0 0 26px;font-size:15px}
+.machine .sub b{color:var(--d-text);font-weight:500}
+
+/* toggle */
+.toggle{display:inline-flex;border:1px solid var(--d-rule);border-radius:3px;overflow:hidden;margin-bottom:24px}
+.toggle button{
+  background:none;border:none;color:var(--d-dim);cursor:pointer;
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.08em;
+  text-transform:uppercase;padding:10px 16px;transition:background .18s,color .18s;
+}
+.toggle button + button{border-left:1px solid var(--d-rule)}
+.toggle button[aria-pressed="true"]{background:var(--ink-2);color:#fff}
+.toggle button.bad[aria-pressed="true"]{color:var(--d-bad)}
+.toggle button.good[aria-pressed="true"]{color:var(--d-ok)}
+.toggle button:focus-visible{outline:2px solid var(--d-ok);outline-offset:-2px}
+
+.demo{display:grid;grid-template-columns:1fr;gap:26px;align-items:start}
+.phone-col{display:flex;flex-direction:column;align-items:center}
+.phone{width:100%;max-width:344px;background:#0A1219;border:1px solid var(--d-rule);
+  border-radius:16px;overflow:hidden;box-shadow:0 18px 44px rgba(0,0,0,.42)}
+.ph-head{background:#13202A;padding:11px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--d-rule)}
+.ph-av{width:34px;height:34px;border-radius:50%;flex:none;background:linear-gradient(140deg,#0B6E63,#149C8B);
+  display:flex;align-items:center;justify-content:center;font-family:"Bricolage Grotesque",sans-serif;
+  font-weight:700;font-size:14px;color:#fff;transition:background .3s}
+.phone.off .ph-av{background:linear-gradient(140deg,#3A4750,#556570)}
+.ph-name{font-size:13.5px;font-weight:600;color:#fff;line-height:1.2}
+.ph-sub{font-size:10.5px;color:var(--d-ok);font-family:"IBM Plex Mono",monospace;letter-spacing:.04em}
+.phone.off .ph-sub{color:var(--d-dim)}
+.ph-live{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;
+  color:var(--d-ok);border:1px solid rgba(82,196,172,.34);border-radius:20px;padding:2px 8px;
+  display:flex;align-items:center;gap:5px;flex:none}
+.phone.off .ph-live{color:var(--d-dim);border-color:var(--d-rule)}
+.pulse{width:5px;height:5px;border-radius:50%;background:currentColor;animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+
+.ph-body{height:404px;overflow-y:auto;padding:14px 12px 16px;background:#101B23;scroll-behavior:smooth}
+.ph-body::-webkit-scrollbar{width:0}
+.bub{max-width:83%;padding:8px 11px 6px;border-radius:9px;margin-bottom:8px;
+  font-size:13.4px;line-height:1.42;word-wrap:break-word;animation:pop .34s cubic-bezier(.2,.8,.3,1)}
+@keyframes pop{from{opacity:0;transform:translateY(9px) scale(.97)}to{opacity:1;transform:none}}
+.bub.in{background:#1D2C36;color:#E8EFF3;border-top-left-radius:2px;margin-right:auto}
+.bub.out{background:#134E44;color:#EAF6F3;border-top-right-radius:2px;margin-left:auto}
+.meta{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:rgba(255,255,255,.42);
+  display:block;text-align:right;margin-top:3px;letter-spacing:.03em}
+.bub.out .meta{color:rgba(200,240,232,.62)}
+.tick{color:#5AB6F0;font-size:10px;margin-left:2px}
+.tick.grey{color:rgba(255,255,255,.42)}
+.silence{
+  text-align:center;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  color:var(--d-warn);border-top:1px dashed rgba(224,160,90,.3);
+  border-bottom:1px dashed rgba(224,160,90,.3);padding:9px 0;margin:4px 0 10px;
+  letter-spacing:.06em;animation:pop .34s ease;
+}
+.daybreak{text-align:center;font-family:"IBM Plex Mono",monospace;font-size:9.5px;
+  color:var(--d-dim);letter-spacing:.14em;text-transform:uppercase;margin:6px 0 12px;animation:pop .3s ease}
+.typing{display:inline-flex;gap:4px;background:#134E44;padding:11px 13px;border-radius:9px;
+  border-top-right-radius:2px;margin-left:auto;margin-bottom:8px}
+.typing i{width:5px;height:5px;border-radius:50%;background:#8FD8CB;display:block;animation:bounce 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.16s}
+.typing i:nth-child(3){animation-delay:.32s}
+@keyframes bounce{0%,60%,100%{transform:translateY(0);opacity:.45}30%{transform:translateY(-4px);opacity:1}}
+.row-out{display:flex}
+.caption{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--d-dim);
+  margin:12px 0 0;text-align:center;line-height:1.6;max-width:320px;letter-spacing:.03em}
+.replay{margin-top:12px;background:none;border:1px solid var(--d-rule);color:var(--d-dim);
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  padding:7px 15px;border-radius:2px;cursor:pointer;transition:color .15s,border-color .15s}
+.replay:hover,.replay:focus-visible{color:var(--d-ok);border-color:var(--d-ok)}
+
+.sys{background:#0A1219;border:1px solid var(--d-rule);border-radius:4px;overflow:hidden;width:100%}
+.sys-head{padding:10px 14px;border-bottom:1px solid var(--d-rule);background:#13202A;
+  font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--d-dim);display:flex;justify-content:space-between;gap:10px}
+.sys-body{padding:14px;font-family:"IBM Plex Mono",monospace;font-size:11.6px;line-height:1.95;
+  min-height:404px;overflow-x:auto}
+.ln{display:block;white-space:pre;color:var(--d-dim);animation:slide .3s ease}
+@keyframes slide{from{opacity:0;transform:translateX(-5px)}to{opacity:1;transform:none}}
+.ln.ok{color:var(--d-ok)} .ln.hi{color:#fff} .ln.bad{color:var(--d-bad)} .ln.warn{color:var(--d-warn)}
+.ln.gap{height:10px}
+.ln.final{border-top:1px solid var(--d-rule);margin-top:10px;padding-top:10px;white-space:normal;color:var(--d-ok)}
+.ln.final.neg{color:var(--d-bad)}
+.cursor{display:inline-block;width:7px;height:12px;background:currentColor;animation:blink 1s steps(2) infinite;vertical-align:-1px}
+@keyframes blink{0%,50%{opacity:1}51%,100%{opacity:0}}
+
+/* verdict strip */
+.verdict{margin-top:26px;border:1px solid var(--d-rule);border-radius:3px;background:var(--ink-2);
+  padding:18px 20px;display:grid;grid-template-columns:1fr;gap:14px}
+.v-item b{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--d-dim);margin-bottom:4px;font-weight:500}
+.v-item span{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.32rem;
+  letter-spacing:-.02em;line-height:1.2;display:block}
+.v-item.neg span{color:var(--d-bad)}
+.v-item.pos span{color:var(--d-ok)}
+
+/* ===== light ===== */
+.sec-head{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);border-top:1px solid var(--rule);padding-top:12px;margin:0 0 26px}
+.h-block{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:700;
+  font-size:clamp(1.5rem,4.4vw,2.15rem);line-height:1.11;letter-spacing:-.024em;margin:0 0 14px;max-width:24ch}
+.p-block{max-width:60ch;margin:0 0 30px;font-size:15.5px}
+
+.qa{border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-bottom:22px}
+.qa-row{display:grid;grid-template-columns:1fr;gap:2px 16px;padding:14px 18px;
+  background:var(--panel);border-bottom:1px solid var(--rule)}
+.qa-row:last-child{border-bottom:none}
+.qa-row.bad{background:#F7EEEA} .qa-row.fix{background:#EAF3F1}
+.qa-k{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted)}
+.qa-v{font-size:14.5px} .qa-v.q{font-family:"IBM Plex Mono",monospace;font-size:13px}
+.qa-row.bad .qa-k{color:var(--rust)} .qa-row.fix .qa-k{color:var(--teal)}
+
+.case{background:var(--panel);border:1px solid var(--rule);border-radius:3px;padding:22px 20px;margin-bottom:13px}
+.case-status{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--teal);margin:0 0 9px;display:flex;align-items:center;gap:7px}
+.case h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:700;
+  font-size:clamp(1.18rem,3.3vw,1.45rem);line-height:1.17;letter-spacing:-.017em;margin:0 0 11px;max-width:27ch}
+.case p{margin:0 0 10px;font-size:14.8px;max-width:64ch}
+.case p:last-of-type{margin-bottom:15px}
+.label{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:"IBM Plex Mono",monospace;font-size:11px;background:#fff;
+  border:1px solid var(--rule);border-radius:2px;padding:3px 8px;color:var(--muted)}
+
+.also{list-style:none;padding:0;margin:0 0 56px;border-top:1px solid var(--rule)}
+.also li{border-bottom:1px solid var(--rule);padding:13px 0;font-size:14.5px}
+.also b{font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:500;color:var(--muted);
+  letter-spacing:.09em;text-transform:uppercase;display:block;margin-bottom:2px}
+
+.stack-grid{border:1px solid var(--rule);margin-bottom:56px}
+.stack-row{background:var(--panel);padding:13px 16px;border-bottom:1px solid var(--rule)}
+.stack-row:last-child{border-bottom:none}
+.stack-row b{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);font-weight:500;display:block;margin-bottom:3px}
+.stack-row span{font-size:14.5px}
+
+.close{border-top:2px solid var(--ink);padding:30px 0 70px}
+.close p{font-size:clamp(1.05rem,2.9vw,1.3rem);max-width:50ch;margin:0 0 14px;font-weight:500;line-height:1.42}
+.close .fine{font-size:14px;color:var(--muted);font-weight:400;max-width:56ch;margin:0}
+
+@media (min-width:560px){.verdict{grid-template-columns:1fr 1fr 1fr}}
+@media (min-width:640px){.qa-row{grid-template-columns:150px 1fr}}
+@media (min-width:860px){
+  .demo{grid-template-columns:344px 1fr;gap:30px}
+  .phone-col{align-items:flex-start}
+  .top{padding-top:54px}.hero{padding:34px 0 50px}
+  .machine{padding:64px 0 68px}.case{padding:28px 30px}
+}
+@media (prefers-reduced-motion:reduce){
+  .pulse,.cursor,.typing i,.bub,.ln,.silence,.daybreak{animation:none}
+  .ph-body{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="wrap top">
+  <div class="eyebrow">
+    <span><span class="dot"></span> Automatización de procesos e IA</span><span>·</span>
+    <span>Casos en producción</span><span>·</span><span>Chile · UTC−4</span>
+  </div>
+</header>
+
+<section class="wrap hero">
+  <h1>1 de cada 4 clientes escribe cuando ya cerraste.</h1>
+  <p class="lede">Lo medí en mi propia lavandería: de 2.002 mensajes entrantes en cuatro meses, <b>488 llegaron fuera del horario de atención</b>. La hora con más mensajes sin nadie disponible son las 19:00, justo cuando se apagan las luces. Construyo agentes de IA y automatizaciones que atienden esas horas — y que siguen funcionando el mes seis, que es donde casi todos fallan.</p>
+</section>
+
+<section class="machine">
+  <div class="wrap">
+    <p class="sec-head">El mismo cliente · dos negocios distintos</p>
+    <h2 class="big">Son las 19:42 de un martes. Llega un mensaje. Míralo pasar de las dos formas.</h2>
+    <p class="sub">Izquierda: la conversación tal como la ve el negocio. Derecha: lo que ocurre por detrás. Cambia el interruptor y compara — <b>es el mismo cliente, el mismo mensaje y la misma hora</b>. Lo único que cambia es si el sistema existe o no.</p>
+
+    <div class="toggle" role="group" aria-label="Comparar escenarios">
+      <button type="button" class="bad"  id="btn-off" aria-pressed="false">Sin el sistema</button>
+      <button type="button" class="good" id="btn-on"  aria-pressed="true">Con el sistema</button>
+    </div>
+
+    <div class="demo">
+      <div class="phone-col">
+        <div class="phone" id="phone">
+          <div class="ph-head">
+            <div class="ph-av" id="av">S</div>
+            <div>
+              <div class="ph-name" id="phname">Agente de IA · Lavandería</div>
+              <div class="ph-sub" id="phsub">en línea</div>
+            </div>
+            <div class="ph-live" id="phlive"><span class="pulse"></span><span id="phlivetxt">EN VIVO</span></div>
+          </div>
+          <div class="ph-body" id="chat" aria-live="polite" aria-label="Conversación reproducida automáticamente"></div>
+        </div>
+        <button class="replay" id="replay" type="button">Reproducir de nuevo</button>
+        <p class="caption">Recreación fiel de flujos reales.<br>Nombre, dirección y teléfono cambiados.</p>
+      </div>
+
+      <div class="sys">
+        <div class="sys-head"><span id="sysname">registro del sistema</span><span id="sysclock">—</span></div>
+        <div class="sys-body" id="log"></div>
+      </div>
+    </div>
+
+    <div class="verdict" id="verdict"></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <p class="sec-head">Control de calidad</p>
+  <h2 class="h-block">Un agente de IA sin auditoría es una fuga que todavía no descubriste.</h2>
+  <p class="p-block">Reviso conversaciones reales buscando errores. Este es uno de verdad, y es sutil: el agente no alucinó ni se cayó. Simplemente dio por confirmado algo que la clienta nunca confirmó.</p>
+
+  <div class="qa">
+    <div class="qa-row"><div class="qa-k">La clienta pidió</div>
+      <div class="qa-v q">"venir a retirar ropa mañana tipo 18 hrs para el sábado"</div></div>
+    <div class="qa-row"><div class="qa-k">El agente respondió</div>
+      <div class="qa-v">Correctamente: el sábado no hay ruta. Propuso el viernes.</div></div>
+    <div class="qa-row"><div class="qa-k">Ella contestó</div>
+      <div class="qa-v q">"a las 19 hrs"</div></div>
+    <div class="qa-row bad"><div class="qa-k">El error</div>
+      <div class="qa-v">Confirmó la <b>hora</b>, nunca el <b>día</b>. El agente asumió que aceptaba el viernes y agendó. Un móvil iba a llegar un día que la clienta no había aprobado.</div></div>
+    <div class="qa-row fix"><div class="qa-k">La corrección</div>
+      <div class="qa-v">Regla explícita en el agente: al proponer una fecha alternativa, no se agenda hasta que el cliente confirme <b>el día</b>, no solo el horario. Desplegada el mismo día.</div></div>
+  </div>
+  <p class="p-block">Errores como este no aparecen en una demo. Aparecen leyendo conversaciones reales una por una, que es exactamente el trabajo que casi nadie hace después de entregar el proyecto. Es la diferencia entre un sistema que impresiona el primer mes y uno en el que confías al año.</p>
+</section>
+
+<section class="wrap">
+  <p class="sec-head">Otros sistemas en producción</p>
+
+  <article class="case">
+    <p class="case-status"><span class="dot"></span> Activo · vigila a los demás</p>
+    <h3>El sistema que encontró dos fallas que nadie estaba viendo</h3>
+    <p>Corro un chequeo automático semanal sobre toda la infraestructura. En una de sus corridas detectó dos cosas que llevaban días rotas sin alertar a nadie: la cuota de ejecuciones del orquestador estaba agotada hacía una semana por flujos duplicados, y un token de API llevaba el doble de su vida útil, devolviendo errores de autorización en silencio.</p>
+    <p>Ambas corregidas el mismo día. El chequeo ahora vigila las dos cosas por su cuenta. Una automatización rota que nadie nota no es una automatización: es una deuda que se paga en clientes perdidos.</p>
+    <span class="label">Stack</span>
+    <div class="chips"><span class="chip">Cron</span><span class="chip">Alertas</span><span class="chip">Monitoreo de credenciales</span></div>
+  </article>
+
+  <article class="case">
+    <p class="case-status"><span class="dot"></span> Activo · resuelto con plantilla aprobada</p>
+    <h3>El límite de WhatsApp que rompe la mitad de las automatizaciones</h3>
+    <p>WhatsApp solo deja enviar mensajes libres dentro de las 24 horas posteriores a que el cliente escribió. Como entre que agenda y que su ropa está lista pasan siempre más de 24 horas, la notificación de "pedido listo" fallaba <em>en silencio</em>: la API devolvía éxito y el mensaje nunca llegaba.</p>
+    <p>La solución no era código, era entender la plataforma: plantilla de utilidad aprobada por Meta, con variables, conectada al flujo de empaque. Lo menciono porque el error engañoso —éxito en el log, cero entregas— es el tipo de cosa que solo se aprende operando.</p>
+    <span class="label">Stack</span>
+    <div class="chips"><span class="chip">WhatsApp Business API</span><span class="chip">Plantillas Meta</span><span class="chip">Workflows CRM</span></div>
+  </article>
+
+  <article class="case">
+    <p class="case-status"><span class="dot"></span> Activo · 24/7</p>
+    <h3>Cuando el problema no era de IA, era de plomería</h3>
+    <p>Mi entorno de desarrollo tenía bloqueado el acceso directo a la API del CRM. En vez de pelear con eso, monté una capa intermedia: scripts ejecutándose como trabajos programados en infraestructura externa, con las salidas de diagnóstico escritas a un repositorio que leo por API.</p>
+    <p>Lo incluyo a propósito. Buena parte de este oficio es distinguir el problema que necesita un modelo del que necesita arquitectura, y decir en voz alta cuál es cuál.</p>
+    <span class="label">Stack</span>
+    <div class="chips"><span class="chip">GitHub Actions</span><span class="chip">Python</span><span class="chip">REST · webhooks</span></div>
+  </article>
+
+  <article class="case">
+    <p class="case-status"><span class="dot"></span> Activo · 196 productos publicados</p>
+    <h3>De la foto en el teléfono a la tienda publicada</h3>
+    <p>Para una tienda de moda circular armé el camino completo: la foto entra a la nube, se convierte de formato, se analiza para clasificarla, se le asigna código por categoría, se sube al repositorio de imágenes y se inserta en la base de datos. El sitio se despliega solo.</p>
+    <p>El paso humano quedó reducido a elegir la prenda y escribir la descripción. Después audité el resultado: 7 duplicados y 11 productos mal categorizados, corregidos junto con la causa que los generaba.</p>
+    <span class="label">Stack</span>
+    <div class="chips"><span class="chip">Supabase</span><span class="chip">Netlify</span><span class="chip">Drive API</span><span class="chip">Python</span></div>
+  </article>
+
+  <article class="case">
+    <p class="case-status"><span class="dot"></span> Criterio</p>
+    <h3>Lo que dejé deliberadamente sin automatizar</h3>
+    <p>Hay contactos marcados que el agente nunca responde: van a gestión manual siempre. Son los casos donde un error automático cuesta más caro que el tiempo humano que ahorra.</p>
+    <p>Mi regla: volumen alto y error barato se automatiza; volumen bajo y error caro se documenta y lo hace una persona. Y si el proceso todavía cambia cada semana, no se toca — automatizar un proceso indefinido solo acelera el desorden.</p>
+  </article>
+</section>
+
+<section class="wrap">
+  <p class="sec-head">También en operación</p>
+  <ul class="also">
+    <li><b>Reportes</b>Informe de agendamientos cada hora y cierre diario de ventas contra presupuesto, ambos automáticos.</li>
+    <li><b>Escalada a humano</b>Cuando el agente transfiere a una persona, llega el aviso con nombre, teléfono y enlace directo a la conversación en menos de dos minutos.</li>
+    <li><b>Cobranza</b>Calculadora de consumos que genera la boleta en PDF y la envía por WhatsApp, para cinco unidades de arriendo.</li>
+    <li><b>Captación</b>Campañas de Meta Ads conectadas al CRM: el prospecto entra al embudo y al agente sin paso manual.</li>
+  </ul>
+
+  <p class="sec-head">Herramientas</p>
+  <div class="stack-grid">
+    <div class="stack-row"><b>Orquestación</b><span>n8n · GitHub Actions · webhooks · cron</span></div>
+    <div class="stack-row"><b>CRM y agentes</b><span>GoHighLevel · Conversation AI · MCP · diseño y ajuste de prompts</span></div>
+    <div class="stack-row"><b>Código</b><span>Python · JavaScript · SQL · Playwright · Git</span></div>
+    <div class="stack-row"><b>Datos e infraestructura</b><span>Supabase / PostgreSQL · Netlify · APIs REST</span></div>
+    <div class="stack-row"><b>Privacidad</b><span>Credenciales en almacén de secretos, nunca en código · criterio sobre qué dato va a un modelo y cuál no</span></div>
+  </div>
+
+  <div class="close">
+    <p>Nada de esto lo aprendí en un curso. Lo aprendí cuando se rompió en mi propio negocio y el cliente enojado era mío.</p>
+    <p class="fine">Cualquiera de estos flujos se puede mostrar corriendo en vivo, no en diapositivas. Español nativo; trabajo desde Chile, con solape diario garantizado con equipos en Europa.</p>
+  </div>
+</section>
+
+<script>
+(function(){
+  var chat=document.getElementById('chat'), log=document.getElementById('log'),
+      clock=document.getElementById('sysclock'), sysname=document.getElementById('sysname'),
+      phone=document.getElementById('phone'), av=document.getElementById('av'),
+      phname=document.getElementById('phname'), phsub=document.getElementById('phsub'),
+      phlivetxt=document.getElementById('phlivetxt'), verdict=document.getElementById('verdict'),
+      bOff=document.getElementById('btn-off'), bOn=document.getElementById('btn-on'),
+      replay=document.getElementById('replay');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var timers=[], mode='on';
+
+  var SC={
+    on:{
+      name:'Agente de IA · Lavandería', sub:'en línea', live:'EN VIVO',
+      sysname:'registro del sistema', off:false,
+      verdict:[
+        {k:'Respuesta',v:'19 segundos',c:'pos'},
+        {k:'Trabajo humano',v:'0 minutos',c:'pos'},
+        {k:'Resultado',v:'Retiro agendado',c:'pos'}
+      ],
+      steps:[
+        {k:'in',txt:'Hola, necesito que retiren ropa mañana en la tarde',t:'19:42',d:600},
+        {k:'log',txt:'19:42  mensaje entrante · contacto nuevo',d:300},
+        {k:'typing',d:800},
+        {k:'out',txt:'¡Hola! Soy el asistente de la lavandería 😊 Con gusto coordino tu retiro. ¿Me confirmas dirección y comuna?',t:'19:42',d:1000},
+        {k:'log',txt:'19:42  agente IA responde · 19 s',c:'ok',d:400},
+        {k:'in',txt:'Concón, Los Aromos 1240',t:'19:45',d:1400},
+        {k:'log',txt:'19:45  dirección capturada · Concón',d:350},
+        {k:'typing',d:750},
+        {k:'out',txt:'Perfecto. Mañana tengo ventana de 10 a 12 o de 16 a 18 hrs. ¿Cuál te acomoda?',t:'19:45',d:950},
+        {k:'in',txt:'Entre 16 y 18 está bien',t:'19:48',d:1400},
+        {k:'typing',d:800},
+        {k:'out',txt:'Listo ✅ Retiro agendado para mañana entre 16 y 18 hrs. Te aviso cuando el móvil vaya en camino 🚐',t:'19:48',d:1050},
+        {k:'log',txt:'19:48  retiro confirmado por el cliente',d:500},
+        {k:'gap',d:800},
+        {k:'log',txt:'20:00  extractor · lee la conversación completa',c:'hi',d:700},
+        {k:'log',txt:'       ✓ tipo de solicitud ......... retiro',c:'ok',d:400},
+        {k:'log',txt:'       ✓ fecha futura válida ....... mañana',c:'ok',d:400},
+        {k:'log',txt:'       ✓ comuna dentro de zona ..... Concón',c:'ok',d:400},
+        {k:'log',txt:'       ✓ marcado gestión manual .... no',c:'ok',d:400},
+        {k:'log',txt:'20:00  CRM · etiqueta → agendado',d:550},
+        {k:'log',txt:'20:01  navegador · login → cliente → nueva OT',d:850},
+        {k:'log',txt:'20:01  sistema de gestión · OT creada · ruta asignada',c:'hi',d:700},
+        {k:'final',txt:'19 minutos desde el mensaje. Intervención humana: ninguna.',d:0}
+      ]
+    },
+    off:{
+      name:'Lavandería', sub:'visto por última vez ayer', live:'SIN NADIE',
+      sysname:'lo que pasa por detrás', off:true,
+      verdict:[
+        {k:'Respuesta',v:'13 h 32 min',c:'neg'},
+        {k:'Trabajo humano',v:'4 minutos',c:'neg'},
+        {k:'Resultado',v:'Cliente perdido',c:'neg'}
+      ],
+      steps:[
+        {k:'in',txt:'Hola, necesito que retiren ropa mañana en la tarde',t:'19:42',d:600},
+        {k:'log',txt:'19:42  mensaje entrante · nadie disponible',c:'warn',d:400},
+        {k:'silence',txt:'sin respuesta · 16 min',d:1500},
+        {k:'in',txt:'Hola?',t:'19:58',d:700},
+        {k:'log',txt:'19:58  segundo intento del cliente',c:'warn',d:500},
+        {k:'silence',txt:'sin respuesta · 33 min',d:1400},
+        {k:'in',txt:'¿Están atendiendo? Lo necesito para mañana',t:'20:31',d:800},
+        {k:'log',txt:'20:31  tercer intento · sin lectura',c:'warn',d:500},
+        {k:'gap',d:600},
+        {k:'log',txt:'  ⧗    el cliente busca en Google mientras espera',c:'bad',d:1300},
+        {k:'daybreak',txt:'— día siguiente —',d:1400},
+        {k:'log',txt:'09:14  alguien abre WhatsApp por primera vez',d:800},
+        {k:'typing',d:900},
+        {k:'out',txt:'¡Hola! Disculpa la demora 🙏 ¿En qué te puedo ayudar?',t:'09:14',d:1000},
+        {k:'log',txt:'09:14  respuesta manual · 13 h 32 min después',c:'bad',d:600},
+        {k:'in',txt:'Ya no, gracias. Encontré otra que me contestó anoche',t:'09:41',d:1600},
+        {k:'log',txt:'09:41  cliente perdido',c:'bad',d:600},
+        {k:'gap',d:400},
+        {k:'log',txt:'       y nadie va a registrar que pasó esto',c:'bad',d:700},
+        {k:'final',txt:'Se pierde la venta, y se pierde el dato de que se perdió. Este mensaje no aparece en ningún reporte.',neg:true,d:0}
+      ]
+    }
+  };
+
+  function clearAll(){timers.forEach(clearTimeout);timers=[];chat.innerHTML='';log.innerHTML='';clock.textContent='—';}
+
+  function bubble(kind,txt,time,grey){
+    var el;
+    var b=document.createElement('div');
+    b.className='bub '+kind; b.textContent=txt;
+    var m=document.createElement('span'); m.className='meta';
+    m.innerHTML=time+(kind==='out'?' <span class="tick'+(grey?' grey':'')+'">✓✓</span>':'');
+    b.appendChild(m);
+    if(kind==='out'){el=document.createElement('div');el.className='row-out';el.appendChild(b);chat.appendChild(el);}
+    else chat.appendChild(b);
+    chat.scrollTop=chat.scrollHeight;
+  }
+  function marker(cls,txt){
+    var d=document.createElement('div'); d.className=cls; d.textContent=txt;
+    chat.appendChild(d); chat.scrollTop=chat.scrollHeight;
+  }
+  function typing(on){
+    var ex=document.getElementById('typ');
+    if(on){ if(ex)return;
+      var r=document.createElement('div'); r.className='row-out'; r.id='typ';
+      r.innerHTML='<div class="typing"><i></i><i></i><i></i></div>';
+      chat.appendChild(r); chat.scrollTop=chat.scrollHeight;
+    } else if(ex) ex.remove();
+  }
+  function logline(txt,cls){
+    var l=document.createElement('code'); l.className='ln'+(cls?' '+cls:''); l.textContent=txt; log.appendChild(l);
+  }
+  function paintVerdict(cfg){
+    verdict.innerHTML='';
+    cfg.verdict.forEach(function(v){
+      var d=document.createElement('div'); d.className='v-item '+v.c;
+      d.innerHTML='<b>'+v.k+'</b><span>'+v.v+'</span>';
+      verdict.appendChild(d);
+    });
+  }
+  function chrome(cfg){
+    phone.className='phone'+(cfg.off?' off':'');
+    av.textContent=cfg.off?'L':'S';
+    phname.textContent=cfg.name; phsub.textContent=cfg.sub;
+    phlivetxt.textContent=cfg.live; sysname.textContent=cfg.sysname;
+  }
+
+  function play(m,instant){
+    mode=m; var cfg=SC[m];
+    clearAll(); chrome(cfg); paintVerdict(cfg);
+    bOff.setAttribute('aria-pressed',m==='off'); bOn.setAttribute('aria-pressed',m==='on');
+
+    if(instant){
+      cfg.steps.forEach(function(s){
+        if(s.k==='in'||s.k==='out') bubble(s.k,s.txt,s.t,cfg.off);
+        else if(s.k==='silence') marker('silence',s.txt);
+        else if(s.k==='daybreak') marker('daybreak',s.txt);
+        else if(s.k==='log') logline(s.txt,s.c);
+        else if(s.k==='gap') logline('','gap');
+        else if(s.k==='final'){var f=document.createElement('code');f.className='ln final'+(s.neg?' neg':'');f.textContent=s.txt;log.appendChild(f);}
+      });
+      clock.textContent='completado'; return;
+    }
+
+    clock.innerHTML='procesando <span class="cursor"></span>';
+    var acc=0;
+    cfg.steps.forEach(function(s){
+      acc+=s.d;
+      timers.push(setTimeout(function(){
+        if(s.k==='in'||s.k==='out'){typing(false);bubble(s.k,s.txt,s.t,cfg.off);}
+        else if(s.k==='typing') typing(true);
+        else if(s.k==='silence') marker('silence',s.txt);
+        else if(s.k==='daybreak') marker('daybreak',s.txt);
+        else if(s.k==='log') logline(s.txt,s.c);
+        else if(s.k==='gap') logline('','gap');
+        else if(s.k==='final'){
+          var f=document.createElement('code'); f.className='ln final'+(s.neg?' neg':'');
+          f.textContent=s.txt; log.appendChild(f); clock.textContent='completado';
+          timers.push(setTimeout(function(){ play(mode==='on'?'off':'on'); }, 6500));
+        }
+      },acc));
+    });
+  }
+
+  bOff.addEventListener('click',function(){play('off',reduce);});
+  bOn.addEventListener('click',function(){play('on',reduce);});
+  replay.addEventListener('click',function(){play(mode,reduce);});
+
+  if(reduce){ play('on',true); return; }
+  var started=false;
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(e){
+      if(e[0].isIntersecting&&!started){started=true;play('off');io.disconnect();}
+    },{threshold:0.22});
+    io.observe(document.querySelector('.demo'));
+  } else play('off');
+})();
+</script>
+</body>
+</html>
