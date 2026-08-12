@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El cuello de botella · Hunter Motores · Top Kreativa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,700;9..40,1000&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0D0D0D; --bg2:#111111; --card:#161616; --card2:#1C1C1C;
+  --border:#2A2A2A; --border2:#333333;
+  --text:#F5F5F0; --muted:#888888; --muted2:#555555;
+  --accent:#D6006E; --accent-hover:#B8005C;
+  --accent-glow:rgba(214,0,110,.18); --accent-light:rgba(214,0,110,.08);
+  --white:#FFFFFF; --green:#00C853;
+  --radius:12px; --radius-sm:8px;
+  --alerta:#FF4A3D; --obs:#FFAE2E;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;
+  font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'DM Sans',sans-serif;font-weight:1000;line-height:1;margin:0;letter-spacing:-.035em}
+.wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+a{color:inherit}
+
+/* barra */
+.topbar{position:sticky;top:0;z-index:60;background:rgba(13,13,13,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.topbar-in{max-width:1060px;margin:0 auto;padding:11px 24px;display:flex;justify-content:space-between;
+  align-items:center;gap:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted)}
+.topbar b{color:var(--accent);font-weight:600}
+
+/* hero */
+.head{padding:66px 0 8px;position:relative;overflow:hidden}
+.head::before{content:"";position:absolute;top:-170px;left:50%;transform:translateX(-50%);width:780px;height:430px;
+  background:radial-gradient(ellipse,var(--accent-glow),transparent 68%);pointer-events:none;filter:blur(10px)}
+.head .wrap{position:relative}
+.issuer{display:inline-flex;align-items:center;gap:11px;font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.issuer i{width:24px;height:2px;background:var(--accent);display:block;font-style:normal;border-radius:2px}
+.title{font-size:clamp(40px,7.8vw,94px);text-transform:uppercase;margin:22px 0 0}
+.title em{font-style:normal;color:var(--accent);display:block}
+.lede{margin:26px 0 0;font-size:18px;color:var(--muted);max-width:58ch;line-height:1.6}
+.lede strong{color:var(--text);font-weight:600}
+
+.scan{margin:38px 0 0;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));overflow:hidden}
+.scan-cell{padding:22px;border-right:1px solid var(--border)}
+.scan-cell:last-child{border-right:0}
+.scan-n{font-family:'DM Sans',sans-serif;font-weight:1000;font-size:44px;line-height:1;display:block;letter-spacing:-.045em}
+.scan-l{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--muted);margin-top:9px;display:block;line-height:1.5}
+.c-al{color:var(--alerta)}.c-ob{color:var(--obs)}.c-ac{color:var(--accent)}.c-ok{color:var(--green)}
+
+/* tesis */
+.thesis{padding:78px 0}
+.thesis-grid{display:grid;grid-template-columns:1.12fr 1fr;gap:56px;align-items:start}
+.thesis blockquote{margin:0;font-family:'DM Sans',sans-serif;font-weight:700;
+  font-size:clamp(25px,3.4vw,38px);line-height:1.16;letter-spacing:-.03em}
+.thesis blockquote mark{background:none;color:var(--accent)}
+.thesis-note p{margin:0 0 15px;color:var(--muted);font-size:15px}
+.thesis-note p strong{color:var(--text);font-weight:600}
+.pill{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;background:var(--accent-light);color:var(--accent);border:1px solid rgba(214,0,110,.3);
+  padding:6px 12px;border-radius:100px;margin-bottom:20px}
+
+/* secciones */
+.sec{padding:20px 0 78px}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:10px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(28px,4.3vw,46px);text-transform:uppercase}
+.sec-head .idx{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase}
+.sec-sub{color:var(--muted);font-size:15px;max-width:64ch;margin:0 0 34px}
+
+/* procesos manuales */
+.proc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.proc-row{display:grid;grid-template-columns:1fr auto auto;gap:18px;align-items:center;
+  padding:16px 22px;border-bottom:1px solid var(--border)}
+.proc-row:last-child{border-bottom:0}
+.proc-row .t{font-weight:600;font-size:15px}
+.proc-row .t span{display:block;font-weight:400;font-size:13px;color:var(--muted);margin-top:3px;line-height:1.5}
+.who{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+  padding:6px 11px;border-radius:100px;white-space:nowrap;
+  background:rgba(255,74,61,.12);color:var(--alerta);border:1px solid rgba(255,74,61,.28)}
+.who.auto{background:rgba(0,200,83,.12);color:var(--green);border-color:rgba(0,200,83,.28)}
+
+/* cobertura semanal */
+.cover{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-top:12px}
+.cover h4{font-size:18px;margin-bottom:6px;letter-spacing:-.025em}
+.cover > p{margin:0 0 20px;color:var(--muted);font-size:14px}
+.grid-wrap{display:grid;grid-template-columns:34px 1fr;gap:8px;align-items:center}
+.days{display:grid;grid-template-rows:repeat(7,1fr);gap:3px;font-family:'IBM Plex Mono',monospace;
+  font-size:9px;color:var(--muted2);text-transform:uppercase;letter-spacing:.06em}
+.days span{display:flex;align-items:center;height:14px}
+.hours{display:grid;grid-template-rows:repeat(7,1fr);gap:3px}
+.hrow{display:grid;grid-template-columns:repeat(24,1fr);gap:3px}
+.hcell{height:14px;border-radius:2px;background:var(--bg2);border:1px solid var(--border)}
+.hcell.on{background:var(--accent);border-color:var(--accent)}
+.hcell.add{background:rgba(0,200,83,.25);border-color:rgba(0,200,83,.5)}
+.legend{display:flex;gap:20px;flex-wrap:wrap;margin-top:16px;font-family:'IBM Plex Mono',monospace;
+  font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.legend i{width:11px;height:11px;border-radius:2px;display:inline-block;margin-right:7px;vertical-align:-1px;font-style:normal}
+.legend .l1 i{background:var(--accent)}
+.legend .l2 i{background:var(--bg2);border:1px solid var(--border)}
+.legend .l3 i{background:rgba(0,200,83,.25);border:1px solid rgba(0,200,83,.5)}
+
+/* agente */
+.agent{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:78px 0}
+.flows{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:10px;margin-top:6px}
+.flow{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px 22px}
+.flow .n{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.13em;color:var(--accent);
+  text-transform:uppercase;margin-bottom:12px;display:block}
+.flow h4{font-size:19px;margin-bottom:9px;letter-spacing:-.025em;line-height:1.18}
+.flow p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.6}
+.flow p b{color:var(--text);font-weight:600}
+
+.beforeafter{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:34px}
+.ba{border:1px solid var(--border);border-radius:var(--radius);padding:24px 22px;background:var(--card)}
+.ba.after{border-color:rgba(0,200,83,.3)}
+.ba .lb{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted2);margin-bottom:16px;display:block}
+.ba.after .lb{color:var(--green)}
+.ba ul{list-style:none;margin:0;padding:0}
+.ba li{position:relative;padding-left:24px;font-size:14.5px;margin-bottom:10px;color:#CFCFC9}
+.ba li:last-child{margin-bottom:0}
+.ba li::before{content:"→";position:absolute;left:0;color:var(--muted2);font-family:'IBM Plex Mono',monospace}
+.ba.after li::before{content:"✓";color:var(--green)}
+
+/* hallazgos */
+.finding{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;
+  overflow:hidden;transition:border-color .2s ease}
+.finding:hover{border-color:var(--border2)}
+.finding.open{border-color:var(--border2);background:var(--card2)}
+.f-btn{width:100%;background:none;border:0;text-align:left;padding:20px 22px;cursor:pointer;
+  display:grid;grid-template-columns:auto 1fr auto auto;gap:16px;align-items:center;font:inherit;color:inherit}
+.f-btn:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:var(--radius)}
+.code{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.05em;
+  background:var(--bg2);border:1px solid var(--border);color:var(--muted);padding:6px 10px;
+  border-radius:var(--radius-sm);white-space:nowrap}
+.finding.open .code{color:var(--accent);border-color:rgba(214,0,110,.35)}
+.f-title{font-family:'DM Sans',sans-serif;font-weight:700;font-size:21px;line-height:1.2;letter-spacing:-.025em}
+.tag{font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;padding:6px 10px;border-radius:100px;white-space:nowrap}
+.tag.a1{background:rgba(255,74,61,.13);color:var(--alerta);border:1px solid rgba(255,74,61,.3)}
+.tag.a2{background:rgba(255,174,46,.12);color:var(--obs);border:1px solid rgba(255,174,46,.3)}
+.tag.ok{background:rgba(0,200,83,.12);color:var(--green);border:1px solid rgba(0,200,83,.3)}
+.chev{width:10px;height:10px;border-right:2px solid var(--muted2);border-bottom:2px solid var(--muted2);
+  transform:rotate(45deg);transition:transform .25s ease;margin-right:4px}
+.finding.open .chev{transform:rotate(-135deg);border-color:var(--accent)}
+.f-body{display:none;padding:0 22px 26px}
+.finding.open .f-body{display:block;animation:drop .3s ease}
+@keyframes drop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.f-body > p{margin:18px 0 0;font-size:15px;max-width:70ch;color:#CFCFC9}
+.f-body > p:first-child{margin-top:6px;padding-top:20px;border-top:1px solid var(--border)}
+.impact{margin-top:22px;padding:16px 18px;background:var(--accent-light);border:1px solid rgba(214,0,110,.24);
+  border-radius:var(--radius-sm);font-size:14.5px;color:#E4E4DE}
+.impact b{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  display:block;margin-bottom:6px;color:var(--accent)}
+
+.ev{width:100%;border-collapse:collapse;margin-top:20px;font-size:14px}
+.ev th{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted2);text-align:left;padding:0 12px 10px;font-weight:500;border-bottom:1px solid var(--border)}
+.ev td{padding:11px 12px;border-bottom:1px solid var(--border);vertical-align:top;color:#CFCFC9}
+.ev tr:last-child td{border-bottom:0}
+.ev .k{font-weight:600;white-space:nowrap;color:var(--text)}
+.ev .bad{color:var(--alerta);font-weight:500}
+.ev .good{color:var(--green);font-weight:500}
+
+.props{display:grid;grid-template-columns:repeat(auto-fit,minmax(152px,1fr));gap:8px;margin-top:22px}
+.prop{border:1px solid var(--border);border-radius:var(--radius-sm);padding:15px;background:var(--bg2)}
+.prop .nm{font-weight:600;font-size:14px;margin-bottom:6px}
+.prop .st{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--alerta);font-weight:600}
+.prop .dt{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.45}
+
+.bars{margin-top:22px}
+.bar-row{display:grid;grid-template-columns:150px 1fr 62px;gap:12px;align-items:center;margin-bottom:6px}
+.bar-row .lab{color:var(--muted);font-size:12.5px;line-height:1.3}
+.bar-track{background:var(--bg2);border:1px solid var(--border);height:18px;border-radius:100px;overflow:hidden}
+.bar-fill{height:100%;width:0;background:var(--border2);border-radius:100px;transition:width .95s cubic-bezier(.2,.8,.2,1)}
+.bar-row.hi .bar-fill{background:linear-gradient(90deg,var(--accent-hover),var(--accent))}
+.bar-row.hi .lab{color:var(--text);font-weight:600}
+.bar-row .val{font-family:'IBM Plex Mono',monospace;font-size:12.5px;text-align:right;color:var(--muted)}
+.bar-row.hi .val{color:var(--accent);font-weight:600}
+
+.verify{display:inline-flex;align-items:center;gap:9px;margin-top:22px;margin-right:8px;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.07em;text-transform:uppercase;font-weight:600;
+  color:var(--text);text-decoration:none;padding:11px 16px;border:1px solid var(--border2);
+  border-radius:100px;transition:all .2s ease}
+.verify:hover{background:var(--accent);border-color:var(--accent);color:var(--white)}
+.verify:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.verify::after{content:"↗"}
+
+/* crecimiento */
+.growth{padding:78px 0}
+.mods{display:grid;grid-template-columns:repeat(auto-fit,minmax(276px,1fr));gap:10px;margin-top:6px}
+.mod{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:26px 24px}
+.mod .n{font-family:'DM Sans',sans-serif;font-weight:1000;font-size:34px;color:var(--accent);
+  letter-spacing:-.05em;line-height:1;display:block;margin-bottom:14px}
+.mod h4{font-size:21px;margin-bottom:10px;letter-spacing:-.025em;line-height:1.16}
+.mod p{margin:0 0 14px;font-size:14px;color:var(--muted);line-height:1.6}
+.mod ul{list-style:none;margin:0;padding:0}
+.mod li{position:relative;padding-left:20px;font-size:13.5px;margin-bottom:7px;color:#CFCFC9;line-height:1.5}
+.mod li::before{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;
+  border:1.5px solid var(--accent);border-radius:2px}
+
+.hilite{background:var(--card);border:1px solid rgba(214,0,110,.3);border-radius:var(--radius);
+  padding:30px 28px;margin-top:12px}
+.hilite h4{font-size:23px;margin-bottom:12px;letter-spacing:-.03em}
+.hilite p{margin:0 0 12px;font-size:15px;color:#CFCFC9;max-width:72ch}
+.hilite p:last-child{margin-bottom:0}
+.hilite p strong{color:var(--accent);font-weight:600}
+
+/* cierre */
+.close{padding:86px 0;position:relative;overflow:hidden;border-top:1px solid var(--border)}
+.close::before{content:"";position:absolute;bottom:-230px;left:50%;transform:translateX(-50%);width:840px;height:470px;
+  background:radial-gradient(ellipse,var(--accent-glow),transparent 68%);pointer-events:none}
+.close .wrap{position:relative}
+.close h2{font-size:clamp(31px,5vw,56px);text-transform:uppercase;max-width:18ch;margin-bottom:22px}
+.close h2 em{font-style:normal;color:var(--accent)}
+.close p{font-size:16px;color:var(--muted);max-width:58ch;margin:0 0 16px}
+.close p strong{color:var(--text);font-weight:600}
+.cta{display:inline-flex;align-items:center;gap:10px;margin-top:18px;background:var(--accent);color:var(--white);
+  text-decoration:none;font-weight:600;font-size:15px;padding:15px 28px;border-radius:100px;
+  transition:background .2s ease,transform .2s ease}
+.cta:hover{background:var(--accent-hover);transform:translateY(-1px)}
+.cta:focus-visible{outline:2px solid var(--text);outline-offset:3px}
+.sign{border-top:1px solid var(--border);padding-top:24px;margin-top:46px;display:flex;justify-content:space-between;
+  gap:20px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--muted2)}
+.sign b{color:var(--accent);font-weight:600}
+
+/* ---------- simulador de conversación ---------- */
+.demo{display:grid;grid-template-columns:340px 1fr;gap:38px;align-items:start;margin-top:38px}
+.phone{background:#0B1014;border:1px solid var(--border);border-radius:26px;overflow:hidden;
+  box-shadow:0 24px 60px rgba(0,0,0,.55);position:relative}
+.wa-head{background:#202C33;padding:13px 15px;display:grid;grid-template-columns:auto auto 1fr;
+  gap:11px;align-items:center;border-bottom:1px solid #2A3942}
+.wa-back{color:#8696A0;font-size:17px;line-height:1}
+.wa-av{width:36px;height:36px;border-radius:50%;background:#1B5CF5;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0}
+.wa-av svg{width:22px;height:14px}
+.wa-who{min-width:0}
+.wa-who .n{color:#E9EDEF;font-size:14.5px;font-weight:600;display:flex;align-items:center;gap:5px;line-height:1.2}
+.wa-who .n i{width:13px;height:13px;background:#53BDEB;border-radius:50%;display:inline-block;position:relative;font-style:normal;flex-shrink:0}
+.wa-who .n i::after{content:"";position:absolute;left:4px;top:2.5px;width:3px;height:6px;
+  border-right:1.5px solid #202C33;border-bottom:1.5px solid #202C33;transform:rotate(45deg)}
+.wa-who .s{color:#8696A0;font-size:11.5px;line-height:1.3;margin-top:1px}
+.wa-body{height:462px;overflow:hidden;padding:14px 12px;display:flex;flex-direction:column;gap:5px;
+  background:#0D1418;position:relative}
+.wa-day{align-self:center;background:#182229;color:#8696A0;font-size:10.5px;padding:5px 12px;
+  border-radius:8px;margin-bottom:5px;font-family:'IBM Plex Mono',monospace;letter-spacing:.04em}
+.msg{max-width:82%;padding:7px 10px 6px;border-radius:8px;font-size:13.4px;line-height:1.45;
+  color:#E9EDEF;position:relative;word-wrap:break-word;animation:pop .26s ease}
+@keyframes pop{from{opacity:0;transform:translateY(7px) scale(.97)}to{opacity:1;transform:none}}
+.msg.bot{background:#202C33;align-self:flex-start;border-top-left-radius:2px}
+.msg.usr{background:#005C4B;align-self:flex-end;border-top-right-radius:2px}
+.msg .tm{font-size:10px;color:#8696A0;float:right;margin:6px 0 -2px 9px;font-family:'IBM Plex Mono',monospace}
+.msg.usr .tm{color:rgba(233,237,239,.55)}
+.msg.usr .tm::after{content:" ✓✓";color:#53BDEB}
+.msg .card{background:rgba(0,0,0,.22);border-left:3px solid #25D366;border-radius:5px;
+  padding:8px 10px;margin:2px 0 5px;font-size:12.6px;line-height:1.5}
+.msg .card b{display:block;color:#fff;font-size:13px;margin-bottom:2px}
+.msg .fotos{display:flex;gap:3px;margin:2px 0 4px}
+.msg .fotos span{width:44px;height:44px;border-radius:4px;background:linear-gradient(135deg,#2A3942,#1F2C34);
+  border:1px solid #2A3942}
+.typing{background:#202C33;align-self:flex-start;border-top-left-radius:2px;border-radius:8px;
+  padding:11px 13px;display:flex;gap:4px;animation:pop .2s ease}
+.typing i{width:6px;height:6px;border-radius:50%;background:#8696A0;display:block;animation:blink 1.3s infinite}
+.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,60%,100%{opacity:.3}30%{opacity:1}}
+.wa-foot{background:#202C33;padding:10px 14px;display:flex;align-items:center;gap:10px;
+  color:#8696A0;font-size:12.5px;border-top:1px solid #2A3942}
+.wa-foot .fake{flex:1;background:#2A3942;border-radius:100px;padding:8px 14px;font-size:12.5px}
+.wa-foot .snd{width:30px;height:30px;border-radius:50%;background:#00A884;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;color:#0B1014;font-size:13px}
+
+.demo-side .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px}
+.tab{background:var(--card);border:1px solid var(--border);color:var(--muted);cursor:pointer;
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  font-weight:600;padding:10px 15px;border-radius:100px;transition:all .2s ease}
+.tab:hover{border-color:var(--border2);color:var(--text)}
+.tab.on{background:var(--accent);border-color:var(--accent);color:var(--white)}
+.tab:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.demo-side h3{font-size:26px;letter-spacing:-.03em;margin-bottom:12px;line-height:1.1}
+.demo-side > p{color:var(--muted);font-size:15px;margin:0 0 20px;max-width:52ch}
+.demo-side .keys{list-style:none;margin:0 0 22px;padding:0}
+.demo-side .keys li{position:relative;padding-left:24px;font-size:14.5px;margin-bottom:9px;color:#CFCFC9}
+.demo-side .keys li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
+.stamp{background:var(--accent-light);border:1px solid rgba(214,0,110,.26);border-radius:var(--radius-sm);
+  padding:15px 17px;font-size:14.5px;color:#E4E4DE}
+.stamp b{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  display:block;margin-bottom:6px;color:var(--accent)}
+.replay{margin-top:20px;background:transparent;border:1px solid var(--border2);color:var(--text);cursor:pointer;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.07em;text-transform:uppercase;
+  font-weight:600;padding:11px 18px;border-radius:100px;transition:all .2s ease}
+.replay:hover{background:var(--accent);border-color:var(--accent);color:var(--white)}
+.replay:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.disclaim{font-size:12px;color:var(--muted2);margin-top:16px;font-style:italic}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:820px){
+  .thesis-grid,.beforeafter{grid-template-columns:1fr;gap:24px}
+  .scan-cell{border-right:0;border-bottom:1px solid var(--border)}
+  .proc-row{grid-template-columns:1fr;gap:10px}
+  .who{justify-self:start}
+  .f-btn{grid-template-columns:1fr auto;gap:10px 12px}
+  .f-btn .code{grid-column:1/-1;justify-self:start}
+  .f-title{grid-column:1;font-size:18px}
+  .bar-row{grid-template-columns:1fr;gap:3px}
+  .bar-row .val{text-align:left}
+  .hcell{height:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <span>Top Kreativa · Folio <b>TK-2026-HM01</b></span>
+    <span>Vigencia 30 días</span>
+  </div>
+</div>
+
+<header class="head">
+  <div class="wrap">
+    <div class="issuer"><i></i> Diagnóstico para Hunter Motores · Concón</div>
+    <h1 class="title">Todo pasa<br><em>por usted</em></h1>
+    <p class="lede">Cada consulta, cada cotización, cada evaluación de financiamiento y cada agenda se contesta a mano, desde un teléfono. <strong>El negocio funciona. Y por eso mismo ya no da más.</strong></p>
+
+    <div class="scan">
+      <div class="scan-cell"><span class="scan-n c-ac" data-count="7">0</span><span class="scan-l">Procesos<br>100% manuales</span></div>
+      <div class="scan-cell"><span class="scan-n c-al" data-count="24" data-suffix="%">0</span><span class="scan-l">De la semana<br>con atención</span></div>
+      <div class="scan-cell"><span class="scan-n c-al" data-count="128">0</span><span class="scan-l">Horas semanales<br>sin respuesta</span></div>
+      <div class="scan-cell"><span class="scan-n c-ob" data-count="1">0</span><span class="scan-l">Persona sosteniendo<br>toda la operación</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="thesis">
+  <div class="wrap thesis-grid">
+    <div>
+      <span class="pill">El diagnóstico en una frase</span>
+      <blockquote>Hunter Motores no tiene un problema de demanda.<br><mark>Tiene un techo de capacidad.</mark></blockquote>
+    </div>
+    <div class="thesis-note">
+      <p>La atención está bien hecha: se responde, se cotiza, se evalúa y se agenda. El problema es que <strong>todo eso lo hace una persona, escribiendo</strong>, y no hay forma de hacerlo más rápido sin contratar.</p>
+      <p>Crecer hoy significa contestar más mensajes. Y eso no escala: al doble de consultas, el tiempo de respuesta se duplica y las que llegan de noche o el fin de semana simplemente no se contestan.</p>
+      <p><strong>Este informe propone quitar ese peso primero.</strong> Lo demás que encontramos aparece después, ordenado por cuánto limita el crecimiento.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap">
+  <div class="sec-head">
+    <span class="idx">Sección 01</span>
+    <h2>El cuello de botella</h2>
+  </div>
+  <p class="sec-sub">Siete procesos que hoy dependen de que alguien esté disponible, con el teléfono en la mano y tiempo para escribir.</p>
+
+  <div class="proc reveal">
+    <div class="proc-row"><div class="t">Responder la primera consulta<span>“¿Está disponible el Mazda?”, “¿cuánto es el pie?”, “¿lo tienen todavía?”</span></div><span class="who">Manual</span></div>
+    <div class="proc-row"><div class="t">Cotizar un vehículo<span>Buscar la ficha, armar el precio, mandar las fotos una por una</span></div><span class="who">Manual</span></div>
+    <div class="proc-row"><div class="t">Evaluar financiamiento<span>Calcular pie y cuota, pedir renta, estimar si califica</span></div><span class="who">Manual</span></div>
+    <div class="proc-row"><div class="t">Tasar una permuta<span>Pedir patente y fotos, revisar, estimar valor, responder</span></div><span class="who">Manual</span></div>
+    <div class="proc-row"><div class="t">Agendar una prueba de manejo<span>Coordinar día y hora por mensaje, recordar el día anterior</span></div><span class="who">Manual</span></div>
+    <div class="proc-row"><div class="t">Agendar y cobrar la inspección pre-compra<span>Explicar el servicio, cuadrar horario, coordinar el pago</span></div><span class="who">Manual</span></div>
+    <div class="proc-row"><div class="t">Hacer seguimiento a quien no cerró<span>Acordarse, buscar la conversación, volver a escribir</span></div><span class="who">Manual</span></div>
+  </div>
+
+  <div class="cover reveal">
+    <h4>Cuándo hay alguien para contestar</h4>
+    <p>Según el horario publicado en Google y en WhatsApp: 10:00 a 18:00, de lunes a viernes. Cada celda es una hora de la semana.</p>
+    <div class="grid-wrap">
+      <div class="days"><span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span></div>
+      <div class="hours" id="cover"></div>
+    </div>
+    <div class="legend">
+      <span class="l1"><i></i>Atendido hoy · 40 h</span>
+      <span class="l2"><i></i>Sin respuesta · 128 h</span>
+      <span class="l3"><i></i>Cubierto por el agente</span>
+    </div>
+  </div>
+</section>
+
+<section class="agent">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="idx">Sección 02 · El primer paso</span>
+      <h2>Un agente que contesta por usted</h2>
+    </div>
+    <p class="sec-sub">Un asistente con inteligencia artificial sobre el WhatsApp que ya tienen. Contesta al instante, a cualquier hora, y solo le pasa al equipo las conversaciones que valen la pena. La infraestructura de Meta ya está activa y verificada: <strong>se conecta en días, no en semanas.</strong></p>
+
+    <div class="flows">
+      <div class="flow"><span class="n">Flujo 01</span><h4>Consulta por un vehículo</h4><p>Responde con el stock al día, manda fotos y ficha, resuelve las preguntas de siempre y <b>agenda la visita</b> sin que nadie intervenga.</p></div>
+      <div class="flow"><span class="n">Flujo 02</span><h4>Financiamiento</h4><p>Calcula pie y cuota en la conversación, pide los datos que hacen falta y entrega el lead <b>ya precalificado</b>, no en bruto.</p></div>
+      <div class="flow"><span class="n">Flujo 03</span><h4>Permuta y compra</h4><p>Pide patente y fotos, arma la tasación preliminar y la deja lista para que ustedes solo confirmen el número.</p></div>
+      <div class="flow"><span class="n">Flujo 04</span><h4>Inspección pre-compra</h4><p>Explica el servicio, muestra las horas disponibles, <b>agenda y cobra</b>. El servicio de $72.990 se vende solo.</p></div>
+      <div class="flow"><span class="n">Flujo 05</span><h4>Seguimiento</h4><p>Retoma solo a quien cotizó y no volvió. Sin que nadie tenga que acordarse ni buscar la conversación.</p></div>
+      <div class="flow"><span class="n">Flujo 06</span><h4>Reseñas en Google</h4><p>Al entregar el auto pide la reseña por WhatsApp. Es lo que llena la ficha que hoy está en cero.</p></div>
+    </div>
+
+    <div class="demo reveal">
+      <div class="phone">
+        <div class="wa-head">
+          <span class="wa-back">‹</span>
+          <span class="wa-av">
+            <svg viewBox="0 0 40 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M1 21 C8 21 11 4 19 4 C27 4 28 21 39 21 L30 21 C24 21 23 10 19 10 C15 10 13 21 8 21 Z" fill="#FFCE00"/>
+            </svg>
+          </span>
+          <span class="wa-who">
+            <span class="n">Hunter Motores <i></i></span>
+            <span class="s" id="waStatus">en línea</span>
+          </span>
+        </div>
+        <div class="wa-body" id="waBody"></div>
+        <div class="wa-foot">
+          <span class="fake">Escribe un mensaje</span>
+          <span class="snd">➤</span>
+        </div>
+      </div>
+
+      <div class="demo-side">
+        <div class="tabs" role="tablist">
+          <button class="tab on" data-sc="0" role="tab">Consulta un auto</button>
+          <button class="tab" data-sc="1" role="tab">Quiere vender</button>
+          <button class="tab" data-sc="2" role="tab">Inspección</button>
+        </div>
+        <h3 id="scTitle">Domingo, 23:47</h3>
+        <p id="scDesc">Un cliente ve el Mazda en Instagram a medianoche de un domingo. Hoy ese mensaje se lee el lunes a las 10. Así se ve con el agente andando.</p>
+        <ul class="keys" id="scKeys"></ul>
+        <div class="stamp"><b>Resultado</b><span id="scOut"></span></div>
+        <button class="replay" id="replay">↻ Reproducir de nuevo</button>
+        <p class="disclaim">Simulación. Los montos y horarios son ilustrativos.</p>
+      </div>
+    </div>
+
+    <div class="beforeafter">
+      <div class="ba">
+        <span class="lb">Hoy</span>
+        <ul>
+          <li>Responde una persona, en horario de oficina</li>
+          <li>La consulta del domingo se lee el lunes</li>
+          <li>Todos los leads llegan iguales, sin calificar</li>
+          <li>Crecer significa contestar más</li>
+          <li>El dueño no puede desconectarse</li>
+        </ul>
+      </div>
+      <div class="ba after">
+        <span class="lb">Con el agente</span>
+        <ul>
+          <li>Responde al instante, las 168 horas</li>
+          <li>La consulta del domingo queda agendada el domingo</li>
+          <li>Llegan calificados: presupuesto, pie, permuta, plazo</li>
+          <li>Crecer no cuesta más tiempo</li>
+          <li>El equipo atiende, no transcribe</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" style="padding-top:78px">
+  <div class="sec-head">
+    <span class="idx">Sección 03</span>
+    <h2>Lo que el agente va a dejar en evidencia</h2>
+  </div>
+  <p class="sec-sub">El agente arranca sobre lo que ya existe. Pero cada uno de estos puntos le pone un techo: no lo bloquean, limitan cuánto puede rendir. Aparecen por orden de urgencia. Toque cada código para ver la evidencia.</p>
+
+  <article class="finding reveal">
+    <button class="f-btn" aria-expanded="false">
+      <span class="code">WSP-01</span>
+      <span class="f-title">No hay dónde escribirles: WhatsApp no está enlazado en ninguna parte</span>
+      <span class="tag a1">Bloquea el volumen</span>
+      <span class="chev"></span>
+    </button>
+    <div class="f-body">
+      <p>Un agente que contesta perfecto no sirve de nada si nadie puede llegar a la conversación. Hoy no existe un solo botón que abra el chat.</p>
+      <div class="props">
+        <div class="prop"><div class="nm">Sitio web</div><div class="st">Sin enlace</div><div class="dt">Solo un número para llamar por teléfono</div></div>
+        <div class="prop"><div class="nm">Instagram</div><div class="st">Sin enlace</div><div class="dt">Bio con web y Threads</div></div>
+        <div class="prop"><div class="nm">TikTok</div><div class="st">Sin enlace</div><div class="dt">Bio sin ningún link</div></div>
+        <div class="prop"><div class="nm">Threads</div><div class="st">Sin enlace</div><div class="dt">Solo la web</div></div>
+        <div class="prop"><div class="nm">Google</div><div class="st">Sin enlace</div><div class="dt">Sin botón de chat</div></div>
+      </div>
+      <div class="impact"><b>Qué significa para el agente</b>Con cero puertas de entrada, el agente solo atiende a quien ya tenía el número guardado. Abrir las cinco es lo más barato de toda la propuesta y es lo que multiplica el volumen que el agente puede procesar.</div>
+      <a class="verify" href="https://huntermotores.cl/" target="_blank" rel="noopener">Buscar el botón en la web</a>
+      <a class="verify" href="https://www.instagram.com/huntermotores/" target="_blank" rel="noopener">Revisar la bio de Instagram</a>
+    </div>
+  </article>
+
+  <article class="finding reveal">
+    <button class="f-btn" aria-expanded="false">
+      <span class="code">WEB-02</span>
+      <span class="f-title">El agente no tiene qué ofrecer: 3 autos publicados y datos equivocados</span>
+      <span class="tag a1">Bloquea la venta</span>
+      <span class="chev"></span>
+    </button>
+    <div class="f-body">
+      <p>El agente responde con lo que hay publicado. Si el sitio muestra tres unidades y un Audi 2018 con 80 kilómetros, eso es exactamente lo que va a decir.</p>
+      <table class="ev">
+        <thead><tr><th>Punto revisado</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Vehículos publicados</td><td class="bad">3 unidades</td></tr>
+          <tr><td class="k">Kilometraje</td><td class="bad">Un Audi 2018 figura con 80 km</td></tr>
+          <tr><td class="k">Botón “Servicios” de la portada</td><td class="bad">Lleva a una página de error 404</td></tr>
+          <tr><td class="k">Botón “Clientes”</td><td class="bad">Enlace vacío</td></tr>
+          <tr><td class="k">Enlaces a Instagram, Facebook y X</td><td class="bad">Anclas rotas, no abren los perfiles</td></tr>
+          <tr><td class="k">Horario en el sitio</td><td class="bad">08:00–20:00 los 7 días, sin martes</td></tr>
+          <tr><td class="k">Horario real (Google y WhatsApp)</td><td class="good">10:00–18:00</td></tr>
+          <tr><td class="k">Inspección, consignación, compra directa</td><td class="bad">Ninguna tiene página</td></tr>
+          <tr><td class="k">Título en Google</td><td class="bad">Dice “Inicio -”, sin marca ni ciudad</td></tr>
+        </tbody>
+      </table>
+      <div class="impact"><b>Qué significa para el agente</b>Sin inventario publicado y sin páginas de servicio, el agente puede conversar pero no puede mostrar ni cerrar. Y hay algo más de fondo: <strong>Hunter Motores no tiene acceso a esta plataforma</strong>, así que ni siquiera puede corregir estos datos ni publicar un auto el día que llega. Eso lo abordamos en la Sección 04.</div>
+      <a class="verify" href="https://huntermotores.cl/about-us/" target="_blank" rel="noopener">Abrir el botón “Servicios”</a>
+      <a class="verify" href="https://huntermotores.cl/listado/audi-a4-tfsi-1-4-aut/" target="_blank" rel="noopener">Ver el Audi de 80 km</a>
+    </div>
+  </article>
+
+  <article class="finding reveal">
+    <button class="f-btn" aria-expanded="false">
+      <span class="code">TKT-03</span>
+      <span class="f-title">38.800 personas quisieron escribirles y no encontraron cómo</span>
+      <span class="tag a1">Bloquea el crecimiento</span>
+      <span class="chev"></span>
+    </button>
+    <div class="f-body">
+      <p>El video “¡Compramos tu vehículo!” hizo 38.800 vistas: setenta y tres veces la mediana del canal. La bio de TikTok no tiene link, y la cuenta no está configurada como Empresa, que es lo que habilita el enlace sin mínimo de seguidores.</p>
+      <div class="bars">
+        <div class="bar-row hi"><span class="lab">Compramos tu vehículo</span><span class="bar-track"><span class="bar-fill" data-w="100"></span></span><span class="val">38.800</span></div>
+        <div class="bar-row"><span class="lab">Recorrido de vehículo</span><span class="bar-track"><span class="bar-fill" data-w="12.5"></span></span><span class="val">4.844</span></div>
+        <div class="bar-row"><span class="lab">Entrega a cliente</span><span class="bar-track"><span class="bar-fill" data-w="2.1"></span></span><span class="val">814</span></div>
+        <div class="bar-row"><span class="lab">Entrega a cliente</span><span class="bar-track"><span class="bar-fill" data-w="1.9"></span></span><span class="val">743</span></div>
+        <div class="bar-row"><span class="lab">Entrega a cliente</span><span class="bar-track"><span class="bar-fill" data-w="1.8"></span></span><span class="val">710</span></div>
+        <div class="bar-row"><span class="lab">Entrega a cliente</span><span class="bar-track"><span class="bar-fill" data-w="1.5"></span></span><span class="val">567</span></div>
+        <div class="bar-row"><span class="lab">Entrega a cliente</span><span class="bar-track"><span class="bar-fill" data-w="1.2"></span></span><span class="val">462</span></div>
+      </div>
+      <p>Diez de los doce videos son entregas a clientes y rinden entre 400 y 814 vistas. El mercado ya dijo qué quiere: que le compren el auto.</p>
+      <div class="impact"><b>Qué significa para el agente</b>Ese pico habría sido imposible de atender a mano — y es justo el caso para el que sirve un agente. Con el link puesto y el Flujo 03 andando, un video así se convierte en conversaciones tasadas en vez de vistas perdidas.</div>
+      <a class="verify" href="https://www.tiktok.com/@huntermotores" target="_blank" rel="noopener">Abrir el perfil de TikTok</a>
+    </div>
+  </article>
+
+  <article class="finding reveal">
+    <button class="f-btn" aria-expanded="false">
+      <span class="code">NAP-04</span>
+      <span class="f-title">Cuatro direcciones distintas: el agente no sabe adónde mandar al cliente</span>
+      <span class="tag a1">Bloquea la visita</span>
+      <span class="chev"></span>
+    </button>
+    <div class="f-body">
+      <p>La dirección publicada cambia según dónde la busque el cliente.</p>
+      <table class="ev">
+        <thead><tr><th>Canal</th><th>Dirección publicada</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Sitio web (pie)</td><td>Av. El Parque 430, Concón</td></tr>
+          <tr><td class="k">Google Business</td><td>Av. El Parque 430, Concón</td></tr>
+          <tr><td class="k">Instagram</td><td>Av. El Parque 430, Concón</td></tr>
+          <tr><td class="k">WhatsApp</td><td class="bad">Av. Bosque de Montemar 30</td></tr>
+          <tr><td class="k">Sitio web (portada)</td><td class="bad">“Visítanos en Viña del Mar”</td></tr>
+        </tbody>
+      </table>
+      <div class="impact"><b>Qué significa para el agente</b>Todo el trabajo de conversación se pierde en el último paso si el cliente maneja hasta la dirección equivocada. Para Google, además, cuatro direcciones es una de las señales que más castiga el posicionamiento local.</div>
+      <a class="verify" href="https://huntermotores.cl/contacto/" target="_blank" rel="noopener">Verificar en el sitio</a>
+    </div>
+  </article>
+
+  <article class="finding reveal">
+    <button class="f-btn" aria-expanded="false">
+      <span class="code">GBP-05</span>
+      <span class="f-title">Cero reseñas en Google, con la competencia funada al lado</span>
+      <span class="tag a2">Limita la confianza</span>
+      <span class="chev"></span>
+    </button>
+    <div class="f-body">
+      <p>La ficha existe, pero no tiene una sola reseña. En un rubro donde la desconfianza es la principal barrera de compra, es el activo más caro de no tener.</p>
+      <table class="ev">
+        <thead><tr><th>Automotora</th><th>Reseñas</th><th>Observación</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Hunter Motores</td><td class="bad">0</td><td>Sin calificación</td></tr>
+          <tr><td class="k">Autos RPM</td><td>3,4 ★ · 144</td><td>Reseñas públicas lo acusan de adulterar kilometraje</td></tr>
+          <tr><td class="k">Automotora Colón Concón</td><td>3,5 ★ · 8</td><td>El mejor posicionamiento local del rubro</td></tr>
+          <tr><td class="k">Top Car Concón</td><td>4,4 ★ · 8</td><td>Presencia digital mínima</td></tr>
+          <tr><td class="k">Suzuval</td><td>4,8 ★ · 107</td><td>Concesionario de marca</td></tr>
+          <tr><td class="k">Subaru Mach Concón</td><td>4,9 ★ · 304</td><td>Concesionario de marca</td></tr>
+        </tbody>
+      </table>
+      <div class="impact"><b>Qué significa para el agente</b>Este es de los pocos puntos que el agente resuelve solo: el Flujo 06 pide la reseña por WhatsApp al entregar cada auto. Es la forma más rápida de convertir ventas que ya ocurrieron en la prueba pública que hoy no existe.</div>
+    </div>
+  </article>
+
+  <article class="finding reveal">
+    <button class="f-btn" aria-expanded="false">
+      <span class="code">MRK-06</span>
+      <span class="f-title">Cinco promesas de marca distintas en cinco canales</span>
+      <span class="tag a2">Limita el recuerdo</span>
+      <span class="chev"></span>
+    </button>
+    <div class="f-body">
+      <p>Una marca de once meses ya tiene cinco frases compitiendo entre sí.</p>
+      <table class="ev">
+        <thead><tr><th>Canal</th><th>Promesa</th></tr></thead>
+        <tbody>
+          <tr><td class="k">WhatsApp</td><td class="good">Tu auto, sin vueltas</td></tr>
+          <tr><td class="k">Threads</td><td class="good">Tu auto, sin vueltas</td></tr>
+          <tr><td class="k">Instagram</td><td>Disfruta tu Vehículo</td></tr>
+          <tr><td class="k">TikTok</td><td>Disfruta tu Vehículo</td></tr>
+          <tr><td class="k">Sitio web</td><td>La respuesta simple a una decisión compleja</td></tr>
+        </tbody>
+      </table>
+      <div class="impact"><b>Qué significa para el agente</b>El agente habla en nombre de la marca. Conviene que sepa cuál es. “Sin vueltas” es la correcta y ya está en el canal de cierre: corta, chilena, y nombra exactamente el dolor del rubro.</div>
+    </div>
+  </article>
+
+  <article class="finding reveal">
+    <button class="f-btn" aria-expanded="false">
+      <span class="code">CNT-07</span>
+      <span class="f-title">Contenido con marca de agua y subtítulos sin corregir</span>
+      <span class="tag a2">Limita el alcance</span>
+      <span class="chev"></span>
+    </button>
+    <div class="f-body">
+      <p>Los reels de Instagram llevan visible la marca de agua de TikTok, algo que Instagram penaliza reduciendo el alcance. Y los subtítulos automáticos van quemados sin editar: se lee “SOY AARÓN EH” y “HOLA BUENAS EH” dentro del video.</p>
+      <div class="impact"><b>Qué significa para el agente</b>Menos alcance es menos gente llegando al chat. Se corrige con un paso de exportación, sin costo.</div>
+      <a class="verify" href="https://www.instagram.com/huntermotores/" target="_blank" rel="noopener">Ver los reels</a>
+    </div>
+  </article>
+
+  <article class="finding reveal">
+    <button class="f-btn" aria-expanded="false">
+      <span class="code">DIS-08</span>
+      <span class="f-title">Ausentes de Chileautos, Yapo, Marketplace y del catálogo de Meta</span>
+      <span class="tag a2">Limita la distribución</span>
+      <span class="chev"></span>
+    </button>
+    <div class="f-body">
+      <p>La búsqueda de auto usado en Chile empieza en los portales. Hunter Motores no aparece en ninguno, y el stock tampoco está cargado como catálogo en Meta — que es lo que habilita el anuncio con el vehículo precargado y el botón que abre WhatsApp con la consulta ya escrita.</p>
+      <div class="impact"><b>Qué significa para el agente</b>Hoy la única fuente de conversaciones es el alcance orgánico de las redes, y es la más frágil. Conectar los portales y el catálogo es lo que le da al agente un flujo estable que atender.</div>
+    </div>
+  </article>
+
+  <article class="finding reveal">
+    <button class="f-btn" aria-expanded="false">
+      <span class="code">OK-09</span>
+      <span class="f-title">Lo que ya está bien hecho y no hay que tocar</span>
+      <span class="tag ok">Aprobado</span>
+      <span class="chev"></span>
+    </button>
+    <div class="f-body">
+      <p>Cuatro puntos hacen que este proyecto arranque con ventaja y no desde cero.</p>
+      <table class="ev">
+        <thead><tr><th>Punto</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Audiencia</td><td class="good">1.665 seguidores y 92 publicaciones en once meses, con cadencia sostenida</td></tr>
+          <tr><td class="k">Producto</td><td class="good">Inspección pre-compra a $72.990, compra directa y consignación</td></tr>
+          <tr><td class="k">Posicionamiento</td><td class="good">“Para que no te estafen” apunta justo al vacío que dejó el competidor más cercano</td></tr>
+          <tr><td class="k">Infraestructura</td><td class="good">WhatsApp ya opera sobre la API de Meta, con la cuenta verificada</td></tr>
+        </tbody>
+      </table>
+      <div class="impact"><b>Qué significa para el agente</b>El trámite más lento del proyecto ya está resuelto. No hay que verificar la empresa ante Meta ni migrar el número: el agente se conecta sobre lo que ya está andando.</div>
+    </div>
+  </article>
+</section>
+
+<section class="growth">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="idx">Sección 04 · Después del agente</span>
+      <h2>Una plataforma propia</h2>
+    </div>
+    <p class="sec-sub">El agente saca el peso de encima. Para crecer sobre eso hace falta algo que hoy no existe: una plataforma que Hunter Motores controle, donde publicar un auto el día que llega y bajarlo el día que se vende.</p>
+
+    <div class="hilite reveal">
+      <h4>El punto de partida: hoy no tienen las llaves</h4>
+      <p>El sitio actual corre sobre una plataforma a la que Hunter Motores no tiene acceso. No se puede corregir un kilometraje, publicar una unidad nueva ni bajar una vendida sin pedírselo a un tercero.</p>
+      <p>Para una automotora eso no es un problema de marketing: <strong>es un problema de inventario.</strong> El stock del sitio nunca va a reflejar el stock del patio, y el agente solo puede ofrecer lo que el sitio muestra.</p>
+    </div>
+
+    <div class="mods">
+      <div class="mod reveal">
+        <span class="n">01</span>
+        <h4>Administrador de inventario</h4>
+        <p>Publicar un auto desde el celular, en minutos. Marcarlo vendido en un toque y que desaparezca del sitio al instante.</p>
+        <ul>
+          <li>Fotos, ficha, precio y publicación</li>
+          <li>La descripción y el copy para redes se redactan solos</li>
+          <li>El auto entra al catálogo de Meta automáticamente</li>
+          <li>Al marcarlo vendido, se avisa a los interesados y se pide la reseña</li>
+        </ul>
+      </div>
+      <div class="mod reveal">
+        <span class="n">02</span>
+        <h4>Te buscamos tu auto</h4>
+        <p>El servicio que le da sentido al nombre. El cliente encarga lo que busca y ustedes lo cazan.</p>
+        <ul>
+          <li>Formulario corto: modelo, año, presupuesto, pie, permuta</li>
+          <li>El agente califica el encargo por WhatsApp</li>
+          <li>Cuando aparece un auto que calza, avisa solo</li>
+          <li>Saben qué busca el mercado antes de comprar stock</li>
+        </ul>
+      </div>
+      <div class="mod reveal">
+        <span class="n">03</span>
+        <h4>Inspección con agenda</h4>
+        <p>El servicio de $72.990 vendido y cobrado sin que nadie conteste nada.</p>
+        <ul>
+          <li>Página propia con precio, alcance y qué se entrega</li>
+          <li>El cliente elige día y hora contra calendario real</li>
+          <li>Paga en línea y recibe confirmación y recordatorio</li>
+          <li>El informe se entrega desde la misma plataforma</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hilite reveal" style="margin-top:10px">
+      <h4>Y lo que nadie tiene en Concón: las dos puntas del mercado</h4>
+      <p>Hunter Motores ya demostró que el lado de la oferta funciona — el video de “compramos tu vehículo” hizo 38.800 vistas. Sumando el lado de la demanda, la plataforma puede <strong>cruzar automáticamente lo que alguien quiere vender con lo que otro está buscando</strong>, y avisar a los dos por WhatsApp.</p>
+      <p>Ahí el tamaño del patio deja de importar. <strong>No venden lo que tienen: encuentran lo que el cliente pidió.</strong> Es la única forma de competir contra una automotora de siete sucursales sin tener siete sucursales.</p>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <h2>Primero le sacamos<br><em>el teléfono de encima.</em></h2>
+    <p>Todo lo demás de este informe es real y hay que arreglarlo. Pero nada de eso urge tanto como lo que pasa hoy: que el negocio no puede crecer porque una sola persona tiene que contestar, cotizar, evaluar y agendar todo, a mano.</p>
+    <p><strong>Proponemos partir por el agente.</strong> Es lo que da alivio inmediato, lo que se conecta más rápido porque la infraestructura ya está lista, y lo que hace evidente —solo, en la práctica— qué conviene arreglar después y en qué orden.</p>
+    <a class="cta" href="https://wa.me/56938740153" target="_blank" rel="noopener">Conversemos el primer paso →</a>
+    <div class="sign">
+      <span>Top Kreativa · Av. Concón Reñaca 102, Concón</span>
+      <span>Informe emitido el <b>6 de agosto de 2026</b></span>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* grilla de cobertura semanal: 7 días x 24 horas */
+  const cover = document.getElementById('cover');
+  if(cover){
+    for(let d=0; d<7; d++){
+      const row = document.createElement('div');
+      row.className = 'hrow';
+      for(let h=0; h<24; h++){
+        const c = document.createElement('span');
+        const atendido = (d < 5) && (h >= 10 && h < 18);
+        c.className = 'hcell' + (atendido ? ' on' : '');
+        c.dataset.h = h; c.dataset.d = d;
+        row.appendChild(c);
+      }
+      cover.appendChild(row);
+    }
+    /* al entrar en vista, pintar el resto como cubierto por el agente */
+    if('IntersectionObserver' in window && !rm){
+      const co = new IntersectionObserver(function(en){
+        if(!en[0].isIntersecting) return;
+        co.disconnect();
+        const off = Array.from(cover.querySelectorAll('.hcell:not(.on)'));
+        off.forEach(function(c,i){ setTimeout(function(){ c.classList.add('add'); }, 900 + i*5); });
+      }, {threshold:.35});
+      co.observe(cover);
+    } else {
+      cover.querySelectorAll('.hcell:not(.on)').forEach(function(c){ c.classList.add('add'); });
+    }
+  }
+
+  /* ---------- simulador de conversación WhatsApp ---------- */
+  const ESC = [
+    {
+      titulo:'Domingo, 23:47',
+      desc:'Un cliente ve el Mazda en Instagram a medianoche de un domingo. Hoy ese mensaje se lee el lunes a las 10. Así se ve con el agente andando.',
+      dia:'Domingo · 23:47',
+      claves:['Responde en segundos, sin nadie despierto','Cotiza y estima la cuota en la misma conversación','Tasa la permuta con patente y fotos','Deja la visita agendada y recordada'],
+      salida:'Un lead calificado, con permuta tasada y visita agendada para el lunes a las 11:00. Nadie del equipo intervino.',
+      msgs:[
+        {q:'usr',t:'Hola, vi el Mazda CX-30 en Instagram. ¿Sigue disponible?',h:'23:47'},
+        {q:'bot',t:'¡Hola! 👋 Sí, sigue disponible. Le dejo la ficha:',h:'23:47',pre:900},
+        {q:'bot',t:'',h:'23:47',pre:700,card:{tit:'Mazda All New CX-30 2.0 · 2021',txt:'$15.980.000 · Mecánico · Bencina<br>Asientos de cuero · Cámara · Navegación<br>Informe Autofact incluido'}},
+        {q:'usr',t:'¿Cuánto sería el pie?',h:'23:49',pre:1400},
+        {q:'bot',t:'Con un pie de $3.000.000 a 48 meses, la cuota queda en torno a $290.000. Es una estimación: el número final depende de la evaluación del banco.',h:'23:49',pre:1000},
+        {q:'usr',t:'Tengo un Yaris 2016 para dar en parte de pago',h:'23:51',pre:1500},
+        {q:'bot',t:'Perfecto. Mándeme la patente y 4 fotos: frontal, lateral, tablero e interior.',h:'23:51',pre:900},
+        {q:'usr',t:'BJKL·42',h:'23:53',pre:1300,fotos:4},
+        {q:'bot',t:'Gracias. Tasación preliminar entre $6.100.000 y $6.700.000, sujeta a revisión presencial. Con eso el pie quedaría cubierto.',h:'23:54',pre:1200},
+        {q:'bot',t:'¿Le agendo una visita? Tengo mañana lunes a las 11:00 o 16:30.',h:'23:54',pre:800},
+        {q:'usr',t:'11:00 está perfecto',h:'23:55',pre:1300},
+        {q:'bot',t:'Listo ✅ Lunes 11:00. Le mando la dirección y un recordatorio una hora antes. Nos vemos.',h:'23:55',pre:900}
+      ]
+    },
+    {
+      titulo:'El video de 38.800 vistas',
+      desc:'“¡Compramos tu vehículo!” fue el contenido con mejor alcance del año. No había link ni forma de escribir. Así se atiende ese volumen sin sumar gente.',
+      dia:'Jueves · 21:12',
+      claves:['Atiende decenas de consultas en paralelo','Pide los datos exactos que se necesitan','Entrega un rango preliminar al instante','Agenda la evaluación presencial'],
+      salida:'Una tasación preliminar y una evaluación agendada, mientras el equipo dormía. Escalable a cientos de conversaciones simultáneas.',
+      msgs:[
+        {q:'usr',t:'Hola, vi el video en TikTok. ¿Compran autos?',h:'21:12'},
+        {q:'bot',t:'¡Hola! 👋 Sí, compramos directo y pagamos al contado. ¿Qué vehículo tiene?',h:'21:12',pre:850},
+        {q:'usr',t:'Un Jetta 2019, 78 mil km',h:'21:14',pre:1300},
+        {q:'bot',t:'Buen auto. Para darle un rango necesito la patente y 4 fotos: frontal, lateral, tablero e interior.',h:'21:14',pre:950},
+        {q:'usr',t:'GHDR·18',h:'21:17',pre:1500,fotos:4},
+        {q:'bot',t:'',h:'21:18',pre:1200,card:{tit:'Tasación preliminar',txt:'Volkswagen Jetta 1.4 TSI · 2019<br>Rango: $9.400.000 – $10.200.000<br>Sujeto a revisión presencial'}},
+        {q:'bot',t:'Si le hace sentido, agendamos la evaluación en el patio. Tengo mañana a las 10:00 o el miércoles a las 15:00.',h:'21:18',pre:850},
+        {q:'usr',t:'Mañana 10:00',h:'21:20',pre:1200},
+        {q:'bot',t:'Agendado ✅ Traiga el padrón y la cédula. Si cerramos, el pago sale el mismo día.',h:'21:20',pre:900}
+      ]
+    },
+    {
+      titulo:'El servicio de $72.990',
+      desc:'La inspección pre-compra es el servicio más automatizable de los tres: se explica, se agenda y se cobra sin que nadie conteste nada.',
+      dia:'Sábado · 16:30',
+      claves:['Explica el alcance y el precio sin intervención','Muestra horas reales disponibles','Cobra en línea al momento de agendar','Confirma y recuerda por WhatsApp'],
+      salida:'Un servicio de $72.990 vendido, agendado y pagado un sábado por la tarde. Sin llamadas, sin coordinación manual.',
+      msgs:[
+        {q:'usr',t:'Voy a comprar un auto a un particular. ¿Ustedes lo revisan antes?',h:'16:30'},
+        {q:'bot',t:'Sí 👋 Es nuestra Inspección Pre-Compra. Vamos donde está el auto y revisamos mecánica, carrocería y documentación.',h:'16:30',pre:900},
+        {q:'bot',t:'',h:'16:30',pre:700,card:{tit:'Inspección Pre-Compra · $72.990',txt:'Revisión mecánica y de carrocería<br>Verificación de documentación e historial<br>Informe escrito el mismo día'}},
+        {q:'usr',t:'¿Y si el auto está en Quilpué?',h:'16:32',pre:1300},
+        {q:'bot',t:'Sin problema, cubrimos toda la V Región. ¿Qué día le acomoda? Tengo lunes 12:00 o jueves 9:30.',h:'16:32',pre:900},
+        {q:'usr',t:'Jueves 9:30',h:'16:34',pre:1200},
+        {q:'bot',t:'Perfecto. Le dejo el link para confirmar la hora 👇',h:'16:34',pre:850},
+        {q:'bot',t:'',h:'16:34',pre:600,card:{tit:'Pagar y confirmar',txt:'huntermotores.cl/inspeccion/pago<br>$72.990'}},
+        {q:'usr',t:'Listo, ya pagué',h:'16:36',pre:1400},
+        {q:'bot',t:'Confirmado ✅ Jueves 9:30. Solo necesito la dirección donde está el auto y el contacto del vendedor. Le aviso el nombre del técnico el miércoles.',h:'16:36',pre:900}
+      ]
+    }
+  ];
+
+  const waBody = document.getElementById('waBody');
+  if(waBody){
+    const waStatus = document.getElementById('waStatus');
+    const scTitle = document.getElementById('scTitle');
+    const scDesc  = document.getElementById('scDesc');
+    const scKeys  = document.getElementById('scKeys');
+    const scOut   = document.getElementById('scOut');
+    let timers = [], actual = 0, started = false;
+
+    function clearTimers(){ timers.forEach(clearTimeout); timers = []; }
+    function esc(s){ return s; }
+
+    function pintarLateral(i){
+      const e = ESC[i];
+      scTitle.textContent = e.titulo;
+      scDesc.textContent = e.desc;
+      scOut.textContent = e.salida;
+      scKeys.innerHTML = '';
+      e.claves.forEach(function(k){
+        const li = document.createElement('li'); li.textContent = k; scKeys.appendChild(li);
+      });
+    }
+
+    function burbuja(m){
+      const d = document.createElement('div');
+      d.className = 'msg ' + m.q;
+      let html = '';
+      if(m.card) html += '<span class="card"><b>' + m.card.tit + '</b>' + m.card.txt + '</span>';
+      if(m.fotos){
+        html += '<span class="fotos">';
+        for(let i=0;i<m.fotos;i++) html += '<span></span>';
+        html += '</span>';
+      }
+      if(m.t) html += esc(m.t);
+      html += '<span class="tm">' + m.h + '</span>';
+      d.innerHTML = html;
+      waBody.appendChild(d);
+      waBody.scrollTop = waBody.scrollHeight;
+    }
+
+    function reproducir(i){
+      clearTimers();
+      actual = i;
+      pintarLateral(i);
+      waBody.innerHTML = '';
+      const e = ESC[i];
+      const dia = document.createElement('div');
+      dia.className = 'wa-day'; dia.textContent = e.dia;
+      waBody.appendChild(dia);
+
+      if(rm){ e.msgs.forEach(burbuja); waStatus.textContent = 'en línea'; return; }
+
+      let t = 400;
+      e.msgs.forEach(function(m){
+        t += (m.pre || 500);
+        if(m.q === 'bot'){
+          const espera = Math.min(1100, 420 + (m.t ? m.t.length * 9 : 300));
+          timers.push(setTimeout(function(){
+            waStatus.textContent = 'escribiendo…';
+            const tp = document.createElement('div');
+            tp.className = 'typing'; tp.id = 'tp';
+            tp.innerHTML = '<i></i><i></i><i></i>';
+            waBody.appendChild(tp);
+            waBody.scrollTop = waBody.scrollHeight;
+          }, t));
+          t += espera;
+          timers.push(setTimeout(function(){
+            const tp = document.getElementById('tp');
+            if(tp) tp.remove();
+            waStatus.textContent = 'en línea';
+            burbuja(m);
+          }, t));
+        } else {
+          timers.push(setTimeout(function(){ burbuja(m); }, t));
+        }
+      });
+    }
+
+    document.querySelectorAll('.tab').forEach(function(b){
+      b.addEventListener('click', function(){
+        document.querySelectorAll('.tab').forEach(function(x){ x.classList.remove('on'); });
+        b.classList.add('on');
+        reproducir(parseInt(b.dataset.sc, 10));
+      });
+    });
+    document.getElementById('replay').addEventListener('click', function(){ reproducir(actual); });
+
+    pintarLateral(0);
+    if('IntersectionObserver' in window && !rm){
+      const wo = new IntersectionObserver(function(en){
+        if(en[0].isIntersecting && !started){ started = true; reproducir(0); }
+      }, {threshold:.3});
+      wo.observe(waBody);
+    } else {
+      reproducir(0);
+    }
+  }
+
+  document.querySelectorAll('.f-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      const card = btn.closest('.finding');
+      const open = card.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if(open) animateBars(card);
+    });
+  });
+
+  function animateBars(scope){
+    scope.querySelectorAll('.bar-fill').forEach(function(f){
+      if(f.dataset.done) return;
+      f.dataset.done = '1';
+      const w = f.dataset.w + '%';
+      if(rm){ f.style.width = w; return; }
+      setTimeout(function(){ f.style.width = w; }, 90);
+    });
+  }
+
+  function runCounters(){
+    document.querySelectorAll('[data-count]').forEach(function(el){
+      const target = parseInt(el.dataset.count, 10);
+      const sfx = el.dataset.suffix || '';
+      if(rm){ el.textContent = target.toLocaleString('es-CL') + sfx; return; }
+      const dur = target > 100 ? 1300 : 900;
+      const t0 = performance.now();
+      function step(now){
+        const p = Math.min((now - t0) / dur, 1);
+        const e = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * e).toLocaleString('es-CL') + sfx;
+        if(p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  setTimeout(runCounters, 280);
+
+  if('IntersectionObserver' in window && !rm){
+    const io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
