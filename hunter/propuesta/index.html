@@ -135,6 +135,27 @@ a{color:inherit}
   .phase-when .lb{margin-top:0}
   .tbl td,.tbl th{padding:13px 16px;font-size:14px}
 }
+
+.navdock{position:fixed;right:22px;bottom:22px;z-index:80;display:flex;align-items:center;gap:8px;
+  background:rgba(22,22,22,.93);backdrop-filter:blur(14px);border:1px solid var(--border2);
+  border-radius:999px;padding:7px 9px;box-shadow:0 8px 28px rgba(0,0,0,.55)}
+.nav-btn{display:inline-flex;align-items:center;gap:7px;border:0;cursor:pointer;text-decoration:none;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  padding:9px 15px;border-radius:999px;transition:all .18s;white-space:nowrap}
+.nav-up{background:transparent;color:var(--muted)}
+.nav-up:hover{background:var(--card2);color:var(--text)}
+.nav-next{background:var(--accent);color:#fff;font-weight:600}
+.nav-next:hover{background:var(--accent-hover)}
+.nav-prev{background:transparent;border:1px solid var(--border2);color:var(--muted)}
+.nav-prev:hover{color:var(--text);border-color:var(--muted2)}
+.nav-pos{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;
+  color:var(--muted2);padding:0 4px;white-space:nowrap}
+@media(max-width:620px){
+  .navdock{right:12px;left:12px;bottom:12px;justify-content:space-between;gap:6px}
+  .nav-pos{display:none}
+  .nav-btn{padding:9px 12px;font-size:10px}
+}
+@media print{.navdock{display:none}}
 </style>
 </head>
 <body>
@@ -350,6 +371,15 @@ a{color:inherit}
     <span>Top Kreativa · Av. Concón Reñaca 102, Concón</span>
     <span>Propuesta emitida el <b>12 de agosto de 2026</b></span>
   </div>
+</div>
+
+
+<!-- ══════════ NAVEGACIÓN ENTRE DOCUMENTOS ══════════ -->
+<div class="navdock">
+  <a class="nav-btn nav-up" href="../">&#8593; Inicio</a>
+  
+  <span class="nav-pos">01 / 03</span>
+  <a class="nav-btn nav-next" href="../maqueta/">Maqueta del sitio &#8594;</a>
 </div>
 
 </body>
