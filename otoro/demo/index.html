@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo del agente · Otoro Sushi Nikkei · Top Kreativa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,700;9..40,1000&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0D0D0D; --card:#161616; --card2:#1C1C1C; --border:#2A2A2A; --border2:#333;
+  --text:#F5F5F0; --muted:#888; --muted2:#555;
+  --accent:#D6006E; --accent-hover:#B8005C; --accent-glow:rgba(214,0,110,.18);
+  --green:#00C853; --radius:12px; --radius-sm:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;
+  font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;padding-bottom:90px}
+h1,h2,h3{font-family:'DM Sans',sans-serif;font-weight:1000;line-height:1;letter-spacing:-.035em}
+.wrap{max-width:760px;margin:0 auto;padding:0 22px}
+
+.topbar{position:sticky;top:0;z-index:60;background:rgba(13,13,13,.9);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border)}
+.topbar-in{max-width:760px;margin:0 auto;padding:11px 22px;display:flex;justify-content:space-between;
+  gap:14px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted)}
+.topbar b{color:var(--accent);font-weight:600}
+.topbar a{color:var(--muted);text-decoration:none}
+.topbar a:hover{color:var(--accent)}
+
+.head{padding:48px 0 26px;position:relative;overflow:hidden}
+.head::before{content:"";position:absolute;top:-160px;left:50%;transform:translateX(-50%);
+  width:700px;height:400px;background:radial-gradient(ellipse,var(--accent-glow),transparent 68%);filter:blur(10px)}
+.head .wrap{position:relative}
+.issuer{display:inline-flex;align-items:center;gap:11px;font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.issuer i{width:24px;height:2px;background:var(--accent);border-radius:2px;font-style:normal}
+.head h1{font-size:clamp(32px,6vw,54px);text-transform:uppercase;margin:18px 0 12px}
+.head h1 em{font-style:normal;color:var(--accent);display:block}
+.head p{color:var(--muted);font-size:15px;max-width:56ch}
+
+.tabs{display:flex;gap:6px;padding:4px;background:var(--card);border:1px solid var(--border);
+  border-radius:999px;width:fit-content;margin-bottom:16px}
+.tab{border:0;background:transparent;color:var(--muted);cursor:pointer;padding:9px 18px;
+  border-radius:999px;font-family:'Inter',sans-serif;font-size:13.5px;transition:all .18s}
+.tab.on{background:var(--accent);color:#fff;font-weight:600}
+
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
+.chip{border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;
+  padding:7px 14px;border-radius:999px;font-size:12.5px;font-family:'Inter',sans-serif;transition:all .18s}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.chip:hover{color:var(--text)}
+
+.phone{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.ph-head{display:flex;align-items:center;gap:11px;padding:10px 14px;background:#202C33;
+  border-bottom:1px solid #0B141A}
+.av{width:38px;height:38px;border-radius:50%;background:#6A7175;color:#CFD6DA;
+  display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;
+  font-weight:1000;font-size:13px;flex-shrink:0}
+.ph-head .nm{font-size:15px;font-weight:500;color:#E9EDEF}
+.ph-head .st{font-size:12px;color:#8696A0}
+.live-tag{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--green);background:rgba(0,200,83,.1);
+  border:1px solid rgba(0,200,83,.28);padding:4px 10px;border-radius:999px}
+
+.chat{height:460px;overflow-y:auto;padding:14px 14px 18px;
+  background:#0B141A;
+  background-image:
+    radial-gradient(circle at 18% 22%, rgba(255,255,255,.018) 0 2px, transparent 2px),
+    radial-gradient(circle at 62% 58%, rgba(255,255,255,.014) 0 2px, transparent 2px),
+    radial-gradient(circle at 84% 12%, rgba(255,255,255,.016) 0 2px, transparent 2px),
+    radial-gradient(circle at 36% 82%, rgba(255,255,255,.012) 0 2px, transparent 2px);
+  background-size:120px 120px}
+.daysep{display:flex;justify-content:center;margin:4px 0 14px}
+.daysep span{background:#182229;color:#8696A0;font-size:11px;letter-spacing:.05em;
+  padding:5px 12px;border-radius:8px;text-transform:uppercase}
+.row{display:flex;margin-bottom:3px}
+.row.out{justify-content:flex-end}
+.row+.row{margin-top:2px}
+.bub{position:relative;max-width:78%;padding:6px 9px 7px 10px;font-size:14.2px;line-height:1.42;
+  white-space:pre-line;border-radius:8px;box-shadow:0 1px 1px rgba(0,0,0,.28);
+  color:#E9EDEF;font-family:'Inter',system-ui,sans-serif}
+.row.in  .bub{background:#202C33;border-top-left-radius:2px}
+.row.out .bub{background:#005C4B;border-top-right-radius:2px}
+.bub .meta{float:right;display:inline-flex;align-items:center;gap:3px;
+  margin:6px -3px -3px 9px;font-size:10.5px;color:rgba(233,237,239,.5);white-space:nowrap}
+.tick{color:#53BDEB;font-size:11.5px;letter-spacing:-3px;margin-left:1px}
+.dots{display:inline-flex;gap:4px;padding:11px 14px;background:#202C33;border-radius:8px;
+  border-top-left-radius:2px;box-shadow:0 1px 1px rgba(0,0,0,.28)}
+.dots i{width:6px;height:6px;border-radius:50%;background:#8696A0;animation:d 1.2s infinite}
+.dots i:nth-child(2){animation-delay:.2s}.dots i:nth-child(3){animation-delay:.4s}
+@keyframes d{0%,60%,100%{opacity:.35;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+.fade{animation:f .26s ease-out both}
+@keyframes f{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.fade,.dots i{animation:none}}
+.empty{text-align:center;color:#8696A0;font-size:13px;padding-top:130px}
+
+.ctrl{padding:13px 16px;border-top:1px solid var(--border);background:var(--card)}
+.bar{height:3px;background:#242424;border-radius:99px;margin-bottom:12px;overflow:hidden}
+.bar span{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .3s}
+.crow{display:flex;align-items:center;gap:9px}
+.circ{width:36px;height:36px;border-radius:50%;border:0;cursor:pointer;display:flex;
+  align-items:center;justify-content:center;background:var(--accent);color:#fff;font-size:13px}
+.circ.ghost{background:transparent;border:1px solid var(--border2);color:var(--muted)}
+.cnt{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)}
+.spd{margin-left:auto;display:flex;gap:5px}
+.spd button{border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;
+  padding:5px 9px;border-radius:6px;font-size:11.5px;font-family:'IBM Plex Mono',monospace}
+.spd button.on{background:rgba(214,0,110,.14);border-color:rgba(214,0,110,.4);color:var(--accent)}
+
+.inbox{display:flex;gap:9px}
+.inbox input{flex:1;background:var(--card2);border:1px solid var(--border2);color:var(--text);
+  padding:11px 15px;border-radius:999px;font-size:14px;font-family:'Inter',sans-serif;outline:none}
+.inbox input:focus{border-color:rgba(214,0,110,.5)}
+.inbox button{width:40px;height:40px;border-radius:50%;border:0;background:var(--accent);color:#fff;
+  cursor:pointer;flex-shrink:0;font-size:15px}
+.inbox button:disabled{opacity:.45;cursor:default}
+.err{color:#FF8A8A;font-size:12.5px;margin-bottom:8px}
+
+.insight{margin-top:16px;padding-left:14px;border-left:2px solid var(--accent);
+  color:var(--muted);font-size:14px;line-height:1.6}
+.sug{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:14px}
+
+.knw{margin-top:20px}
+.knw summary{cursor:pointer;color:var(--muted);font-size:13px;list-style:none;
+  font-family:'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
+.knw summary::-webkit-details-marker{display:none}
+.knw summary:hover{color:var(--accent)}
+.knw textarea{width:100%;margin-top:11px;background:var(--card);border:1px solid var(--border);
+  color:#CFCFC9;border-radius:var(--radius-sm);padding:14px;font-family:'IBM Plex Mono',monospace;
+  font-size:12px;line-height:1.65;outline:none;resize:vertical}
+.note{margin-top:26px;padding-top:16px;border-top:1px solid var(--border);color:var(--muted2);font-size:12.5px}
+
+.navdock{position:fixed;right:22px;bottom:22px;z-index:80;display:flex;align-items:center;gap:8px;
+  background:rgba(22,22,22,.93);backdrop-filter:blur(14px);border:1px solid var(--border2);
+  border-radius:999px;padding:7px 9px;box-shadow:0 8px 28px rgba(0,0,0,.55)}
+.nav-btn{display:inline-flex;align-items:center;gap:7px;border:0;cursor:pointer;text-decoration:none;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  padding:9px 15px;border-radius:999px;transition:all .18s}
+.nav-up{background:transparent;color:var(--muted)}
+.nav-up:hover{background:var(--card2);color:var(--text)}
+.nav-next{background:var(--accent);color:#fff;font-weight:600}
+.nav-next:hover{background:var(--accent-hover)}
+@media(max-width:620px){.navdock{right:12px;left:12px;bottom:12px;justify-content:space-between}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <span>Top Kreativa · Demo <b>TK-2026-OT01</b></span>
+    <a href="../">&#8592; Volver</a>
+  </div>
+</div>
+
+<header class="head">
+  <div class="wrap">
+    <div class="issuer"><i></i> Demo del agente</div>
+    <h1>Otoro Sushi Nikkei<em>Así respondería</em></h1>
+    <p>Tres conversaciones reproducidas paso a paso, y un modo para escribirle al agente en vivo y ver cómo contesta.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="tabs">
+    <button class="tab on" data-mode="demo">Demo guiado</button>
+    <button class="tab" data-mode="live">Prueba en vivo</button>
+  </div>
+
+  <div class="chips" id="chips"></div>
+
+  <div class="phone">
+    <div class="ph-head">
+      <div class="av">OS</div>
+      <div>
+        <div class="nm">Otoro Sushi Nikkei</div>
+        <div class="st" id="ctx">Viernes 20:15 · el taller ya cerró</div>
+      </div>
+      <span class="live-tag" id="liveTag" style="display:none">en vivo</span>
+    </div>
+
+    <div class="chat" id="chat"></div>
+
+    <div class="ctrl" id="ctrlDemo">
+      <div class="bar"><span id="bar" style="width:0%"></span></div>
+      <div class="crow">
+        <button class="circ" id="play">&#9654;</button>
+        <button class="circ ghost" id="reset">&#8635;</button>
+        <span class="cnt" id="cnt">0 / 0</span>
+        <div class="spd">
+          <button data-s="0.75">Lento</button>
+          <button data-s="1" class="on">1x</button>
+          <button data-s="1.5">1.5x</button>
+          <button data-s="2">2x</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="ctrl" id="ctrlLive" style="display:none">
+      <div class="err" id="err" style="display:none"></div>
+      <div class="inbox">
+        <input id="draft" placeholder="Escribe como si fueras un cliente" autocomplete="off">
+        <button id="send">&#10148;</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="insight" id="insight"></p>
+
+  <details class="knw" id="knw" style="display:none">
+    <summary>Conocimiento del agente</summary>
+    <p style="color:var(--muted);font-size:13px;margin-top:9px">Esto es todo lo que el agente sabe. Edítalo y la siguiente respuesta cambia.</p>
+    <textarea id="prompt" rows="16"></textarea>
+  </details>
+
+  <p class="note">Precios y horarios tomados de la carta pública de Otoro Sushi, agosto de 2026. El menú estudiantil queda sujeto a confirmación del convenio. El agente está configurado para no inventar productos ni promociones.</p>
+</main>
+
+
+<script>
+var PROMPT_BASE = `Eres el asistente de WhatsApp de Otoro Sushi Nikkei, en 11 Norte 1163, local 11, Viña del Mar.
+
+HORARIO
+Lunes a sábado de 10:00 a 21:00. Domingo cerrado.
+Retiro en local: listo en 15 minutos. Despacho: alrededor de 30 minutos.
+Se pueden programar pedidos hasta 6 días hacia adelante, en bloques de media hora.
+Los pedidos se cierran en otorosushi.cl, donde el cliente confirma dirección y paga.
+
+CARTA Y PRECIOS
+Sopa del día 1.000 · Crema del día 1.500
+Sándwich de miga ave, mayo y pimentón 2.000 · Miga huevo, lechuga, mayo y tocino 2.500
+Handroll pollo panko 4.000 · Handroll camarón panko 4.500
+Gohan veggie 5.950 · pollo furai 6.950 · camarón furai 7.950 · salmón fresco 8.950
+Rollos: veggie 6.950 · california 7.450 · crispy furai 7.450 · avocado acevichado 7.950 · cream torch 8.450 · sake anticuchero 8.950 · hosomaki furai 9.450
+Tablas: 36 piezas 20.990 · 72 piezas 39.990 · 108 piezas 57.990
+Arrollados primavera x4 2.990 · x8 4.990 · x12 6.490
+También hay gyosas mixtas, galletas y bebidas.
+
+MENÚ ESTUDIANTIL (tarjeta de alimentación)
+Combo de sopa o crema del día más un sándwich de miga.
+La beca solo cubre los menús aprobados: no cubre sushi, rollos, tablas ni bebidas azucaradas.
+
+CÓMO RESPONDES
+Chileno, cercano y breve. Dos o tres frases por mensaje.
+Nunca inventes un precio, producto ni promoción. Si algo no está en la carta, dilo con naturalidad.
+Si el local está cerrado, no te disculpes de más: ofrece agendar para el siguiente horario disponible.
+Recomienda con criterio: para 4 personas la tabla de 36 piezas alcanza justo, la de 72 deja de sobra.
+Pregunta siempre si es retiro en local o despacho antes de cerrar.
+Cierra derivando a otorosushi.cl para pagar.
+Ante un reclamo, un pedido especial, un evento o catering, avisa que lo pasas a una persona del equipo.
+Sin emojis. Sin mayúsculas sostenidas.`;
+
+var ESC = [
+  {
+    "id": "cerrado",
+    "label": "Fuera de horario",
+    "ctx": "Viernes 21:40 · el local ya cerró",
+    "insight": "Hoy este mensaje se pierde. Nadie contesta a las 21:40 y el cliente pide en otro lado.",
+    "msgs": [
+      [
+        "in",
+        "Hola, quiero pedir sushi para ahora",
+        "21:40"
+      ],
+      [
+        "out",
+        "Hola! Justo cerramos a las 21:00, así que hoy ya no alcanzamos a preparar tu pedido.\n\nPero te lo puedo dejar agendado y listo para mañana. ¿Lo prefieres para retiro en el local o con despacho?",
+        "21:40"
+      ],
+      [
+        "in",
+        "Despacho. ¿A qué hora podría ser?",
+        "21:41"
+      ],
+      [
+        "out",
+        "Atendemos de 10:00 a 21:00. Para mañana sábado tengo horarios desde las 12:00 en adelante, cada media hora.\n\n¿Qué hora te acomoda?",
+        "21:41"
+      ],
+      [
+        "in",
+        "13:30 estaría bien. Somos 4 en la casa",
+        "21:42"
+      ],
+      [
+        "out",
+        "Para 4 personas la Tabla 36 piezas a 20.990 es lo que más se pide, alcanza justo.\n\nSi quieren quedar bien servidos, la Tabla 72 piezas queda en 39.990 y les sobra para la once.",
+        "21:42"
+      ],
+      [
+        "in",
+        "La de 36 está bien",
+        "21:43"
+      ],
+      [
+        "out",
+        "Perfecto. Te dejo el link con la Tabla 36 y el horario de mañana 13:30 ya seleccionado, solo confirmas dirección y pagas.\n\notorosushi.cl",
+        "21:43"
+      ]
+    ]
+  },
+  {
+    "id": "junaeb",
+    "label": "Menú estudiantil",
+    "ctx": "Martes 11:15 · consulta por la beca",
+    "insight": "El agente sabe decir que no. Uno que promete lo que la beca no cubre genera un problema en la caja.",
+    "msgs": [
+      [
+        "in",
+        "hola, aceptan junaeb?",
+        "11:15"
+      ],
+      [
+        "out",
+        "Sí! Tenemos menú para pagar con tu tarjeta de alimentación, de lunes a sábado.\n\nEl combo es sopa o crema del día más un sándwich de miga. ¿Te cuento las opciones?",
+        "11:15"
+      ],
+      [
+        "in",
+        "si porfa",
+        "11:16"
+      ],
+      [
+        "out",
+        "Sopa del día o crema del día, y de miga tenemos ave con mayo y pimentón, o huevo con lechuga, mayo y tocino.\n\nEstamos en 11 Norte 1163, local 11. Si vienes a buscarlo está listo en 15 minutos.",
+        "11:16"
+      ],
+      [
+        "in",
+        "buenísimo. y el sushi lo puedo pagar con la junaeb tambien?",
+        "11:17"
+      ],
+      [
+        "out",
+        "Esa no, porque la beca solo cubre los menús aprobados.\n\nPero para el fin de semana los rollos parten en 6.950 y los gohan en 5.950. Te aviso cuando tengamos promo si quieres.",
+        "11:17"
+      ],
+      [
+        "in",
+        "dale, avísame",
+        "11:18"
+      ]
+    ]
+  },
+  {
+    "id": "plataforma",
+    "label": "Migrar de plataforma",
+    "ctx": "Jueves 19:20 · llegó por una app",
+    "insight": "Camila deja de ser cliente de la plataforma y pasa a ser cliente de Otoro: contactable, con historial, sin comisión de por medio.",
+    "msgs": [
+      [
+        "in",
+        "Hola! Pedí por una app la semana pasada y venía un papelito con un descuento",
+        "19:20"
+      ],
+      [
+        "out",
+        "Hola! Sí, ese es el beneficio por pedir directo con nosotros.\n\n¿Me confirmas tu nombre para dejarlo registrado?",
+        "19:20"
+      ],
+      [
+        "in",
+        "Camila",
+        "19:21"
+      ],
+      [
+        "out",
+        "Listo Camila. ¿Vas a repetir lo mismo de la vez pasada o te muestro algo distinto?",
+        "19:21"
+      ],
+      [
+        "in",
+        "algo distinto, sorpréndeme",
+        "19:22"
+      ],
+      [
+        "out",
+        "Si te gustó el panko, prueba el Roll Sake Anticuchero a 8.950, salmón con la salsa de la casa.\n\nY el Roll Avocado Acevichado a 7.950 es el que más repiten.",
+        "19:22"
+      ],
+      [
+        "in",
+        "el acevichado, y llévalo a mi casa",
+        "19:23"
+      ],
+      [
+        "out",
+        "Perfecto. Te dejo el link con el roll y tu descuento aplicado, ahí pones la dirección.\n\nSale en unos 30 minutos.",
+        "19:23"
+      ]
+    ]
+  }
+];
+
+var modo='demo', sc=0, step=0, playing=false, typing=false, speed=1, timer=null;
+var live=[], busy=false;
+var chat=document.getElementById('chat'), chips=document.getElementById('chips');
+
+function el(tag,cls,html){var e=document.createElement(tag);if(cls)e.className=cls;if(html!==undefined)e.innerHTML=html;return e;}
+function bottom(){chat.scrollTop=chat.scrollHeight;}
+
+function pintarChips(){
+  chips.innerHTML='';
+  if(modo!=='demo'){chips.style.display='none';return;}
+  chips.style.display='flex';
+  ESC.forEach(function(s,i){
+    var b=el('button','chip'+(i===sc?' on':''),s.label);
+    b.onclick=function(){sc=i;step=0;playing=false;typing=false;clearTimeout(timer);render();};
+    chips.appendChild(b);
+  });
+}
+
+function ahora(){
+  var d=new Date();
+  return d.getHours()+':'+(d.getMinutes()<10?'0':'')+d.getMinutes();
+}
+function burbuja(side,text,time){
+  var r=el('div','row '+side+' fade');
+  var b=el('div','bub');
+  b.appendChild(document.createTextNode(text));
+  var m=el('span','meta');
+  m.appendChild(document.createTextNode(time||ahora()));
+  if(side==='out'){ m.appendChild(el('span','tick','\u2713\u2713')); }
+  b.appendChild(m);
+  r.appendChild(b);return r;
+}
+
+function render(){
+  var e=ESC[sc];
+  document.getElementById('ctx').textContent = modo==='demo' ? e.ctx : (busy?'escribiendo…':'en línea');
+  document.getElementById('liveTag').style.display = modo==='live'?'inline-block':'none';
+  document.getElementById('ctrlDemo').style.display = modo==='demo'?'block':'none';
+  document.getElementById('ctrlLive').style.display = modo==='live'?'block':'none';
+  document.getElementById('knw').style.display = modo==='live'?'block':'none';
+  document.getElementById('insight').textContent = modo==='demo'?e.insight:'';
+
+  chat.innerHTML='';
+  var sep=el('div','daysep','<span>Hoy</span>');
+  if(modo==='demo'){
+    if(step>0) chat.appendChild(sep);
+    e.msgs.slice(0,step).forEach(function(m){chat.appendChild(burbuja(m[0],m[1],m[2]));});
+    if(typing){var r=el('div','row out');var d=el('div','dots','<i></i><i></i><i></i>');r.appendChild(d);chat.appendChild(r);}
+    if(step===0&&!playing)chat.appendChild(el('p','empty','Presiona reproducir para ver la conversación'));
+    document.getElementById('cnt').textContent=step+' / '+e.msgs.length;
+    document.getElementById('bar').style.width=(step/e.msgs.length*100)+'%';
+    document.getElementById('play').innerHTML= step>=e.msgs.length?'&#8635;':(playing?'&#10074;&#10074;':'&#9654;');
+  } else {
+    if(!live.length){
+      var w=el('div','empty','Escríbele al agente como si fueras un cliente');
+      var s=el('div','sug');
+      ["¿Hasta qué hora atienden?", "Somos 6, ¿qué me recomiendas?", "¿Aceptan JUNAEB?", "¿Hacen despacho a Reñaca?"].forEach(function(q){
+        var c=el('button','chip',q);c.onclick=function(){document.getElementById('draft').value=q;};s.appendChild(c);
+      });
+      w.appendChild(s);chat.appendChild(w);
+    }
+    if(live.length) chat.appendChild(sep);
+    live.forEach(function(m){chat.appendChild(burbuja(m.role==='user'?'in':'out',m.content));});
+    if(busy){var r2=el('div','row out');r2.appendChild(el('div','dots','<i></i><i></i><i></i>'));chat.appendChild(r2);}
+  }
+  bottom();
+  pintarChips();
+}
+
+// tiempo que toma leer un mensaje, en ms
+function leer(txt){ return Math.min(1700 + txt.length * 42, 6500); }
+// tiempo que el agente aparece "escribiendo" antes de contestar
+function escribir(txt){ return Math.min(1400 + txt.length * 26, 4800); }
+
+function avanzar(){
+  var e=ESC[sc];
+  if(!playing||step>=e.msgs.length){if(step>=e.msgs.length)playing=false;render();return;}
+  var m=e.msgs[step];
+
+  function mostrar(){
+    typing=false;step++;render();
+    if(!playing)return;
+    // pausa para que se alcance a leer lo recién aparecido
+    timer=setTimeout(avanzar, leer(m[1])/speed);
+  }
+
+  if(m[0]==='out'){
+    typing=true;render();
+    timer=setTimeout(mostrar, escribir(m[1])/speed);
+  } else {
+    // el cliente escribe: pausa corta antes de que aparezca su mensaje
+    timer=setTimeout(mostrar, 900/speed);
+  }
+}
+
+document.querySelectorAll('.tab').forEach(function(b){
+  b.onclick=function(){
+    document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on');});
+    b.classList.add('on');modo=b.dataset.mode;playing=false;typing=false;clearTimeout(timer);render();
+  };
+});
+document.getElementById('play').onclick=function(){
+  if(step>=ESC[sc].msgs.length){step=0;}
+  playing=!playing;render();if(playing)avanzar();
+};
+document.getElementById('reset').onclick=function(){
+  clearTimeout(timer);step=0;typing=false;playing=true;render();avanzar();
+};
+document.querySelectorAll('.spd button').forEach(function(b){
+  b.onclick=function(){
+    document.querySelectorAll('.spd button').forEach(function(x){x.classList.remove('on');});
+    b.classList.add('on');speed=parseFloat(b.dataset.s);
+  };
+});
+
+function enviar(){
+  var inp=document.getElementById('draft');
+  var q=inp.value.trim();
+  if(!q||busy)return;
+  document.getElementById('err').style.display='none';
+  live.push({role:'user',content:q});inp.value='';busy=true;render();
+  fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      model:'claude-sonnet-4-6',max_tokens:1000,
+      system:document.getElementById('prompt').value,
+      messages:live.map(function(m){return {role:m.role,content:m.content};})
+    })
+  }).then(function(r){return r.json();}).then(function(d){
+    var txt=(d.content||[]).filter(function(b){return b.type==='text';}).map(function(b){return b.text;}).join('\n').trim();
+    if(!txt)throw new Error('vacío');
+    live.push({role:'assistant',content:txt});
+  }).catch(function(){
+    var e=document.getElementById('err');
+    e.textContent='No se pudo conectar con el agente. Revisa la conexión e intenta de nuevo.';
+    e.style.display='block';
+  }).then(function(){busy=false;render();});
+}
+document.getElementById('send').onclick=enviar;
+document.getElementById('draft').addEventListener('keydown',function(e){if(e.key==='Enter')enviar();});
+
+document.getElementById('prompt').value=PROMPT_BASE;
+render();
+</script>
+
+
+<!-- ══════════ NAVEGACIÓN ENTRE DOCUMENTOS ══════════ -->
+<div class="navdock">
+  <a class="nav-btn nav-up" href="../">&#8593; Inicio</a>
+  <a class="nav-btn nav-prev" href="../propuesta/">&#8592; Propuesta</a>
+  <span class="nav-pos">02 / 02</span>
+  <a class="nav-btn nav-next" href="../">Volver al índice &#8594;</a>
+</div>
+
+</body>
+</html>
