@@ -135,6 +135,27 @@ a{color:inherit}
   .phase-when .lb{margin-top:0}
   .tbl td,.tbl th{padding:13px 16px;font-size:14px}
 }
+
+.navdock{position:fixed;right:22px;bottom:22px;z-index:80;display:flex;align-items:center;gap:8px;
+  background:rgba(22,22,22,.93);backdrop-filter:blur(14px);border:1px solid var(--border2);
+  border-radius:999px;padding:7px 9px;box-shadow:0 8px 28px rgba(0,0,0,.55)}
+.navdock.is-top .nav-up{opacity:.35;pointer-events:none}
+.nav-btn{display:inline-flex;align-items:center;gap:7px;border:0;cursor:pointer;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  padding:9px 15px;border-radius:999px;transition:background .18s,color .18s,opacity .18s}
+.nav-up{background:transparent;color:var(--muted)}
+.nav-up:hover{background:var(--card2);color:var(--text)}
+.nav-next{background:var(--accent);color:#fff;font-weight:600}
+.nav-next:hover{background:var(--accent-hover)}
+.nav-next:disabled{cursor:default}
+.nav-btn .ar{font-size:13px;line-height:1}
+.nav-pos{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;
+  color:var(--muted2);padding:0 4px;white-space:nowrap}
+@media(max-width:620px){
+  .navdock{right:12px;left:12px;bottom:12px;justify-content:space-between}
+  .nav-pos{display:none}
+}
+@media print{ .navdock{display:none} }
 </style></head>
 <body>
 
@@ -352,6 +373,61 @@ a{color:inherit}
     <span>Propuesta emitida el <b>13 de agosto de 2026</b></span>
   </div>
 </div>
+
+
+<!-- ══════════ NAVEGACIÓN ══════════ -->
+<div class="navdock" id="navdock">
+  <button class="nav-btn nav-up" id="navUp" aria-label="Volver al inicio de la propuesta">
+    <span class="ar">&#8593;</span> Inicio
+  </button>
+  <span class="nav-pos" id="navPos">01 / 09</span>
+  <button class="nav-btn nav-next" id="navNext" aria-label="Ir a la siguiente sección">
+    Siguiente <span class="ar">&#8595;</span>
+  </button>
+</div>
+
+<script>
+(function(){
+  var secs = Array.prototype.slice.call(document.querySelectorAll('section.sec'));
+  if(!secs.length) return;
+  var btnNext = document.getElementById('navNext');
+  var btnUp   = document.getElementById('navUp');
+  var pos     = document.getElementById('navPos');
+  var total   = secs.length;
+
+  function pad(n){ return (n<10?'0':'')+n; }
+
+  function actual(){
+    var y = window.scrollY + 90, idx = 0;
+    for(var i=0;i<secs.length;i++){ if(secs[i].offsetTop <= y+40) idx = i; }
+    return idx;
+  }
+
+  function pintar(){
+    var i = actual();
+    pos.textContent = pad(i+1) + ' / ' + pad(total);
+    var fin = (window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 60);
+    btnNext.disabled = fin;
+    btnNext.style.opacity = fin ? .35 : 1;
+    document.getElementById('navdock').classList.toggle('is-top', window.scrollY < 120);
+  }
+
+  btnNext.addEventListener('click', function(){
+    var i = actual();
+    var sig = secs[Math.min(i+1, total-1)];
+    if(i === total-1){ window.scrollTo({top: document.body.scrollHeight, behavior:'smooth'}); return; }
+    window.scrollTo({top: sig.offsetTop - 70, behavior:'smooth'});
+  });
+
+  btnUp.addEventListener('click', function(){
+    window.scrollTo({top: 0, behavior:'smooth'});
+  });
+
+  window.addEventListener('scroll', pintar, {passive:true});
+  window.addEventListener('resize', pintar);
+  pintar();
+})();
+</script>
 
 </body>
 </html>
