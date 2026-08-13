@@ -375,59 +375,16 @@ a{color:inherit}
 </div>
 
 
-<!-- ══════════ NAVEGACIÓN ══════════ -->
-<div class="navdock" id="navdock">
-  <button class="nav-btn nav-up" id="navUp" aria-label="Volver al inicio de la propuesta">
-    <span class="ar">&#8593;</span> Inicio
-  </button>
-  <span class="nav-pos" id="navPos">01 / 09</span>
-  <button class="nav-btn nav-next" id="navNext" aria-label="Ir a la siguiente sección">
-    Siguiente <span class="ar">&#8595;</span>
-  </button>
+
+
+
+<!-- ══════════ NAVEGACIÓN ENTRE DOCUMENTOS ══════════ -->
+<div class="navdock">
+  <a class="nav-btn nav-up" href="../">&#8593; Inicio</a>
+  
+  <span class="nav-pos">01 / 02</span>
+  <a class="nav-btn nav-next" href="../demo/">Demo del agente &#8594;</a>
 </div>
-
-<script>
-(function(){
-  var secs = Array.prototype.slice.call(document.querySelectorAll('section.sec'));
-  if(!secs.length) return;
-  var btnNext = document.getElementById('navNext');
-  var btnUp   = document.getElementById('navUp');
-  var pos     = document.getElementById('navPos');
-  var total   = secs.length;
-
-  function pad(n){ return (n<10?'0':'')+n; }
-
-  function actual(){
-    var y = window.scrollY + 90, idx = 0;
-    for(var i=0;i<secs.length;i++){ if(secs[i].offsetTop <= y+40) idx = i; }
-    return idx;
-  }
-
-  function pintar(){
-    var i = actual();
-    pos.textContent = pad(i+1) + ' / ' + pad(total);
-    var fin = (window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 60);
-    btnNext.disabled = fin;
-    btnNext.style.opacity = fin ? .35 : 1;
-    document.getElementById('navdock').classList.toggle('is-top', window.scrollY < 120);
-  }
-
-  btnNext.addEventListener('click', function(){
-    var i = actual();
-    var sig = secs[Math.min(i+1, total-1)];
-    if(i === total-1){ window.scrollTo({top: document.body.scrollHeight, behavior:'smooth'}); return; }
-    window.scrollTo({top: sig.offsetTop - 70, behavior:'smooth'});
-  });
-
-  btnUp.addEventListener('click', function(){
-    window.scrollTo({top: 0, behavior:'smooth'});
-  });
-
-  window.addEventListener('scroll', pintar, {passive:true});
-  window.addEventListener('resize', pintar);
-  pintar();
-})();
-</script>
 
 </body>
 </html>
