@@ -201,10 +201,6 @@ h1,h2,h3{font-family:'DM Sans',sans-serif;font-weight:1000;line-height:1;letter-
   <p class="note">Los servicios y horarios de este demo son de ejemplo y se reemplazan por los datos reales de Galatas Automotriz durante la Fase 1. El agente está configurado para no inventar precios: cuando no tiene el dato, lo dice y deriva a una persona.</p>
 </main>
 
-<div class="navdock">
-  <a class="nav-btn nav-up" href="../">&#8593; Inicio</a>
-  <a class="nav-btn nav-next" href="../propuesta/">Ver propuesta &#8594;</a>
-</div>
 
 <script>
 var PROMPT_BASE = `Eres el asistente de WhatsApp de Galatas Automotriz, taller mecánico en Av. El Parque 430, Concón, Región de Valparaíso.
@@ -392,6 +388,15 @@ document.getElementById('draft').addEventListener('keydown',function(e){if(e.key
 document.getElementById('prompt').value=PROMPT_BASE;
 render();
 </script>
+
+
+<!-- ══════════ NAVEGACIÓN ENTRE DOCUMENTOS ══════════ -->
+<div class="navdock">
+  <a class="nav-btn nav-up" href="../">&#8593; Inicio</a>
+  <a class="nav-btn nav-prev" href="../propuesta/">&#8592; Propuesta</a>
+  <span class="nav-pos">02 / 02</span>
+  <a class="nav-btn nav-next" href="../">Volver al índice &#8594;</a>
+</div>
 
 </body>
 </html>
