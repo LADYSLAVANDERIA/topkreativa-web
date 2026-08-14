@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Hunter Motores — Sin vueltas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --stage:#05070C; --stage-2:#0B0F19;
+  --paper:#F0F3F7; --ink:#0A1A3C; --ink-2:#5A6B8C;
+  --blue:#1B5CF5; --yellow:#FFCE00; --amber:#B36A00; --amber-bg:#FDF3E3;
+  --green:#0A7C4A; --green-bg:#E8F5EE;
+  --line-d:rgba(255,255,255,.1); --line:#DCE2EC;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--stage);color:#fff;font-family:'Instrument Sans',system-ui,sans-serif;
+  line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Archivo',sans-serif;line-height:1.03;letter-spacing:-.035em}
+img{display:block;max-width:100%}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+button{font-family:inherit}
+body::after{content:'';position:fixed;inset:0;z-index:200;pointer-events:none;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* nav */
+nav{position:fixed;inset:0 0 auto;z-index:120;transition:.35s}
+nav.solid{background:rgba(5,7,12,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--line-d)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:72px;
+  max-width:1200px;margin:0 auto;padding:0 24px}
+.brand{display:flex;align-items:center;gap:11px;font-family:'Archivo';font-weight:900;font-size:16px}
+.brand small{display:block;font-family:'IBM Plex Mono';font-weight:500;font-size:8.5px;
+  letter-spacing:.26em;color:var(--yellow);margin-top:-1px}
+.nav-links{display:none;gap:28px;font-size:14px;font-weight:500;color:#A8B7D4}
+.nav-links a{text-decoration:none;color:inherit;transition:.2s}
+.nav-links a:hover{color:#fff}
+@media(min-width:960px){.nav-links{display:flex}}
+.btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:100px;padding:13px 24px;
+  font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:.24s;white-space:nowrap}
+.btn-y{background:var(--yellow);color:#140F00}
+.btn-y:hover{box-shadow:0 0 34px rgba(255,206,0,.42)}
+.btn-g{background:rgba(255,255,255,.08);color:#fff;border:1px solid var(--line-d);backdrop-filter:blur(10px)}
+.btn-g:hover{background:rgba(255,255,255,.16)}
+.btn-d{background:var(--ink);color:#fff}
+.btn-o{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
+.hero-img{position:absolute;inset:0}
+.hero-img img{width:100%;height:100%;object-fit:cover;
+  animation:zoom 16s ease-out forwards;filter:saturate(.92) contrast(1.05)}
+@keyframes zoom{from{transform:scale(1.14)}to{transform:scale(1)}}
+.hero-img::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(5,7,12,.97) 4%,rgba(5,7,12,.58) 42%,rgba(5,7,12,.42) 100%),
+             linear-gradient(to right,rgba(5,7,12,.8),transparent 62%)}
+.hero-in{position:relative;z-index:3;width:100%;padding:120px 0 46px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:'IBM Plex Mono';font-size:10px;
+  letter-spacing:.22em;text-transform:uppercase;color:#B7C5DE;border:1px solid var(--line-d);
+  padding:8px 15px;border-radius:100px;background:rgba(255,255,255,.05);backdrop-filter:blur(10px)}
+.eyebrow i{width:5px;height:5px;border-radius:50%;background:#12C57A;box-shadow:0 0 10px #12C57A;
+  animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-size:clamp(42px,8.2vw,86px);font-weight:900;margin-top:24px;max-width:13ch}
+h1 .l{display:block;overflow:hidden}
+h1 .l>span{display:block;transform:translateY(105%);animation:up 1s cubic-bezier(.16,1,.3,1) forwards}
+h1 .l:nth-child(2)>span{animation-delay:.1s}
+@keyframes up{to{transform:translateY(0)}}
+h1 mark{background:none;color:var(--yellow)}
+.lede{color:#B0BFDA;font-size:17.5px;max-width:44ch;margin-top:22px;opacity:0;animation:fade .9s .6s forwards}
+@keyframes fade{to{opacity:1}}
+
+/* agente sobre el hero */
+.agent{margin-top:30px;max-width:560px;background:rgba(255,255,255,.07);backdrop-filter:blur(24px);
+  border:1px solid var(--line-d);border-radius:18px;overflow:hidden;opacity:0;animation:fade .9s .85s forwards}
+.agent-head{display:flex;align-items:center;gap:11px;padding:13px 16px;border-bottom:1px solid var(--line-d)}
+.av{width:36px;height:36px;border-radius:50%;background:var(--blue);flex:none;position:relative;
+  display:flex;align-items:center;justify-content:center}
+.av::after{content:'';position:absolute;right:-1px;bottom:-1px;width:11px;height:11px;border-radius:50%;
+  background:#12C57A;border:2.5px solid #0D111B}
+.agent-id{flex:1}
+.agent-id b{font-family:'Archivo';font-size:14.5px;font-weight:800;display:block}
+.agent-id span{font-size:12px;color:#9FB0CE}
+.live{font-family:'IBM Plex Mono';font-size:9.5px;letter-spacing:.12em;color:#12C57A;
+  background:rgba(18,197,122,.14);padding:5px 10px;border-radius:100px}
+.field{display:flex;margin:13px 16px 0;border:1.5px solid rgba(255,255,255,.16);border-radius:12px;
+  overflow:hidden;background:rgba(0,0,0,.28);transition:.2s}
+.field:focus-within{border-color:var(--yellow)}
+.field .cl{width:0;overflow:hidden;background:var(--blue);flex:none;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;font-family:'IBM Plex Mono';font-size:11px;font-weight:600;
+  transition:width .22s cubic-bezier(.2,.85,.3,1)}
+.field .cl span{font-size:8px}
+.field.is-plate{border-color:#fff;background:#fff}
+.field.is-plate .cl{width:34px}
+.field.is-plate input{color:#0A1A3C;font-family:'IBM Plex Mono';font-weight:600;font-size:21px;
+  letter-spacing:.18em;text-transform:uppercase}
+.field input{flex:1;border:none;outline:none;background:transparent;color:#fff;padding:14px;
+  font-family:inherit;font-size:15.5px;min-width:0}
+.field input::placeholder{color:#7E90B0}
+.field button{border:none;background:var(--yellow);color:#140F00;padding:0 20px;font-size:17px;cursor:pointer;flex:none}
+.chips{display:flex;flex-wrap:wrap;gap:7px;padding:12px 16px 16px}
+.chips button{background:rgba(255,255,255,.08);border:1px solid var(--line-d);border-radius:100px;
+  padding:7px 13px;font-size:12.5px;font-weight:500;color:#DCE5F5;cursor:pointer;transition:.18s}
+.chips button:hover{background:var(--yellow);color:#140F00;border-color:var(--yellow)}
+
+/* franja */
+.strip{border-top:1px solid var(--line-d);border-bottom:1px solid var(--line-d);
+  background:rgba(255,255,255,.02);overflow:hidden;padding:15px 0}
+.strip-in{display:flex;gap:44px;white-space:nowrap;animation:slide 34s linear infinite;
+  font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.16em;color:#7E90B0;text-transform:uppercase}
+.strip-in b{color:var(--yellow);font-weight:500}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- VITRINA ---------- */
+section{padding:92px 0}
+.shead{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+  margin-bottom:36px;flex-wrap:wrap}
+.shead .tag{font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--yellow);display:block;margin-bottom:13px}
+.shead h2{font-size:clamp(28px,5vw,46px);font-weight:800;max-width:16ch}
+.shead p{color:#93A5C6;font-size:16px;margin-top:12px;max-width:42ch}
+.grid{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:660px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
+.card{border-radius:16px;overflow:hidden;background:var(--stage-2);border:1px solid var(--line-d);
+  transition:transform .45s cubic-bezier(.2,.9,.3,1),border-color .3s;text-decoration:none;color:inherit;display:block}
+.card:hover{transform:translateY(-9px);border-color:rgba(255,255,255,.22)}
+.cimg{aspect-ratio:4/3;position:relative;overflow:hidden}
+.cimg img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.9,.3,1)}
+.card:hover .cimg img{transform:scale(1.08)}
+.cimg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(5,7,12,.72),transparent 52%)}
+.badge{position:absolute;top:13px;left:13px;z-index:2;display:flex;align-items:center;gap:6px;
+  background:rgba(5,7,12,.72);backdrop-filter:blur(10px);border:1px solid var(--line-d);
+  border-radius:100px;padding:6px 12px;font-size:11.5px;font-weight:600}
+.badge i{width:6px;height:6px;border-radius:50%;background:#12C57A}
+.badge.amber i{background:var(--yellow)}
+.cimg .n{position:absolute;bottom:13px;left:14px;right:14px;z-index:2}
+.cimg .n h3{font-size:19px;font-weight:800}
+.cimg .n span{font-family:'IBM Plex Mono';font-size:11px;color:#B0BFDA}
+.cbody{padding:15px 16px;display:flex;justify-content:space-between;align-items:flex-end}
+.cuota{font-family:'Archivo';font-size:23px;font-weight:800;letter-spacing:-.03em}
+.cuota small{display:block;font-family:'IBM Plex Mono';font-size:9.5px;font-weight:400;
+  color:#7E90B0;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
+.contado{text-align:right;font-size:12px;color:#7E90B0}
+.contado b{display:block;font-size:15px;color:#fff;font-weight:600}
+
+/* ---------- FICHA + 360 ---------- */
+.feature{display:grid;grid-template-columns:1fr;gap:26px}
+@media(min-width:980px){.feature{grid-template-columns:1.25fr 1fr;align-items:start}}
+.viewer{border:1px solid var(--line-d);border-radius:18px;overflow:hidden;background:var(--stage-2);
+  cursor:grab;position:relative}
+.viewer.grabbing{cursor:grabbing}
+.vstage{aspect-ratio:4/3;position:relative;overflow:hidden;background:#000}
+.vstage img{width:100%;height:100%;object-fit:cover}
+.hot{position:absolute;width:27px;height:27px;border-radius:50%;border:none;background:var(--yellow);
+  color:#241800;font-family:'IBM Plex Mono';font-size:11px;font-weight:600;cursor:pointer;
+  transform:translate(-50%,-50%);z-index:6;display:flex;align-items:center;justify-content:center}
+.hot::before{content:'';position:absolute;inset:-6px;border-radius:50%;border:1.5px solid var(--yellow);
+  animation:ring 2.2s infinite}
+@keyframes ring{0%{transform:scale(.85);opacity:.9}100%{transform:scale(1.75);opacity:0}}
+.hot .tip{position:absolute;bottom:36px;left:50%;transform:translateX(-50%) translateY(6px);width:206px;
+  background:#fff;color:var(--ink);border-radius:10px;padding:11px 13px;font-size:12.5px;line-height:1.42;
+  text-align:left;opacity:0;pointer-events:none;transition:.22s;box-shadow:0 18px 40px rgba(0,0,0,.6)}
+.hot .tip b{display:block;font-family:'IBM Plex Mono';font-size:10px;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--amber);margin-bottom:4px}
+.hot:hover .tip,.hot:focus .tip{opacity:1;transform:translateX(-50%) translateY(0)}
+.vbar{display:flex;align-items:center;gap:15px;padding:15px 18px;border-top:1px solid var(--line-d);flex-wrap:wrap}
+.vhint{font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.14em;color:#7E90B0}
+.track{flex:1;min-width:110px;height:3px;background:rgba(255,255,255,.12);border-radius:2px;position:relative}
+.track i{position:absolute;top:-3px;width:26px;height:9px;border-radius:5px;background:var(--yellow);transition:left .05s linear}
+.fnum{font-family:'IBM Plex Mono';font-size:10px;color:#7E90B0;letter-spacing:.12em}
+.thumbs{display:flex;gap:8px;padding:0 18px 18px;overflow-x:auto}
+.thumbs img{width:66px;height:48px;object-fit:cover;border-radius:6px;opacity:.42;cursor:pointer;
+  transition:.2s;flex:none;border:1.5px solid transparent}
+.thumbs img.on,.thumbs img:hover{opacity:1;border-color:var(--yellow)}
+
+/* documento sin vueltas */
+.doc{background:#fff;color:var(--ink);border-radius:18px;overflow:hidden;
+  box-shadow:0 30px 70px -30px rgba(0,0,0,.9)}
+.doc-top{background:var(--ink);color:#fff;padding:18px 20px;display:flex;justify-content:space-between;
+  align-items:center;gap:14px}
+.doc-top h3{font-size:17.5px;font-weight:800}
+.doc-top .m{font-family:'IBM Plex Mono';font-size:10px;color:#8FA3C8;letter-spacing:.08em;margin-top:3px}
+.stamp{border:2px solid var(--yellow);color:var(--yellow);border-radius:6px;padding:6px 11px;
+  font-family:'IBM Plex Mono';font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+  text-align:center;transform:rotate(-3deg);line-height:1.3;flex:none}
+.stamp b{display:block;font-size:12.5px}
+.perf{height:11px;background:radial-gradient(circle at 5.5px 0,transparent 4.5px,#fff 5px) repeat-x;
+  background-size:11px 11px;background-color:var(--ink)}
+.rows{padding:4px 20px 14px}
+.row{padding:10px 0;border-bottom:1px dashed var(--line)}
+.row:last-child{border-bottom:none}
+.row .k{font-family:'IBM Plex Mono';font-size:10.5px;letter-spacing:.08em;color:var(--ink-2);text-transform:uppercase}
+.row .v{font-size:14.5px;font-weight:600;margin-top:3px}
+.row .src{display:block;font-weight:400;font-size:12px;color:var(--ink-2);margin-top:3px}
+.tick{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:3px 8px;
+  border-radius:6px;white-space:nowrap}
+.tick.ok{background:var(--green-bg);color:var(--green)}
+.tick.warn{background:var(--amber-bg);color:var(--amber)}
+.flaws{background:var(--amber-bg);border-top:1px solid #F0DCB8;padding:17px 20px}
+.flaws h4{font-size:14.5px;font-weight:800;color:var(--amber)}
+.flaws p.s{font-size:12.5px;color:#8A6118;margin:4px 0 11px}
+.flaw{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #F0DCB8;font-size:13.5px;color:#5C441A}
+.flaw:last-child{border-bottom:none}
+.flaw .tg{font-family:'IBM Plex Mono';font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
+  background:#fff;border:1px solid #E8D0A4;border-radius:4px;padding:2px 6px;color:var(--amber);flex:none;margin-top:2px}
+.fin{padding:17px 20px;background:#F7F9FC;border-top:1px solid var(--line)}
+.fin-g{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.fin-c{background:#fff;border:1px solid var(--line);border-radius:9px;padding:11px}
+.fin-c .k{font-family:'IBM Plex Mono';font-size:9px;letter-spacing:.1em;color:var(--ink-2);text-transform:uppercase}
+.fin-c .v{font-family:'Archivo';font-size:18px;font-weight:800;margin-top:3px}
+.fin-c.hl{background:var(--yellow);border-color:var(--yellow)}
+.legal{font-size:10.5px;color:var(--ink-2);margin-top:11px;line-height:1.5}
+.doc-cta{display:flex;gap:9px;padding:0 20px 20px;flex-wrap:wrap}
+
+/* galería */
+.gal{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(min-width:820px){.gal{grid-template-columns:repeat(4,1fr)}
+  .gal a:first-child{grid-column:span 2;grid-row:span 2}}
+.gal a{border-radius:12px;overflow:hidden;aspect-ratio:1;display:block}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.9,.3,1)}
+.gal a:hover img{transform:scale(1.07)}
+
+/* corte a papel */
+.cut{background:var(--paper);color:var(--ink);border-radius:28px 28px 0 0;padding:78px 0 90px}
+.cut h2,.cut h3,.cut h4{color:var(--ink)}
+.cut .shead p{color:var(--ink-2)}
+.cut .shead .tag{color:var(--blue)}
+.svc{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:16px;overflow:hidden}
+@media(min-width:640px){.svc{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.svc{grid-template-columns:repeat(4,1fr)}}
+.svc-i{background:#fff;padding:22px 20px;transition:.2s}
+.svc-i:hover{background:#F7F9FC}
+.svc-i .n{font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.12em;color:var(--blue)}
+.svc-i h4{font-size:15.5px;font-weight:700;margin:9px 0 5px}
+.svc-i p{font-size:13px;color:var(--ink-2);line-height:1.45}
+.svc-i .pr{font-family:'IBM Plex Mono';font-size:12px;font-weight:600;margin-top:8px}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:26px}
+@media(min-width:760px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat{background:#fff;padding:26px 18px;text-align:center}
+.stat .n{font-family:'Archivo';font-size:36px;font-weight:900;letter-spacing:-.04em}
+.stat .l{font-size:12.5px;color:var(--ink-2);margin-top:4px;line-height:1.35}
+
+footer{background:var(--ink);color:#8FA3C8;padding:48px 0 30px;font-size:13.5px}
+.f-g{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;padding-bottom:26px;
+  border-bottom:1px solid rgba(255,255,255,.1)}
+footer b{color:#fff;font-weight:600}
+.f-b{padding-top:20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:11.5px}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s cubic-bezier(.16,1,.3,1)}
+/* respaldo si el entorno bloquea imágenes externas */
+.hero-img,.cimg,.vstage,.gal a{background:linear-gradient(150deg,#1A2540,#0A0E18)}
+#aviso{position:fixed;left:0;right:0;top:0;z-index:300;background:var(--yellow);color:#140F00;
+  padding:11px 18px;font-size:13.5px;font-weight:600;text-align:center;line-height:1.45}
+#aviso span{font-weight:400;display:block;font-size:12.5px;margin-top:2px}
+.reveal.in{opacity:1;transform:none}
+.dock{position:fixed;right:18px;bottom:18px;z-index:130;display:flex;align-items:center;gap:10px;
+  background:var(--yellow);color:#140F00;border:none;border-radius:100px;padding:11px 20px 11px 12px;
+  cursor:pointer;box-shadow:0 14px 34px -8px rgba(255,206,0,.5);font-size:14px;font-weight:600;transition:.24s}
+.dock:hover{transform:translateY(-3px)}
+.dock .da{width:30px;height:30px;border-radius:50%;background:var(--ink);flex:none;
+  display:flex;align-items:center;justify-content:center}
+.dock em{font-style:normal;font-family:'IBM Plex Mono';font-size:9.5px;letter-spacing:.08em;
+  color:#6B5400;display:block;font-weight:400}
+@media(max-width:520px){.dock .dt{display:none}.dock{padding:11px 13px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}
+  h1 .l>span{transform:none}.lede,.agent{opacity:1}.reveal{opacity:1;transform:none}}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px;border-radius:6px}
+</style>
+</head>
+<body>
+
+<nav id="nav"><div class="nav-in">
+  <div class="brand">
+    <svg width="30" height="30" viewBox="0 0 40 40" aria-hidden="true">
+      <circle cx="20" cy="20" r="20" fill="#1B5CF5"/>
+      <path d="M7 27 L15 14 L21 22 L26 15 L33 27 Z" fill="#FFCE00"/></svg>
+    <div>HUNTER MOTORES<small>SIN VUELTAS</small></div>
+  </div>
+  <div class="nav-links">
+    <a href="#vitrina">Vitrina</a><a href="#ficha">Sin vueltas</a>
+    <a href="#servicios">Servicios</a><a href="#local">Local</a>
+  </div>
+  <a class="btn btn-y" href="#">Vende tu auto</a>
+</div></nav>
+
+<div class="hero">
+  <div class="hero-img">
+    <img src="https://images.unsplash.com/photo-1567808291548-fc3ee04dbcf0?w=2200&q=80&auto=format&fit=crop" alt="Vehículo en vitrina Hunter Motores" fetchpriority="high">
+  </div>
+  <div class="wrap hero-in">
+    <span class="eyebrow"><i></i>14 AUTOS EN VITRINA · CONCÓN</span>
+    <h1><span class="l"><span>Mírale hasta el</span></span><span class="l"><span><mark>último detalle.</mark></span></span></h1>
+    <p class="lede">Kilometraje verificado con fuente, papeles al día y hasta lo que hay que arreglarle. Si no lo podemos probar, no lo publicamos.</p>
+
+    <div class="agent">
+      <div class="agent-head">
+        <div class="av"><svg width="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18 L8 8 L12 14 L15 9 L21 18 Z" fill="#FFCE00"/><circle cx="12" cy="5" r="2" fill="#FFCE00"/></svg></div>
+        <div class="agent-id"><b>Cazador</b><span>Agente de Hunter Motores</span></div>
+        <div class="live">● EN LÍNEA</div>
+      </div>
+      <div class="field" id="field">
+        <div class="cl">CL<span>★</span></div>
+        <input id="ask" type="text" autocomplete="off" aria-label="Pregúntale a Cazador">
+        <button type="button" aria-label="Enviar">→</button>
+      </div>
+      <div class="chips">
+        <button data-q="JHVR42">Consultar una patente</button>
+        <button data-q="Busco un SUV automático bajo $12.000.000">SUV bajo $12M</button>
+        <button data-q="¿Cuánto me dan por mi Sail 2018?">Tasar mi auto</button>
+        <button data-q="Quiero cuota bajo $250.000">Cuota bajo $250.000</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="strip"><div class="strip-in">
+  <span>KILOMETRAJE CON FUENTE</span><b>◆</b><span>DEFECTOS DECLARADOS</span><b>◆</b>
+  <span>HISTORIAL DE PRECIO PÚBLICO</span><b>◆</b><span>GARANTÍA 1 AÑO</span><b>◆</b>
+  <span>24 FOTOS POR AUTO</span><b>◆</b><span>CERO FOTOS DE STOCK</span><b>◆</b>
+  <span>KILOMETRAJE CON FUENTE</span><b>◆</b><span>DEFECTOS DECLARADOS</span><b>◆</b>
+  <span>HISTORIAL DE PRECIO PÚBLICO</span><b>◆</b><span>GARANTÍA 1 AÑO</span><b>◆</b>
+  <span>24 FOTOS POR AUTO</span><b>◆</b><span>CERO FOTOS DE STOCK</span><b>◆</b>
+</div></div>
+
+<section id="vitrina"><div class="wrap">
+  <div class="shead reveal">
+    <div><span class="tag">Vitrina</span><h2>Todos verificados. Ninguno maquillado.</h2></div>
+    <a class="btn btn-g" href="#">Ver los 14 autos →</a>
+  </div>
+  <div class="grid">
+    <a class="card reveal" href="#ficha"><div class="cimg">
+      <span class="badge"><i></i>Verificado</span>
+      <img src="https://images.unsplash.com/photo-1581208509730-ea918b007133?w=900&q=80&auto=format&fit=crop" alt="SUV disponible">
+      <div class="n"><h3>Toyota RAV4 2019</h3><span>68.400 KM · AUTOMÁTICA · 1 DUEÑO</span></div></div>
+      <div class="cbody"><div class="cuota"><small>Cuota desde</small>$241.900</div>
+        <div class="contado">Contado<b>$14.290.000</b></div></div></a>
+
+    <a class="card reveal" href="#ficha"><div class="cimg">
+      <span class="badge"><i></i>Verificado</span>
+      <img src="https://images.unsplash.com/photo-1604705528621-81b2755a320b?w=900&q=80&auto=format&fit=crop" alt="Hatchback disponible">
+      <div class="n"><h3>Suzuki Swift 2021</h3><span>31.200 KM · MANUAL · 1 DUEÑO</span></div></div>
+      <div class="cbody"><div class="cuota"><small>Cuota desde</small>$149.500</div>
+        <div class="contado">Contado<b>$8.490.000</b></div></div></a>
+
+    <a class="card reveal" href="#ficha"><div class="cimg">
+      <span class="badge amber"><i></i>2 detalles declarados</span>
+      <img src="https://images.unsplash.com/photo-1556189250-72ba954cfc2b?w=900&q=80&auto=format&fit=crop" alt="Sedán disponible">
+      <div class="n"><h3>Chevrolet Sail 2018</h3><span>94.800 KM · MANUAL · 2 DUEÑOS</span></div></div>
+      <div class="cbody"><div class="cuota"><small>Cuota desde</small>$98.700</div>
+        <div class="contado">Contado<b>$5.190.000</b></div></div></a>
+
+    <a class="card reveal" href="#ficha"><div class="cimg">
+      <span class="badge"><i></i>Verificado</span>
+      <img src="https://images.unsplash.com/photo-1507882690564-a51298183825?w=900&q=80&auto=format&fit=crop" alt="SUV disponible">
+      <div class="n"><h3>Hyundai Tucson 2020</h3><span>52.100 KM · AUTOMÁTICA · 1 DUEÑO</span></div></div>
+      <div class="cbody"><div class="cuota"><small>Cuota desde</small>$208.400</div>
+        <div class="contado">Contado<b>$12.190.000</b></div></div></a>
+
+    <a class="card reveal" href="#ficha"><div class="cimg">
+      <span class="badge"><i></i>Verificado</span>
+      <img src="https://images.unsplash.com/photo-1619362280286-f1f8fd5032ed?w=900&q=80&auto=format&fit=crop" alt="Coupé disponible">
+      <div class="n"><h3>Mazda 3 2019</h3><span>61.700 KM · AUTOMÁTICA · 1 DUEÑO</span></div></div>
+      <div class="cbody"><div class="cuota"><small>Cuota desde</small>$171.200</div>
+        <div class="contado">Contado<b>$9.890.000</b></div></div></a>
+
+    <a class="card reveal" href="#ficha"><div class="cimg">
+      <span class="badge amber"><i></i>1 detalle declarado</span>
+      <img src="https://images.unsplash.com/photo-1541348263662-e068662d82af?w=900&q=80&auto=format&fit=crop" alt="Camioneta disponible">
+      <div class="n"><h3>Nissan Kicks 2021</h3><span>38.900 KM · AUTOMÁTICA · 1 DUEÑO</span></div></div>
+      <div class="cbody"><div class="cuota"><small>Cuota desde</small>$186.300</div>
+        <div class="contado">Contado<b>$10.790.000</b></div></div></a>
+  </div>
+</div></section>
+
+<section id="ficha" style="padding-top:20px"><div class="wrap">
+  <div class="shead reveal">
+    <div><span class="tag">Ficha completa · HM-0007</span>
+      <h2>Gíralo. Los defectos van marcados sobre el auto.</h2>
+      <p>24 fotos reales tomadas en círculo. Los puntos amarillos son los detalles que declaramos antes de que preguntes.</p></div>
+  </div>
+
+  <div class="feature">
+    <div class="viewer reveal" id="viewer">
+      <div class="vstage" id="vstage">
+        <img id="vimg" src="https://images.unsplash.com/photo-1581208509730-ea918b007133?w=1400&q=80&auto=format&fit=crop" alt="Vista 360 del vehículo">
+        <button class="hot" style="left:30%;top:66%">1
+          <span class="tip"><b>Cosmético</b>Rayón de 8 cm en puerta trasera derecha. Pintura, aprox. $45.000.</span></button>
+        <button class="hot" style="left:73%;top:80%">2
+          <span class="tip"><b>Menor</b>Neumáticos traseros al 40% de banda. Cambio recomendado en 6 meses.</span></button>
+      </div>
+      <div class="vbar">
+        <span class="vhint">↔ ARRASTRA PARA GIRAR</span>
+        <div class="track"><i id="knob" style="left:0"></i></div>
+        <span class="fnum" id="fnum">FOTO 01 / 06</span>
+      </div>
+      <div class="thumbs" id="thumbs"></div>
+    </div>
+
+    <div class="doc reveal">
+      <div class="doc-top">
+        <div><h3>Toyota RAV4 2.0 XLE · 2019</h3>
+          <div class="m">HM-0007 · VERIFICADO 06 AGO 2026</div></div>
+        <div class="stamp">Semáforo<b>VERDE</b></div>
+      </div>
+      <div class="perf"></div>
+      <div class="rows">
+        <div class="row"><div class="k">Kilometraje</div>
+          <div class="v">68.400 km <span class="tick ok">✓ verificado</span>
+            <span class="src">Revisión técnica Concón, 12·06·2026 — coincide con servicio oficial 08·2025.</span></div></div>
+        <div class="row"><div class="k">Dueños anteriores</div>
+          <div class="v">1 <span class="src">Uso particular. Nunca flota, arriendo ni transporte.</span></div></div>
+        <div class="row"><div class="k">Situación legal</div>
+          <div class="v"><span class="tick ok">✓ sin prendas</span> <span class="tick ok">✓ sin limitaciones</span> <span class="tick ok">✓ sin encargo</span>
+            <span class="src">Informe folio 4482910 · 05·08·2026 · PDF descargable.</span></div></div>
+        <div class="row"><div class="k">Multas y TAG</div>
+          <div class="v"><span class="tick ok">✓ al día</span></div></div>
+        <div class="row"><div class="k">Inspección</div>
+          <div class="v">108 de 112 puntos <span class="tick warn">4 observaciones</span></div></div>
+        <div class="row"><div class="k">Historial de precio</div>
+          <div class="v">$14.290.000 <span class="tick ok">↓ bajó $400.000 el 01·08</span></div></div>
+      </div>
+      <div class="flaws">
+        <h4>◆ Lo que hay que arreglarle</h4>
+        <p class="s">Lo decimos nosotros para que no lo descubras después. Ya está descontado del precio.</p>
+        <div class="flaw"><span class="tg">Cosmético</span><span>Rayón de 8 cm en puerta trasera derecha. Aprox. $45.000.</span></div>
+        <div class="flaw"><span class="tg">Menor</span><span>Neumáticos traseros al 40% de banda.</span></div>
+        <div class="flaw"><span class="tg">Cosmético</span><span>Desgaste leve en apoyabrazos del conductor.</span></div>
+        <div class="flaw"><span class="tg">Menor</span><span>Filtro de aire acondicionado vencido. Lo cambiamos antes de entregar.</span></div>
+      </div>
+      <div class="fin">
+        <div class="fin-g">
+          <div class="fin-c"><div class="k">Pie 20%</div><div class="v">$2.858.000</div></div>
+          <div class="fin-c hl"><div class="k">Cuota × 48</div><div class="v">$241.900</div></div>
+          <div class="fin-c"><div class="k">CAE</div><div class="v">18,4%</div></div>
+          <div class="fin-c"><div class="k">Costo total</div><div class="v">$14.469.200</div></div>
+        </div>
+        <p class="legal">Institución otorgante: [banco o financiera]. Simulación referencial al 12·08·2026, sujeta a evaluación comercial. Incluye seguro de desgravamen y gastos operacionales.</p>
+      </div>
+      <div class="doc-cta">
+        <a class="btn btn-d" href="#">Agendar prueba</a>
+        <a class="btn btn-o" href="#">Descargar informe</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="gal reveal" style="margin-top:26px">
+    <a href="#"><img src="https://images.unsplash.com/photo-1494905998402-395d579af36f?w=1200&q=80&auto=format&fit=crop" alt="Vista exterior"></a>
+    <a href="#"><img src="https://images.unsplash.com/photo-1532268116505-8c59cc37d2e6?w=700&q=80&auto=format&fit=crop" alt="Detalle de foco"></a>
+    <a href="#"><img src="https://images.unsplash.com/photo-1735012316426-0494b0d1352b?w=700&q=80&auto=format&fit=crop" alt="Vista lateral"></a>
+    <a href="#"><img src="https://images.unsplash.com/photo-1506719040632-7d586470c936?w=700&q=80&auto=format&fit=crop" alt="Vista en movimiento"></a>
+    <a href="#"><img src="https://images.unsplash.com/photo-1603831126198-a53fd2a50da5?w=700&q=80&auto=format&fit=crop" alt="Vista tres cuartos"></a>
+  </div>
+</div></section>
+
+<div class="cut"><div class="wrap">
+  <div class="shead reveal">
+    <div><span class="tag">Servicios</span><h2>Ocho maneras de resolverlo aquí.</h2>
+      <p>Cada una con su propio flujo en el sitio y en el agente. Nada que "consultar por interno".</p></div>
+  </div>
+  <div class="svc reveal">
+    <div class="svc-i"><span class="n">01</span><h4>Comprar usado</h4><p>Stock verificado, con historial a la vista.</p></div>
+    <div class="svc-i"><span class="n">02</span><h4>Te compramos el tuyo</h4><p>Oferta en 24 horas con las fotos y la patente.</p></div>
+    <div class="svc-i"><span class="n">03</span><h4>Consignación</h4><p>Lo vendemos por ti. Vitrina, gestión y traspaso.</p></div>
+    <div class="svc-i"><span class="n">04</span><h4>Parte de pago</h4><p>Tu auto entra al precio del nuevo, tasado al tiro.</p></div>
+    <div class="svc-i"><span class="n">05</span><h4>Inspección pre-compra</h4><p>Vamos a ver el auto que quieres comprar, aunque no sea nuestro.</p><div class="pr">$72.990</div></div>
+    <div class="svc-i"><span class="n">06</span><h4>Te buscamos tu auto</h4><p>Dinos qué necesitas y lo salimos a buscar.</p></div>
+    <div class="svc-i"><span class="n">07</span><h4>Garantía 1 año</h4><p>Motor y transmisión, vía corredor inscrito.</p></div>
+    <div class="svc-i"><span class="n">08</span><h4>Financiamiento</h4><p>Preevaluación online con CAE a la vista.</p></div>
+  </div>
+  <div class="stats reveal">
+    <div class="stat"><div class="n" data-to="24">0</div><div class="l">fotos por auto,<br>tomadas en círculo</div></div>
+    <div class="stat"><div class="n" data-to="112">0</div><div class="l">puntos revisados<br>por vehículo</div></div>
+    <div class="stat"><div class="n" data-to="128">0</div><div class="l">horas semanales<br>que cubre Cazador</div></div>
+    <div class="stat"><div class="n" data-to="0">0</div><div class="l">datos publicados<br>sin fuente</div></div>
+  </div>
+</div></div>
+
+<footer id="local"><div class="wrap">
+  <div class="f-g">
+    <div><b>Hunter Motores</b><br>Av. El Parque 430, Concón<br>Región de Valparaíso</div>
+    <div><b>Contacto</b><br>+56 9 4560 8543<br>contacto@huntermotores.cl</div>
+    <div><b>Horario del local</b><br>Lunes a viernes, 10:00–18:00<br><span style="color:#FFCE00">Cazador atiende las otras 128 horas.</span></div>
+  </div>
+  <div class="f-b"><span>© 2026 Hunter Motores · Sin vueltas</span>
+    <span style="font-family:'IBM Plex Mono';letter-spacing:.1em">MAQUETA · TOP KREATIVA</span></div>
+</div></footer>
+
+<button class="dock" type="button">
+  <span class="da"><svg width="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18 L8 8 L12 14 L15 9 L21 18 Z" fill="#FFCE00"/></svg></span>
+  <span class="dt">Hablar con Cazador<em>RESPONDE AL TIRO · 24/7</em></span>
+</button>
+
+<script>
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = i => document.getElementById(i);
+
+addEventListener('scroll', () => $('nav').classList.toggle('solid', scrollY > 40), {passive:true});
+
+/* campo del agente: se convierte en placa al reconocer patente */
+const ask = $('ask'), field = $('field'), P = /^[A-Z]{4}[0-9]{0,2}$/;
+function render(){
+  const r = ask.value.toUpperCase().replace(/[^A-Z0-9]/g,'');
+  if(P.test(r) && r.length >= 4){
+    field.classList.add('is-plate');
+    ask.value = r.length > 4 ? r.slice(0,4)+'·'+r.slice(4) : r;
+    ask.maxLength = 7;
+  } else { field.classList.remove('is-plate'); ask.maxLength = 120; }
+}
+ask.addEventListener('input', render);
+document.querySelectorAll('.chips button').forEach(b =>
+  b.onclick = () => { ask.value = b.dataset.q; render(); ask.focus(); });
+
+const frases = ['Escribe una patente y te muestro su historial…',
+  'Busco algo familiar bajo $10 millones…','¿Cuánto me dan por mi Sail 2018?',
+  'Quiero cuota bajo $250.000 a 48 meses…','¿Pueden ir a ver un auto que quiero comprar?'];
+let fi = 0, ci = 0, del = false;
+function type(){
+  if(document.activeElement === ask || ask.value) return setTimeout(type, 900);
+  const t = frases[fi]; ask.placeholder = t.slice(0, ci);
+  if(!del && ci < t.length){ ci++; setTimeout(type, 42); }
+  else if(!del){ del = true; setTimeout(type, 2000); }
+  else if(ci > 0){ ci--; setTimeout(type, 18); }
+  else { del = false; fi = (fi+1) % frases.length; setTimeout(type, 320); }
+}
+reduce ? ask.placeholder = frases[0] : type();
+
+/* visor 360 con fotos reales */
+const S = ['photo-1581208509730-ea918b007133','photo-1494905998402-395d579af36f',
+  'photo-1735012316426-0494b0d1352b','photo-1506719040632-7d586470c936',
+  'photo-1603831126198-a53fd2a50da5','photo-1532268116505-8c59cc37d2e6']
+  .map(id => `https://images.unsplash.com/${id}?w=1400&q=80&auto=format&fit=crop`);
+S.forEach(s => { const i = new Image(); i.src = s; });
+
+const vimg = $('vimg'), knob = $('knob'), fnum = $('fnum'),
+      viewer = $('viewer'), thumbs = $('thumbs');
+let ang = 0, drag = false, lx = 0;
+S.forEach((s,i) => {
+  const t = new Image(); t.src = s; t.alt = 'Foto ' + (i+1);
+  t.onclick = () => { ang = i * (360/S.length); paint(); };
+  thumbs.appendChild(t);
+});
+function paint(){
+  const n = ((ang % 360) + 360) % 360, i = Math.min(S.length-1, Math.floor(n/360*S.length));
+  vimg.src = S[i];
+  knob.style.left = (n/360*100) + '%';
+  fnum.textContent = 'FOTO ' + String(i+1).padStart(2,'0') + ' / ' + String(S.length).padStart(2,'0');
+  [...thumbs.children].forEach((t,k) => t.classList.toggle('on', k === i));
+}
+const ini = x => { drag = true; lx = x; viewer.classList.add('grabbing'); };
+const mov = x => { if(!drag) return; ang += (x-lx)*.85; lx = x; paint(); };
+const fin = () => { drag = false; viewer.classList.remove('grabbing'); };
+$('vstage').addEventListener('mousedown', e => { e.preventDefault(); ini(e.clientX); });
+addEventListener('mousemove', e => mov(e.clientX));
+addEventListener('mouseup', fin);
+$('vstage').addEventListener('touchstart', e => ini(e.touches[0].clientX), {passive:true});
+$('vstage').addEventListener('touchmove', e => mov(e.touches[0].clientX), {passive:true});
+addEventListener('touchend', fin);
+paint();
+
+/* aviso si el entorno bloquea las fotos externas */
+(function(){
+  const test = new Image();
+  test.onerror = () => {
+    const d = document.createElement('div');
+    d.id = 'aviso';
+    d.innerHTML = 'Este visor bloquea las fotos externas. <span>Descarga el archivo y ábrelo en Chrome o Safari: las fotos cargan sin problema.</span>';
+    document.body.prepend(d);
+    document.getElementById('nav').style.top = d.offsetHeight + 'px';
+  };
+  test.src = 'https://images.unsplash.com/photo-1567808291548-fc3ee04dbcf0?w=40&q=20';
+})();
+
+/* revelado + contadores */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if(!e.isIntersecting) return;
+  e.target.classList.add('in');
+  e.target.querySelectorAll('[data-to]').forEach(n => {
+    const to = +n.dataset.to;
+    if(reduce || !to){ n.textContent = to; return; }
+    let v = 0; const s = () => { v += Math.ceil(to/26);
+      n.textContent = v >= to ? to : v; if(v < to) requestAnimationFrame(s); }; s();
+  });
+  io.unobserve(e.target);
+}), {threshold:.18});
+document.querySelectorAll('.reveal').forEach((el,i) => {
+  el.style.transitionDelay = (i%3)*80 + 'ms'; io.observe(el);
+});
+</script>
+</body>
+</html>
