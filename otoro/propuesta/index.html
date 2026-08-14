@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Propuesta Sistema · Otoro Sushi Nikkei · Top Kreativa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,700;9..40,1000&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0D0D0D; --bg2:#111111; --card:#161616; --card2:#1C1C1C;
+  --border:#2A2A2A; --border2:#333333;
+  --text:#F5F5F0; --muted:#888888; --muted2:#555555;
+  --accent:#D6006E; --accent-hover:#B8005C;
+  --accent-glow:rgba(214,0,110,.18); --accent-light:rgba(214,0,110,.08);
+  --white:#FFFFFF; --green:#00C853; --amber:#FFAE2E;
+  --radius:12px; --radius-sm:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;
+  font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'DM Sans',sans-serif;font-weight:1000;line-height:1;letter-spacing:-.035em}
+.wrap{max-width:980px;margin:0 auto;padding:0 24px}
+a{color:inherit}
+
+.topbar{position:sticky;top:0;z-index:60;background:rgba(13,13,13,.9);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border)}
+.topbar-in{max-width:980px;margin:0 auto;padding:11px 24px;display:flex;justify-content:space-between;
+  align-items:center;gap:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted)}
+.topbar b{color:var(--accent);font-weight:600}
+
+.head{padding:60px 0 10px;position:relative;overflow:hidden}
+.head::before{content:"";position:absolute;top:-170px;left:50%;transform:translateX(-50%);width:780px;height:430px;
+  background:radial-gradient(ellipse,var(--accent-glow),transparent 68%);filter:blur(10px)}
+.head .wrap{position:relative}
+.issuer{display:inline-flex;align-items:center;gap:11px;font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.issuer i{width:24px;height:2px;background:var(--accent);border-radius:2px;font-style:normal}
+.head h1{font-size:clamp(38px,7vw,84px);text-transform:uppercase;margin:22px 0 0}
+.head h1 em{font-style:normal;color:var(--accent);display:block}
+.meta{margin-top:30px;padding-top:24px;border-top:1px solid var(--border);
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px 28px}
+.meta label{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--muted2);margin-bottom:6px}
+.meta p{font-size:14px;font-weight:600}
+
+.sec{padding:60px 0 10px}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:10px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(26px,4vw,42px);text-transform:uppercase}
+.sec-head .idx{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;
+  color:var(--accent);text-transform:uppercase}
+.sec-sub{color:var(--muted);font-size:15px;max-width:66ch;margin:0 0 30px}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:26px 24px;margin-bottom:10px}
+.card h3{font-size:22px;text-transform:uppercase;margin-bottom:12px}
+.card p{color:#CFCFC9;font-size:15px;margin-bottom:12px;max-width:74ch}
+.card p:last-child{margin-bottom:0}
+.card p strong{color:var(--text);font-weight:600}
+
+.scope{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:10px}
+.item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px 20px}
+.item .n{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--accent);display:block;margin-bottom:11px}
+.item h4{font-size:19px;margin-bottom:8px;line-height:1.16}
+.item p{font-size:13.5px;color:var(--muted);line-height:1.58}
+
+.phase{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:26px 24px;
+  margin-bottom:10px;display:grid;grid-template-columns:150px 1fr;gap:26px}
+.phase-when{border-right:1px solid var(--border);padding-right:22px}
+.phase-when .wk{font-family:'DM Sans',sans-serif;font-weight:1000;font-size:25px;color:var(--accent);
+  letter-spacing:-.04em;line-height:1.05}
+.phase-when .lb{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted2);margin-top:9px}
+.phase h3{font-size:23px;text-transform:uppercase;margin-bottom:8px}
+.phase > div > p{color:var(--muted);font-size:14.5px;margin-bottom:16px;max-width:66ch}
+.tasks{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:8px 22px}
+.tasks li{position:relative;padding-left:23px;font-size:14.5px;color:#CFCFC9;line-height:1.5}
+.tasks li::before{content:"";position:absolute;left:0;top:7px;width:10px;height:10px;
+  border:1.5px solid var(--accent);border-radius:3px}
+.deliv{margin-top:18px;padding:13px 16px;background:rgba(0,200,83,.07);border:1px solid rgba(0,200,83,.24);
+  border-radius:var(--radius-sm);font-size:14px;color:#D6E8DC}
+.deliv b{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  display:block;margin-bottom:5px;color:var(--green)}
+
+.pricing{background:var(--card);border:1px solid rgba(214,0,110,.3);border-radius:var(--radius);overflow:hidden}
+.pricing .top{padding:26px 24px 20px;border-bottom:1px solid var(--border);
+  background:linear-gradient(160deg,rgba(214,0,110,.09),transparent)}
+.pricing .top .pl{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.pricing .top h3{font-size:32px;text-transform:uppercase;margin-bottom:6px}
+.pricing .top .was{color:var(--muted2);text-decoration:line-through;font-size:15px}
+.tbl{width:100%;border-collapse:collapse}
+.tbl td,.tbl th{padding:15px 24px;border-bottom:1px solid var(--border);text-align:left;font-size:15px}
+.tbl th{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted2);font-weight:500;padding-bottom:11px}
+.tbl td.n{text-align:right;font-family:'IBM Plex Mono',monospace;font-weight:600;white-space:nowrap}
+.tbl tr.tot td{background:rgba(214,0,110,.09);font-weight:700;border-bottom:0;font-size:17px}
+.tbl tr.tot td.n{color:var(--accent);font-size:19px}
+.tbl td small{display:block;color:var(--muted);font-size:12.5px;margin-top:3px;font-weight:400}
+
+.incl{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px 24px;
+  margin-top:12px;list-style:none}
+.incl li{position:relative;padding-left:24px;font-size:14.5px;color:#CFCFC9}
+.incl li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
+
+.ref{background:linear-gradient(155deg,rgba(214,0,110,.11),var(--card));
+  border:1px solid rgba(214,0,110,.32);border-radius:var(--radius);padding:32px 28px}
+.ref .big{font-family:'DM Sans',sans-serif;font-weight:1000;font-size:clamp(38px,6vw,60px);
+  color:var(--accent);letter-spacing:-.05em;line-height:1}
+.ref .sub{font-size:19px;font-family:'DM Sans',sans-serif;font-weight:700;letter-spacing:-.025em;margin:8px 0 18px}
+.ref ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:9px 24px}
+.ref li{position:relative;padding-left:23px;font-size:14.5px;color:#CFCFC9;line-height:1.5}
+.ref li::before{content:"";position:absolute;left:0;top:7px;width:9px;height:9px;
+  background:var(--accent);border-radius:2px}
+
+.warn{background:var(--card);border:1px solid rgba(255,174,46,.3);border-radius:var(--radius);padding:24px}
+.warn h4{font-size:19px;margin-bottom:14px;color:var(--amber)}
+.warn ol{padding-left:20px;display:grid;gap:11px}
+.warn li{font-size:14.5px;color:#CFCFC9;line-height:1.55}
+.warn li b{color:var(--text)}
+
+.sign{border-top:1px solid var(--border);padding:26px 0 40px;margin-top:56px;display:flex;
+  justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted2)}
+.sign b{color:var(--accent);font-weight:600}
+
+@media(max-width:760px){
+  .phase{grid-template-columns:1fr;gap:16px}
+  .phase-when{border-right:0;border-bottom:1px solid var(--border);padding:0 0 14px;
+    display:flex;align-items:baseline;gap:12px}
+  .phase-when .lb{margin-top:0}
+  .tbl td,.tbl th{padding:13px 16px;font-size:14px}
+}
+
+.navdock{position:fixed;right:22px;bottom:22px;z-index:80;display:flex;align-items:center;gap:8px;
+  background:rgba(22,22,22,.93);backdrop-filter:blur(14px);border:1px solid var(--border2);
+  border-radius:999px;padding:7px 9px;box-shadow:0 8px 28px rgba(0,0,0,.55)}
+.navdock.is-top .nav-up{opacity:.35;pointer-events:none}
+.nav-btn{display:inline-flex;align-items:center;gap:7px;border:0;cursor:pointer;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  padding:9px 15px;border-radius:999px;transition:background .18s,color .18s,opacity .18s}
+.nav-up{background:transparent;color:var(--muted)}
+.nav-up:hover{background:var(--card2);color:var(--text)}
+.nav-next{background:var(--accent);color:#fff;font-weight:600}
+.nav-next:hover{background:var(--accent-hover)}
+.nav-next:disabled{cursor:default}
+.nav-btn .ar{font-size:13px;line-height:1}
+.nav-pos{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;
+  color:var(--muted2);padding:0 4px;white-space:nowrap}
+@media(max-width:620px){
+  .navdock{right:12px;left:12px;bottom:12px;justify-content:space-between}
+  .nav-pos{display:none}
+}
+@media print{ .navdock{display:none} }
+</style></head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <span>Top Kreativa · Propuesta <b>TK-2026-OT01</b></span>
+    <span>Validez 15 días</span>
+  </div>
+</div>
+
+<header class="head">
+  <div class="wrap">
+    <div class="issuer"><i></i> Propuesta comercial · Sistema</div>
+    <h1>Otoro Sushi Nikkei<em>Sistema</em></h1>
+    <div class="meta">
+      <div><label>Cliente</label><p>Otoro Sushi Nikkei</p></div>
+      <div><label>Dirección</label><p>11 Norte 1163, local 11<br>Viña del Mar</p></div>
+      <div><label>Origen</label><p>Referido por Andrés<br>Hunter Motores</p></div>
+      <div><label>Plan propuesto</label><p>Sistema</p></div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════ VARIABLE ══════════ -->
+<section class="sec wrap">
+  <div class="sec-head"><span class="idx">01</span><h2>Por qué les escribimos</h2></div>
+  <div class="card">
+    <h3>Andrés nos pasó su contacto</h3>
+    <p>Andrés, de Hunter Motores, nos recomendó hablar con ustedes. Con Hunter estamos implementando el sistema de atención y captación con inteligencia artificial que parte el 24 de agosto.</p>
+    <p>Antes de escribirles revisamos su sitio, su carta completa, su ficha de Google y su perfil de Instagram. Lo que sigue no es un catálogo de servicios: es lo que encontramos, con la fuente de cada dato, y qué haríamos al respecto.</p>
+  </div>
+</section>
+
+<!-- ══════════ VARIABLE · orden obligatorio: primero lo bueno, después el problema ══════════ -->
+<section class="sec wrap">
+  <div class="sec-head"><span class="idx">02</span><h2>Diagnóstico</h2></div>
+  <p class="sec-sub">Datos verificados el 13 de agosto de 2026 en otorosushi.cl, su ficha de Google Business e Instagram @otorosushi.cl.</p>
+  <div class="card">
+    <h3>Lo que está bien construido</h3>
+    <p>Ustedes ya resolvieron lo difícil: tienen canal propio de venta. otorosushi.cl no es una vitrina, es una tienda que cobra, con su punto de venta conectado y la carta completa cargada con sus 59 productos. La mayoría de los sushis de la zona vive de las apps y entrega entre 25% y 30% de cada pedido en comisión; ustedes no. El producto además se ve bien: el feed tiene nivel y el posicionamiento nikkei está diferenciado del sushi genérico. Y hay un activo que casi nadie está usando: están entrando al convenio de tarjeta de alimentación estudiantil, y sus combos de sopa más sándwich de miga ya califican bajo el tope sin modificar nada.</p>
+  </div>
+  <div class="card">
+    <h3>El problema</h3>
+    <p>Tienen la tienda construida y la calle vacía. Con 166 seguidores y 11 publicaciones, la audiencia propia no alcanza a sostener el flujo. La ficha de Google no tiene ninguna reseña mientras sus competidores directos acumulan entre doscientas y ochocientas, y otorosushi.cl no aparece cuando alguien busca sushi en Viña del Mar. A eso se suman tres cosas apagadas dentro de su propia plataforma: la recuperación de carrito abandonado, el umbral de despacho gratis, y el canal de delivery aceptando un solo medio de pago. Y su cuenta en la app de reparto opera como un canal separado que no conversa con el resto: pagan comisión y, peor, los datos del cliente quedan en la plataforma y no en Otoro.</p>
+  </div>
+  <div class="card">
+    <h3>Por qué no se arregla haciendo más de lo mismo</h3>
+    <p>Publicar más seguido no resuelve el problema de fondo. El cuello de botella está en que nadie llega al canal propio y en que quien llega por una app nunca se convierte en cliente suyo. Un pedido de sushi se decide en minutos, casi siempre de noche y casi siempre por mensaje: si nadie contesta a las nueve y media de un viernes, el cliente pide en otro lado y no vuelve. Por eso partimos por el agente: primero se tapa la fuga de las consultas sin responder, y después se abre la llave de la demanda.</p>
+  </div>
+</section>
+
+<!-- ══════════ VARIABLE · hallazgos que el cliente puede corregir solo ══════════ -->
+<!-- Esta sección es un diferenciador comercial: demuestra criterio antes de cobrar.
+     Va SIEMPRE, aunque el plan no cubra esos puntos. Nunca prometer ejecutarlos. -->
+<section class="sec wrap">
+  <div class="sec-head"><span class="idx">03</span><h2>Lo que pueden corregir hoy mismo</h2></div>
+  <p class="sec-sub">Esto no es parte de lo que les cobramos. Son puntos que detectamos al revisar sus canales y que ustedes pueden resolver sin nosotros. Se los señalamos igual, contraten o no.</p>
+
+  <div class="scope">
+    <div class="item"><span class="n">01</span><h4>Activar la recuperación de carrito</h4>
+      <p>Su plataforma la trae incluida y está apagada. Quien llenó el carrito y no pagó es el cliente más barato de recuperar que existe: ya eligió, solo se distrajo.</p></div>
+    <div class="item"><span class="n">02</span><h4>Activar el umbral de despacho gratis</h4>
+      <p>También viene incluido y está inactivo. Es la palanca más directa para subir el ticket promedio: el cliente agrega un roll más para llegar al monto.</p></div>
+    <div class="item"><span class="n">03</span><h4>Sumar medios de pago al delivery</h4>
+      <p>El canal de despacho acepta un solo medio de pago. Cada medio que falta es un pedido que se cae en la última pantalla, después de que el cliente ya eligió todo.</p></div>
+    <div class="item"><span class="n">04</span><h4>Pedir las primeras reseñas</h4>
+      <p>Cero reseñas en Google mientras sus competidores directos andan entre doscientas y ochocientas. Google entrega un enlace directo para dejar reseña: mándenlo por WhatsApp a los últimos treinta pedidos.</p></div>
+    <div class="item"><span class="n">05</span><h4>Poner un papelito en cada pedido de app</h4>
+      <p>Un inserto con un descuento por pedir directo la próxima vez. Cuesta el papel y es la forma más barata de mover un cliente de la plataforma a su propio canal.</p></div>
+    <div class="item"><span class="n">06</span><h4>Completar la ficha de Google</h4>
+      <p>Horario, teléfono y el enlace a otorosushi.cl. Es lo que decide si aparecen cuando alguien busca "sushi cerca de mí" un viernes a las ocho y media.</p></div>
+</div>
+
+  <div class="deliv" style="margin-top:14px">
+    <b>Por qué se los decimos</b>
+    Un diagnóstico que solo sirve si nos contratan no es un diagnóstico, es un folleto.
+  </div>
+</section>
+
+<!-- ══════════ VARIABLE ══════════ -->
+<section class="sec wrap">
+  <div class="sec-head"><span class="idx">04</span><h2>Qué haríamos</h2></div>
+  <p class="sec-sub">La Fase 1 es siempre el agente de IA informativo: es lo que alivia el dolor de inmediato y lo único que activa la garantía.</p>
+
+  <div class="phase">
+    <div class="phase-when"><div class="wk">Fase 1</div><div class="lb">5 días hábiles</div></div>
+    <div>
+      <h3>Agente de IA respondiendo</h3>
+      <p>Sesión de 45 minutos sin costo para definir el nombre del agente, el tono, la carta que va a manejar, los tiempos de retiro y despacho, y cuándo escalar a una persona. Con eso configuramos, probamos y lanzamos.</p>
+      <ul class="tasks"><li>Configuración del agente en WhatsApp Business</li><li>Carga de la carta completa con precios reales</li><li>Horarios, tiempos de retiro y despacho, y agenda de pedidos programados</li><li>Reglas del menú estudiantil: qué cubre la beca y qué no</li><li>Flujo de escalada a atención humana</li><li>CRM y pipeline de pedidos</li></ul>
+      <div class="deliv"><b>Entregable</b>Agente activo respondiendo consultas en WhatsApp, 24/7, derivando el cierre a otorosushi.cl. Es la única fase cubierta por la garantía de 15 días.</div>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-when"><div class="wk">Fase 2</div><div class="lb">Continuo</div></div>
+    <div>
+      <h3>Captación y recuperación de clientes</h3>
+      <p>Con el agente respondiendo, se abre la llave. Las campañas dirigen directo a WhatsApp y el sistema hace el seguimiento de quien preguntó y no pidió.</p>
+      <ul class="tasks"><li>Configuración y gestión de campañas en Meta Ads</li><li>Segmentación por horario: la decisión de pedir sushi se toma de noche</li><li>Remarketing a quien visitó el sitio y no compró</li><li>Seguimiento activo de contactos que no concretaron</li><li>Dos ajustes de configuración del agente por mes</li><li>Reporte mensual de resultados</li></ul>
+      <div class="deliv"><b>Entregable</b>Campañas activas alimentando al agente, con reporte mensual de conversaciones, pedidos y costo por cliente.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FIJO · copiar textual desde topkreativa-verdad-unica.md ══════════ -->
+<section class="sec wrap">
+  <div class="sec-head"><span class="idx">05</span><h2>Inversión</h2></div>
+  <p class="sec-sub">El descuento del 50% aplica solo al primer mes y solo sobre la mensualidad. La implementación se paga completa, una sola vez. Desde el segundo mes rige la mensualidad normal.</p>
+
+  <div class="pricing">
+    <div class="top">
+      <div class="pl">Plan propuesto</div>
+      <h3>Sistema</h3>
+      <span class="was">Valor normal $390.000/mes</span>
+    </div>
+    <table class="tbl">
+      <thead><tr><th>Momento 1 · Al inicio</th><th style="text-align:right">Monto</th></tr></thead>
+      <tbody>
+        <tr class="tot"><td>Implementación<small>Pago único, sin descuento.</small></td><td class="n">$350.000</td></tr>
+      </tbody>
+    </table>
+    <table class="tbl">
+      <thead><tr><th>Momento 2 · Primer mes</th><th style="text-align:right">Monto</th></tr></thead>
+      <tbody>
+        <tr class="tot"><td>Mensualidad mes 1 · 50% dcto<small>Desde el mes 2: $390.000</small></td><td class="n">$195.000</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:10px">
+    <h3>Qué cubre la mensualidad</h3>
+    <p>Monitoreo diario, mantención, resolución de incidencias, mejora continua del sistema y del agente, costos de plataforma, y todos los créditos y tokens del agente conversacional escrito en WhatsApp e Instagram. Sin cobros por volumen de conversaciones.</p>
+    <p><strong>No cubre</strong> agente de voz, que consume minutos de audio y se cotiza aparte.</p>
+    <p><strong>Fuera del fee:</strong> el presupuesto de pauta publicitaria lo paga el cliente directamente a Meta, sin comisión de nuestra parte (mínimo recomendado $150.000/mes). El material gráfico —fotos y videos del negocio— lo provee el cliente; si no tiene material, le indicamos exactamente qué grabar con su teléfono.</p>
+  </div>
+</section>
+
+<!-- ══════════ FIJO · no resumir, no ampliar, no omitir exclusiones ══════════ -->
+<section class="sec wrap">
+  <div class="sec-head"><span class="idx">06</span><h2>Garantía de 15 días</h2></div>
+  <div class="card">
+    <h3>Qué cubre</h3>
+    <p>La garantía cubre la <strong>Fase 1</strong>: la puesta en marcha del agente de IA respondiendo a sus clientes con la información que usted nos entrega. Si dentro de los 15 días siguientes al lanzamiento el agente no responde según lo acordado, se devuelve el valor de implementación.</p>
+  </div>
+  <div class="warn">
+    <h4>Qué no cubre</h4>
+    <ol>
+      <li>No se extiende a <b>sitios web, paneles de administración, integraciones con sistemas de terceros, gestión de redes sociales ni campañas publicitarias</b>, aunque el plan contratado los incluya. Esos trabajos se rigen por los hitos y aprobaciones de sus propias fases.</li>
+      <li>No constituye falla del servicio la <b>información incompleta, desactualizada o errónea</b> entregada por el cliente.</li>
+      <li>No constituye falla del servicio una <b>consulta fuera del alcance informativo</b> definido en conjunto.</li>
+      <li>Las <b>interrupciones de WhatsApp, Meta o Instagram</b> se resuelven sin costo dentro de 48 horas hábiles y no activan la garantía.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ══════════ FIJO ══════════ -->
+<section class="sec wrap">
+  <div class="sec-head"><span class="idx">07</span><h2>Programa de referidos</h2></div>
+  <div class="card"><p><strong>Andrés</strong>, de <strong>Hunter Motores</strong>, los refirió. Si Otoro Sushi contrata uno de nuestros planes y paga su implementación, Hunter Motores recibe $100.000 de descuento por única vez sobre su mensualidad.</p></div>
+  <div class="ref">
+    <div class="big">$100.000</div>
+    <div class="sub">de descuento <b>por única vez</b> sobre tu mensualidad, por cada negocio que refieras y que contrate uno de nuestros planes.</div>
+    <ul>
+      <li>El descuento se activa cuando el referido paga su implementación, no al firmar.</li>
+      <li>Se aplica sobre la mensualidad del mes siguiente.</li>
+      <li>Es un beneficio de pago único por cliente referido. No es recurrente.</li>
+      <li>Si refieres a más de un negocio, los descuentos se aplican en meses consecutivos: uno por mes.</li>
+      <li>No se acumula con otro descuento por referido dentro del mismo mes ni con otras promociones vigentes.</li>
+      <li>No aplica sobre el valor de implementación.</li>
+      <li>Sin tope de referidos mientras el contrato esté activo.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════════ VARIABLE ══════════ -->
+<section class="sec wrap">
+  <div class="sec-head"><span class="idx">08</span><h2>Lo que necesitamos de ustedes</h2></div>
+  <div class="warn">
+    <h4>Información requerida para iniciar</h4>
+    <ol><li><b>Carta y precios definitivos.</b> Confirmar que la carta publicada está al día, junto con los tiempos reales de retiro y despacho.</li><li><b>Estado del convenio estudiantil.</b> Si ya está operativo o en trámite. El agente no puede ofrecerlo hasta que esté confirmado.</li><li><b>Acceso a WhatsApp Business.</b> Confirmar el número de atención y si opera sobre la aplicación normal o sobre Cloud API.</li><li><b>Material gráfico.</b> Fotos y videos de los platos. No se requiere producción profesional; les indicamos exactamente qué grabar con el teléfono.</li><li><b>Contraparte operativa.</b> Quién aprueba los entregables y quién atiende los pedidos que el agente derive.</li></ol>
+  </div>
+</section>
+
+<!-- ══════════ VARIABLE · preguntas cuya respuesta cambie la propuesta ══════════ -->
+<section class="sec wrap">
+  <div class="sec-head"><span class="idx">09</span><h2>Próximo paso</h2></div>
+  <div class="card">
+    <h3>Una reunión de 45 minutos</h3>
+    <p>Tres cosas pasan en ella: reemplazamos los supuestos de este documento por sus números reales, les mostramos el sistema funcionando en vivo —el agente respondiendo de verdad, no un video— y definimos alcance y fecha de inicio.</p>
+    <p><strong>Preguntas que queremos hacerles:</strong></p>
+    <ul class="tasks"><li>¿Cuántos pedidos al mes reciben, aproximadamente, y cuál es el ticket promedio?</li><li>¿Qué porcentaje entra por el sitio, por WhatsApp, por Instagram y por la app de reparto?</li><li>Viernes y sábado entre las 20:00 y las 22:00, ¿alcanzan a contestar todos los mensajes?</li><li>¿En qué estado está el convenio de tarjeta estudiantil?</li><li>¿Tienen guardada la base de clientes que ya compraron, o vive en el historial de chat?</li><li>¿Cómo se comportan martes y miércoles comparados con el fin de semana?</li></ul>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="sign">
+    <span>Top Kreativa · Av. Concón Reñaca 102, Concón · +56 9 3874 0153</span>
+    <span>Propuesta emitida el <b>13 de agosto de 2026</b></span>
+  </div>
+</div>
+
+
+
+
+
+<!-- ══════════ NAVEGACIÓN ENTRE DOCUMENTOS ══════════
+     Ajustar según cuántos documentos tenga el cliente.
+     Con 2 documentos: 01/02 propuesta → demo.
+     Con 3: 01/03 propuesta → maqueta → diagnóstico.
+     El último documento no lleva "nav-next" con destino, sino "Volver al índice". -->
+<div class="navdock">
+  <a class="nav-btn nav-up" href="../">&#8593; Inicio</a>
+  <span class="nav-pos">01 / 02</span>
+  <a class="nav-btn nav-next" href="../demo/">Demo del agente &#8594;</a>
+</div>
+
+</body>
+</html>
