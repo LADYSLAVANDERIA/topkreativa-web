@@ -256,6 +256,52 @@ footer b{color:#fff;font-weight:600}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s cubic-bezier(.16,1,.3,1)}
 /* respaldo si el entorno bloquea imágenes externas */
 .hero-img,.cimg,.vstage,.gal a{background:linear-gradient(150deg,#1A2540,#0A0E18)}
+/* ===== capa ambiental ===== */
+#bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+nav,.hero,.strip,section,.cut,footer,.dock{position:relative;z-index:2}
+#spot{position:fixed;width:640px;height:640px;border-radius:50%;pointer-events:none;z-index:1;
+  background:radial-gradient(circle,rgba(27,92,245,.16),transparent 62%);
+  transform:translate(-50%,-50%);opacity:0;transition:opacity .6s;mix-blend-mode:screen}
+#prog{position:fixed;top:0;left:0;height:2px;width:0;z-index:250;background:var(--yellow);
+  box-shadow:0 0 12px rgba(255,206,0,.7);transition:width .1s linear}
+
+/* tilt 3D en tarjetas */
+.grid{perspective:1500px}
+.card{transform-style:preserve-3d;will-change:transform}
+.card .glare{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;
+  transition:opacity .35s;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),
+  rgba(255,255,255,.22),transparent 55%)}
+.card:hover .glare{opacity:1}
+.cimg{transform:translateZ(0)}
+
+/* brillo que barre los botones amarillos */
+.btn-y{position:relative;overflow:hidden}
+.btn-y::after{content:'';position:absolute;top:0;bottom:0;width:45%;left:-60%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);
+  animation:sweep 4.5s ease-in-out infinite}
+@keyframes sweep{0%,72%{left:-60%}92%,100%{left:130%}}
+
+/* destello sobre el titular */
+h1 mark{position:relative;display:inline-block}
+h1 mark::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(100deg,transparent 40%,rgba(255,255,255,.85) 50%,transparent 60%);
+  background-size:250% 100%;-webkit-background-clip:text;background-clip:text;
+  color:transparent;animation:shine 6s ease-in-out 1.6s infinite}
+@keyframes shine{0%{background-position:180% 0}55%,100%{background-position:-80% 0}}
+
+/* profundidad en la galería */
+.gal{perspective:1400px}
+.gal a{transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.9,.3,1),box-shadow .5s}
+.gal a:hover{transform:translateZ(38px) rotateX(3deg);box-shadow:0 34px 60px -24px rgba(0,0,0,.85);z-index:4}
+
+/* aro de cursor sobre el visor 360 */
+#ring{position:fixed;width:46px;height:46px;border:1.5px solid var(--yellow);border-radius:50%;
+  pointer-events:none;z-index:240;transform:translate(-50%,-50%) scale(.4);opacity:0;
+  transition:opacity .25s,transform .25s}
+#ring.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+#ring::after{content:'↔';position:absolute;inset:0;display:flex;align-items:center;
+  justify-content:center;color:var(--yellow);font-size:13px}
+
 #aviso{position:fixed;left:0;right:0;top:0;z-index:300;background:var(--yellow);color:#140F00;
   padding:11px 18px;font-size:13.5px;font-weight:600;text-align:center;line-height:1.45}
 #aviso span{font-weight:400;display:block;font-size:12.5px;margin-top:2px}
@@ -275,6 +321,11 @@ footer b{color:#fff;font-weight:600}
 </style>
 </head>
 <body>
+
+<canvas id="bg" aria-hidden="true"></canvas>
+<div id="spot" aria-hidden="true"></div>
+<div id="prog" aria-hidden="true"></div>
+<div id="ring" aria-hidden="true"></div>
 
 <nav id="nav"><div class="nav-in">
   <div class="brand">
@@ -563,6 +614,121 @@ $('vstage').addEventListener('touchstart', e => ini(e.touches[0].clientX), {pass
 $('vstage').addEventListener('touchmove', e => mov(e.touches[0].clientX), {passive:true});
 addEventListener('touchend', fin);
 paint();
+
+/* ================= capa ambiental ================= */
+const fino = matchMedia('(pointer:fine)').matches;
+
+/* fondo: luces que derivan + polvo suspendido */
+(function(){
+  if(reduce) return;
+  const c = $('bg'), x = c.getContext('2d');
+  let w, h, dpr = Math.min(devicePixelRatio || 1, 2);
+  const luces = [
+    {hx:.22,hy:.28,r:.46,col:'27,92,245',a:.20,vx:.00013,vy:.00009},
+    {hx:.78,hy:.62,r:.40,col:'255,206,0',a:.10,vx:-.00010,vy:.00012},
+    {hx:.52,hy:.88,r:.52,col:'27,92,245',a:.13,vx:.00008,vy:-.00011}
+  ];
+  const movil = innerWidth < 760;
+  const polvo = Array.from({length: movil ? 26 : 64}, () => ({
+    x:Math.random(), y:Math.random(), r:Math.random()*1.5+.35,
+    v:Math.random()*.00016+.00005, o:Math.random()*.4+.12, f:Math.random()*6.28
+  }));
+  function size(){
+    w = c.width = innerWidth*dpr; h = c.height = innerHeight*dpr;
+    c.style.width = innerWidth+'px'; c.style.height = innerHeight+'px';
+  }
+  size(); addEventListener('resize', size);
+
+  let t = 0, corriendo = true;
+  document.addEventListener('visibilitychange', () => {
+    corriendo = !document.hidden; if(corriendo) loop();
+  });
+  function loop(){
+    if(!corriendo) return;
+    t++;
+    x.clearRect(0,0,w,h);
+    x.globalCompositeOperation = 'lighter';
+    luces.forEach(l => {
+      const cx = (l.hx + Math.sin(t*l.vx*60)*.10)*w;
+      const cy = (l.hy + Math.cos(t*l.vy*60)*.08)*h;
+      const rad = l.r*Math.max(w,h);
+      const g = x.createRadialGradient(cx,cy,0,cx,cy,rad);
+      g.addColorStop(0, `rgba(${l.col},${l.a})`);
+      g.addColorStop(1, `rgba(${l.col},0)`);
+      x.fillStyle = g; x.beginPath(); x.arc(cx,cy,rad,0,6.2832); x.fill();
+    });
+    polvo.forEach(p => {
+      p.y -= p.v; if(p.y < -.02){ p.y = 1.02; p.x = Math.random(); }
+      const px = (p.x + Math.sin(t*.006 + p.f)*.008)*w;
+      x.fillStyle = `rgba(255,255,255,${p.o*(.5+.5*Math.sin(t*.02+p.f))})`;
+      x.beginPath(); x.arc(px, p.y*h, p.r*dpr, 0, 6.2832); x.fill();
+    });
+    x.globalCompositeOperation = 'source-over';
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+/* foco que sigue al cursor */
+if(fino && !reduce){
+  const sp = $('spot');
+  addEventListener('mousemove', e => {
+    sp.style.left = e.clientX+'px'; sp.style.top = e.clientY+'px'; sp.style.opacity = 1;
+  }, {passive:true});
+}
+
+/* barra de progreso de lectura */
+const prog = $('prog');
+addEventListener('scroll', () => {
+  const m = document.documentElement.scrollHeight - innerHeight;
+  prog.style.width = (m > 0 ? scrollY/m*100 : 0) + '%';
+}, {passive:true});
+
+/* paralaje del hero al bajar */
+if(!reduce){
+  const hi = document.querySelector('.hero-img img');
+  addEventListener('scroll', () => {
+    if(scrollY < innerHeight) hi.style.translate = '0 ' + scrollY*.28 + 'px';
+  }, {passive:true});
+}
+
+/* tilt 3D + reflejo en las tarjetas */
+if(fino && !reduce){
+  document.querySelectorAll('.card').forEach(card => {
+    const g = document.createElement('span'); g.className = 'glare';
+    card.querySelector('.cimg').appendChild(g);
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX-r.left)/r.width, py = (e.clientY-r.top)/r.height;
+      card.style.transform =
+        `translateY(-9px) rotateY(${(px-.5)*11}deg) rotateX(${(.5-py)*9}deg)`;
+      g.style.setProperty('--gx', px*100+'%');
+      g.style.setProperty('--gy', py*100+'%');
+    });
+    card.addEventListener('mouseleave', () => card.style.transform = '');
+  });
+}
+
+/* botones magnéticos */
+if(fino && !reduce){
+  document.querySelectorAll('.btn-y, .dock').forEach(b => {
+    b.addEventListener('mousemove', e => {
+      const r = b.getBoundingClientRect();
+      b.style.translate = `${(e.clientX-r.left-r.width/2)*.22}px ${(e.clientY-r.top-r.height/2)*.3}px`;
+    });
+    b.addEventListener('mouseleave', () => b.style.translate = '');
+  });
+}
+
+/* aro de arrastre sobre el visor 360 */
+if(fino && !reduce){
+  const ring = $('ring'), vs = $('vstage');
+  vs.addEventListener('mouseenter', () => ring.classList.add('on'));
+  vs.addEventListener('mouseleave', () => ring.classList.remove('on'));
+  vs.addEventListener('mousemove', e => {
+    ring.style.left = e.clientX+'px'; ring.style.top = e.clientY+'px';
+  }, {passive:true});
+}
 
 /* aviso si el entorno bloquea las fotos externas */
 (function(){
