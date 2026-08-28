@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Club Auto Baterías</title>
+<meta name="description" content="La memoria de tu auto. Emergencia, mantenciones al día, servicios a domicilio y descuentos en locales de Concón y Viña.">
+<meta name="theme-color" content="#0B1A2C">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Club AB">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0B1A2C; --navy2:#122539; --card:#16304A; --line:#1F4260;
+  --orange:#F49836; --sos:#E23B2E; --wa:#25D366;
+  --text:#EEF4FA; --muted:#8AA6C0; --ok:#2ED47A; --warn:#F49836; --late:#FF6B5C;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:var(--navy);color:var(--text);font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:15px;line-height:1.55;padding-bottom:calc(84px + env(safe-area-inset-bottom));-webkit-font-smoothing:antialiased;overscroll-behavior-y:contain}
+h1,h2,h3,.disp{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;line-height:1.05;letter-spacing:.015em}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,select{font-family:inherit;font-size:15px}
+.wrap{max-width:520px;margin:0 auto;padding:0 16px}
+
+header{position:sticky;top:0;z-index:40;background:rgba(11,26,44,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top)}
+header .bar{display:flex;align-items:center;gap:12px;height:58px}
+.logo{width:34px;height:34px;border-radius:9px;background:var(--orange);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo svg{width:20px;height:20px;fill:var(--navy)}
+.brandtxt{font-family:'Barlow Condensed';font-weight:900;font-size:19px;text-transform:uppercase;letter-spacing:.03em;line-height:1}
+.brandtxt span{display:block;font-family:'Inter';font-size:10px;font-weight:600;letter-spacing:.13em;color:var(--muted);text-transform:uppercase;margin-top:2px}
+.socio-chip{margin-left:auto;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:5px 12px;font-size:11px;font-weight:600;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--ok)}
+
+#install{display:none;margin:14px 0 0;background:linear-gradient(120deg,rgba(244,152,54,.16),rgba(244,152,54,.05));border:1px solid var(--orange);border-radius:14px;padding:14px 16px;align-items:center;gap:12px}
+#install.show{display:flex}
+#install p{font-size:13px;flex:1;line-height:1.4}
+#install b{display:block;font-family:'Barlow Condensed';font-size:16px;text-transform:uppercase;letter-spacing:.03em}
+#install button{background:var(--orange);color:var(--navy);font-weight:700;font-size:12.5px;padding:9px 15px;border-radius:9px;white-space:nowrap}
+#install .x{background:none;color:var(--muted);padding:6px;font-size:18px;line-height:1}
+
+.sos{width:100%;margin-top:18px;background:linear-gradient(160deg,var(--sos),#B32218);border-radius:20px;padding:26px 22px;text-align:left;display:flex;align-items:center;gap:18px;box-shadow:0 10px 30px rgba(226,59,46,.28);position:relative;overflow:hidden;transition:transform .12s}
+.sos:active{transform:scale(.985)}
+.sos .ring{position:absolute;right:-38px;top:-38px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.07)}
+.sos .ico{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative}
+.sos .ico::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(255,255,255,.4);animation:pulse 2s infinite}
+@keyframes pulse{0%{transform:scale(.9);opacity:.9}70%{transform:scale(1.25);opacity:0}100%{opacity:0}}
+.sos .ico svg{width:30px;height:30px;fill:#fff}
+.sos h2{font-size:28px;font-weight:900;color:#fff}
+.sos p{font-size:12.5px;color:rgba(255,255,255,.88);margin-top:3px;line-height:1.35}
+
+.sec{margin-top:26px}
+.sec-h{display:flex;align-items:baseline;gap:10px;margin-bottom:12px}
+.sec-h h3{font-size:20px;font-weight:700}
+.sec-h span{font-size:11px;color:var(--muted);margin-left:auto;font-weight:500}
+
+.srv{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.s{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:16px 14px;text-align:left;display:flex;flex-direction:column;gap:9px;transition:.15s;min-height:118px}
+.s:active{transform:scale(.975);border-color:var(--orange)}
+.s .i{width:38px;height:38px;border-radius:11px;background:rgba(244,152,54,.14);display:flex;align-items:center;justify-content:center;font-size:19px}
+.s b{font-size:13.5px;font-weight:600;line-height:1.25}
+.s small{font-size:11.5px;color:var(--muted);line-height:1.35;margin-top:-4px}
+.s .free{color:var(--ok);font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+
+.resumen{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.rs{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 10px;text-align:center}
+.rs .n{font-family:'Barlow Condensed';font-size:26px;font-weight:900;line-height:1}
+.rs .l{font-size:10.5px;color:var(--muted);margin-top:4px;line-height:1.3}
+.rs.ok .n{color:var(--ok)} .rs.wa .n{color:var(--warn)} .rs.la .n{color:var(--late)}
+
+.mt{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--line);border-radius:14px;padding:14px;margin-bottom:9px;display:flex;gap:12px;align-items:flex-start}
+.mt.ok{border-left-color:var(--ok)} .mt.wa{border-left-color:var(--warn)} .mt.la{border-left-color:var(--late)}
+.mt .ic{width:36px;height:36px;border-radius:11px;background:var(--navy2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.mt .bd{flex:1;min-width:0}
+.mt .tt{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.mt b{font-size:14px;font-weight:600}
+.mt .chip{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:3px 8px;border-radius:20px;white-space:nowrap}
+.mt.ok .chip{background:rgba(46,212,122,.14);color:var(--ok)}
+.mt.wa .chip{background:rgba(244,152,54,.16);color:var(--warn)}
+.mt.la .chip{background:rgba(255,107,92,.16);color:var(--late)}
+.mt .sub{font-size:11.8px;color:var(--muted);margin-top:3px;line-height:1.4}
+.mt .vacio{font-style:italic}
+.mt .acts{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}
+.mt .acts button{font-size:11.5px;font-weight:600;padding:7px 12px;border-radius:9px;border:1px solid var(--line);color:var(--muted)}
+.mt .acts .go{background:var(--orange);color:var(--navy);border-color:var(--orange)}
+.mt .acts .pt{background:rgba(41,171,226,.12);color:#6EC7F0;border-color:rgba(41,171,226,.35)}
+
+.addbtn{width:100%;background:var(--navy2);border:1px dashed var(--line);border-radius:14px;padding:15px;color:var(--muted);font-size:13.5px;font-weight:600;margin-top:4px}
+.addbtn:active{border-color:var(--orange);color:var(--orange)}
+
+.pt-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px;margin-bottom:9px;display:flex;gap:12px;align-items:center}
+.pt-card .ic{width:40px;height:40px;border-radius:11px;background:rgba(41,171,226,.12);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.pt-card b{font-size:14px;font-weight:600;display:block}
+.pt-card small{font-size:11.5px;color:var(--muted);line-height:1.4}
+.pt-card .dsc{margin-left:auto;background:rgba(46,212,122,.14);color:var(--ok);font-family:'Barlow Condensed';font-size:19px;font-weight:900;padding:6px 11px;border-radius:10px;white-space:nowrap}
+.pt-card .libre{margin-left:auto;font-size:10.5px;color:var(--muted);border:1px dashed var(--line);padding:6px 10px;border-radius:10px;text-align:center;line-height:1.3;white-space:nowrap}
+
+.ben{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.ben li{display:flex;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line);list-style:none;align-items:flex-start}
+.ben li:last-child{border-bottom:none}
+.ben .ic{width:26px;height:26px;border-radius:8px;background:rgba(244,152,54,.14);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-top:1px}
+.ben b{font-size:13.5px;font-weight:600;display:block}
+.ben small{font-size:11.8px;color:var(--muted);line-height:1.4}
+
+.cred{background:linear-gradient(135deg,#16304A,#0E2338);border:1px solid var(--orange);border-radius:18px;padding:20px;position:relative;overflow:hidden}
+.cred::after{content:"";position:absolute;right:-50px;bottom:-50px;width:170px;height:170px;border-radius:50%;background:rgba(244,152,54,.07)}
+.cred .lb{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);font-weight:700}
+.cred .nm{font-family:'Barlow Condensed';font-size:26px;font-weight:900;text-transform:uppercase;margin:8px 0 2px;line-height:1}
+.cred .id{font-family:'Barlow Condensed';font-size:15px;letter-spacing:.1em;color:var(--muted)}
+.cred .row{display:flex;gap:26px;margin-top:16px;padding-top:14px;border-top:1px solid rgba(244,152,54,.25);position:relative;z-index:1}
+.cred .row div{font-size:11px;color:var(--muted)}
+.cred .row strong{display:block;font-size:13.5px;color:var(--text);font-weight:600;margin-top:2px}
+
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(11,26,44,.97);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:8px 0 calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:space-around}
+.tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:5px 10px;color:var(--muted);font-size:10.5px;font-weight:600;border-radius:11px;transition:.15s;position:relative}
+.tab.on{color:var(--orange)}
+.tab svg{width:21px;height:21px;fill:currentColor}
+.tab.wa{color:var(--wa)}
+.tab .badge{position:absolute;top:1px;right:4px;min-width:16px;height:16px;border-radius:9px;background:var(--late);color:#fff;font-size:9.5px;font-weight:700;display:none;align-items:center;justify-content:center;padding:0 4px}
+.tab .badge.on{display:flex}
+
+.view{display:none}
+.view.on{display:block;animation:fade .22s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.note{font-size:11.5px;color:var(--muted);text-align:center;margin-top:24px;line-height:1.5}
+.offline{display:none;background:var(--orange);color:var(--navy);text-align:center;font-size:12px;font-weight:600;padding:6px}
+.offline.show{display:block}
+
+.ov{position:fixed;inset:0;z-index:70;background:rgba(4,10,18,.72);backdrop-filter:blur(4px);display:none;align-items:flex-end;justify-content:center}
+.ov.on{display:flex}
+.sheet{background:var(--navy2);border:1px solid var(--line);border-radius:22px 22px 0 0;width:100%;max-width:520px;padding:22px 18px calc(22px + env(safe-area-inset-bottom));max-height:88vh;overflow-y:auto;animation:up .25s cubic-bezier(.16,1,.3,1) both}
+@keyframes up{from{transform:translateY(100%)}to{transform:none}}
+.sheet h3{font-size:22px;font-weight:700;margin-bottom:4px}
+.sheet .hint{font-size:12.5px;color:var(--muted);margin-bottom:18px;line-height:1.5}
+.fld{margin-bottom:15px}
+.fld label{display:block;font-size:11.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
+.fld input,.fld select{width:100%;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 13px;color:var(--text);outline:none}
+.fld input:focus,.fld select:focus{border-color:var(--orange)}
+.sheet .btns{display:flex;gap:9px;margin-top:20px}
+.sheet .btns button{flex:1;padding:13px;border-radius:12px;font-weight:700;font-size:14px}
+.sheet .save{background:var(--orange);color:var(--navy)}
+.sheet .cancel{background:var(--card);color:var(--muted);border:1px solid var(--line)}
+.sheet .del{background:none;color:var(--late);font-size:12.5px;font-weight:600;width:100%;padding:12px;margin-top:6px}
+.catlist button{width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px;margin-bottom:8px;display:flex;gap:11px;align-items:center;font-size:14px;font-weight:600}
+.catlist button small{display:block;font-size:11.5px;color:var(--muted);font-weight:400;margin-top:1px}
+
+#toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%) translateY(20px);background:var(--card);border:1px solid var(--orange);color:var(--text);padding:11px 18px;border-radius:30px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:80;max-width:88vw;text-align:center}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<div class="offline" id="offline">Sin conexión — la app sigue funcionando</div>
+
+<header><div class="wrap bar">
+  <div class="logo"><svg viewBox="0 0 24 24"><path d="M15.5 4V2h-2v2h-3V2h-2v2H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.5zM13 17.5v-3h-2.2l2.7-5v3H15l-2 5z"/></svg></div>
+  <div class="brandtxt">Club Auto Baterías<span>Socio activo</span></div>
+  <div class="socio-chip"><span class="dot"></span><span id="chipId">N° 037</span></div>
+</div></header>
+
+<div class="wrap">
+
+  <div id="install">
+    <p><b>Instala el Club</b>Queda en tu pantalla de inicio y abre aunque no tengas señal.</p>
+    <button id="btnInstall">Instalar</button>
+    <button class="x" id="btnDismiss" aria-label="Cerrar">×</button>
+  </div>
+
+  <section class="view on" id="v-inicio">
+    <button class="sos" id="btnSos">
+      <span class="ring"></span>
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 2 4 13h6l-1 9 9-12h-6l1-8z"/></svg></span>
+      <span><h2>Emergencia</h2><p>Tu auto no parte o quedaste en pana. Un toque y vamos donde estés.</p></span>
+    </button>
+
+    <div class="sec" id="alertaBox" style="display:none">
+      <div class="sec-h"><h3>Requiere tu atención</h3></div>
+      <div id="alertas"></div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h"><h3>Solicitar un servicio</h3><span>A domicilio</span></div>
+      <div class="srv" id="grid"></div>
+    </div>
+
+    <p class="note">Cobertura de emergencia: Concón, Viña del Mar, Valparaíso y Quilpué.<br>Atención hasta medianoche, incluidos fines de semana.</p>
+  </section>
+
+  <section class="view" id="v-auto">
+    <div class="sec" style="margin-top:18px">
+      <div class="sec-h"><h3 id="autoNom">Mi auto</h3><button id="btnEditAuto" style="font-size:11.5px;color:var(--orange);font-weight:600;margin-left:auto">Editar</button></div>
+      <div class="resumen">
+        <div class="rs ok"><div class="n" id="rOk">0</div><div class="l">Al día</div></div>
+        <div class="rs wa"><div class="n" id="rWa">0</div><div class="l">Por vencer</div></div>
+        <div class="rs la"><div class="n" id="rLa">0</div><div class="l">Vencidos</div></div>
+      </div>
+      <div id="lista"></div>
+      <button class="addbtn" id="btnAdd">+ Agregar una mantención</button>
+      <p class="note">Toca cualquier ítem para poner o corregir la fecha. Te escribimos por WhatsApp antes de que venza — no tienes que acordarte tú.<br>Los intervalos son referenciales: ajústalos según tu uso y el manual de tu vehículo.</p>
+    </div>
+  </section>
+
+  <section class="view" id="v-beneficios">
+    <div class="sec" style="margin-top:18px">
+      <div class="sec-h"><h3>Descuentos de socio</h3><span>Concón y Viña</span></div>
+      <div id="partners"></div>
+      <p class="note">Los descuentos se aplican mostrando tu credencial de socio en el local.</p>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h"><h3>Mis beneficios</h3><span>Socio fundador</span></div>
+      <ul class="ben">
+        <li><span class="ic">⚡</span><span><b>Partida de emergencia sin costo</b><small>Dentro de la zona de cobertura, las veces que la necesites.</small></span></li>
+        <li><span class="ic">🔎</span><span><b>Un chequeo gratis al año</b><small>Batería y alternador, a domicilio en Concón y Viña del Mar.</small></span></li>
+        <li><span class="ic">🚦</span><span><b>Atención prioritaria</b><small>Como socio pasas primero en la fila.</small></span></li>
+        <li><span class="ic">🏷️</span><span><b>Descuento en tu próxima batería</b><small>Se aplica al comprar, sin trámites ni cupones.</small></span></li>
+        <li><span class="ic">🔔</span><span><b>Aviso antes de cada vencimiento</b><small>Batería, revisión técnica, aceite, neumáticos y todo lo que registres.</small></span></li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h"><h3>Mi credencial</h3></div>
+      <div class="cred">
+        <div class="lb">Socio fundador</div>
+        <div class="nm" id="cNom">Socio Fundador</div>
+        <div class="id" id="cId">N° 037</div>
+        <div class="row">
+          <div>Desde<strong id="cDesde">Ago 2026</strong></div>
+          <div>Plan<strong>$990 / mes</strong></div>
+          <div>Estado<strong style="color:var(--ok)">Activo</strong></div>
+        </div>
+      </div>
+      <p class="note">Precio congelado de por vida para los primeros 100 socios.</p>
+    </div>
+  </section>
+
+</div>
+
+<nav class="tabbar">
+  <button class="tab on" data-v="inicio"><svg viewBox="0 0 24 24"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg>Inicio</button>
+  <button class="tab" data-v="auto"><svg viewBox="0 0 24 24"><path d="M18.9 6c-.2-.6-.8-1-1.4-1H6.5c-.7 0-1.2.4-1.4 1L3 12v8a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h12v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-8zM6.9 7h10.3l1.3 4H5.6zM6.5 16.5A1.5 1.5 0 1 1 8 15a1.5 1.5 0 0 1-1.5 1.5m11 0A1.5 1.5 0 1 1 19 15a1.5 1.5 0 0 1-1.5 1.5"/></svg>Mi auto<span class="badge" id="tabBadge">0</span></button>
+  <button class="tab" data-v="beneficios"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8-6.1-3.5-6.1 3.5 1.4-6.8L2.2 9.1l6.9-.8z"/></svg>Beneficios</button>
+  <button class="tab wa" id="tabWa"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.1 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.2-.9-2.7-1.2-4.4-4-4.5-4.2-.1-.2-1-1.4-1-2.6s.6-1.8.9-2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.4-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2 1.3 2.3 1.4.2.1.4.1.6-.1l.8-1c.2-.2.3-.2.6-.1l2 .9c.2.1.4.2.4.3s0 .8-.2 1.4z"/></svg>WhatsApp</button>
+</nav>
+
+<div class="ov" id="ov"><div class="sheet" id="sheet"></div></div>
+<div id="toast"></div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+   CONFIGURACIÓN — lo único que se edita para poner el Club en vivo
+   ═══════════════════════════════════════════════════════════════════ */
+const CONFIG = {
+  whatsapp: '56991711826',              // número que recibe las solicitudes
+  marca: 'Club Auto Baterías',
+
+  servicios: [
+    { i:'🔋', t:'Cambio de batería',       d:'A domicilio, en 30 minutos.',      msg:'Quiero cambiar la batería de mi auto a domicilio.' },
+    { i:'🔌', t:'Recarga de batería',      d:'Si aún tiene vida útil.',          msg:'Quiero solicitar una recarga de batería.' },
+    { i:'🩺', t:'Chequeo de batería',      d:'Batería y alternador.', free:true, msg:'Quiero usar mi chequeo anual gratis de batería y alternador.' },
+    { i:'🧭', t:'Chequeo pre-viaje',       d:'Antes de salir a carretera.',      msg:'Quiero agendar un chequeo pre-viaje para mi vehículo.' },
+    { i:'📋', t:'Preparación rev. técnica',d:'Para pasar a la primera.',         msg:'Quiero preparar mi auto para la revisión técnica.' },
+    { i:'💻', t:'Scanner y diagnóstico',   d:'Lectura de fallas electrónicas.',  msg:'Quiero agendar un scanner y diagnóstico electrónico.' }
+  ],
+
+  /* dueno:'ab'      → lo hace Auto Baterías  → botón "Agendar"
+     dueno:'partner' → local aliado           → botón "Ver descuento"  */
+  catalogo: [
+    { k:'bateria',   i:'🔋', t:'Batería',                   meses:24, dueno:'ab',      msg:'Quiero cambiar la batería de mi auto.' },
+    { k:'revtec',    i:'📋', t:'Revisión técnica',           meses:12, dueno:'partner', cat:'Planta de revisión técnica' },
+    { k:'aceite',    i:'🛢️', t:'Cambio de aceite y filtro',  meses:6,  dueno:'partner', cat:'Lubricentro' },
+    { k:'neumaticos',i:'🛞', t:'Neumáticos',                 meses:36, dueno:'partner', cat:'Vulcanización' },
+    { k:'alineacion',i:'🎯', t:'Alineación y balanceo',      meses:12, dueno:'partner', cat:'Vulcanización' },
+    { k:'frenos',    i:'🛑', t:'Pastillas de freno',         meses:24, dueno:'partner', cat:'Taller mecánico' },
+    { k:'soap',      i:'🧾', t:'Seguro obligatorio (SOAP)',  meses:12, dueno:'partner', cat:'Trámites y seguros' },
+    { k:'permiso',   i:'🪪', t:'Permiso de circulación',     meses:12, dueno:'partner', cat:'Trámites y seguros' },
+    { k:'refrig',    i:'🌡️', t:'Refrigerante',               meses:24, dueno:'partner', cat:'Taller mecánico' },
+    { k:'liqfrenos', i:'💧', t:'Líquido de frenos',          meses:24, dueno:'partner', cat:'Taller mecánico' },
+    { k:'filtroaire',i:'🌀', t:'Filtro de aire',             meses:12, dueno:'partner', cat:'Lubricentro' },
+    { k:'plumillas', i:'🌧️', t:'Plumillas',                  meses:12, dueno:'partner', cat:'Serviteca' },
+    { k:'correa',    i:'⚙️', t:'Correa de distribución',     meses:60, dueno:'partner', cat:'Taller mecánico' },
+    { k:'lavado',    i:'🚿', t:'Lavado y detailing',         meses:3,  dueno:'partner', cat:'Lavado y detailing' },
+    { k:'scanner',   i:'💻', t:'Scanner de diagnóstico',     meses:12, dueno:'ab',      msg:'Quiero agendar un scanner de diagnóstico.' }
+  ],
+
+  /* Red de locales aliados. Rellena nombre y dsc cuando el convenio
+     esté cerrado; si quedan vacíos, aparece como cupo disponible. */
+  partners: [
+    { i:'🛢️', cat:'Lubricentro',                nombre:'', zona:'Concón',       dsc:'' },
+    { i:'🛞', cat:'Vulcanización',              nombre:'', zona:'Viña del Mar', dsc:'' },
+    { i:'📋', cat:'Planta de revisión técnica', nombre:'', zona:'Viña del Mar', dsc:'' },
+    { i:'🔧', cat:'Taller mecánico',            nombre:'', zona:'Concón',       dsc:'' },
+    { i:'🚿', cat:'Lavado y detailing',         nombre:'', zona:'Concón',       dsc:'' },
+    { i:'🧾', cat:'Trámites y seguros',         nombre:'', zona:'Viña del Mar', dsc:'' }
+  ]
+};
+
+const $  = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const store = (() => { const mem={}; return {
+  get(k){ try{ return localStorage.getItem(k); }catch(e){ return mem[k]??null; } },
+  set(k,v){ try{ localStorage.setItem(k,v); }catch(e){ mem[k]=v; } }
+};})();
+function toast(t){ const el=$('#toast'); el.textContent=t; el.classList.add('show'); clearTimeout(el._t); el._t=setTimeout(()=>el.classList.remove('show'),2600); }
+const MES=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+const fmt = d => `${MES[d.getMonth()]} ${d.getFullYear()}`;
+const hoy = () => { const d=new Date(); d.setHours(0,0,0,0); return d; };
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+const socio = {
+  id:     store.get('ab_id')    || 'N° 037',
+  nombre: store.get('ab_nom')   || 'Socio Fundador',
+  desde:  store.get('ab_desde') || 'Ago 2026'
+};
+let auto  = JSON.parse(store.get('ab_auto')  || 'null') || { modelo:'Toyota Yaris 2018', patente:'KJRL42' };
+let items = JSON.parse(store.get('ab_items') || 'null') || [
+  { k:'bateria',    fecha:'2025-03-15', meses:24 },
+  { k:'revtec',     fecha:'2025-11-10', meses:12 },
+  { k:'aceite',     fecha:'2026-02-20', meses:6  },
+  { k:'neumaticos', fecha:'',           meses:36 }
+];
+const guardar = () => { store.set('ab_items', JSON.stringify(items)); store.set('ab_auto', JSON.stringify(auto)); };
+const meta = k => CONFIG.catalogo.find(c => c.k === k) || { i:'🔧', t:k, meses:12, dueno:'partner', cat:'Taller mecánico' };
+
+$('#chipId').textContent = socio.id;
+$('#cId').textContent    = socio.id;
+$('#cNom').textContent   = socio.nombre;
+$('#cDesde').textContent = socio.desde;
+
+function wa(mensaje, aviso){
+  const cuerpo = `Hola ${CONFIG.marca} 👋\nSoy socio ${socio.id}.\nVehículo: ${auto.modelo}${auto.patente ? ' · '+auto.patente : ''}\n\n${mensaje}`;
+  if (aviso) toast(aviso);
+  window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(cuerpo)}`, '_blank', 'noopener');
+}
+
+$('#btnSos').addEventListener('click', () => {
+  const base = '🚨 EMERGENCIA — mi auto no parte y necesito asistencia ahora.';
+  const pedir = () => wa(base, 'Abriendo WhatsApp…');
+  if (navigator.geolocation){
+    toast('Obteniendo tu ubicación…');
+    navigator.geolocation.getCurrentPosition(
+      p => wa(`${base}\n\n📍 Mi ubicación: https://maps.google.com/?q=${p.coords.latitude.toFixed(6)},${p.coords.longitude.toFixed(6)}`),
+      pedir, { timeout:6000, enableHighAccuracy:true });
+  } else pedir();
+});
+
+$('#grid').innerHTML = CONFIG.servicios.map((s,i) => `
+  <button class="s" data-i="${i}"><span class="i">${s.i}</span><b>${esc(s.t)}</b><small>${esc(s.d)}</small>
+  ${s.free ? '<span class="free">Gratis para socios</span>' : ''}</button>`).join('');
+
+function estado(it){
+  const m = meta(it.k);
+  if (!it.fecha) return { st:'wa', dias:9e5, chip:'Falta dato', m, txt:'Sin fecha registrada · tócalo para agregarla', vacio:true };
+  const desde = new Date(it.fecha + 'T00:00:00');
+  const vence = new Date(desde); vence.setMonth(vence.getMonth() + (it.meses || m.meses));
+  const dias  = Math.round((vence - hoy()) / 86400000);
+  let st, chip;
+  if (dias < 0)        { st='la'; chip = `Vencido hace ${Math.abs(dias)} d`; }
+  else if (dias <= 60) { st='wa'; chip = dias === 0 ? 'Vence hoy' : `En ${dias} días`; }
+  else                 { st='ok'; chip = 'Al día'; }
+  return { st, dias, chip, m, txt:`Última: ${fmt(desde)} · Próxima: ${fmt(vence)}` };
+}
+
+function tarjeta(it, idx, e, compacta){
+  const accion = e.m.dueno === 'ab'
+    ? `<button class="go" data-ag="${idx}">${compacta ? 'Agendar ahora' : 'Agendar con Auto Baterías'}</button>`
+    : `<button class="pt" data-pt="${idx}">Ver descuento${compacta ? '' : ' de socio'}</button>`;
+  const editar = compacta ? '' : `<button data-ed="${idx}">${it.fecha ? 'Cambiar fecha' : 'Poner fecha'}</button>`;
+  return `<div class="mt ${e.st}">
+    <span class="ic">${e.m.i}</span>
+    <div class="bd">
+      <div class="tt"><b>${esc(e.m.t)}</b><span class="chip">${e.chip}</span></div>
+      <div class="sub${e.vacio ? ' vacio' : ''}">${e.txt}</div>
+      <div class="acts">${editar}${accion}</div>
+    </div></div>`;
+}
+
+function render(){
+  const orden = items.map((it, idx) => ({ it, idx, e:estado(it) }))
+                     .sort((a,b) => a.e.dias - b.e.dias);
+  let ok=0, w=0, la=0;
+  orden.forEach(o => { if (o.e.st==='ok') ok++; else if (o.e.st==='la') la++; else w++; });
+  $('#rOk').textContent=ok; $('#rWa').textContent=w; $('#rLa').textContent=la;
+  const bg = $('#tabBadge'); bg.textContent = la + w; bg.classList.toggle('on', (la + w) > 0);
+  $('#autoNom').textContent = auto.modelo;
+  $('#lista').innerHTML = orden.map(o => tarjeta(o.it, o.idx, o.e, false)).join('');
+
+  const urg = orden.filter(o => o.e.st !== 'ok' && o.it.fecha).slice(0,3);
+  $('#alertaBox').style.display = urg.length ? '' : 'none';
+  $('#alertas').innerHTML = urg.map(o => tarjeta(o.it, o.idx, o.e, true)).join('');
+}
+
+$('#partners').innerHTML = CONFIG.partners.map(p => `
+  <div class="pt-card"><span class="ic">${p.i}</span>
+    <div><b>${esc(p.nombre || p.cat)}</b><small>${p.nombre ? esc(p.cat)+' · ' : ''}${esc(p.zona)}</small></div>
+    ${p.dsc ? `<span class="dsc">${esc(p.dsc)}</span>` : `<span class="libre">Cupo<br>disponible</span>`}
+  </div>`).join('');
+
+const ov = $('#ov'), sheet = $('#sheet');
+const abrir  = html => { sheet.innerHTML = html; ov.classList.add('on'); };
+const cerrar = () => ov.classList.remove('on');
+ov.addEventListener('click', e => { if (e.target === ov) cerrar(); });
+
+function editarItem(idx){
+  const it = items[idx], m = meta(it.k);
+  abrir(`<h3>${m.i} ${esc(m.t)}</h3>
+    <p class="hint">Pon la fecha del último cambio o servicio. Calculamos el próximo vencimiento y te avisamos antes.</p>
+    <div class="fld"><label>Fecha del último cambio</label>
+      <input type="date" id="fIn" value="${it.fecha}" max="${new Date().toISOString().slice(0,10)}"></div>
+    <div class="fld"><label>Se repite cada</label><select id="mIn">
+      ${[3,6,12,18,24,36,48,60].map(n => `<option value="${n}" ${(it.meses||m.meses)==n?'selected':''}>${n} meses</option>`).join('')}
+    </select></div>
+    <div class="btns"><button class="cancel" id="bC">Cancelar</button><button class="save" id="bS">Guardar</button></div>
+    <button class="del" id="bD">Quitar de mi lista</button>`);
+  $('#bC').onclick = cerrar;
+  $('#bS').onclick = () => { it.fecha = $('#fIn').value; it.meses = +$('#mIn').value; guardar(); render(); cerrar(); toast(`${m.t} actualizado`); };
+  $('#bD').onclick = () => { items.splice(idx,1); guardar(); render(); cerrar(); toast('Quitado de tu lista'); };
+}
+
+$('#btnAdd').addEventListener('click', () => {
+  const faltan = CONFIG.catalogo.filter(c => !items.some(i => i.k === c.k));
+  if (!faltan.length){ toast('Ya tienes todo el catálogo agregado'); return; }
+  abrir(`<h3>Agregar mantención</h3><p class="hint">Elige qué quieres tener controlado. Después le pones la fecha.</p>
+    <div class="catlist">${faltan.map(c => `<button data-add="${c.k}">${c.i}<span>${esc(c.t)}<small>Cada ${c.meses} meses · referencial</small></span></button>`).join('')}</div>
+    <div class="btns"><button class="cancel" id="bC">Cerrar</button></div>`);
+  $('#bC').onclick = cerrar;
+});
+
+$('#btnEditAuto').addEventListener('click', () => {
+  abrir(`<h3>Mi vehículo</h3><p class="hint">Estos datos viajan en cada solicitud que envías por WhatsApp.</p>
+    <div class="fld"><label>Marca, modelo y año</label><input id="aM" value="${esc(auto.modelo)}" placeholder="Ej: Toyota Yaris 2018"></div>
+    <div class="fld"><label>Patente</label><input id="aP" value="${esc(auto.patente)}" placeholder="Ej: KJRL42"></div>
+    <div class="btns"><button class="cancel" id="bC">Cancelar</button><button class="save" id="bS">Guardar</button></div>`);
+  $('#bC').onclick = cerrar;
+  $('#bS').onclick = () => { auto.modelo = $('#aM').value.trim() || auto.modelo; auto.patente = $('#aP').value.trim(); guardar(); render(); cerrar(); toast('Vehículo actualizado'); };
+});
+
+document.addEventListener('click', e => {
+  const srv = e.target.closest('.s[data-i]');
+  if (srv){ const s = CONFIG.servicios[+srv.dataset.i]; wa(s.msg, `Solicitando: ${s.t}`); return; }
+
+  const ed = e.target.closest('[data-ed]');
+  if (ed){ editarItem(+ed.dataset.ed); return; }
+
+  const ad = e.target.closest('[data-add]');
+  if (ad){ const c = meta(ad.dataset.add); items.push({ k:ad.dataset.add, fecha:'', meses:c.meses }); guardar(); render(); cerrar(); toast(`${c.t} agregado`); return; }
+
+  const ag = e.target.closest('[data-ag]');
+  if (ag){ const it = items[+ag.dataset.ag], m = meta(it.k); wa(m.msg || `Quiero agendar: ${m.t}.`, `Solicitando: ${m.t}`); return; }
+
+  const pt = e.target.closest('[data-pt]');
+  if (pt){
+    const it = items[+pt.dataset.pt], m = meta(it.k);
+    const p  = CONFIG.partners.find(x => x.cat === m.cat);
+    abrir(`<h3>${m.i} ${esc(m.t)}</h3>
+      <p class="hint">${p && p.nombre
+        ? `Convenio vigente con <strong>${esc(p.nombre)}</strong> en ${esc(p.zona)}. Muestra tu credencial de socio en el local.`
+        : `Estamos cerrando el convenio de <strong>${esc(m.cat)}</strong> en Concón y Viña del Mar. Mientras tanto, escríbenos y te ayudamos a coordinarlo.`}</p>
+      ${p && p.dsc ? `<div class="fld"><label>Descuento de socio</label><div style="font-family:'Barlow Condensed';font-size:34px;font-weight:900;color:var(--ok)">${esc(p.dsc)}</div></div>` : ''}
+      <div class="btns"><button class="cancel" id="bC">Cerrar</button><button class="save" id="bW">Escribir por WhatsApp</button></div>`);
+    $('#bC').onclick = cerrar;
+    $('#bW').onclick = () => { cerrar(); wa(`Necesito ${m.t.toLowerCase()}. ¿Tienen local aliado con descuento para socios en Concón o Viña?`); };
+  }
+});
+
+$('#tabWa').addEventListener('click', () => wa('Tengo una consulta.'));
+
+$$('.tab[data-v]').forEach(t => t.addEventListener('click', () => {
+  $$('.tab[data-v]').forEach(x => x.classList.remove('on'));
+  $$('.view').forEach(v => v.classList.remove('on'));
+  t.classList.add('on'); $('#v-' + t.dataset.v).classList.add('on');
+  window.scrollTo({ top:0, behavior:'smooth' });
+}));
+
+let deferred = null;
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferred = e; if (store.get('ab_install_off') !== '1') $('#install').classList.add('show'); });
+$('#btnInstall').addEventListener('click', async () => {
+  if (!deferred){ toast('Menú de Chrome → “Agregar a pantalla de inicio”'); return; }
+  deferred.prompt(); const { outcome } = await deferred.userChoice;
+  deferred = null; $('#install').classList.remove('show');
+  if (outcome === 'accepted') toast('¡Listo! El Club quedó en tu pantalla de inicio.');
+});
+$('#btnDismiss').addEventListener('click', () => { store.set('ab_install_off','1'); $('#install').classList.remove('show'); });
+window.addEventListener('appinstalled', () => { $('#install').classList.remove('show'); toast('Club instalado ⚡'); });
+
+const off = $('#offline'), net = () => off.classList.toggle('show', !navigator.onLine);
+window.addEventListener('online', net); window.addEventListener('offline', net); net();
+
+const acc = new URLSearchParams(location.search).get('a');
+if (acc === 'sos')  setTimeout(() => $('#btnSos').click(), 500);
+if (acc === 'auto') $('.tab[data-v="auto"]').click();
+
+if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(e => console.warn('[sw]', e)));
+
+render();
+</script>
+</body>
+</html>

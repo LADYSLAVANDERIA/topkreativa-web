@@ -1,0 +1,35 @@
+{
+  "name": "Club Auto Baterías",
+  "short_name": "Club AB",
+  "description": "Asistencia automotriz a domicilio para socios. Emergencia, chequeos y servicios en un toque.",
+  "start_url": "./?source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0B1A2C",
+  "theme_color": "#0B1A2C",
+  "lang": "es-CL",
+  "dir": "ltr",
+  "categories": ["automotive", "utilities", "lifestyle"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    {
+      "name": "Emergencia",
+      "short_name": "SOS",
+      "description": "Pedir asistencia inmediata por WhatsApp",
+      "url": "./?a=sos",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Agendar servicio",
+      "short_name": "Agendar",
+      "description": "Solicitar un servicio a domicilio",
+      "url": "./?a=servicios",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
