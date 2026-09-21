@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Conectar WhatsApp · Top Kreativa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0D0D0D;--card:#161616;--border:#2A2A2A;--text:#F5F5F0;--muted:#888;--accent:#D6006E;--accent-hover:#B8005C;--ok:#00C853;--mal:#FF5A5F}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'DM Sans',system-ui,sans-serif;color:var(--text);background:var(--bg);line-height:1.55}
+  main{max-width:34rem;margin:0 auto;padding:3.5rem 1.25rem 4rem}
+  .marca{font-weight:700;letter-spacing:.02em;font-size:.95rem;color:var(--muted);margin-bottom:2rem}
+  .marca b{color:var(--accent)}
+  h1{font-size:1.9rem;line-height:1.15;margin:0 0 .75rem}
+  p{margin:.25rem 0 1rem;color:#cfcfc8}
+  ol{padding-left:1.25rem;margin:0 0 1.75rem;color:#cfcfc8}
+  li{margin:.4rem 0}
+  button{font:inherit;font-weight:700;font-size:1.05rem;background:var(--accent);color:#fff;border:0;border-radius:10px;padding:.95rem 1.4rem;cursor:pointer;width:100%;transition:background .15s}
+  button:hover:not(:disabled){background:var(--accent-hover)}
+  button:disabled{opacity:.45;cursor:not-allowed}
+  button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  #estado{margin-top:1.5rem;padding:1rem;border-radius:10px;background:var(--card);border:1px solid var(--border);white-space:pre-wrap;font-size:.95rem;display:none}
+  #estado.ok{border-color:var(--ok)} #estado.mal{border-color:var(--mal)}
+  small{color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+  <div class="marca">TOP <b>KREATIVA</b></div>
+  <h1>Conectar el WhatsApp del negocio</h1>
+  <p>Conecta el número que ya usas en la app WhatsApp Business con el sistema de Top Kreativa. El celular sigue funcionando igual.</p>
+  <ol>
+    <li>Ten a mano el celular con la app WhatsApp Business abierta y actualizada.</li>
+    <li>Toca el botón y entra con la cuenta de Facebook que administra el negocio.</li>
+    <li>Elige el portfolio del negocio y la opción de conectar tu cuenta existente de WhatsApp Business.</li>
+    <li>En el celular llega un mensaje de Facebook: toca Conectar, confirma compartir el historial y pega el código.</li>
+    <li>No cierres esta página ni la app del celular hasta que aquí diga que terminó.</li>
+  </ol>
+  <button id="btn" disabled>Cargando…</button>
+  <div id="estado" role="status" aria-live="polite"></div>
+  <p style="margin-top:2rem"><small>Solo funciona para negocios autorizados por Top Kreativa.</small></p>
+</main>
+<script>
+const API = 'https://vhjsizkbmabznupkfzji.supabase.co/functions/v1/ladys-wa-signup';
+const btn = document.getElementById('btn');
+const caja = document.getElementById('estado');
+let cfg = null, sesion = null, evento = null;
+function mostrar(t, c){ caja.style.display='block'; caja.className=c||''; caja.textContent=t; }
+async function cargar(){
+  try{
+    cfg = await (await fetch(API + '/config')).json();
+    if(!cfg.listo){ btn.textContent='Falta la configuración en Meta'; mostrar('Todavía no está cargado el id de configuración.', 'mal'); return; }
+    const s=document.createElement('script'); s.src='https://connect.facebook.net/es_LA/sdk.js'; s.async=true; s.defer=true; s.crossOrigin='anonymous'; document.head.appendChild(s);
+  }catch(e){ btn.textContent='Sin conexión'; mostrar('No se pudo leer la configuración: '+e.message,'mal'); }
+}
+window.fbAsyncInit = function(){ FB.init({ appId: cfg.app_id, autoLogAppEvents: true, xfbml: false, version: cfg.version }); btn.disabled=false; btn.textContent='Conectar WhatsApp'; };
+window.addEventListener('message', (ev) => {
+  if(!ev.origin.endsWith('facebook.com')) return;
+  let d; try{ d=JSON.parse(ev.data); }catch{ return; }
+  if(d.type!=='WA_EMBEDDED_SIGNUP') return;
+  evento=d.event; sesion=d.data||{};
+  fetch(API+'/evento',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(d)}).catch(()=>{});
+  if(d.event==='CANCEL') mostrar(sesion.error_message ? ('Meta mostró un error: '+sesion.error_message+'\nCódigo '+(sesion.error_code||'')+' · sesión '+(sesion.session_id||'')) : ('Se cerró el proceso en la pantalla '+(sesion.current_step||'desconocida')+'. Puedes intentarlo de nuevo.'),'mal');
+});
+async function alTerminar(resp){
+  if(!resp||!resp.authResponse||!resp.authResponse.code){ btn.disabled=false; btn.textContent='Conectar WhatsApp'; if(caja.style.display!=='block') mostrar('No se completó la conexión. Puedes intentarlo de nuevo.','mal'); return; }
+  mostrar('Conectando y sincronizando. Mantén abierta la app del celular…');
+  await new Promise(r=>setTimeout(r,800));
+  try{
+    const r = await (await fetch(API+'/intercambiar',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({code:resp.authResponse.code,evento,sesion})})).json();
+    if(r.ok){
+      const x=(r.resultados||[]).find(z=>z.ok)||{};
+      const num=x.numero?(x.numero.display_phone_number+' · '+(x.numero.verified_name||'')):'sin número';
+      mostrar('Listo. Cuenta conectada: '+(x.nombre||x.waba_id)+'\nNúmero: '+num+(x.coexistence?'\nSe pidió la sincronización de contactos e historial. Deja la app del celular abierta unos minutos.':''),'ok');
+      btn.textContent='Conectado';
+    }else{
+      const e=r.error||((r.resultados||[]).map(z=>z.error).filter(Boolean).join('\n'))||'error desconocido';
+      mostrar('No se pudo terminar: '+e+(r.pista?'\n'+r.pista:''),'mal'); btn.disabled=false; btn.textContent='Intentar de nuevo';
+    }
+  }catch(e){ mostrar('Falló la conexión con el servidor: '+e.message,'mal'); btn.disabled=false; btn.textContent='Intentar de nuevo'; }
+}
+btn.addEventListener('click',()=>{
+  btn.disabled=true; btn.textContent='Siguiendo en la ventana de Meta…'; sesion=null; evento=null; caja.style.display='none';
+  FB.login(alTerminar,{config_id:cfg.config_id,response_type:'code',override_default_response_type:true,extras:{setup:{},featureType:'whatsapp_business_app_onboarding',sessionInfoVersion:'3'}});
+});
+cargar();
+</script>
+</body>
+</html>
