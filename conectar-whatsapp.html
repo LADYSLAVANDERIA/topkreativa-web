@@ -84,7 +84,7 @@ async function alTerminar(resp){
 }
 btn.addEventListener('click',()=>{
   btn.disabled=true; btn.textContent='Siguiendo en la ventana de Meta…'; sesion=null; evento=null; caja.style.display='none';
-  FB.login(alTerminar,{config_id:cfg.config_id,response_type:'code',override_default_response_type:true,extras:{setup:{},featureType:'whatsapp_business_app_onboarding',sessionInfoVersion:'3'}});
+  FB.login(function(r){alTerminar(r);},{config_id:cfg.config_id,response_type:'code',override_default_response_type:true,extras:{setup:{},featureType:'whatsapp_business_app_onboarding',sessionInfoVersion:'3'}});
 });
 cargar();
 </script>
