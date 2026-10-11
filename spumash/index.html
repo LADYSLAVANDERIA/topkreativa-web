@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spumash · El sistema para lavanderías, con tu marca</title>
+<meta name="description" content="Spumash es el sistema para lavanderías y lavasecos: órdenes, producción, reparto a domicilio y una asistente con IA que atiende tu WhatsApp. Todo con tu logo, tus colores y tu nombre. Un producto de Top Kreativa.">
+<meta property="og:title" content="Spumash · El sistema para lavanderías, con tu marca">
+<meta property="og:description" content="Órdenes, reparto y una asistente con IA en WhatsApp, con el nombre y los colores de tu lavandería.">
+<meta property="og:url" content="https://topkreativa.com/spumash/">
+<meta name="theme-color" content="#EAF2F6">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='26' cy='34' r='18' fill='%232348D8'/><circle cx='44' cy='20' r='10' fill='%23FF7AB6'/><circle cx='48' cy='44' r='6' fill='%2310253A'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --agua:#EAF2F6;
+  --espuma:#FFFFFF;
+  --tinta:#10253A;
+  --jabon:#5F7484;
+  --linea:#CFDDE5;
+  --cobalto:#2348D8;
+  --cobalto-osc:#1A38B0;
+  --burbuja:#FF7AB6;
+  --verde:#1F9D55;
+  --marca:#1E6FD9;
+  --display:'Unbounded',system-ui,sans-serif;
+  --sans:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--agua);color:var(--tinta);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img,svg{display:block}
+:focus-visible{outline:3px solid var(--cobalto);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+.measure{max-width:60ch}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.02em;line-height:1.08;font-weight:600}
+h2{font-size:clamp(28px,4.2vw,46px);max-width:20ch}
+.sub{margin-top:14px;color:var(--jabon);font-size:18px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:30;background:rgba(234,242,246,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--linea)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:30px;height:30px}
+.brand-word{font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:-.03em}
+.brand-by{font-size:13px;color:var(--jabon);margin-left:4px}
+.nav-links{display:flex;gap:26px;align-items:center}
+.nav-links a{text-decoration:none;font-size:15px;color:var(--jabon)}
+.nav-links a:hover{color:var(--tinta)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--cobalto);color:#fff !important;text-decoration:none;font-weight:600;border-radius:999px;padding:14px 24px;font-size:16px;border:0;cursor:pointer;transition:background .15s}
+.btn:hover{background:var(--cobalto-osc)}
+.btn-sm{padding:9px 18px;font-size:14px}
+.btn-line{background:transparent;color:var(--tinta) !important;border:1.5px solid var(--tinta)}
+.btn-line:hover{background:var(--espuma)}
+@media (max-width:820px){.nav-links a:not(.btn){display:none}.brand-by{display:none}}
+
+/* hero */
+.hero{padding:64px 0 80px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(36px,5.6vw,66px);font-weight:700;max-width:13ch}
+.hero .lead{margin-top:22px;font-size:clamp(18px,2vw,20px);color:var(--jabon);max-width:46ch}
+.try{margin-top:34px;background:var(--espuma);border:1px solid var(--linea);border-radius:22px;padding:20px;max-width:520px}
+.try-q{font-weight:600;font-size:16px}
+.try-row{display:flex;gap:10px;margin-top:12px}
+.try-row input[type=text]{flex:1;min-width:0;font:inherit;font-size:17px;padding:12px 14px;border:1.5px solid var(--linea);border-radius:12px;background:var(--agua);color:var(--tinta)}
+.try-row input[type=text]:focus{outline:none;border-color:var(--cobalto)}
+.swatch-pick{position:relative;width:52px;flex:none;border-radius:12px;overflow:hidden;border:1.5px solid var(--linea)}
+.swatch-pick input{position:absolute;inset:-8px;width:calc(100% + 16px);height:calc(100% + 16px);border:0;padding:0;cursor:pointer;background:none}
+.samples{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{display:inline-flex;align-items:center;gap:8px;font:inherit;font-size:14px;padding:7px 12px;border-radius:999px;border:1.5px solid var(--linea);background:var(--espuma);color:var(--tinta);cursor:pointer}
+.chip i{width:12px;height:12px;border-radius:50%;display:block}
+.chip[aria-pressed=true]{border-color:var(--tinta)}
+.try-note{margin-top:12px;font-size:14px;color:var(--jabon)}
+.hero-cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px}
+.hero-grid>*{min-width:0}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr;gap:40px}.hero{padding-top:40px}}
+
+/* bubbles behind phone */
+.stage{position:relative;display:flex;justify-content:center;padding:20px 0}
+.bub{position:absolute;border-radius:50%;border:2px solid var(--marca);opacity:.22;transition:border-color .5s}
+.bub.b1{width:220px;height:220px;left:2%;top:4%}
+.bub.b2{width:120px;height:120px;right:4%;top:0}
+.bub.b3{width:80px;height:80px;right:10%;bottom:8%;background:var(--burbuja);border:0;opacity:.35}
+.bub.b4{width:40px;height:40px;left:14%;bottom:6%;background:var(--marca);border:0;opacity:.25;transition:background .5s}
+
+/* phone */
+.phone{position:relative;width:min(330px,100%);background:#0E1B27;border-radius:44px;padding:12px;box-shadow:0 30px 60px -30px rgba(16,37,58,.45)}
+.screen{background:#F6F8FA;border-radius:34px;overflow:hidden;min-height:600px;display:flex;flex-direction:column}
+.app-top{background:var(--marca);color:#fff;padding:26px 18px 18px;transition:background .5s}
+.app-id{display:flex;align-items:center;gap:12px}
+.app-logo{width:44px;height:44px;border-radius:14px;background:#fff;color:var(--marca);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:17px;transition:color .5s}
+.app-name{font-weight:700;font-size:17px;line-height:1.2;word-break:break-word}
+.app-hi{font-size:13px;opacity:.85}
+.app-body{padding:16px;display:flex;flex-direction:column;gap:12px;flex:1}
+.card{background:#fff;border-radius:16px;padding:14px;border:1px solid #E3EAEF}
+.card-h{display:flex;justify-content:space-between;align-items:baseline;font-size:14px}
+.card-h b{font-size:15px}
+.ok{color:var(--verde);font-weight:600;font-size:13px}
+.steps{display:flex;gap:6px;margin-top:12px}
+.steps span{flex:1;height:6px;border-radius:3px;background:#E3EAEF}
+.steps span.on{background:var(--marca);transition:background .5s}
+.steps-l{display:flex;justify-content:space-between;font-size:11px;color:#6B7F8E;margin-top:6px}
+.wa{background:#E7F0E6;border-radius:16px;padding:12px}
+.wa-h{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600}
+.wa-av{width:26px;height:26px;border-radius:50%;background:var(--marca);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:700;transition:background .5s}
+.wa-msg{margin-top:8px;background:#fff;border-radius:12px 12px 12px 4px;padding:10px 12px;font-size:13.5px;line-height:1.45}
+.wa-msg.me{background:#D9FDD3;border-radius:12px 12px 4px 12px;margin-left:30px}
+.app-cta{margin-top:auto;background:var(--marca);color:#fff;text-align:center;border-radius:14px;padding:13px;font-weight:600;font-size:15px;transition:background .5s}
+
+/* sections */
+section{padding:84px 0;border-top:1px solid var(--linea)}
+.white{background:var(--espuma)}
+
+/* personalization */
+.mine{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.mine-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 32px}
+.mine-list li{padding:18px 0;border-top:1px solid var(--linea)}
+.mine-list b{display:block;font-size:17px}
+.mine-list span{color:var(--jabon);font-size:15.5px}
+@media (max-width:900px){.mine{grid-template-columns:1fr;gap:28px}.mine-list{grid-template-columns:1fr}}
+
+/* modules */
+.mods{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px 40px}
+.mod{padding-top:18px;border-top:2px solid var(--tinta)}
+.mod h3{font-size:19px;font-family:var(--sans);font-weight:700;letter-spacing:0}
+.mod p{color:var(--jabon);font-size:15.5px;margin-top:6px}
+.mod.star{border-top-color:var(--cobalto)}
+.tag{display:inline-block;font-size:12.5px;font-weight:600;color:var(--cobalto);background:#E3E9FF;border-radius:999px;padding:2px 10px;margin-left:8px;vertical-align:2px}
+@media (max-width:900px){.mods{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.mods{grid-template-columns:1fr}}
+
+/* sofia */
+.sofia{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.chat{background:#E7F0E6;border-radius:24px;padding:18px;display:flex;flex-direction:column;gap:10px;max-width:440px}
+.chat .m{background:#fff;border-radius:14px 14px 14px 4px;padding:10px 14px;font-size:15px;max-width:85%}
+.chat .m.c{align-self:flex-end;background:#D9FDD3;border-radius:14px 14px 4px 14px}
+.chat .t{font-size:12px;color:#6B7F8E;text-align:center}
+.sofia ul{list-style:none;margin-top:24px}
+.sofia li{padding:12px 0 12px 30px;border-top:1px solid var(--linea);position:relative}
+.sofia li::before{content:"";position:absolute;left:4px;top:20px;width:12px;height:12px;border-radius:50%;border:2px solid var(--cobalto)}
+@media (max-width:900px){.sofia{grid-template-columns:1fr;gap:32px}}
+
+/* case */
+.case{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:end}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.num b{display:block;font-family:var(--display);font-weight:600;font-size:clamp(32px,4vw,44px);letter-spacing:-.03em;line-height:1}
+.num span{display:block;margin-top:8px;color:var(--jabon);font-size:15px}
+@media (max-width:900px){.case{grid-template-columns:1fr;gap:32px}}
+@media (max-width:480px){.nums{grid-template-columns:1fr}}
+
+/* steps */
+.flow{margin-top:44px;list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;counter-reset:s}
+.flow li{counter-increment:s;padding-top:16px;border-top:1px solid var(--linea)}
+.flow li::before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--tinta);color:#fff;font-weight:700;font-size:15px;margin-bottom:14px}
+.flow b{display:block;font-size:17px}
+.flow span{color:var(--jabon);font-size:15.5px}
+@media (max-width:900px){.flow{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.flow{grid-template-columns:1fr}}
+
+/* plans */
+.plans-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
+.seg{display:inline-flex;background:var(--agua);border:1px solid var(--linea);border-radius:999px;padding:4px}
+.seg button{font:inherit;font-size:14px;font-weight:600;border:0;background:transparent;color:var(--jabon);padding:8px 16px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--tinta);color:#fff}
+.plans{margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.plan{border:1.5px solid var(--linea);border-radius:24px;padding:26px;display:flex;flex-direction:column;background:var(--espuma)}
+.plan.hi{border-color:var(--cobalto);box-shadow:0 0 0 3px #E3E9FF}
+.plan h3{font-size:22px}
+.plan .for{color:var(--jabon);font-size:15px;margin-top:4px}
+.price{margin-top:22px;font-family:var(--display);font-weight:600;font-size:38px;letter-spacing:-.03em;line-height:1}
+.price small{font-family:var(--sans);font-size:15px;font-weight:500;color:var(--jabon);letter-spacing:0}
+.setup{font-size:14px;color:var(--jabon);margin-top:8px}
+.plan ul{list-style:none;margin:20px 0 24px}
+.plan li{padding:8px 0;border-top:1px solid var(--linea);font-size:15.5px}
+.plan .btn{margin-top:auto}
+.plans-note{margin-top:22px;color:var(--jabon);font-size:15px;max-width:80ch}
+@media (max-width:900px){.plans{grid-template-columns:1fr}}
+
+/* faq */
+.faq{margin-top:32px;max-width:780px}
+details{border-top:1px solid var(--linea);padding:18px 0}
+details:last-child{border-bottom:1px solid var(--linea)}
+summary{cursor:pointer;font-weight:600;font-size:17.5px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:24px;line-height:1;color:var(--cobalto)}
+details[open] summary::after{content:"−"}
+details p{margin-top:10px;color:var(--jabon)}
+
+/* end */
+.end{background:var(--tinta);color:#fff;border-top:0}
+.end h2{color:#fff;max-width:18ch}
+.end .sub{color:#B9C7D2}
+.end .btn{background:var(--burbuja);color:var(--tinta) !important}
+.end .btn:hover{background:#FF95C5}
+footer{padding:28px 0;font-size:14px;color:var(--jabon)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+@media (prefers-reduced-motion:reduce){*{transition:none !important;scroll-behavior:auto !important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Spumash, inicio">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="26" cy="34" r="18" fill="#2348D8"/><circle cx="44" cy="20" r="10" fill="#FF7AB6"/><circle cx="48" cy="44" r="6" fill="#10253A"/></svg>
+      <span class="brand-word">spumash</span>
+      <span class="brand-by">por Top Kreativa</span>
+    </a>
+    <div class="nav-links">
+      <a href="#tu-marca">Tu marca</a>
+      <a href="#modulos">Qué incluye</a>
+      <a href="#planes">Planes</a>
+      <a href="#preguntas">Preguntas</a>
+      <a class="btn btn-sm" href="https://wa.me/56938740153?text=Hola%2C%20quiero%20ver%20una%20demo%20de%20Spumash" target="_blank" rel="noopener">Pedir una demo</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>El sistema de tu lavandería, con tu nombre.</h1>
+      <p class="lead">Órdenes, taller, reparto a domicilio y una asistente con IA que contesta tu WhatsApp a cualquier hora. Tus clientes ven tu logo y tus colores; nunca el nuestro.</p>
+      <div class="try">
+        <label class="try-q" for="nombre">Escribe el nombre de tu lavandería y mira cómo queda</label>
+        <div class="try-row">
+          <input id="nombre" type="text" maxlength="34" placeholder="Ej: Lavandería Doña Rosa" autocomplete="organization">
+          <span class="swatch-pick" title="Elige tu color"><input id="color" type="color" value="#1E6FD9" aria-label="Color de tu marca"></span>
+        </div>
+        <div class="samples" role="group" aria-label="Ejemplos de lavanderías">
+          <button class="chip" type="button" data-n="Burbuja Azul" data-c="#1E6FD9" aria-pressed="true"><i style="background:#1E6FD9"></i>Burbuja Azul</button>
+          <button class="chip" type="button" data-n="Lavandería Doña Rosa" data-c="#C2185B" aria-pressed="false"><i style="background:#C2185B"></i>Doña Rosa</button>
+          <button class="chip" type="button" data-n="Lavaseco Andes" data-c="#2E7D32" aria-pressed="false"><i style="background:#2E7D32"></i>Lavaseco Andes</button>
+          <button class="chip" type="button" data-n="Clean Fox" data-c="#E65100" aria-pressed="false"><i style="background:#E65100"></i>Clean Fox</button>
+        </div>
+        <p class="try-note">Así lo ve tu cliente en su celular: tu app, tus avisos y tu asistente.</p>
+      </div>
+      <div class="hero-cta">
+        <a class="btn" href="https://wa.me/56938740153?text=Hola%2C%20quiero%20ver%20una%20demo%20de%20Spumash" target="_blank" rel="noopener">Pedir una demo por WhatsApp</a>
+        <a class="btn btn-line" href="#planes">Ver planes</a>
+      </div>
+    </div>
+
+    <div class="stage" aria-live="polite">
+      <span class="bub b1"></span><span class="bub b2"></span><span class="bub b3"></span><span class="bub b4"></span>
+      <div class="phone" role="img" aria-label="Vista previa de la app con la marca de tu lavandería">
+        <div class="screen">
+          <div class="app-top">
+            <div class="app-id">
+              <div class="app-logo" id="pLogo">BA</div>
+              <div>
+                <div class="app-name" id="pName">Burbuja Azul</div>
+                <div class="app-hi">Hola, Carla</div>
+              </div>
+            </div>
+          </div>
+          <div class="app-body">
+            <div class="card">
+              <div class="card-h"><b>Pedido 4821</b><span class="ok">Listo</span></div>
+              <div class="steps"><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div>
+              <div class="steps-l"><span>Recibido</span><span>Lavando</span><span>Listo</span><span>En camino</span></div>
+            </div>
+            <div class="wa">
+              <div class="wa-h"><span class="wa-av" id="pAv">A</span><span id="pBot">Ana, de Burbuja Azul</span></div>
+              <div class="wa-msg" id="pMsg">Hola Carla, tu pedido está listo. ¿Te lo llevamos hoy entre 15:00 y 18:00?</div>
+              <div class="wa-msg me">Sí, porfa 🙌</div>
+              <div class="wa-msg">Agendado. Te aviso cuando el repartidor vaya en camino.</div>
+            </div>
+            <div class="app-cta" id="pCta">Agendar retiro</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="tu-marca" class="white">
+  <div class="wrap mine">
+    <div>
+      <h2>Cada lavandería tiene su propio sistema.</h2>
+      <p class="sub measure">No te entregamos una plataforma con nuestro logo para que tus clientes la descarguen. Configuramos el sistema como si lo hubieras mandado a hacer: tu marca en cada pantalla, cada mensaje y cada boleta.</p>
+    </div>
+    <ul class="mine-list">
+      <li><b>Tu logo y tus colores</b><span>En la app, en la página de pedidos y en el ícono del celular.</span></li>
+      <li><b>Tu dirección web</b><span>pedidos.tulavanderia.cl, o una dirección nuestra con tu nombre.</span></li>
+      <li><b>Tu número de WhatsApp</b><span>Los mensajes salen desde tu número, no desde uno genérico.</span></li>
+      <li><b>Tu asistente con el nombre que elijas</b><span>Ana, Rosa o el que represente a tu marca, hablando con tu tono.</span></li>
+      <li><b>Tus precios y tus reglas</b><span>Catálogo, zonas de reparto, horarios, mínimos y promociones.</span></li>
+      <li><b>Tus tickets y boletas</b><span>Con tu logo, tu RUT y tus datos de contacto.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="modulos">
+  <div class="wrap">
+    <h2>Todo lo que pasa en tu lavandería, en un solo lugar.</h2>
+    <p class="sub measure">Empiezas con la base y sumas lo que necesites. Cada módulo funciona hoy en una lavandería real.</p>
+    <div class="mods">
+      <div class="mod"><h3>Órdenes de trabajo</h3><p>Clientes, catálogo, ticket impreso, etapas hasta la entrega, caja y cuentas por cobrar.</p></div>
+      <div class="mod"><h3>Producción y taller</h3><p>Cada carga por máquina, una pantalla en el taller y el tiempo real de lavado y secado.</p></div>
+      <div class="mod"><h3>Reparto a domicilio</h3><p>Rutas con cupos, app para el conductor, foto de entrega y aviso de "voy en camino".</p></div>
+      <div class="mod star"><h3>Asistente con IA <span class="tag">la favorita</span></h3><p>Contesta tu WhatsApp a toda hora, agenda retiros, informa el estado del pedido y escucha audios.</p></div>
+      <div class="mod"><h3>Cobros y facturación</h3><p>Links de pago, cobro en el POS y facturación electrónica en Chile.</p></div>
+      <div class="mod"><h3>Club y reseñas</h3><p>Planes mensuales para clientes frecuentes y petición de reseña en Google al entregar.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="white">
+  <div class="wrap sofia">
+    <div>
+      <h2>Tu WhatsApp responde aunque estés lavando.</h2>
+      <p class="sub measure">La asistente conoce tus precios, tus horarios y tus zonas porque los lee del sistema, no de memoria. Si alguien pide una persona, te avisa al instante.</p>
+      <ul>
+        <li>Agenda el retiro en un cupo real de tu ruta.</li>
+        <li>Responde "¿está lista mi ropa?" con el estado del pedido.</li>
+        <li>Entiende notas de voz.</li>
+        <li>Deriva a tu equipo los casos que necesitan a alguien.</li>
+      </ul>
+    </div>
+    <div class="chat" aria-label="Ejemplo de conversación por WhatsApp">
+      <div class="t">23:41</div>
+      <div class="m c">hola, cuánto sale lavar un plumón 2 plazas? y pasan a buscar?</div>
+      <div class="m">Hola. El plumón de 2 plazas sale $16.990 y el retiro es sin costo en tu sector. Mañana tengo cupo entre 10:00 y 13:00. ¿Te lo dejo agendado?</div>
+      <div class="m c">ya, mañana en la mañana</div>
+      <div class="m">Listo, quedó agendado para mañana entre 10:00 y 13:00. Te escribo cuando el repartidor vaya en camino.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap case">
+    <div>
+      <h2>Lo construimos operando una lavandería de verdad.</h2>
+      <p class="sub measure">Spumash nació en Ladys Lavandería, en Concón, Chile, que reemplazó su sistema anterior en 2026. Cada función se probó primero con sus clientes y su equipo.</p>
+    </div>
+    <div class="nums">
+      <div class="num"><b>225</b><span>órdenes de trabajo al mes</span></div>
+      <div class="num"><b>2.000</b><span>mensajes de WhatsApp atendidos por la asistente al mes</span></div>
+      <div class="num"><b>385</b><span>personas atendidas por WhatsApp en 30 días</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="white">
+  <div class="wrap">
+    <h2>De la demo a operar, en unas dos semanas.</h2>
+    <ol class="flow">
+      <li><b>Demo de 20 minutos</b><span>Te mostramos el sistema con la marca de tu lavandería.</span></li>
+      <li><b>Configuración</b><span>Cargamos tu catálogo, tus clientes y tus zonas de reparto.</span></li>
+      <li><b>WhatsApp y asistente</b><span>Conectamos tu número y la asistente aprende tu negocio.</span></li>
+      <li><b>Marcha blanca</b><span>Una semana acompañados, con capacitación para tu equipo.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section id="planes">
+  <div class="wrap">
+    <div class="plans-head">
+      <div>
+        <h2>Planes por local, sin permanencia.</h2>
+        <p class="sub">Precios mensuales. El primer mes de marcha blanca va incluido en la implementación.</p>
+      </div>
+      <div class="seg" role="group" aria-label="Moneda y país">
+        <button type="button" data-cur="cl" aria-pressed="true">Chile</button>
+        <button type="button" data-cur="latam" aria-pressed="false">Latinoamérica</button>
+        <button type="button" data-cur="us" aria-pressed="false">EE.UU.</button>
+      </div>
+    </div>
+    <div class="plans">
+      <div class="plan">
+        <h3>Base</h3>
+        <p class="for">Para ordenar el local</p>
+        <div class="price" data-p="base"></div>
+        <div class="setup" data-s="base"></div>
+        <ul><li>Órdenes, clientes y catálogo</li><li>Caja y cuentas por cobrar</li><li>Producción y tickets</li><li>Con tu marca</li></ul>
+        <a class="btn btn-line" href="https://wa.me/56938740153?text=Hola%2C%20me%20interesa%20el%20plan%20Base%20de%20Spumash" target="_blank" rel="noopener">Consultar</a>
+      </div>
+      <div class="plan">
+        <h3>Reparto</h3>
+        <p class="for">Para vender a domicilio</p>
+        <div class="price" data-p="rep"></div>
+        <div class="setup" data-s="rep"></div>
+        <ul><li>Todo lo de Base</li><li>Rutas y app del conductor</li><li>Avisos y cobros por WhatsApp</li><li>Reseñas automáticas</li></ul>
+        <a class="btn btn-line" href="https://wa.me/56938740153?text=Hola%2C%20me%20interesa%20el%20plan%20Reparto%20de%20Spumash" target="_blank" rel="noopener">Consultar</a>
+      </div>
+      <div class="plan hi">
+        <h3>Asistente</h3>
+        <p class="for">Para atender 24/7 sin contratar</p>
+        <div class="price" data-p="ia"></div>
+        <div class="setup" data-s="ia"></div>
+        <ul><li>Todo lo de Reparto</li><li>Asistente con IA en tu WhatsApp</li><li>2.500 mensajes al mes incluidos</li><li>Atención por voz en el mesón</li></ul>
+        <a class="btn" href="https://wa.me/56938740153?text=Hola%2C%20me%20interesa%20el%20plan%20Asistente%20de%20Spumash" target="_blank" rel="noopener">Pedir una demo</a>
+      </div>
+    </div>
+    <p class="plans-note" id="plansNote"></p>
+  </div>
+</section>
+
+<section id="preguntas" class="white">
+  <div class="wrap">
+    <h2>Preguntas frecuentes</h2>
+    <div class="faq">
+      <details><summary>¿Mis clientes van a ver la marca Spumash?</summary><p>No. Tus clientes ven tu nombre, tu logo y tus colores en la app, en los mensajes de WhatsApp y en los tickets. Spumash solo aparece en el panel interno de tu equipo.</p></details>
+      <details><summary>¿Puedo usar mi propio dominio?</summary><p>Sí. Puedes usar una dirección como pedidos.tulavanderia.cl. Si no tienes dominio, te damos una dirección con el nombre de tu lavandería.</p></details>
+      <details><summary>¿Necesito un número de WhatsApp nuevo?</summary><p>No. Conectamos el número que ya usas con tus clientes, siguiendo el proceso oficial de Meta. Los mensajes de plantilla que cobra Meta se cargan a tu propia cuenta.</p></details>
+      <details><summary>¿Qué pasa con mis clientes y mi historial?</summary><p>Los traspasamos desde tu sistema anterior o desde una planilla. Los datos son tuyos: si algún día te vas, te los entregamos completos.</p></details>
+      <details><summary>¿La asistente puede equivocarse?</summary><p>Responde con la información del sistema: precios, horarios y cupos reales. Durante la marcha blanca propone respuestas que tu equipo aprueba, y cualquier caso que lo necesite pasa a una persona.</p></details>
+      <details><summary>¿Hay contrato de permanencia?</summary><p>No. Pagas mes a mes por local. El pago anual tiene dos meses de regalo.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="end">
+  <div class="wrap">
+    <h2>Mira tu lavandería funcionando con tu marca.</h2>
+    <p class="sub measure">Escríbenos y en la demo te mostramos el sistema configurado con tu nombre y tus colores.</p>
+    <div class="hero-cta"><a class="btn" href="https://wa.me/56938740153?text=Hola%2C%20quiero%20ver%20una%20demo%20de%20Spumash" target="_blank" rel="noopener">Pedir una demo por WhatsApp</a></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Spumash es un producto de <a href="/">Top Kreativa</a>, Concón, Chile.</span>
+    <span>+56 9 3874 0153</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var nombre=document.getElementById('nombre'), color=document.getElementById('color');
+  var pName=document.getElementById('pName'), pLogo=document.getElementById('pLogo'), pBot=document.getElementById('pBot');
+  var chips=[].slice.call(document.querySelectorAll('.chip'));
+  function initials(s){var w=s.replace(/lavander[ií]a|lavaseco|tintorer[ií]a/ig,'').trim().split(/\s+/).filter(Boolean);if(!w.length)w=s.trim().split(/\s+/);return ((w[0]||'')[0]||'L').toUpperCase()+((w[1]||'')[0]||'').toUpperCase();}
+  function apply(n,c){
+    n=(n||'').trim()||'Tu Lavandería';
+    pName.textContent=n; pLogo.textContent=initials(n); pBot.textContent='Ana, de '+n;
+    if(c){root.style.setProperty('--marca',c); color.value=c;}
+  }
+  chips.forEach(function(b){b.addEventListener('click',function(){
+    chips.forEach(function(x){x.setAttribute('aria-pressed','false')});
+    b.setAttribute('aria-pressed','true'); nombre.value=''; apply(b.dataset.n,b.dataset.c);
+  })});
+  nombre.addEventListener('input',function(){
+    chips.forEach(function(x){x.setAttribute('aria-pressed','false')});
+    apply(nombre.value,null);
+  });
+  color.addEventListener('input',function(){root.style.setProperty('--marca',color.value)});
+
+  var P={
+    cl:{base:['$45.000','+ IVA al mes'],rep:['$89.000','+ IVA al mes'],ia:['$165.000','+ IVA al mes'],
+        setup:{base:'Implementación $230.000 + IVA',rep:'Implementación $460.000 + IVA',ia:'Implementación $830.000 + IVA'},
+        note:'Precios en pesos chilenos más IVA, por local. Facturación electrónica SII incluida. Local adicional al 50%.'},
+    latam:{base:['US$49','al mes'],rep:['US$99','al mes'],ia:['US$179','al mes'],
+        setup:{base:'Implementación US$250',rep:'Implementación US$500',ia:'Implementación US$900'},
+        note:'Precios en dólares, por local. La facturación electrónica se agrega según el país. Local adicional al 50%.'},
+    us:{base:['US$99','al mes'],rep:['US$179','al mes'],ia:['US$299','al mes'],
+        setup:{base:'Implementación US$500',rep:'Implementación US$900',ia:'Implementación US$1.500'},
+        note:'Precios en dólares para lavanderías en Estados Unidos, por local. Atención y asistente en español e inglés.'}
+  };
+  var seg=[].slice.call(document.querySelectorAll('.seg button'));
+  function setCur(k){
+    var d=P[k];
+    ['base','rep','ia'].forEach(function(p){
+      document.querySelector('[data-p="'+p+'"]').innerHTML=d[p][0]+' <small>'+d[p][1]+'</small>';
+      document.querySelector('[data-s="'+p+'"]').textContent=d.setup[p];
+    });
+    document.getElementById('plansNote').textContent=d.note;
+    seg.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.cur===k?'true':'false')});
+  }
+  seg.forEach(function(b){b.addEventListener('click',function(){setCur(b.dataset.cur)})});
+  setCur('cl');
+})();
+</script>
+</body>
+</html>
