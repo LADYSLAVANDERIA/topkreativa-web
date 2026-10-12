@@ -193,6 +193,13 @@ section{padding:100px 0}
 .plans-note{margin-top:24px;color:var(--gris);font-size:15px;max-width:82ch}
 @media (max-width:900px){.plans{grid-template-columns:1fr}}
 
+.sub-line{margin-top:12px;display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--texto)}
+.sub-line svg{flex:none}
+.total{margin-top:4px;font-size:13.5px;color:var(--gris)}
+.pay-note{margin-top:10px;font-size:13px;color:var(--gris);text-align:center}
+.paybar{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px 26px;align-items:center;background:var(--navy);color:#fff;border-radius:16px;padding:16px 22px;font-size:15px}
+.paybar b{font-family:var(--display);font-weight:600}
+.paybar span{display:flex;align-items:center;gap:8px;color:#D7E0F2}
 .tax{color:var(--gris);font-size:15px;max-width:34ch}
 .offer{margin-top:28px;background:linear-gradient(var(--blanco),var(--blanco)) padding-box,var(--iris) border-box;border:1.5px solid transparent;border-radius:16px;padding:16px 20px;font-size:16px;color:var(--texto)}
 .offer b{font-weight:700}
@@ -546,14 +553,17 @@ footer a{color:#D7E0F2}
         <p class="kicker">Precios de lanzamiento en Chile</p>
         <h2>La asistente viene en todos los planes.</h2>
       </div>
-      <p class="tax">Suscripción mensual con tarjeta de crédito por Mercado Pago. Precios en pesos chilenos más IVA, con factura.</p>
+      <p class="tax">Precios en pesos chilenos más IVA, con factura mensual.</p>
     </div>
+    <div class="paybar"><b>Suscripción mensual con tarjeta</b><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>Tarjeta de crédito, pago seguro con Mercado Pago</span><span>Se cobra sola cada mes</span><span>Cancelas cuando quieras</span></div>
     <div class="offer"><b>Migración y configuración asistida gratis</b> si contratas dentro de las 72 horas siguientes a tu demo. Traspasamos tus clientes desde tu sistema actual y dejamos a la asistente lista.</div>
     <div class="plans">
       <div class="plan">
         <h3>Inicial</h3>
         <p class="for">Para dejar de contestar el WhatsApp a mano</p>
         <div class="price">$29.990<small>/mes + IVA</small></div>
+        <div class="total">Total $35.688 al mes con IVA</div>
+        <div class="sub-line"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>Suscripción mensual con tarjeta</div>
         <div class="msgs">300 mensajes de la asistente al mes</div>
         <ul><li>Asistente de IA que responde y cotiza</li><li>Cliente creado solo con su primer mensaje</li><li>Órdenes, caja y tickets con tu marca</li><li>Estado del pedido por WhatsApp</li></ul>
         <a class="btn btn-line" href="https://wa.me/56938740153?text=Hola%2C%20me%20interesa%20el%20plan%20Inicial%20de%20Spumash" target="_blank" rel="noopener">Consultar</a>
@@ -563,6 +573,8 @@ footer a{color:#D7E0F2}
         <h3>Domicilio</h3>
         <p class="for">Para vender con retiro y entrega</p>
         <div class="price">$69.990<small>/mes + IVA</small></div>
+        <div class="total">Total $83.288 al mes con IVA</div>
+        <div class="sub-line"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>Suscripción mensual con tarjeta</div>
         <div class="msgs">1.000 mensajes de la asistente al mes</div>
         <ul><li>Todo lo del plan Inicial</li><li>La asistente agenda el retiro o la entrega y lo asigna a tu ruta en el horario acordado</li><li>App del conductor: 1 ruta y 1 conductor</li><li>Avisos, cobros y reseñas por WhatsApp</li></ul>
         <a class="btn btn-iris" href="https://wa.me/56938740153?text=Hola%2C%20me%20interesa%20el%20plan%20Domicilio%20de%20Spumash" target="_blank" rel="noopener">Pedir una demo</a>
@@ -571,6 +583,8 @@ footer a{color:#D7E0F2}
         <h3>Completo</h3>
         <p class="for">Para ordenar la producción y crecer</p>
         <div class="price">$129.990<small>/mes + IVA</small></div>
+        <div class="total">Total $154.688 al mes con IVA</div>
+        <div class="sub-line"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>Suscripción mensual con tarjeta</div>
         <div class="msgs">3.000 mensajes de la asistente al mes</div>
         <ul><li>Todo lo del plan Domicilio</li><li>Pantalla del taller con cada carga por máquina</li><li>Análisis de producción que detecta dónde se pierde tiempo</li><li>Club de clientes y campañas de reactivación</li></ul>
         <a class="btn btn-line" href="https://wa.me/56938740153?text=Hola%2C%20me%20interesa%20el%20plan%20Completo%20de%20Spumash" target="_blank" rel="noopener">Consultar</a>
