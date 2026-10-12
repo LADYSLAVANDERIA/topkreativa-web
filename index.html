@@ -376,7 +376,7 @@ html.intro-open #intro{display:block}
 </style>
 </head>
 <body class="boot">
-<script>try{if((!localStorage.getItem('tk_intro_v2')||/[?&]intro\b/.test(location.search))&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro-open')}catch(e){}</script>
+<script>try{if((!localStorage.getItem('tk_intro_v3')||/[?&]intro\b/.test(location.search))&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro-open')}catch(e){}</script>
 <div id="intro" role="dialog" aria-modal="true" aria-label="Intro de Top Kreativa">
   <canvas id="intro-cv" aria-hidden="true"></canvas>
   <div class="ic-start">
@@ -814,7 +814,7 @@ html.intro-open #intro{display:block}
 (function(){
   var root=document.documentElement,ov=document.getElementById('intro');if(!ov)return;
   var cv=document.getElementById('intro-cv'),c=cv.getContext('2d'),buf=document.createElement('canvas'),bc=buf.getContext('2d');
-  var KEY='tk_intro_v2',W,H,D,bar,box,vig,gpat,raf=0,state='idle',T0=0,last=-1,closing=0,closeAt=0,playStart=0,speaking=false,timers=[];
+  var KEY='tk_intro_v3',W,H,D,bar,box,vig,gpat,raf=0,state='idle',T0=0,last=-1,closing=0,closeAt=0,playStart=0,speaking=false,timers=[];
   var Y=ov.querySelector('.ic-year'),TI=ov.querySelector('.ic-title'),LI=ov.querySelector('.ic-line'),cap=ov.querySelector('.ic-cap'),playBtn=ov.querySelector('.ic-play');
   var SPR={};
   function spr(rgb){if(SPR[rgb])return SPR[rgb];var s=document.createElement('canvas');s.width=s.height=64;var g=s.getContext('2d'),gr=g.createRadialGradient(32,32,0,32,32,32);
@@ -979,7 +979,7 @@ html.intro-open #intro{display:block}
 
   /* --- sonido sintetizado --- */
   var AC=null,master=null,drone=null,NB=null,AN=null,AND=null,VB=[],vraw=[];
-  function preload(){if(vraw.length)return;vraw=[1,2,3,4].map(function(n){return fetch('/intro/voz'+n+'.mp3').then(function(r){return r.ok?r.arrayBuffer():null;}).catch(function(){return null;});});}
+  function preload(){if(vraw.length)return;vraw=[1,2,3,4].map(function(n){return fetch('/intro/voz'+n+'.mp3?v=3').then(function(r){return r.ok?r.arrayBuffer():null;}).catch(function(){return null;});});}
   function decode(){if(!AC||!vraw.length)return;var ac=AC;Promise.all(vraw).then(function(arr){return Promise.all(arr.map(function(b){return b?new Promise(function(res){try{ac.decodeAudioData(b.slice(0),res,function(){res(null);});}catch(e){res(null);}}):null;}));}).then(function(bs){VB=bs;});}
   function audioStart(){try{AC=new (window.AudioContext||window.webkitAudioContext)();}catch(e){AC=null;return;}
     master=AC.createGain();master.gain.value=.9;master.connect(AC.destination);
