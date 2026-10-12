@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spumash · Suscripción recibida</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0A1530">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%2322D3EE'/><stop offset='.5' stop-color='%237C5CFF'/><stop offset='1' stop-color='%23FF4FB8'/></linearGradient></defs><rect width='64' height='64' rx='16' fill='%230A1530'/><circle cx='28' cy='34' r='14' fill='url(%23g)'/><circle cx='44' cy='20' r='6' fill='%23fff' fill-opacity='.85'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1530;--line:#24335C;--iris:linear-gradient(115deg,#0891B2 0%,#6D4AFF 52%,#E0368F 100%)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;background:var(--navy);color:#fff;font-family:'Manrope',system-ui,sans-serif;font-size:17px;line-height:1.6;display:flex;flex-direction:column;position:relative;overflow-x:hidden}
+.film{position:fixed;width:620px;height:620px;right:-180px;top:-160px;border-radius:50%;background:conic-gradient(from 200deg,#22D3EE,#7C5CFF,#FF4FB8,#22D3EE);filter:blur(90px);opacity:.35;pointer-events:none}
+main{position:relative;flex:1;display:grid;place-items:center;padding:48px 20px}
+.card{max-width:560px;width:100%}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;margin-bottom:44px}
+.brand b{font-family:'Sora',sans-serif;font-size:28px;letter-spacing:-.045em}
+.ok{width:64px;height:64px;border-radius:50%;background:var(--iris);display:grid;place-items:center;margin-bottom:24px;box-shadow:0 14px 40px -12px rgba(124,92,255,.8)}
+h1{font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(32px,6vw,46px);letter-spacing:-.035em;line-height:1.05}
+p{margin-top:16px;color:#B6C3DD;max-width:48ch}
+ol{margin:28px 0 0;padding:0;list-style:none;display:grid;gap:12px;counter-reset:s}
+li{counter-increment:s;display:grid;grid-template-columns:34px 1fr;gap:14px;align-items:start;color:#E3EAF6}
+li::before{content:counter(s);width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-family:'Sora',sans-serif;font-size:14px;color:#fff;background:rgba(255,255,255,.05)}
+.btn{display:inline-flex;margin-top:34px;align-items:center;gap:10px;background:var(--iris);color:#fff;text-decoration:none;font-weight:700;border-radius:12px;padding:15px 24px}
+.btn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+small{display:block;margin-top:22px;color:#8D9DBE;font-size:14px}
+</style>
+</head>
+<body>
+<div class="film" aria-hidden="true"></div>
+<main>
+  <div class="card">
+    <a class="brand" href="/spumash/"><svg width="40" height="40" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset=".5" stop-color="#7C5CFF"/><stop offset="1" stop-color="#FF4FB8"/></linearGradient></defs><circle cx="28" cy="35" r="20" fill="url(#lg)"/><circle cx="48" cy="17" r="8" fill="#fff" fill-opacity=".9"/></svg><b>spumash</b></a>
+    <div class="ok" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+    <h1>Gracias por elegir Spumash.</h1>
+    <p>Si tu pago se aprobó, Mercado Pago te envía el comprobante por correo y la suscripción se cobra sola cada mes. Si no te llegó, el pago no se completó y puedes intentarlo de nuevo desde los planes.</p>
+    <ol>
+      <li>Te escribimos por WhatsApp para agendar la configuración.</li>
+      <li>Dejamos Spumash con tu nombre, tu logo, tus colores y tus precios.</li>
+      <li>Conectamos tu número de WhatsApp y la asistente empieza a atender.</li>
+    </ol>
+    <a class="btn" href="https://wa.me/56938740153?text=Hola%2C%20acabo%20de%20suscribirme%20a%20Spumash%20y%20quiero%20empezar%20la%20configuraci%C3%B3n" target="_blank" rel="noopener">Empezar la configuración por WhatsApp</a>
+    <small>Si el pago no se completó, puedes volver a los <a href="/spumash/#planes" style="color:#D7E0F2">planes</a> e intentarlo de nuevo.</small>
+  </div>
+</main>
+</body>
+</html>
