@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Spumash Demo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: app shell — barra de marca, pestañas, una vista activa; tokens de color abajo */
+:root{
+  --bg:#F3F5F8; --panel:#FFFFFF; --fg:#18202B; --muted:#5E6878; --line:#DDE2EA; --soft:#EEF1F5;
+  --ok:#1E8E5A; --okbg:#E3F5EC; --warn:#B7791F; --warnbg:#FBF0DC; --bad:#C2413B; --badbg:#FBE6E4; --info:#2E6BD1; --infobg:#E4EDFB;
+  --wa:#E9F7EE; --wa-in:#FFFFFF; --wa-out:#D9F8C8; --wabg:#EFE8DF;
+  --marca:#1F6FEB;
+  --f:"Figtree",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --m:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F141B; --panel:#171E27; --fg:#E7ECF2; --muted:#9AA5B5; --line:#2A3441; --soft:#1E2733;
+  --ok:#4CC38A; --okbg:#173328; --warn:#E3B04B; --warnbg:#352A14; --bad:#EF7A73; --badbg:#3A1E1D; --info:#7FA8F0; --infobg:#1A2A44;
+  --wa-in:#1F2C34; --wa-out:#005C4B; --wabg:#0B141A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F141B; --panel:#171E27; --fg:#E7ECF2; --muted:#9AA5B5; --line:#2A3441; --soft:#1E2733;
+  --ok:#4CC38A; --okbg:#173328; --warn:#E3B04B; --warnbg:#352A14; --bad:#EF7A73; --badbg:#3A1E1D; --info:#7FA8F0; --infobg:#1A2A44;
+  --wa-in:#1F2C34; --wa-out:#005C4B; --wabg:#0B141A; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f);font-size:15px;line-height:1.45}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--marca);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{background:var(--panel);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:14px;padding-block:12px;flex-wrap:wrap}
+.logo{width:42px;height:42px;border-radius:12px;background:var(--marca);color:#fff;display:grid;place-items:center;font-weight:800;letter-spacing:.02em;flex:none;overflow:hidden}
+.logo img{width:100%;height:100%;object-fit:cover}
+.brand{min-width:0;flex:1}
+.brand b{display:block;font-size:17px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand small{color:var(--muted);font-size:12.5px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:99px;background:var(--warnbg);color:var(--warn)}
+.btn{border:1px solid var(--line);background:var(--panel);padding:8px 13px;border-radius:9px;font-weight:600;font-size:14px}
+.btn:hover{background:var(--soft)}
+.btn.pri{background:var(--marca);border-color:var(--marca);color:#fff}
+.btn.pri:hover{filter:brightness(1.08);background:var(--marca)}
+.btn.sm{padding:5px 10px;font-size:13px}
+nav.tabs{background:var(--panel);border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--panel)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav.tabs button{border:0;background:none;padding:12px 12px 10px;font-weight:600;color:var(--muted);border-bottom:3px solid transparent;white-space:nowrap}
+nav.tabs button[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--marca)}
+main .wrap{padding-block:20px 60px}
+h1{font-size:22px;margin:0 0 4px;text-wrap:balance}
+h2{font-size:16px;margin:0;text-wrap:balance}
+.sub{color:var(--muted);margin:0 0 18px}
+.grid{display:grid;gap:14px}
+.kpis{grid-template-columns:repeat(4,1fr)}
+@media (max-width:820px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;min-width:0}
+.kpi .n{font-size:28px;font-weight:800;font-variant-numeric:tabular-nums}
+.kpi .l{color:var(--muted);font-size:13px}
+.two{grid-template-columns:1.25fr 1fr}
+@media (max-width:900px){.two{grid-template-columns:1fr}}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.space{justify-content:space-between}
+.tbl{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:10px;border-bottom:1px solid var(--line);vertical-align:middle;font-variant-numeric:tabular-nums}
+tr.click{cursor:pointer}
+tr.click:hover td{background:var(--soft)}
+.ot{font-family:var(--m);font-weight:600;font-size:13px}
+.pill{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12px;font-weight:700;white-space:nowrap}
+.p-pre{background:var(--infobg);color:var(--info)}
+.p-proc{background:var(--warnbg);color:var(--warn)}
+.p-listo{background:var(--okbg);color:var(--ok)}
+.p-ent{background:var(--soft);color:var(--muted)}
+.p-bad{background:var(--badbg);color:var(--bad)}
+.muted{color:var(--muted)}
+.feed{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
+.feed li{display:flex;gap:10px;font-size:14px}
+.feed time{font-family:var(--m);font-size:12px;color:var(--muted);flex:none;padding-top:2px}
+.guion ol{margin:8px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.guion{border-color:var(--marca)}
+label.f{display:flex;flex-direction:column;gap:5px;font-size:13px;font-weight:600;color:var(--muted)}
+input[type=text],input[type=tel],select{border:1px solid var(--line);background:var(--panel);border-radius:9px;padding:9px 11px;font-size:15px;font-weight:500;color:var(--fg);width:100%}
+.form2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:600px){.form2{grid-template-columns:1fr}}
+.cat{display:flex;flex-direction:column;gap:8px}
+.cat .it{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line);border-radius:10px}
+.cat .it span{flex:1;min-width:0}
+.qty{display:flex;align-items:center;gap:6px}
+.qty button{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:var(--soft);font-weight:700}
+.qty b{min-width:26px;text-align:center;font-variant-numeric:tabular-nums}
+.total{font-size:24px;font-weight:800;font-variant-numeric:tabular-nums}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{border:0;background:var(--panel);padding:8px 14px;font-weight:600;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--marca);color:#fff}
+.maq{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.m{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--panel);display:flex;flex-direction:column;gap:8px}
+.m.libre{border-style:dashed;background:transparent}
+.m h3{margin:0;font-size:14px;display:flex;justify-content:space-between;align-items:center}
+.bar{height:8px;border-radius:99px;background:var(--soft);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--marca);border-radius:99px;transition:width .6s}
+.cupos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:800px){.cupos{grid-template-columns:1fr}}
+.stop{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.stop:last-child{border-bottom:0}
+.seq{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:13px;background:var(--soft);flex:none}
+.stop.hecho .seq{background:var(--okbg);color:var(--ok)}
+.stop .tx{flex:1;min-width:0}
+.meter{display:flex;gap:3px;flex-wrap:wrap}
+.meter i{width:12px;height:12px;border-radius:3px;background:var(--soft);border:1px solid var(--line)}
+.meter i.on{background:var(--marca);border-color:var(--marca)}
+/* WhatsApp */
+.waw{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:18px;align-items:start}
+@media (max-width:860px){.waw{grid-template-columns:1fr}}
+.phone{border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--wabg);display:flex;flex-direction:column;height:620px;max-height:78vh}
+.phone .hd{background:var(--marca);color:#fff;padding:10px 14px;display:flex;gap:10px;align-items:center}
+.phone .hd .logo{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.22);font-size:13px}
+.phone .hd small{opacity:.85;font-size:12px;display:block}
+.msgs{flex:1;overflow-y:auto;padding:14px 12px;display:flex;flex-direction:column;gap:6px}
+.b{max-width:84%;padding:7px 10px 5px;border-radius:10px;font-size:14.5px;white-space:pre-line;box-shadow:0 1px 0 rgba(0,0,0,.08)}
+.b time{display:block;text-align:right;font-size:10.5px;color:var(--muted);margin-top:2px}
+.b.c{align-self:flex-end;background:var(--wa-out);border-top-right-radius:3px}
+.b.a{align-self:flex-start;background:var(--wa-in);border-top-left-radius:3px}
+.opts{display:flex;flex-direction:column;gap:5px;margin-top:6px}
+.opts button{border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:7px;color:var(--info);font-weight:600;font-size:14px}
+.typing{align-self:flex-start;background:var(--wa-in);border-radius:10px;padding:8px 12px;color:var(--muted);font-size:13px}
+.sug{display:flex;gap:6px;overflow-x:auto;padding:8px 10px;border-top:1px solid var(--line);background:var(--panel)}
+.sug button{flex:none;border:1px solid var(--line);background:var(--soft);border-radius:99px;padding:6px 11px;font-size:13px;font-weight:600}
+.inp{display:flex;gap:8px;padding:8px 10px;background:var(--panel)}
+.inp input{border-radius:99px}
+.inp button{border-radius:99px;flex:none}
+.log li{border-left:3px solid var(--marca);padding-left:10px}
+/* drawer & panels */
+.ov{position:fixed;inset:0;background:rgba(10,15,22,.45);z-index:20;display:flex;justify-content:flex-end}
+.dr{background:var(--panel);width:min(460px,100%);height:100%;overflow-y:auto;padding:20px max(20px,env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) 20px;display:flex;flex-direction:column;gap:14px}
+.tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0}
+.tl li{display:flex;gap:10px;align-items:center;padding:7px 0;color:var(--muted)}
+.tl li i{width:12px;height:12px;border-radius:50%;border:2px solid var(--line);flex:none}
+.tl li.done{color:var(--fg)}
+.tl li.done i{background:var(--marca);border-color:var(--marca)}
+.tl li.cur{font-weight:700;color:var(--fg)}
+.sw{display:flex;gap:8px;flex-wrap:wrap}
+.sw button{width:34px;height:34px;border-radius:50%;border:3px solid var(--panel);box-shadow:0 0 0 1px var(--line)}
+.sw button[aria-pressed="true"]{box-shadow:0 0 0 2px var(--fg)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:10px;font-weight:600;z-index:40;max-width:calc(100% - 32px);box-shadow:0 6px 24px rgba(0,0,0,.2)}
+.empty{color:var(--muted);font-size:14px;padding:10px 0}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+
+<header class="top"><div class="wrap">
+  <div class="logo" id="logo">BA</div>
+  <div class="brand"><b id="bname">Lavandería Burbuja Azul</b><small>Sistema de gestión · <span id="hoyTxt"></span></small></div>
+  <span class="chip">Demo · datos de ejemplo</span>
+  <button class="btn" id="bMarca">Tu marca</button>
+  <button class="btn" id="bReset">Reiniciar demo</button>
+</div></header>
+<nav class="tabs" aria-label="Secciones"><div class="wrap" role="tablist" id="tabs"></div></nav>
+<main><div class="wrap" id="view"></div></main>
+<div id="layer"></div>
+
+<script>
+(function(){
+const $=s=>document.querySelector(s);
+const clp=n=>'$'+Math.round(n).toLocaleString('es-CL');
+const pad=n=>String(n).padStart(2,'0');
+const hhmm=d=>pad(d.getHours())+':'+pad(d.getMinutes());
+const DIAS=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+const fdia=d=>DIAS[d.getDay()]+' '+d.getDate()+'/'+(d.getMonth()+1);
+function habil(d,n){const x=new Date(d);let k=0;while(k<n){x.setDate(x.getDate()+1);if(x.getDay()!==0)k++;}return x}
+const HOY=new Date(); const MAN=habil(HOY,1);
+const ymd=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+
+const CAT=[
+ {id:'kg',n:'Lavado y secado por kilo',p:2990,u:'kg'},
+ {id:'p2',n:'Plumón 2 plazas',p:16990},
+ {id:'pk',n:'Plumón King',p:21990},
+ {id:'ch',n:'Chaqueta o parka',p:8990},
+ {id:'sa',n:'Juego de sábanas planchado',p:5990},
+ {id:'ca',n:'Planchado de camisa',p:1500},
+ {id:'cu',n:'Cortinas (por kilo)',p:4500,u:'kg'}];
+const catBy=id=>CAT.find(c=>c.id===id);
+const ETAPAS=['Retiro agendado','Recibido','En lavado','En secado','Listo para entregar','Entregado'];
+const COLORES=['#1F6FEB','#0E8F80','#C2417F','#6E56CF','#D9731A','#2F7D4F','#1B2B4B'];
+
+let S, brand;
+function seed(){
+  const t=HOY.getTime(), min=60000;
+  S={next:1052,tab:'inicio',dia:'hoy',
+   ots:[
+    {n:1041,cli:'Carolina Muñoz',tel:'+56 9 5123 4410',items:[{id:'kg',q:6}],etapa:4,tipo:'DOMICILIO',dir:'Los Aromos 230, depto 41',ent:ymd(HOY),pag:true,orig:'Asistente'},
+    {n:1042,cli:'Departamentos Mirador SpA',tel:'+56 9 7781 2290',items:[{id:'sa',q:12},{id:'kg',q:14}],etapa:3,tipo:'DOMICILIO',dir:'Av. del Mar 1820',ent:ymd(MAN),pag:false,orig:'Mesón',emp:true},
+    {n:1043,cli:'Javier Rojas',tel:'+56 9 6654 3201',items:[{id:'p2',q:1},{id:'ch',q:2}],etapa:2,tipo:'LOCAL',ent:ymd(habil(HOY,2)),pag:true,orig:'Mesón'},
+    {n:1044,cli:'Fernanda Soto',tel:'+56 9 8123 7745',items:[{id:'kg',q:8}],etapa:2,tipo:'DOMICILIO',dir:'Las Gaviotas 455',ent:ymd(MAN),pag:true,orig:'Asistente'},
+    {n:1045,cli:'Restaurante El Muelle',tel:'+56 9 4410 9087',items:[{id:'cu',q:6},{id:'kg',q:10}],etapa:1,tipo:'DOMICILIO',dir:'Costanera 77',ent:ymd(habil(HOY,2)),pag:false,orig:'Asistente',emp:true},
+    {n:1046,cli:'Ignacio Pérez',tel:'+56 9 9012 3345',items:[{id:'ca',q:7}],etapa:4,tipo:'LOCAL',ent:ymd(HOY),pag:false,orig:'Mesón'},
+    {n:1047,cli:'Valentina Araya',tel:'+56 9 7345 1120',items:[{id:'pk',q:1}],etapa:1,tipo:'LOCAL',ent:ymd(habil(HOY,3)),pag:true,orig:'Mesón'},
+    {n:1048,cli:'Paula Contreras',tel:'+56 9 6231 8890',items:[{id:'kg',q:5},{id:'ch',q:1}],etapa:3,tipo:'DOMICILIO',dir:'Los Pescadores 1290',ent:ymd(MAN),pag:true,orig:'Asistente'},
+    {n:1049,cli:'Tomás Silva',tel:'+56 9 5567 0012',items:[{id:'kg',q:7}],etapa:0,tipo:'DOMICILIO',dir:'Pasaje Los Lirios 18',ent:ymd(habil(HOY,2)),pag:false,orig:'Asistente'},
+    {n:1050,cli:'Andrea Lagos',tel:'+56 9 8890 4456',items:[{id:'p2',q:2}],etapa:0,tipo:'DOMICILIO',dir:'Av. Borde Costero 3010, torre B',ent:ymd(habil(HOY,3)),pag:false,orig:'Asistente'},
+    {n:1051,cli:'Martín Fuentes',tel:'+56 9 7012 6678',items:[{id:'kg',q:4}],etapa:5,tipo:'LOCAL',ent:ymd(HOY),pag:true,orig:'Mesón'}],
+   stops:[
+    {id:1,f:ymd(HOY),b:'AM',tipo:'Entrega',ot:1041,est:'Hecho'},
+    {id:2,f:ymd(HOY),b:'AM',tipo:'Retiro',ot:1045,est:'Hecho'},
+    {id:3,f:ymd(HOY),b:'PM',tipo:'Retiro',ot:1049,est:'Pendiente'},
+    {id:4,f:ymd(HOY),b:'PM',tipo:'Retiro',ot:1050,est:'Pendiente'},
+    {id:5,f:ymd(MAN),b:'AM',tipo:'Entrega',ot:1042,est:'Pendiente'},
+    {id:6,f:ymd(MAN),b:'AM',tipo:'Entrega',ot:1044,est:'Pendiente'},
+    {id:7,f:ymd(MAN),b:'PM',tipo:'Entrega',ot:1048,est:'Pendiente'}],
+   maq:[
+    {id:'Lavadora 1',t:'L',ot:1043,kg:6,ini:t-22*min,dur:45},
+    {id:'Lavadora 2',t:'L',ot:1044,kg:8,ini:t-35*min,dur:45},
+    {id:'Lavadora 3',t:'L',ot:null},
+    {id:'Secadora 1',t:'S',ot:1042,kg:14,ini:t-18*min,dur:50},
+    {id:'Secadora 2',t:'S',ot:1048,kg:6,ini:t-41*min,dur:50},
+    {id:'Secadora 3',t:'S',ot:null}],
+   cola:[{ot:1045,kg:10,d:'Mantelería y paños'},{ot:1045,kg:6,d:'Cortinas'},{ot:1047,kg:3,d:'Plumón King'}],
+   feed:[[hhmm(new Date(t-95*min)),'La asistente agendó el retiro de Tomás Silva para hoy en la tarde.'],[hhmm(new Date(t-70*min)),'OT 1041 entregada a Carolina Muñoz. Foto de entrega guardada.'],[hhmm(new Date(t-40*min)),'Aviso de "pedido listo" enviado por WhatsApp a Ignacio Pérez.']],
+   chat:[],flow:{},log:[],msgs:146};
+}
+function defBrand(){return{n:'Lavandería Burbuja Azul',a:'Ana',c:COLORES[0],logo:null}}
+try{const b=JSON.parse(localStorage.getItem('spumash_demo_brand')||'null');brand=b||defBrand()}catch(e){brand=defBrand()}
+seed();
+
+const ot=n=>S.ots.find(o=>o.n===n);
+const tot=o=>o.items.reduce((s,i)=>s+catBy(i.id).p*i.q,0);
+const desc=o=>o.items.map(i=>{const c=catBy(i.id);return c.u?`${c.n} ${i.q} ${c.u}`:`${i.q} × ${c.n}`}).join(', ');
+const ini=s=>{let w=s.replace(/lavander[ií]a|lavaseco|tintorer[ií]a/ig,'').trim().split(/\s+/).filter(Boolean);if(!w.length)w=s.trim().split(/\s+/);return(((w[0]||'L')[0])+((w[1]||'')[0]||'')).toUpperCase()};
+function pill(o){const e=o.etapa;const c=e===0?'p-pre':e===4?'p-listo':e===5?'p-ent':'p-proc';return`<span class="pill ${c}">${ETAPAS[e]}</span>`}
+function feed(t){S.feed.push([hhmm(new Date()),t])}
+let tt;function toast(t){clearTimeout(tt);$('#layer').querySelector('.toast')?.remove();const d=document.createElement('div');d.className='toast';d.textContent=t;$('#layer').appendChild(d);tt=setTimeout(()=>d.remove(),2800)}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function applyBrand(){
+  document.documentElement.style.setProperty('--marca',brand.c);
+  $('#bname').textContent=brand.n;
+  $('#logo').innerHTML=brand.logo?`<img alt="" src="${brand.logo}">`:esc(ini(brand.n));
+  document.title=brand.n+' · Demo';
+  try{localStorage.setItem('spumash_demo_brand',JSON.stringify(brand))}catch(e){}
+}
+$('#hoyTxt').textContent=fdia(HOY);
+
+const TABS=[['inicio','Inicio'],['pedidos','Pedidos'],['nueva','Nueva OT'],['taller','Taller'],['reparto','Reparto'],['asistente','Asistente WhatsApp']];
+function renderTabs(){$('#tabs').innerHTML=TABS.map(([k,l])=>`<button role="tab" aria-selected="${S.tab===k}" data-tab="${k}">${l}</button>`).join('')}
+$('#tabs').addEventListener('click',e=>{const b=e.target.closest('[data-tab]');if(b){go(b.dataset.tab)}});
+function go(k){S.tab=k;render();window.scrollTo(0,0)}
+
+function cuposUsados(f,b){return S.stops.filter(s=>s.f===f&&s.b===b).length}
+
+/* ---------- VISTAS ---------- */
+function vInicio(){
+  const enProc=S.ots.filter(o=>o.etapa>=1&&o.etapa<=3).length;
+  const listos=S.ots.filter(o=>o.etapa===4).length;
+  const hoyStops=S.stops.filter(s=>s.f===ymd(HOY));
+  const ventas=S.ots.filter(o=>o.pag).reduce((s,o)=>s+tot(o),0);
+  return`<h1>Hola, equipo de ${esc(brand.n)}</h1><p class="sub">Así parte el día: lo que está en proceso, lo que sale a reparto y lo que hizo la asistente.</p>
+  <div class="grid kpis">
+   <div class="card kpi"><div class="n">${enProc}</div><div class="l">Pedidos en proceso</div></div>
+   <div class="card kpi"><div class="n">${listos}</div><div class="l">Listos para entregar</div></div>
+   <div class="card kpi"><div class="n">${hoyStops.filter(s=>s.est!=='Hecho').length}<span class="muted" style="font-size:16px"> / ${hoyStops.length}</span></div><div class="l">Paradas de hoy pendientes</div></div>
+   <div class="card kpi"><div class="n">${S.msgs}</div><div class="l">Mensajes respondidos por ${esc(brand.a)} esta semana</div></div>
+  </div>
+  <div class="grid two" style="margin-top:14px">
+   <div class="card"><div class="row space"><h2>Actividad de hoy</h2><span class="muted" style="font-size:13px">Cobrado: <b class="ot">${clp(ventas)}</b></span></div>
+    <ul class="feed" style="margin-top:12px">${S.feed.slice().reverse().map(f=>`<li><time>${f[0]}</time><span>${esc(f[1])}</span></li>`).join('')}</ul></div>
+   <div class="card guion"><h2>Recorrido sugerido</h2>
+    <ol>
+     <li>Pon el nombre y el color del cliente en <b>Tu marca</b>.</li>
+     <li>En <b>Asistente WhatsApp</b>, escribe como cliente y agenda un retiro.</li>
+     <li>Mira cómo el retiro aparece solo en <b>Reparto</b> y en <b>Pedidos</b>.</li>
+     <li>Crea una OT de mesón en <b>Nueva OT</b> en 30 segundos.</li>
+     <li>En <b>Taller</b>, carga una lavadora y termina un ciclo.</li>
+     <li>Abre un pedido, márcalo listo y envía el aviso al cliente.</li>
+    </ol>
+    <div class="row" style="margin-top:12px"><button class="btn pri" data-go="asistente">Empezar por la asistente</button></div></div>
+  </div>`;
+}
+function vPedidos(){
+  const f=S.fil||'todos';
+  const L=S.ots.filter(o=>f==='todos'||(f==='proc'&&o.etapa>=1&&o.etapa<=3)||(f==='listo'&&o.etapa===4)||(f==='pre'&&o.etapa===0)).slice().sort((a,b)=>b.n-a.n);
+  const segs=[['todos','Todos'],['pre','Retiros agendados'],['proc','En proceso'],['listo','Listos']];
+  return`<div class="row space"><div><h1>Pedidos</h1><p class="sub">Toca un pedido para ver su detalle y moverlo de etapa.</p></div><button class="btn pri" data-go="nueva">Nueva OT</button></div>
+  <div class="seg" style="margin-bottom:12px">${segs.map(([k,l])=>`<button data-fil="${k}" aria-pressed="${f===k}">${l}</button>`).join('')}</div>
+  <div class="card tbl" style="padding:0"><table><thead><tr><th>OT</th><th>Cliente</th><th>Detalle</th><th>Etapa</th><th>Entrega</th><th>Total</th><th>Pago</th></tr></thead><tbody>
+  ${L.map(o=>`<tr class="click" data-ot="${o.n}"><td class="ot">${o.n}</td><td><b>${esc(o.cli)}</b><div class="muted" style="font-size:12.5px">${o.tipo==='DOMICILIO'?'Domicilio':'Mesón'} · vía ${o.orig}</div></td><td style="min-width:200px">${esc(desc(o))}</td><td>${pill(o)}</td><td style="white-space:nowrap">${fdia(new Date(o.ent+'T12:00'))}</td><td class="ot">${clp(tot(o))}</td><td>${o.pag?'<span class="pill p-listo">Pagado</span>':'<span class="pill p-bad">Por cobrar</span>'}</td></tr>`).join('')||'<tr><td colspan="7" class="empty">No hay pedidos en este filtro.</td></tr>'}
+  </tbody></table></div>`;
+}
+let NV;function nvReset(){NV={cli:'',tel:'',tipo:'LOCAL',dir:'',q:{}}}nvReset();
+function vNueva(){
+  const t=CAT.reduce((s,c)=>s+(NV.q[c.id]||0)*c.p,0);
+  const ent=habil(HOY,NV.q.p2||NV.q.pk||NV.q.ch||NV.q.cu?3:2);
+  return`<h1>Nueva orden de trabajo</h1><p class="sub">Así se recibe un pedido en el mesón. El ticket y el aviso por WhatsApp salen solos.</p>
+  <div class="grid two"><div class="card" style="display:flex;flex-direction:column;gap:14px">
+   <div class="form2"><label class="f">Cliente<input type="text" id="nvCli" value="${esc(NV.cli)}" placeholder="Nombre y apellido"></label>
+   <label class="f">WhatsApp<input type="tel" id="nvTel" value="${esc(NV.tel)}" placeholder="+56 9 ..."></label></div>
+   <div class="row"><span class="muted" style="font-size:13px;font-weight:600">Entrega</span><div class="seg"><button data-nvt="LOCAL" aria-pressed="${NV.tipo==='LOCAL'}">Retira en local</button><button data-nvt="DOMICILIO" aria-pressed="${NV.tipo==='DOMICILIO'}">A domicilio</button></div></div>
+   ${NV.tipo==='DOMICILIO'?`<label class="f">Dirección de entrega<input type="text" id="nvDir" value="${esc(NV.dir)}" placeholder="Calle, número, depto"></label>`:''}
+   <div class="cat">${CAT.map(c=>`<div class="it"><span><b>${c.n}</b><br><span class="muted ot" style="font-weight:500">${clp(c.p)}${c.u?' / '+c.u:''}</span></span><div class="qty"><button data-q="${c.id}" data-d="-1" aria-label="Menos">−</button><b>${NV.q[c.id]||0}</b><button data-q="${c.id}" data-d="1" aria-label="Más">+</button></div></div>`).join('')}</div>
+  </div>
+  <div class="card" style="display:flex;flex-direction:column;gap:12px;align-self:start">
+   <h2>Resumen</h2>
+   <div class="muted" style="font-size:14px">${CAT.filter(c=>NV.q[c.id]).map(c=>`${c.u?NV.q[c.id]+' '+c.u+' ':NV.q[c.id]+' × '}${c.n}`).join('<br>')||'Agrega servicios del catálogo.'}</div>
+   <div class="row space"><span class="muted">Entrega estimada</span><b>${fdia(ent)}</b></div>
+   <div class="row space"><span class="muted">Total</span><span class="total">${clp(t)}</span></div>
+   <button class="btn pri" id="nvOk" ${t?'':'disabled style="opacity:.5"'}>Crear OT ${S.next}</button>
+   <p class="muted" style="font-size:12.5px;margin:0">Plazo normal 24 a 48 h hábiles. Plumones y chaquetas, 3 a 5 días hábiles.</p>
+  </div></div>`;
+}
+function vTaller(){
+  const now=Date.now();
+  const card=m=>{if(!m.ot)return`<div class="m libre"><h3>${m.id}<span class="pill p-ent">Libre</span></h3><div class="muted" style="font-size:13px">${S.cola.length?'Lista para cargar.':'Sin cargas en espera.'}</div>${S.cola.length?`<button class="btn sm" data-cargar="${m.id}">Cargar siguiente</button>`:''}</div>`;
+    const el=(now-m.ini)/60000, pct=Math.min(100,el/m.dur*100), rest=Math.max(0,Math.ceil(m.dur-el));
+    return`<div class="m"><h3>${m.id}<span class="pill ${pct>=100?'p-listo':'p-proc'}">${pct>=100?'Terminó':rest+' min'}</span></h3>
+     <div><span class="ot">OT ${m.ot}</span> · ${m.kg} kg</div><div class="muted" style="font-size:13px">${esc(ot(m.ot)?.cli||'')}</div>
+     <div class="bar"><i style="width:${pct.toFixed(1)}%"></i></div>
+     <button class="btn sm" data-fin="${m.id}">${m.t==='L'?'Terminar lavado':'Terminar secado'}</button></div>`};
+  return`<h1>Taller</h1><p class="sub">Cada carga por máquina. Esta misma vista va en la pantalla del taller.</p>
+  <h2 style="margin-bottom:10px">Lavadoras</h2><div class="maq">${S.maq.filter(m=>m.t==='L').map(card).join('')}</div>
+  <h2 style="margin:20px 0 10px">Secadoras</h2><div class="maq">${S.maq.filter(m=>m.t==='S').map(card).join('')}</div>
+  <div class="card" style="margin-top:20px"><h2>Cargas en espera</h2>${S.cola.length?`<table style="margin-top:8px"><tbody>${S.cola.map(c=>`<tr><td class="ot">OT ${c.ot}</td><td>${esc(c.d)}</td><td>${c.kg} kg</td></tr>`).join('')}</tbody></table>`:'<p class="empty">No hay cargas esperando máquina.</p>'}</div>`;
+}
+function vReparto(){
+  const f=S.dia==='hoy'?ymd(HOY):ymd(MAN);
+  const bloque=(b,l)=>{const L=S.stops.filter(s=>s.f===f&&s.b===b);const u=L.length;
+   return`<div class="card"><div class="row space"><h2>${l}</h2><span class="muted ot">${u} / 15 cupos</span></div>
+   <div class="meter" style="margin:10px 0 6px">${Array.from({length:15},(_,i)=>`<i class="${i<u?'on':''}"></i>`).join('')}</div>
+   ${L.map((s,i)=>{const o=ot(s.ot)||{};return`<div class="stop ${s.est==='Hecho'?'hecho':''}"><div class="seq">${s.est==='Hecho'?'✓':i+1}</div><div class="tx"><div class="row" style="gap:6px"><span class="pill ${s.tipo==='Retiro'?'p-pre':'p-listo'}">${s.tipo}</span><span class="ot">OT ${s.ot}</span>${s.nuevo?'<span class="pill p-proc">Agendado por '+esc(brand.a)+'</span>':''}</div><b>${esc(o.cli||'')}</b><div class="muted" style="font-size:13.5px">${esc(o.dir||'')}</div></div>${s.est==='Hecho'?'<span class="muted" style="font-size:13px">Hecho</span>':`<button class="btn sm" data-stop="${s.id}">${s.tipo==='Retiro'?'Retirado':'Entregado'}</button>`}</div>`}).join('')||'<p class="empty">Sin paradas en este bloque.</p>'}</div>`};
+  return`<h1>Reparto</h1><p class="sub">Retiros y entregas por bloque horario. La asistente solo ofrece cupos que quedan libres.</p>
+  <div class="seg" style="margin-bottom:14px"><button data-dia="hoy" aria-pressed="${S.dia==='hoy'}">Hoy · ${fdia(HOY)}</button><button data-dia="man" aria-pressed="${S.dia==='man'}">Mañana · ${fdia(MAN)}</button></div>
+  <div class="cupos">${bloque('AM','Mañana · 10:00 a 13:00')}${bloque('PM','Tarde · 15:00 a 18:00')}</div>`;
+}
+function vAsistente(){
+  const hasMsgs=S.chat.length>0;
+  return`<h1>Asistente WhatsApp</h1><p class="sub">Escribe como si fueras un cliente. ${esc(brand.a)} responde con los precios y los cupos reales del sistema.</p>
+  <div class="waw"><div class="phone">
+   <div class="hd"><div class="logo">${esc(ini(brand.n))}</div><div><b>${esc(brand.n)}</b><small>en línea</small></div></div>
+   <div class="msgs" id="msgs">${hasMsgs?'':`<div class="typing" style="align-self:center;text-align:center">Escribe un mensaje o toca una sugerencia</div>`}${S.chat.map((m,i)=>`<div class="b ${m.de}">${esc(m.t)}${m.op&&i===S.chat.length-1?`<div class="opts">${m.op.map(o=>`<button data-op="${esc(o)}">${esc(o)}</button>`).join('')}</div>`:''}<time>${m.h}</time></div>`).join('')}${S.typing?`<div class="typing">${esc(brand.a)} está escribiendo…</div>`:''}</div>
+   <div class="sug">${['Hola, ¿cuánto sale lavar un plumón 2 plazas?','¿Pueden retirar mañana?','¿En qué va mi pedido 1048?','¿Cuánto vale el kilo?','¿Qué horario tienen?'].map(s=>`<button data-sug="${esc(s)}">${esc(s)}</button>`).join('')}</div>
+   <form class="inp" id="waf"><input type="text" id="wai" placeholder="Escribe un mensaje" autocomplete="off"><button class="btn pri" type="submit">Enviar</button></form>
+  </div>
+  <div class="card"><h2>Lo que hizo el sistema</h2><p class="muted" style="font-size:13.5px;margin:6px 0 12px">Cada respuesta sale de los datos de la lavandería, no de memoria.</p>
+   <ul class="feed log">${S.log.slice().reverse().map(l=>`<li><time>${l[0]}</time><span>${esc(l[1])}</span></li>`).join('')||'<li class="empty" style="border:0">Todavía no hay conversación.</li>'}</ul></div></div>`;
+}
+const V={inicio:vInicio,pedidos:vPedidos,nueva:vNueva,taller:vTaller,reparto:vReparto,asistente:vAsistente};
+function render(){renderTabs();$('#view').innerHTML=V[S.tab]();if(S.tab==='asistente'){const m=$('#msgs');m.scrollTop=m.scrollHeight}}
+
+/* ---------- EVENTOS ---------- */
+$('#view').addEventListener('click',e=>{
+  const g=e.target.closest('[data-go]');if(g)return go(g.dataset.go);
+  const fl=e.target.closest('[data-fil]');if(fl){S.fil=fl.dataset.fil;return render()}
+  const r=e.target.closest('[data-ot]');if(r)return drawer(+r.dataset.ot);
+  const q=e.target.closest('[data-q]');if(q){saveNV();const k=q.dataset.q;NV.q[k]=Math.max(0,(NV.q[k]||0)+(+q.dataset.d));return render()}
+  const nt=e.target.closest('[data-nvt]');if(nt){saveNV();NV.tipo=nt.dataset.nvt;return render()}
+  if(e.target.closest('#nvOk'))return crearOT();
+  const c=e.target.closest('[data-cargar]');if(c){const m=S.maq.find(x=>x.id===c.dataset.cargar);const k=S.cola.shift();Object.assign(m,{ot:k.ot,kg:k.kg,ini:Date.now(),dur:m.t==='L'?45:50});const o=ot(k.ot);if(o&&o.etapa<2)o.etapa=2;feed(`${m.id} cargada con OT ${k.ot} (${k.kg} kg).`);toast(`${m.id}: OT ${k.ot} en marcha`);return render()}
+  const fn=e.target.closest('[data-fin]');if(fn){const m=S.maq.find(x=>x.id===fn.dataset.fin);const o=ot(m.ot);
+    if(m.t==='L'){const sl=S.maq.find(x=>x.t==='S'&&!x.ot);if(o&&o.etapa<3)o.etapa=3;if(sl){Object.assign(sl,{ot:m.ot,kg:m.kg,ini:Date.now(),dur:50});toast(`Lavado listo. OT ${m.ot} pasó a ${sl.id}`)}else toast(`Lavado listo. OT ${m.ot} espera secadora`);feed(`Lavado terminado OT ${m.ot}.`)}
+    else{if(o&&o.etapa<4)o.etapa=4;feed(`Secado terminado OT ${m.ot}. Queda lista para embolsar y avisar.`);toast(`OT ${m.ot} lista para entregar`)}
+    m.ot=null;return render()}
+  const sp=e.target.closest('[data-stop]');if(sp){const s=S.stops.find(x=>x.id==sp.dataset.stop);s.est='Hecho';const o=ot(s.ot);if(o){if(s.tipo==='Retiro'&&o.etapa===0){o.etapa=1;S.cola.push({ot:o.n,kg:Math.max(3,o.items.reduce((a,i)=>a+(catBy(i.id).u?i.q:2),0)),d:desc(o)})}if(s.tipo==='Entrega')o.etapa=5}feed(`${s.tipo} hecho: OT ${s.ot}${s.tipo==='Entrega'?', foto de entrega guardada':''}.`);toast(s.tipo==='Retiro'?`OT ${s.ot} recibida en el local`:`OT ${s.ot} entregada`);return render()}
+  const d=e.target.closest('[data-dia]');if(d){S.dia=d.dataset.dia;return render()}
+  const sg=e.target.closest('[data-sug]');if(sg)return enviar(sg.dataset.sug);
+  const op=e.target.closest('[data-op]');if(op)return enviar(op.dataset.op);
+});
+$('#view').addEventListener('submit',e=>{if(e.target.id==='waf'){e.preventDefault();const v=$('#wai').value.trim();if(v)enviar(v)}});
+$('#view').addEventListener('input',e=>{if(e.target.id&&e.target.id.startsWith('nv'))saveNV()});
+function saveNV(){const a=$('#nvCli'),b=$('#nvTel'),c=$('#nvDir');if(a)NV.cli=a.value;if(b)NV.tel=b.value;if(c)NV.dir=c.value}
+function crearOT(){saveNV();const items=CAT.filter(c=>NV.q[c.id]).map(c=>({id:c.id,q:NV.q[c.id]}));if(!items.length)return;
+  const n=S.next++;const ent=habil(HOY,NV.q.p2||NV.q.pk||NV.q.ch||NV.q.cu?3:2);
+  const o={n,cli:NV.cli.trim()||'Cliente de mesón',tel:NV.tel,items,etapa:1,tipo:NV.tipo,dir:NV.tipo==='DOMICILIO'?(NV.dir.trim()||'Dirección por confirmar'):'',ent:ymd(ent),pag:true,orig:'Mesón'};
+  S.ots.push(o);S.cola.push({ot:n,kg:Math.max(3,items.reduce((a,i)=>a+(catBy(i.id).u?i.q:2),0)),d:desc(o)});
+  if(o.tipo==='DOMICILIO'){const b=cuposUsados(o.ent,'PM')<15?'PM':'AM';S.stops.push({id:Date.now(),f:o.ent,b,tipo:'Entrega',ot:n,est:'Pendiente'})}
+  feed(`OT ${n} creada en mesón para ${o.cli}. Ticket impreso y comprobante enviado por WhatsApp.`);
+  nvReset();toast(`OT ${n} creada · ticket y WhatsApp enviados`);S.fil='todos';go('pedidos')}
+
+function drawer(n){const o=ot(n);if(!o)return;
+  const L=$('#layer');L.innerHTML=`<div class="ov" id="ov"><aside class="dr" role="dialog" aria-label="Detalle OT ${n}">
+   <div class="row space"><div><span class="ot">OT ${n}</span><h1 style="margin-top:2px">${esc(o.cli)}</h1></div><button class="btn sm" id="dx">Cerrar</button></div>
+   <div class="muted" style="font-size:14px">${esc(o.tel)}${o.emp?' · Empresa, factura mensual':''}<br>${o.tipo==='DOMICILIO'?'Domicilio: '+esc(o.dir):'Retira en local'} · ingresó vía ${o.orig}</div>
+   <div class="card" style="padding:12px"><table><tbody>${o.items.map(i=>{const c=catBy(i.id);return`<tr><td>${c.u?i.q+' '+c.u:i.q+' ×'} ${c.n}</td><td class="ot" style="text-align:right">${clp(c.p*i.q)}</td></tr>`}).join('')}<tr><td><b>Total</b></td><td class="ot" style="text-align:right"><b>${clp(tot(o))}</b></td></tr></tbody></table>
+   <div class="row space" style="margin-top:8px">${o.pag?'<span class="pill p-listo">Pagado</span>':'<span class="pill p-bad">Por cobrar</span>'}${o.pag?'':'<button class="btn sm" id="dlink">Enviar link de pago</button>'}</div></div>
+   <div><h2 style="margin-bottom:6px">Etapas</h2><ul class="tl">${ETAPAS.map((e,i)=>`<li class="${i<o.etapa?'done':''} ${i===o.etapa?'cur done':''}"><i></i>${e}${i===4?' · entrega '+fdia(new Date(o.ent+'T12:00')):''}</li>`).join('')}</ul></div>
+   <div class="row">${o.etapa<5?`<button class="btn pri" id="dnext">Pasar a "${ETAPAS[o.etapa+1]}"</button>`:''}${o.etapa===4?'<button class="btn" id="daviso">Avisar por WhatsApp</button>':''}</div>
+  </aside></div>`;
+  const close=()=>{L.innerHTML=''};
+  $('#ov').addEventListener('click',e=>{if(e.target.id==='ov'||e.target.id==='dx')close()});
+  $('#dnext')?.addEventListener('click',()=>{o.etapa++;feed(`OT ${n} pasó a "${ETAPAS[o.etapa]}".`);if(o.etapa===4)toast(`OT ${n} lista. Se puede avisar al cliente`);if(o.etapa===5)o.pag=true;render();drawer(n)});
+  $('#daviso')?.addEventListener('click',()=>{feed(`Aviso de pedido listo enviado a ${o.cli} con link para agendar la entrega.`);toast(`WhatsApp enviado a ${o.cli}`)});
+  $('#dlink')?.addEventListener('click',()=>{feed(`Link de pago por ${clp(tot(o))} enviado a ${o.cli}.`);toast('Link de pago enviado por WhatsApp')});
+  document.addEventListener('keydown',function k(ev){if(ev.key==='Escape'){close();document.removeEventListener('keydown',k)}});
+}
+
+/* ---------- MOTOR DE LA ASISTENTE (simulado con reglas) ---------- */
+const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+const CLI={n:'Camila',tel:'+56 9 1234 5678'};
+function slog(t){S.log.push([hhmm(new Date()),t])}
+function enviar(t){if(S.typing)return;S.chat.push({de:'c',t,h:hhmm(new Date())});S.typing=true;render();
+  setTimeout(()=>{S.typing=false;const r=responder(t);S.chat.push({de:'a',t:r.t,op:r.op,h:hhmm(new Date())});S.msgs++;render()},950)}
+function libres(){const out=[];[[MAN,'AM','10:00 a 13:00'],[MAN,'PM','15:00 a 18:00'],[habil(HOY,2),'AM','10:00 a 13:00']].forEach(([d,b,h])=>{const u=cuposUsados(ymd(d),b);if(u<15)out.push({d,b,h,lib:15-u,txt:`${DIAS[d.getDay()][0].toUpperCase()+DIAS[d.getDay()].slice(1)} ${d.getDate()}/${d.getMonth()+1}, ${h}`})});return out}
+function responder(t){
+  const x=norm(t),F=S.flow;
+  if(!F.saludo){F.saludo=1;slog(`Número ${CLI.tel} sin historial: cliente nuevo creado (${CLI.n}).`)}
+  if(F.paso==='cupo'){const s=(F.ofertas||[]).find(o=>x.includes(norm(o.txt).slice(0,6))&&x.includes(o.h.slice(0,5)))||(F.ofertas||[]).find(o=>norm(t)===norm(o.txt));
+    if(s){F.paso=null;const n=S.next++;const items=F.serv==='p2'?[{id:'p2',q:1}]:F.serv==='pk'?[{id:'pk',q:1}]:[{id:'kg',q:5}];
+      S.ots.push({n,cli:CLI.n+' (demo)',tel:CLI.tel,items,etapa:0,tipo:'DOMICILIO',dir:F.dir,ent:ymd(habil(s.d,F.serv?3:2)),pag:false,orig:'Asistente'});
+      S.stops.push({id:Date.now(),f:ymd(s.d),b:s.b,tipo:'Retiro',ot:n,est:'Pendiente',nuevo:true});
+      slog(`Retiro creado: OT ${n}, ${s.txt}. Quedó en la ruta (cupo ${cuposUsados(ymd(s.d),s.b)} de 15).`);
+      feed(`${brand.a} agendó un retiro para ${CLI.n} (OT ${n}), ${s.txt}.`);
+      setTimeout(()=>toast(`Retiro OT ${n} agregado a Reparto`),300);
+      return{t:`¡Listo, ${CLI.n}! Quedó agendado tu retiro:\n\n📅 ${s.txt}\n📍 ${F.dir}\n🧾 Pedido N° ${n}\n\nTe aviso por aquí cuando el conductor vaya en camino. Si no estás, puedes dejarlo en conserjería.`}}
+    return{t:'Elige uno de los horarios disponibles, por favor:',op:F.ofertas.map(o=>o.txt)}}
+  if(F.paso==='dir'){F.dir=t.trim();F.paso='cupo';const of=libres();F.ofertas=of;
+    slog(`Dirección registrada y ubicada en el mapa: ${F.dir}. Zona sin pedido mínimo.`);slog(`Cupos consultados en la ruta: ${of.map(o=>o.txt+' ('+o.lib+' libres)').join('; ')}.`);
+    return{t:`Perfecto, en esa dirección el retiro y la entrega son gratis 🙌\n\nTengo estos horarios disponibles:`,op:of.map(o=>o.txt)}}
+  const num=(x.match(/\b(1\d{3})\b/)||[])[1];
+  if(num&&/pedido|orden|ot|va|esta|listo/.test(x)){const o=ot(+num);
+    if(o){slog(`Consultó OT ${num}: etapa "${ETAPAS[o.etapa]}".`);
+      const m=o.etapa===4?`Tu pedido ${num} ya está listo ✨ ¿Te lo llevamos? Tengo cupo ${libres()[0]?.txt||'mañana'}.`:o.etapa===5?`El pedido ${num} ya fue entregado. ¿Te puedo ayudar con algo más?`:o.etapa===0?`El retiro del pedido ${num} está agendado. Te aviso cuando el conductor vaya en camino.`:`Tu pedido ${num} va en la etapa "${ETAPAS[o.etapa]}". Estará listo el ${fdia(new Date(o.ent+'T12:00'))}. Te aviso apenas esté.`;
+      return{t:m}}
+    slog(`Consultó OT ${num}: no existe.`);return{t:`No encuentro el pedido ${num}. ¿Me confirmas el número que aparece en tu ticket?`}}
+  if(/retir|buscar|agend|pasen|pasan|domicilio|vengan|recoj/.test(x)||/^si\b|^sí|agenden/.test(x)){F.paso='dir';slog('Intención detectada: agendar retiro a domicilio.');return{t:`¡Claro! Pasamos a buscar sin costo dentro de la zona. ¿A qué dirección vamos? (calle, número y depto si tiene)`,op:['Los Aromos 230, depto 41','Av. del Mar 1820, torre A']}}
+  if(/plumon|cobertor|edredon|frazada/.test(x)){F.serv=/king|kin/.test(x)?'pk':'p2';slog('Cotización desde el catálogo: plumones.');
+    return{t:`El plumón 2 plazas sale ${clp(16990)} y el King ${clp(21990)}. Están listos en 3 a 5 días hábiles.\n\n¿Quieres que lo pasemos a buscar?`,op:['Sí, agenden un retiro','Solo estaba consultando']}}
+  if(/kilo|precio|cuanto|valor|cobran/.test(x)){slog('Cotización desde el catálogo: lavado por kilo.');return{t:`El lavado y secado por kilo cuesta ${clp(2990)}, doblado y listo en 24 a 48 horas hábiles. Las chaquetas salen ${clp(8990)} y el planchado de camisa ${clp(1500)}.\n\n¿Te paso a buscar la ropa?`,op:['Sí, agenden un retiro','Solo estaba consultando']}}
+  if(/horario|abren|atienden|cierran/.test(x)){slog('Respondió horario desde la configuración.');return{t:'Atendemos de lunes a sábado. Los retiros a domicilio son en dos bloques: 10:00 a 13:00 y 15:00 a 18:00. Por WhatsApp te respondo a cualquier hora.'}}
+  if(/consultando|gracias|no por ahora/.test(x)){return{t:'¡De nada! Cuando quieras, me escribes y lo agendamos 😊'}}
+  if(/hola|buen|alo/.test(x)){return{t:`¡Hola! Soy ${brand.a}, de ${brand.n} 👋 ¿Te ayudo con precios, un retiro a domicilio o el estado de tu pedido?`}}
+  slog('Consulta fuera de lo que sabe: se avisó al equipo para que responda una persona.');
+  return{t:'Déjame consultarlo con el equipo y te respondo en unos minutos por aquí.'}
+}
+
+/* ---------- MARCA ---------- */
+$('#bMarca').addEventListener('click',()=>{const L=$('#layer');
+  L.innerHTML=`<div class="ov" id="ov"><aside class="dr" role="dialog" aria-label="Tu marca">
+   <div class="row space"><h1>Tu marca</h1><button class="btn sm" id="dx">Listo</button></div>
+   <p class="muted" style="margin:0">Pon los datos de la lavandería del cliente. Todo el sistema cambia al instante.</p>
+   <label class="f">Nombre de la lavandería<input type="text" id="bn" value="${esc(brand.n)}"></label>
+   <label class="f">Nombre de la asistente<input type="text" id="ba" value="${esc(brand.a)}"></label>
+   <div class="f" style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:var(--muted)">Color de la marca<div class="sw">${COLORES.map(c=>`<button style="background:${c}" data-c="${c}" aria-label="Color ${c}" aria-pressed="${brand.c===c}"></button>`).join('')}<input type="color" id="bcol" value="${brand.c}" aria-label="Otro color" style="width:40px;height:36px;border:0;background:none;padding:0"></div></div>
+   <label class="f">Logo (opcional)<input type="file" id="blogo" accept="image/*"></label>
+   ${brand.logo?'<button class="btn sm" id="bnl">Quitar logo</button>':''}
+  </aside></div>`;
+  const close=()=>{L.innerHTML='';render()};
+  $('#ov').addEventListener('click',e=>{if(e.target.id==='ov'||e.target.id==='dx')close();const c=e.target.closest('[data-c]');if(c){brand.c=c.dataset.c;applyBrand();L.querySelectorAll('[data-c]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.c===brand.c))}if(e.target.id==='bnl'){brand.logo=null;applyBrand();e.target.remove()}});
+  $('#bn').addEventListener('input',e=>{brand.n=e.target.value||'Mi Lavandería';applyBrand()});
+  $('#ba').addEventListener('input',e=>{brand.a=e.target.value||'Ana';applyBrand()});
+  $('#bcol').addEventListener('input',e=>{brand.c=e.target.value;applyBrand()});
+  $('#blogo').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const img=new Image();img.onload=()=>{const cv=document.createElement('canvas');const s=160;cv.width=cv.height=s;const k=Math.max(s/img.width,s/img.height);const w=img.width*k,h=img.height*k;cv.getContext('2d').drawImage(img,(s-w)/2,(s-h)/2,w,h);brand.logo=cv.toDataURL('image/png');applyBrand()};img.src=r.result};r.readAsDataURL(f)});
+});
+let armed=false,at;
+$('#bReset').addEventListener('click',e=>{const b=e.currentTarget;if(!armed){armed=true;b.textContent='¿Seguro? Toca otra vez';b.classList.add('pri');at=setTimeout(()=>{armed=false;b.textContent='Reiniciar demo';b.classList.remove('pri')},3000);return}
+  clearTimeout(at);armed=false;b.textContent='Reiniciar demo';b.classList.remove('pri');seed();nvReset();render();toast('Demo reiniciada con los datos de ejemplo')});
+
+setInterval(()=>{if(S.tab==='taller'&&!$('#layer .ov'))render()},15000);
+applyBrand();render();
+})();
+</script>
+
+</body>
+
+</html>
