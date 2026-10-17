@@ -373,6 +373,23 @@ html.intro-open #intro{display:block}
 .ic-skip:focus-visible{outline:2px solid var(--magenta)}
 @media (max-width:760px){.ic-cap{background:linear-gradient(0deg,rgba(0,0,0,.85),transparent);padding-top:40px}}
 
+
+/* desarrollos */
+.devs{margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.dev{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:26px 24px 24px;display:flex;flex-direction:column;transition:border-color .25s,transform .25s}
+.dev:hover{border-color:rgba(214,0,110,.55);transform:translateY(-2px)}
+.dev-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.dev-kind{font-family:var(--mono);font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
+.dev-state{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted);white-space:nowrap}
+.dev-state .dot.wip{background:#FFB300;animation:none;box-shadow:none}
+.dev h3{margin-top:18px;font-size:26px;font-weight:1000;letter-spacing:-.03em;line-height:1.1}
+.dev p{margin-top:10px;color:var(--muted);font-size:16px;flex:1}
+.dev ul{list-style:none;margin-top:16px;font-size:14.5px}
+.dev li{padding:7px 0;border-top:1px solid var(--line)}
+.dev a.dev-link{margin-top:18px;color:var(--magenta);font-weight:700;font-size:15px;text-decoration:none}
+.dev a.dev-link:hover{text-decoration:underline}
+@media (max-width:960px){.devs{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.devs{grid-template-columns:1fr}}
 </style>
 </head>
 <body class="boot">
@@ -400,6 +417,7 @@ html.intro-open #intro{display:block}
     <div class="nav-links">
       <a href="#que-construimos">Qué construimos</a>
       <a href="#caso">Caso real</a>
+      <a href="#desarrollos">Desarrollos</a>
       <a href="#como">Cómo trabajamos</a>
       <a href="#presupuesto">Presupuesto</a>
       <a class="btn btn-sm" href="https://wa.me/56938740153?text=Hola%20Top%20Kreativa%2C%20quiero%20cotizar%20un%20desarrollo%20a%20medida." target="_blank" rel="noopener">Cotizar</a>
@@ -500,6 +518,47 @@ html.intro-open #intro{display:block}
         <div class="screen" id="lab-screen" aria-live="polite"></div>
         <div class="lab-bar"><span id="lab-prog"></span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="desarrollos">
+  <div class="wrap">
+    <h2>Lo que ya construimos.</h2>
+    <p class="sub measure">Productos propios, hechos y probados en negocios reales de Concón antes de ofrecerlos a nadie más.</p>
+    <div class="devs">
+      <article class="dev">
+        <div class="dev-top"><span class="dev-kind">Sistema de gestión</span><span class="dev-state"><span class="dot"></span>En producción</span></div>
+        <h3>Ladys App</h3>
+        <p>La app con la que opera Ladys Lavandería de punta a punta: desde que se retira la ropa hasta que vuelve a la casa del cliente.</p>
+        <ul><li>Producción por etapas con escaneo</li><li>Rutas de retiro y entrega para conductores</li><li>Facturación automática</li></ul>
+        <a class="dev-link" href="#caso">Ver módulos →</a>
+      </article>
+      <article class="dev">
+        <div class="dev-top"><span class="dev-kind">Software para lavanderías</span><span class="dev-state"><span class="dot"></span>Disponible</span></div>
+        <h3>Spumash</h3>
+        <p>Lo que construimos para Ladys, empaquetado para cualquier lavandería: tu WhatsApp responde, cotiza y agenda retiros en tu ruta, con tu marca.</p>
+        <ul><li>Asistente con nombre y colores propios</li><li>Agenda en cupos reales de la ruta</li><li>Desde $29.990 + IVA al mes</li></ul>
+        <a class="dev-link" href="/spumash/">Conocer Spumash →</a>
+      </article>
+      <article class="dev">
+        <div class="dev-top"><span class="dev-kind">Agente de IA</span><span class="dev-state"><span class="dot"></span>En producción</span></div>
+        <h3>SofIA IA</h3>
+        <p>La recepcionista virtual de Ladys en WhatsApp, Instagram y chat web. Responde con los precios y horarios reales y deja los retiros agendados.</p>
+        <ul><li>Atiende 24/7, también audios</li><li>Agenda retiros con confirmación del día</li><li>Pasa a una persona cuando hace falta</li></ul>
+      </article>
+      <article class="dev">
+        <div class="dev-top"><span class="dev-kind">Agente de voz</span><span class="dev-state"><span class="dot"></span>En producción</span></div>
+        <h3>SofIA Mesón</h3>
+        <p>SofIA atendiendo en persona, en el mesón del local. Recibe a los clientes por voz y los guía en la entrega de su ropa.</p>
+        <ul><li>Conversación por voz en español</li><li>Guía el pesaje y la recepción</li><li>Detecta cuando llega alguien</li></ul>
+      </article>
+      <article class="dev">
+        <div class="dev-top"><span class="dev-kind">App de pedidos</span><span class="dev-state"><span class="dot wip"></span>En desarrollo</span></div>
+        <h3>Pasta Mar App</h3>
+        <p>La app de Pasta Mar, pasta bar al paso en Concón.</p>
+        <ul><li>En construcción</li></ul>
+      </article>
     </div>
   </div>
 </section>
