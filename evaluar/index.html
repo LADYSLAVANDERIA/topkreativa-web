@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Top Kreativa · ¿Qué necesita tu negocio?</title>
+<meta name="description" content="Cuéntanos en 3 preguntas qué te gustaría mejorar en tu negocio y te decimos si lo podemos construir con IA.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0D0D0D">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,1000&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0D0D0D;--panel:#151515;--line:#2A2A2A;--text:#F5F5F0;--muted:#9A9A94;--dim:#5E5E5A;
+  --magenta:#D6006E;--magenta-soft:rgba(214,0,110,.12);--green:#00C853;
+  --r:12px;--r-sm:8px;
+  --sans:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+body{min-height:100dvh;display:flex;flex-direction:column}
+a{color:inherit}
+.top{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;max-width:620px;width:100%;margin:0 auto}
+.brand{font-weight:1000;letter-spacing:-.02em;font-size:18px;text-decoration:none}
+.brand b{color:var(--magenta)}
+.step-count{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.bar{height:3px;background:var(--line);max-width:620px;width:calc(100% - 40px);margin:0 auto;border-radius:2px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--magenta);transition:width .35s ease}
+main{flex:1;max-width:620px;width:100%;margin:0 auto;padding:28px 20px 40px}
+.screen{display:none;animation:in .3s ease}
+.screen.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.kicker{font-family:var(--mono);font-size:12px;color:var(--magenta);letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
+h1{font-size:clamp(28px,7vw,40px);line-height:1.05;font-weight:1000;letter-spacing:-.03em;margin-bottom:12px}
+h2{font-size:clamp(24px,6vw,32px);line-height:1.1;font-weight:1000;letter-spacing:-.025em;margin-bottom:8px}
+p.lead{color:var(--muted);font-size:16px;line-height:1.5;margin-bottom:26px}
+.opts{display:grid;gap:10px;margin-bottom:22px}
+.opts.grid2{grid-template-columns:1fr 1fr}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:var(--r);padding:16px;font:500 16px/1.3 var(--sans);cursor:pointer;transition:border-color .15s,background .15s}
+.opt:hover{border-color:#444}
+.opt .dot{flex:none;width:18px;height:18px;border-radius:50%;border:2px solid var(--dim)}
+.opt.check .dot{border-radius:5px}
+.opt[aria-pressed="true"]{border-color:var(--magenta);background:var(--magenta-soft)}
+.opt[aria-pressed="true"] .dot{border-color:var(--magenta);background:var(--magenta);box-shadow:inset 0 0 0 3px var(--panel)}
+.grid2 .opt{padding:14px 12px;font-size:15px}
+label.f{display:block;font-size:14px;color:var(--muted);margin:0 0 8px}
+input[type=text],textarea{width:100%;background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:var(--r-sm);padding:14px;font:400 16px/1.4 var(--sans);margin-bottom:18px}
+input:focus,textarea:focus{outline:none;border-color:var(--magenta)}
+textarea{min-height:96px;resize:vertical}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;border:0;border-radius:var(--r);padding:17px;font:700 17px var(--sans);cursor:pointer;text-decoration:none;transition:opacity .15s,transform .1s}
+.btn:active{transform:scale(.99)}
+.btn.primary{background:var(--magenta);color:#fff}
+.btn.wa{background:var(--green);color:#04210F}
+.btn:disabled{opacity:.35;cursor:not-allowed}
+.back{background:none;border:0;color:var(--muted);font:500 14px var(--sans);margin-top:14px;cursor:pointer;width:100%;padding:8px}
+.note{font-size:13px;color:var(--dim);line-height:1.5;margin-top:16px;text-align:center}
+.proof{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:0 0 26px;background:var(--panel)}
+.proof .n{font-weight:1000;font-size:22px;color:var(--magenta);line-height:1}
+.proof p{font-size:14px;color:var(--muted);line-height:1.45}
+.summary{border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:20px;background:var(--panel);font-size:15px;line-height:1.55}
+.summary b{color:var(--text)}
+.summary span{color:var(--muted)}
+.err{color:#FF6B8A;font-size:14px;margin:-8px 0 16px;display:none}
+footer{text-align:center;font-size:12px;color:var(--dim);padding:20px}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="/">Top<b>Kreativa</b></a>
+  <span class="step-count" id="count">1 de 3</span>
+</header>
+<div class="bar"><i id="bar"></i></div>
+
+<main>
+  <!-- Paso 1 -->
+  <section class="screen on" data-step="1">
+    <div class="kicker">3 preguntas · 1 minuto</div>
+    <h1>¿Tienes un negocio funcionando hoy?</h1>
+    <p class="lead">Construimos herramientas con IA a la medida de negocios que ya están vendiendo. Así sabemos si te podemos ayudar.</p>
+    <div class="opts" role="radiogroup">
+      <button class="opt" data-q="tiene" data-v="si" aria-pressed="false"><span class="dot"></span>Sí, ya tengo clientes y vendo</button>
+      <button class="opt" data-q="tiene" data-v="empezando" aria-pressed="false"><span class="dot"></span>Estoy por empezar</button>
+      <button class="opt" data-q="tiene" data-v="no" aria-pressed="false"><span class="dot"></span>No tengo negocio</button>
+    </div>
+  </section>
+
+  <!-- No califica -->
+  <section class="screen" data-step="fuera">
+    <div class="kicker">Gracias por tu tiempo</div>
+    <h2>Por ahora, esto no es para ti.</h2>
+    <p class="lead">Lo que hacemos sirve cuando ya hay clientes, mensajes y ventas que ordenar. Cuando tu negocio esté andando, aquí vamos a estar.</p>
+    <a class="btn primary" href="https://www.instagram.com/topkreativa" rel="noopener">Seguir a @topkreativa</a>
+    <button class="back" data-go="1">← Me equivoqué de respuesta</button>
+  </section>
+
+  <!-- Paso 2 -->
+  <section class="screen" data-step="2">
+    <div class="kicker">Paso 2</div>
+    <h2>¿Cuál es tu negocio?</h2>
+    <p class="lead">Elige el rubro más parecido.</p>
+    <div class="opts grid2" id="rubros">
+      <button class="opt" data-q="rubro" data-v="Comercio o tienda" aria-pressed="false"><span class="dot"></span>Comercio o tienda</button>
+      <button class="opt" data-q="rubro" data-v="Restaurante o comida" aria-pressed="false"><span class="dot"></span>Restaurante o comida</button>
+      <button class="opt" data-q="rubro" data-v="Salud o estética" aria-pressed="false"><span class="dot"></span>Salud o estética</button>
+      <button class="opt" data-q="rubro" data-v="Taller o automotriz" aria-pressed="false"><span class="dot"></span>Taller o automotriz</button>
+      <button class="opt" data-q="rubro" data-v="Servicios" aria-pressed="false"><span class="dot"></span>Servicios</button>
+      <button class="opt" data-q="rubro" data-v="Otro" aria-pressed="false"><span class="dot"></span>Otro</button>
+    </div>
+    <label class="f" for="negocio">Nombre del negocio</label>
+    <input type="text" id="negocio" autocomplete="organization" placeholder="Ej: Peluquería Rosita, Concón">
+    <p class="err" id="err2">Elige un rubro y escribe el nombre de tu negocio.</p>
+    <button class="btn primary" data-next="2">Siguiente</button>
+    <button class="back" data-go="1">← Volver</button>
+  </section>
+
+  <!-- Paso 3 -->
+  <section class="screen" data-step="3">
+    <div class="kicker">Paso 3</div>
+    <h2>¿Qué te gustaría mejorar?</h2>
+    <p class="lead">Marca todo lo que te quita tiempo hoy.</p>
+    <div class="opts" id="mejoras">
+      <button class="opt check" data-m="Responder WhatsApp más rápido" aria-pressed="false"><span class="dot"></span>Responder WhatsApp más rápido</button>
+      <button class="opt check" data-m="Agendar horas o retiros solo" aria-pressed="false"><span class="dot"></span>Agendar horas o retiros solo</button>
+      <button class="opt check" data-m="Cobros y pagos" aria-pressed="false"><span class="dot"></span>Cobros y pagos</button>
+      <button class="opt check" data-m="Pedidos e inventario" aria-pressed="false"><span class="dot"></span>Pedidos e inventario</button>
+      <button class="opt check" data-m="Reportes y números del negocio" aria-pressed="false"><span class="dot"></span>Reportes y números del negocio</button>
+    </div>
+    <label class="f" for="detalle">Cuéntalo en tus palabras (opcional)</label>
+    <textarea id="detalle" placeholder="Ej: pierdo clientes porque contesto tarde en la noche"></textarea>
+    <p class="err" id="err3">Marca al menos una opción o escribe qué necesitas.</p>
+    <button class="btn primary" data-next="3">Ver si te podemos ayudar</button>
+    <button class="back" data-go="2">← Volver</button>
+  </section>
+
+  <!-- Califica -->
+  <section class="screen" data-step="listo">
+    <div class="kicker">Sí te podemos ayudar</div>
+    <h2>Esto lo construimos.</h2>
+    <p class="lead">Escríbenos por WhatsApp con tus respuestas y te proponemos una reunión de 20 minutos para mostrarte cómo quedaría en tu negocio.</p>
+    <div class="summary" id="resumen"></div>
+    <div class="proof"><span class="n">Ladys</span><p>Nuestra propia lavandería en Concón funciona con una app y un asistente hechos por nosotros. Cada solución se cotiza con precio cerrado y plazo por escrito.</p></div>
+    <a class="btn wa" id="wa" href="#" rel="noopener">Enviar por WhatsApp</a>
+    <button class="back" data-go="3">← Cambiar respuestas</button>
+    <p class="note">Tus respuestas no se guardan en esta página: solo viajan en el mensaje que tú decides enviar.</p>
+  </section>
+</main>
+
+<footer>Top Kreativa · Concón, Región de Valparaíso · contacto@topkreativa.com</footer>
+
+<script>
+(function(){
+  var WA = "56938740153";
+  var st = {tiene:null, rubro:null, mejoras:[]};
+  var screens = document.querySelectorAll('.screen');
+  var progress = {"1":1,"2":2,"3":3,"fuera":1,"listo":3};
+  function show(id){
+    screens.forEach(function(s){ s.classList.toggle('on', s.dataset.step===String(id)); });
+    var n = progress[id]||1;
+    document.getElementById('count').textContent = (id==="listo") ? "Listo" : (id==="fuera" ? "" : n+" de 3");
+    document.getElementById('bar').style.width = (id==="listo"?100:(id==="fuera"?0:(n-1)*33.4))+"%";
+    window.scrollTo(0,0);
+  }
+  function press(group, btn){
+    group.querySelectorAll('[data-q]').forEach(function(b){ b.setAttribute('aria-pressed', b===btn?'true':'false'); });
+  }
+  document.querySelectorAll('[data-q="tiene"]').forEach(function(b){
+    b.addEventListener('click', function(){
+      press(b.parentNode, b); st.tiene = b.dataset.v;
+      setTimeout(function(){ show(st.tiene==="si" ? 2 : "fuera"); }, 180);
+    });
+  });
+  document.querySelectorAll('[data-q="rubro"]').forEach(function(b){
+    b.addEventListener('click', function(){ press(b.parentNode, b); st.rubro = b.dataset.v; });
+  });
+  document.querySelectorAll('[data-m]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var on = b.getAttribute('aria-pressed')!=='true';
+      b.setAttribute('aria-pressed', on?'true':'false');
+      st.mejoras = Array.prototype.map.call(document.querySelectorAll('[data-m][aria-pressed="true"]'), function(x){return x.dataset.m;});
+    });
+  });
+  document.querySelectorAll('[data-go]').forEach(function(b){
+    b.addEventListener('click', function(){ show(b.dataset.go); });
+  });
+  function esc(s){ return s.replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+  document.querySelector('[data-next="2"]').addEventListener('click', function(){
+    var neg = document.getElementById('negocio').value.trim();
+    var ok = st.rubro && neg.length>1;
+    document.getElementById('err2').style.display = ok?'none':'block';
+    if(ok) show(3);
+  });
+  document.querySelector('[data-next="3"]').addEventListener('click', function(){
+    var det = document.getElementById('detalle').value.trim();
+    var ok = st.mejoras.length>0 || det.length>3;
+    document.getElementById('err3').style.display = ok?'none':'block';
+    if(!ok) return;
+    var neg = document.getElementById('negocio').value.trim();
+    var mej = st.mejoras.join(", ");
+    var lines = [
+      "Hola, vengo del formulario de Top Kreativa.",
+      "Negocio: " + neg + " (" + st.rubro + ")",
+      "Quiero mejorar: " + (mej || "—")
+    ];
+    if(det) lines.push("Detalle: " + det);
+    lines.push("Me gustaría agendar la reunión de 20 minutos.");
+    document.getElementById('wa').href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(lines.join("\n"));
+    document.getElementById('resumen').innerHTML =
+      "<span>Negocio</span><br><b>"+esc(neg)+"</b> · "+esc(st.rubro)+"<br><br>"+
+      "<span>Quieres mejorar</span><br><b>"+esc(mej || det)+"</b>"+
+      (mej && det ? "<br><span>"+esc(det)+"</span>" : "");
+    show("listo");
+  });
+})();
+</script>
+</body>
+</html>
