@@ -47,6 +47,7 @@ sed -i \
   -e "s#<div>ladyslavanderia.cl</div>#<div>topkreativa.com/spumash</div>#g" \
   -e "s#'+56 9 7541 0232'#'+56 9 3874 0153'#g" \
   src/components/OtCarta.tsx
+sed -i "s/useState('admin@ladys.cl')/useState('demo@topkreativa.com')/" src/pages/Login.tsx
 sed -i "s#https://ladyslavanderia.cl/ruta/#https://topkreativa.com/spumash/app/ruta/#g" src/lib/google.ts
 
 # 4) Íconos, manifest y logo de la demo (los que ya están publicados).
