@@ -1,18 +1,31 @@
 #!/usr/bin/env bash
-# Compila la app de Spumash (Lavandería Demo) desde el MISMO código de la app de Ladys.
+# Compila la app de Spumash desde el MISMO código de la app de Ladys.
 # No es una app aparte: toma ladys-laundry-app/frontend tal como está y solo cambia
 # a qué servidor apunta (proyecto Supabase spumash-demo), la ruta donde se publica
-# (topkreativa.com/spumash/app/) y la marca visible (Lavandería Demo).
+# y la marca visible.
 #
 # Uso: build-demo.sh <ruta a ladys-laundry-app> <ruta a topkreativa-web>
-# Resultado: reemplaza <topkreativa-web>/spumash/app/ con el build nuevo.
+# Variables opcionales (por cliente):
+#   MARCA     nombre visible           (por defecto "Lavandería Demo")
+#   CARPETA   carpeta en spumash/      (por defecto "app" → topkreativa.com/spumash/app/)
+#   LOGO      URL o ruta del logo      (por defecto el logo de la demo)
+#   CORREO    correo de ejemplo en el login (por defecto demo@topkreativa.com)
+#   CONTACTO_TEL / CONTACTO_MAIL / CONTACTO_WEB  datos que salen en la OT impresa
+# Resultado: reemplaza <topkreativa-web>/spumash/<CARPETA>/ con el build nuevo.
 set -euo pipefail
 
 APP="${1:?ruta a ladys-laundry-app}"
 WEB="${2:?ruta a topkreativa-web}"
 DEMO_REF="zgqerwslkdbeicvnunuc"
 PROD_REF="vhjsizkbmabznupkfzji"
-MARCA="Lavandería Demo"
+MARCA="${MARCA:-Lavandería Demo}"
+CARPETA="${CARPETA:-app}"
+BASE="/spumash/$CARPETA/"
+LOGO="${LOGO:-${BASE}logo-demo.svg}"
+CORREO="${CORREO:-demo@topkreativa.com}"
+CONTACTO_TEL="${CONTACTO_TEL:-+56 9 3874 0153}"
+CONTACTO_MAIL="${CONTACTO_MAIL:-contacto@topkreativa.com}"
+CONTACTO_WEB="${CONTACTO_WEB:-topkreativa.com/spumash}"
 
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
@@ -22,14 +35,14 @@ cd "$TMP/fe"
 # 1) Servidor: todo lo que apunta al proyecto de Ladys pasa al proyecto demo.
 grep -rl "$PROD_REF" src | xargs -r sed -i "s/$PROD_REF/$DEMO_REF/g"
 
-# 2) Ruta de publicación.
-sed -i "s#base: '/app/'#base: '/spumash/app/'#" vite.config.ts
+# 2) Ruta de publicación y logo.
+sed -i "s#base: '/app/'#base: '$BASE'#" vite.config.ts
 grep -rl "['\"\`]/app/" src | xargs -r sed -i \
-  -e "s#\"/app/logo-ladys-completo.png#\"/spumash/app/logo-demo.svg#g" \
-  -e "s#\"/app/logo-ladys.png#\"/spumash/app/logo-demo.svg#g" \
-  -e "s#'/app/sw.js#'/spumash/app/sw.js#g" \
-  -e "s#'/app/'#'/spumash/app/'#g" \
-  -e "s#\`/app/index.html#\`/spumash/app/index.html#g"
+  -e "s#\"/app/logo-ladys-completo.png#\"$LOGO#g" \
+  -e "s#\"/app/logo-ladys.png#\"$LOGO#g" \
+  -e "s#'/app/sw.js#'${BASE}sw.js#g" \
+  -e "s#'/app/'#'$BASE'#g" \
+  -e "s#\`/app/index.html#\`${BASE}index.html#g"
 
 # 3) Marca visible para el cliente final.
 grep -rl "Ladys" src | xargs -r sed -i \
@@ -43,23 +56,25 @@ grep -rl "Ladys" src | xargs -r sed -i \
   -e "s/Club Ladys/Club/g" \
   -e "s/App Ladys/App/g"
 sed -i \
-  -e "s#contacto@ladyslavanderia.cl#contacto@topkreativa.com#g" \
-  -e "s#<div>ladyslavanderia.cl</div>#<div>topkreativa.com/spumash</div>#g" \
-  -e "s#'+56 9 7541 0232'#'+56 9 3874 0153'#g" \
+  -e "s#contacto@ladyslavanderia.cl#$CONTACTO_MAIL#g" \
+  -e "s#<div>ladyslavanderia.cl</div>#<div>$CONTACTO_WEB</div>#g" \
+  -e "s#'+56 9 7541 0232'#'$CONTACTO_TEL'#g" \
   src/components/OtCarta.tsx
-sed -i "s/useState('admin@ladys.cl')/useState('demo@topkreativa.com')/" src/pages/Login.tsx
-sed -i "s#https://ladyslavanderia.cl/ruta/#https://topkreativa.com/spumash/app/ruta/#g" src/lib/google.ts
+sed -i "s/useState('admin@ladys.cl')/useState('$CORREO')/" src/pages/Login.tsx
+sed -i "s#https://ladyslavanderia.cl/ruta/#https://topkreativa.com${BASE}ruta/#g" src/lib/google.ts
 
-# 4) Íconos, manifest y logo de la demo (los que ya están publicados).
+# 4) Íconos, manifest y logo de la demo (los que ya están publicados en spumash/app).
 rm -f public/logo-ladys*.png
 for f in icono-192.png icono-512.png icono-mask-512.png logo-demo.svg manifest.webmanifest; do
   [ -f "$WEB/spumash/app/$f" ] && cp "$WEB/spumash/app/$f" public/
 done
-sed -i -e "s#/app/sw.js#/spumash/app/sw.js#g" -e "s#'/app/'#'/spumash/app/'#g" public/sw.js 2>/dev/null || true
+sed -i -e "s#/spumash/app/#$BASE#g" -e "s#\"name\": *\"[^\"]*\"#\"name\": \"$MARCA\"#" -e "s#\"short_name\": *\"[^\"]*\"#\"short_name\": \"$MARCA\"#" public/manifest.webmanifest 2>/dev/null || true
+sed -i -e "s#/app/sw.js#${BASE}sw.js#g" -e "s#'/app/'#'$BASE'#g" public/sw.js 2>/dev/null || true
 sed -i \
-  -e "s#href=\"/app/#href=\"/spumash/app/#g" \
+  -e "s#href=\"/app/#href=\"$BASE#g" \
   -e "s#<title>[^<]*</title>#<title>$MARCA</title>#" \
   -e "s#apple-mobile-web-app-title\" content=\"[^\"]*\"#apple-mobile-web-app-title\" content=\"$MARCA\"#" \
+  -e "s#</head>#<meta name=\"robots\" content=\"noindex\" /></head>#" \
   index.html
 
 # 5) Variables del build.
@@ -78,6 +93,6 @@ npx vite build --logLevel warn
 if grep -rl "$PROD_REF" dist; then echo "ERROR: el build apunta al proyecto de Ladys"; exit 1; fi
 
 # 7) Publicar en el sitio.
-rm -rf "$WEB/spumash/app"
-cp -r dist "$WEB/spumash/app"
-echo "OK: $(ls "$WEB/spumash/app/assets" | tr '\n' ' ')"
+rm -rf "$WEB/spumash/$CARPETA"
+cp -r dist "$WEB/spumash/$CARPETA"
+echo "OK: $BASE $(ls "$WEB/spumash/$CARPETA/assets" | tr '\n' ' ')"
