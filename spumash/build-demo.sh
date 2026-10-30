@@ -10,6 +10,8 @@
 #   CARPETA   carpeta en spumash/      (por defecto "app" → topkreativa.com/spumash/app/)
 #   LOGO      URL o ruta del logo      (por defecto el logo de la demo)
 #   ICONO     ruta local a un PNG del logo para generar el ícono de pestaña/app (por defecto el de la demo)
+#   LOCAL     número de local en la base demo (1 = esquema ladys, 2 = ladys_2, …). La app manda
+#             la cabecera x-local en cada llamada y el servidor usa el esquema de esa lavandería.
 #   CORREO    correo de ejemplo en el login (por defecto demo@topkreativa.com)
 #   CONTACTO_TEL / CONTACTO_MAIL / CONTACTO_WEB  datos que salen en la OT impresa
 # Resultado: reemplaza <topkreativa-web>/spumash/<CARPETA>/ con el build nuevo.
@@ -27,6 +29,8 @@ CORREO="${CORREO:-demo@topkreativa.com}"
 CONTACTO_TEL="${CONTACTO_TEL:-+56 9 3874 0153}"
 CONTACTO_MAIL="${CONTACTO_MAIL:-contacto@topkreativa.com}"
 CONTACTO_WEB="${CONTACTO_WEB:-topkreativa.com/spumash}"
+LOCAL="${LOCAL:-1}"
+ESQUEMA="$([ "$LOCAL" -le 1 ] && echo ladys || echo "ladys_$LOCAL")"
 
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
@@ -67,6 +71,25 @@ sed -i "s/useState('admin@ladys.cl')/useState('$CORREO')/" src/pages/Login.tsx
 sed -i "s#window.location.href = '/login'#window.location.href = '${BASE}\#/login'#" src/services/api.ts
 grep -q "${BASE}#/login" src/services/api.ts || { echo "ERROR: no se ajustó la redirección del 401"; exit 1; }
 sed -i "s#https://ladyslavanderia.cl/ruta/#https://topkreativa.com${BASE}ruta/#g" src/lib/google.ts
+
+# 3b) Multi-local: todas las llamadas al servidor llevan la cabecera x-local con el esquema de esta lavandería
+#     (axios en services/api.ts y los fetch sueltos vía main.tsx).
+sed -i "s#^import axios from 'axios'\$#import axios from 'axios'\naxios.defaults.headers.common['x-local'] = '$ESQUEMA' // Spumash multi-local#" src/services/api.ts
+grep -q "x-local" src/services/api.ts || { echo "ERROR: no pude inyectar x-local en services/api.ts"; exit 1; }
+cat >> src/main.tsx <<EOF2
+
+// Spumash multi-local: los fetch directos a funciones también llevan el esquema de esta lavandería.
+const __fetch0 = window.fetch.bind(window)
+window.fetch = ((entrada: any, init: any = {}) => {
+  const u = typeof entrada === 'string' ? entrada : (entrada?.url || '')
+  if (u.includes('/functions/v1/')) {
+    const h = new Headers(init.headers || {})
+    if (!h.has('x-local')) h.set('x-local', '$ESQUEMA')
+    init = { ...init, headers: h }
+  }
+  return __fetch0(entrada, init)
+}) as typeof fetch
+EOF2
 
 # 4) Íconos, manifest y logo de la demo (los que ya están publicados en spumash/app).
 rm -f public/logo-ladys*.png
