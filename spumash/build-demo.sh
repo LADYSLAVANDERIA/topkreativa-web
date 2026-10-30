@@ -9,6 +9,7 @@
 #   MARCA     nombre visible           (por defecto "Lavandería Demo")
 #   CARPETA   carpeta en spumash/      (por defecto "app" → topkreativa.com/spumash/app/)
 #   LOGO      URL o ruta del logo      (por defecto el logo de la demo)
+#   ICONO     ruta local a un PNG del logo para generar el ícono de pestaña/app (por defecto el de la demo)
 #   CORREO    correo de ejemplo en el login (por defecto demo@topkreativa.com)
 #   CONTACTO_TEL / CONTACTO_MAIL / CONTACTO_WEB  datos que salen en la OT impresa
 # Resultado: reemplaza <topkreativa-web>/spumash/<CARPETA>/ con el build nuevo.
@@ -68,6 +69,23 @@ rm -f public/logo-ladys*.png
 for f in icono-192.png icono-512.png icono-mask-512.png logo-demo.svg manifest.webmanifest; do
   [ -f "$WEB/spumash/app/$f" ] && cp "$WEB/spumash/app/$f" public/
 done
+# Ícono de pestaña y de la app instalada: si se pasa ICONO (ruta a un PNG del logo del cliente),
+# se generan sus íconos; si no, quedan los de la demo.
+if [ -n "${ICONO:-}" ] && [ -f "$ICONO" ]; then
+  python3 - "$ICONO" public <<'PY'
+import sys
+from PIL import Image, ImageDraw
+src=Image.open(sys.argv[1]).convert('RGBA'); out=sys.argv[2]
+def icon(size, name, rounded):
+    im=Image.new('RGBA',(size,size),(255,255,255,255)); pad=int(size*0.10); w=size-2*pad
+    h=min(w,int(w*src.height/src.width)); w2=int(h*src.width/src.height); logo=src.resize((w2,h),Image.LANCZOS)
+    im.paste(logo,((size-w2)//2,(size-h)//2),logo)
+    if rounded:
+        m=Image.new('L',(size,size),0); ImageDraw.Draw(m).rounded_rectangle((0,0,size-1,size-1),radius=int(size*0.22),fill=255); im.putalpha(m)
+    im.save(f"{out}/{name}")
+icon(192,'icono-192.png',True); icon(512,'icono-512.png',True); icon(512,'icono-mask-512.png',False)
+PY
+fi
 sed -i -e "s#/spumash/app/#$BASE#g" -e "s#\"name\": *\"[^\"]*\"#\"name\": \"$MARCA\"#" -e "s#\"short_name\": *\"[^\"]*\"#\"short_name\": \"$MARCA\"#" public/manifest.webmanifest 2>/dev/null || true
 sed -i -e "s#/app/sw.js#${BASE}sw.js#g" -e "s#'/app/'#'$BASE'#g" public/sw.js 2>/dev/null || true
 sed -i \
