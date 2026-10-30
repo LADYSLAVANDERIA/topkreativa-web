@@ -62,6 +62,10 @@ sed -i \
   -e "s#'+56 9 7541 0232'#'$CONTACTO_TEL'#g" \
   src/components/OtCarta.tsx
 sed -i "s/useState('admin@ladys.cl')/useState('$CORREO')/" src/pages/Login.tsx
+# Un 401 (clave mal escrita, sesión vencida) debe volver al login DENTRO de la app (HashRouter),
+# no a topkreativa.com/login.
+sed -i "s#window.location.href = '/login'#window.location.href = '${BASE}\#/login'#" src/services/api.ts
+grep -q "${BASE}#/login" src/services/api.ts || { echo "ERROR: no se ajustó la redirección del 401"; exit 1; }
 sed -i "s#https://ladyslavanderia.cl/ruta/#https://topkreativa.com${BASE}ruta/#g" src/lib/google.ts
 
 # 4) Íconos, manifest y logo de la demo (los que ya están publicados en spumash/app).
