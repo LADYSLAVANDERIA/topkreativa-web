@@ -1,12 +1,12 @@
 {
   "name": "Lavandería Demo",
-  "short_name": "Demo",
+  "short_name": "Lavandería Demo",
   "description": "Sigue tus pedidos, tu plan y pide un retiro.",
   "start_url": "/spumash/app/",
   "scope": "/spumash/app/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#E8177A",
+  "theme_color": "#1E6FD9",
   "lang": "es-CL",
   "icons": [
     {

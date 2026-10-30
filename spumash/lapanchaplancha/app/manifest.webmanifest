@@ -2,27 +2,27 @@
   "name": "La Pancha Plancha",
   "short_name": "La Pancha Plancha",
   "description": "Sigue tus pedidos, tu plan y pide un retiro.",
-  "start_url": "/spumash/lapanchaplancha/",
-  "scope": "/spumash/lapanchaplancha/",
+  "start_url": "/spumash/lapanchaplancha/app/",
+  "scope": "/spumash/lapanchaplancha/app/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#E8177A",
+  "theme_color": "#1E6FD9",
   "lang": "es-CL",
   "icons": [
     {
-      "src": "/spumash/lapanchaplancha/icono-192.png",
+      "src": "/spumash/lapanchaplancha/app/icono-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/spumash/lapanchaplancha/icono-512.png",
+      "src": "/spumash/lapanchaplancha/app/icono-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/spumash/lapanchaplancha/icono-mask-512.png",
+      "src": "/spumash/lapanchaplancha/app/icono-mask-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

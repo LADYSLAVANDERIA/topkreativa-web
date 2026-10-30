@@ -77,6 +77,32 @@ sed -i \
   -e "s#</head>#<meta name=\"robots\" content=\"noindex\" /></head>#" \
   index.html
 
+# 4b) Colores de Spumash (no los de Ladys): azul #1E6FD9 en lugar del fucsia,
+#     cian #22D3EE en lugar del celeste y violeta #7C5CFF en lugar del lila.
+#     Se reemplaza la escala "pink" de Tailwind y la "primary" del proyecto.
+cat > tailwind.config.js <<'EOF'
+/** @type {import('tailwindcss').Config} */
+const azul = { DEFAULT: '#1E6FD9', 50: '#EEF5FE', 100: '#D9E8FC', 200: '#B7D3F9', 300: '#88B6F3', 400: '#5294EA',
+  500: '#1E6FD9', 600: '#185CB8', 700: '#144A94', 800: '#123E78', 900: '#0A1530' }
+export default {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        primary: azul,
+        pink: azul,
+        blue:    { DEFAULT: '#22D3EE', 500: '#22D3EE', 600: '#0EB8D4' },
+        purple:  { DEFAULT: '#7C5CFF', 500: '#7C5CFF' },
+      }
+    },
+  },
+  plugins: [],
+}
+EOF
+grep -rliE "#E8177A|#4AAEE0|#A87BC8|#BE185D" src index.html public | xargs -r sed -i \
+  -e "s/#[Ee]8177[Aa]/#1E6FD9/g" -e "s/#4[Aa][Aa][Ee][Ee]0/#22D3EE/g" \
+  -e "s/#[Aa]87[Bb][Cc]8/#7C5CFF/g" -e "s/#[Bb][Ee]185[Dd]/#144A94/g"
+
 # 5) Variables del build.
 MAPS_KEY="$(grep -E '^VITE_GOOGLE_MAPS_KEY=' "$APP/frontend/.env" | cut -d= -f2- || true)"
 cat > .env <<EOF
