@@ -139,6 +139,11 @@ section{padding:56px 0}
 .lista li::before{content:"✓";color:var(--cian);font-weight:700}
 .precio{font-family:var(--display);font-size:30px;font-weight:700;margin:10px 0 2px}
 .precio small{font-size:14px;color:#93A2C2;font-weight:500;font-family:var(--sans)}
+.cred{margin:18px 0 0;display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:14.5px;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid var(--navy-line)}
+.cred dt{color:#93A2C2;font-weight:600}
+.cred dd{margin:0;color:#fff;font-family:var(--display);font-size:14px;word-break:break-all}
+.cred dd a{color:var(--cian);text-decoration:none}
+.cred dd.suave{font-family:var(--sans);color:#C8D3EA}
 .acceso{margin-top:16px;padding:14px;border-radius:14px;background:rgba(34,211,238,.08);border:1px dashed rgba(34,211,238,.35);font-size:14px;color:#C7D1E6}
 .acceso b{color:#fff}
 
@@ -290,7 +295,13 @@ footer a{color:var(--gris)}
           <li>Clientes empresa con factura, orden de compra y cuenta corriente.</li>
           <li>Cómo se conecta su WhatsApp actual sin cambiar de número.</li>
         </ul>
-        <div class="acceso"><b>Acceso a su app de prueba:</b> topkreativa.com/spumash/jm-antofagasta/app — lo activamos durante la videollamada, con su catálogo cargado y una semana para probarlo con pedidos reales.</div>
+        <dl class="cred">
+          <dt>Dirección</dt><dd><a href="/spumash/jm-antofagasta/app/">topkreativa.com/spumash/jm-antofagasta/app</a></dd>
+          <dt>Usuario</dt><dd>demo@topkreativa.com</dd>
+          <dt>Clave</dt><dd class="suave">Se la enviamos por WhatsApp</dd>
+        </dl>
+        <a class="btn btn-marca" style="margin-top:14px" href="/spumash/jm-antofagasta/app/">Abrir la demo</a>
+        <div class="acceso">Es el sistema real en un ambiente de prueba con datos de ejemplo: lo que cambien ahí no afecta a ningún cliente. Su catálogo queda cargado para la videollamada y tienen una semana para probarlo con pedidos reales.</div>
       </div>
       <div class="card">
         <h3>Plan recomendado para JM</h3>
