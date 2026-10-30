@@ -1,0 +1,31 @@
+{
+  "name": "Lavandería Industrial JM",
+  "short_name": "Lavandería Industrial JM",
+  "description": "Sigue tus pedidos, tu plan y pide un retiro.",
+  "start_url": "/spumash/jm-antofagasta/app/",
+  "scope": "/spumash/jm-antofagasta/app/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#E8177A",
+  "lang": "es-CL",
+  "icons": [
+    {
+      "src": "/spumash/jm-antofagasta/app/icono-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/spumash/jm-antofagasta/app/icono-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/spumash/jm-antofagasta/app/icono-mask-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

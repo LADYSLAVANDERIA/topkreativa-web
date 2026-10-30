@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Spumash para Lavandería Industrial JM Antofagasta</title>
+<meta name="description" content="Demo de Spumash preparada para Lavandería Industrial JM Antofagasta: la asistente de WhatsApp que cotiza con sus precios y agenda retiros en su ruta.">
+<link rel="icon" href="/spumash/jm-antofagasta/logo-jm.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --navy:#0A1530; --navy-2:#111E40; --navy-line:#24335C;
+  --nieve:#F5F8FC; --blanco:#FFFFFF; --texto:#0A1530; --gris:#5B6B85; --linea:#DDE5F0;
+  --cian:#22D3EE; --violeta:#7C5CFF; --magenta:#FF4FB8;
+  --iris:linear-gradient(115deg,#0891B2 0%,#6D4AFF 52%,#E0368F 100%);
+  --marca:#1F8AD6; --marca-oscuro:#163B6E; --marca-suave:#E6F2FC;
+  --wa:#25D366; --wa-fondo:#ECE5DD; --wa-in:#FFFFFF; --wa-out:#DCF8C6;
+  --display:'Sora',system-ui,sans-serif; --sans:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--nieve);color:var(--texto);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);line-height:1.15;margin:0}
+p{margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left)) 0 max(16px,env(safe-area-inset-right))}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--marca)}
+.eyebrow::before{content:"";width:18px;height:3px;border-radius:2px;background:var(--iris)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 20px;border-radius:14px;font-weight:700;text-decoration:none;font-size:15.5px;border:1px solid transparent;transition:transform .12s ease,box-shadow .12s ease}
+.btn:active{transform:translateY(1px)}
+.btn-wa{background:var(--wa);color:#063;color:#073b1c;box-shadow:0 8px 24px rgba(37,211,102,.28)}
+.btn-wa svg{width:20px;height:20px}
+.btn-ghost{background:transparent;color:var(--blanco);border-color:rgba(255,255,255,.28)}
+.btn-marca{background:var(--marca);color:#fff;box-shadow:0 8px 24px rgba(31,138,214,.28)}
+
+/* Barra */
+.top{position:sticky;top:0;z-index:20;background:rgba(10,21,48,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--navy-line);color:#fff}
+.top .wrap{display:flex;align-items:center;gap:12px;min-height:58px}
+.top .logo{background:#fff;border-radius:10px;padding:5px 8px;height:38px;display:flex;align-items:center}
+.top .logo img{height:26px;width:auto}
+.top .para{font-size:13px;color:#B7C3DA;line-height:1.2}
+.top .para b{display:block;color:#fff;font-family:var(--display);font-size:14px}
+.top .cta{margin-left:auto;padding:9px 14px;font-size:13.5px;border-radius:10px}
+@media (max-width:520px){.top .para span{display:none}}
+
+/* Hero */
+.hero{background:var(--navy);color:#fff;padding:52px 0 40px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:auto -20% -60% -20%;height:70%;background:radial-gradient(60% 60% at 50% 0%,rgba(124,92,255,.35),transparent 70%);pointer-events:none;z-index:0}
+.hero .wrap{position:relative;z-index:1;display:grid;gap:34px}
+@media (min-width:880px){.hero .wrap{grid-template-columns:1.1fr .9fr;align-items:center}}
+.hero .eyebrow{color:var(--cian)}
+.hero h1{font-size:clamp(30px,5.4vw,46px);font-weight:700;letter-spacing:-.01em;margin:14px 0 16px}
+.hero h1 em{font-style:normal;background:var(--iris);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lead{font-size:17.5px;color:#C7D1E6;max-width:56ch}
+.hero .acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.hero .nota{margin-top:16px;font-size:13.5px;color:#93A2C2}
+.marca-card{background:#fff;color:var(--texto);border-radius:22px;padding:22px;box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.marca-card .cab{display:flex;align-items:center;gap:14px;padding-bottom:16px;border-bottom:1px solid var(--linea)}
+.marca-card .cab img{height:44px;width:auto}
+.marca-card .cab small{display:block;color:var(--gris);font-size:13px}
+.marca-card .cab b{font-family:var(--display);font-size:15px}
+.datos{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;padding-top:16px;font-size:14px}
+.datos div{color:var(--gris)}
+.datos div b{display:block;color:var(--texto);font-weight:700;font-size:15px}
+@media (max-width:400px){.datos{grid-template-columns:1fr}}
+
+/* Secciones */
+section{padding:56px 0}
+.sec-cab{max-width:62ch;margin-bottom:28px}
+.sec-cab h2{font-size:clamp(24px,3.6vw,32px);font-weight:700;margin:12px 0 10px}
+.sec-cab p{color:var(--gris);font-size:16.5px}
+.grid{display:grid;gap:14px}
+@media (min-width:700px){.grid.c2{grid-template-columns:1fr 1fr}.grid.c3{grid-template-columns:repeat(3,1fr)}}
+.card{background:#fff;border:1px solid var(--linea);border-radius:18px;padding:20px}
+.card h3{font-size:17px;font-weight:700;margin-bottom:8px}
+.card p{color:var(--gris);font-size:15px}
+.card .ico{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--marca-suave);color:var(--marca);font-size:20px;margin-bottom:14px}
+.card.ok{border-color:#CFE8D8;background:#F3FBF6}
+.card.ok .ico{background:#DCF3E5;color:#1E8E5A}
+.card.alerta{border-color:#F3DFC2;background:#FFF9EF}
+.card.alerta .ico{background:#FBEBD0;color:#B7791F}
+
+/* Catálogo */
+.tabla{background:#fff;border:1px solid var(--linea);border-radius:18px;overflow:hidden}
+.tabla .fila{display:flex;justify-content:space-between;gap:12px;padding:13px 18px;border-top:1px solid var(--linea);font-size:15px}
+.tabla .fila:first-child{border-top:0}
+.tabla .fila.cab{background:var(--marca-suave);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--marca-oscuro)}
+.tabla .fila b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.fuente{font-size:13px;color:var(--gris);margin-top:10px}
+
+/* WhatsApp */
+.wa-wrap{display:grid;gap:22px}
+@media (min-width:880px){.wa-wrap{grid-template-columns:.95fr 1.05fr;align-items:start}}
+.phone{background:var(--wa-fondo);border-radius:26px;border:8px solid #0E1726;box-shadow:0 30px 60px rgba(10,21,48,.25);overflow:hidden;max-width:420px;margin:0 auto;width:100%}
+.phone .barra{background:#075E54;color:#fff;padding:12px 14px;display:flex;align-items:center;gap:10px}
+.phone .barra .av{width:36px;height:36px;border-radius:50%;background:#fff;display:grid;place-items:center;overflow:hidden}
+.phone .barra .av img{height:18px;width:auto}
+.phone .barra b{display:block;font-size:14.5px}
+.phone .barra small{font-size:12px;color:#CFE9E1}
+.chat{padding:14px 12px 18px;display:flex;flex-direction:column;gap:8px;background-image:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1px);background-size:14px 14px}
+.msg{max-width:84%;padding:9px 12px;border-radius:12px;font-size:14.2px;line-height:1.42;box-shadow:0 1px 1px rgba(0,0,0,.08);position:relative}
+.msg.in{background:var(--wa-in);align-self:flex-start;border-top-left-radius:3px}
+.msg.out{background:var(--wa-out);align-self:flex-end;border-top-right-radius:3px}
+.msg time{display:block;text-align:right;font-size:11px;color:#6B7A86;margin-top:3px}
+.msg .sys{display:block;margin-top:6px;padding:7px 9px;border-radius:9px;background:rgba(31,138,214,.1);color:var(--marca-oscuro);font-size:12.5px;font-weight:600}
+.dia{align-self:center;background:#DDE7EE;color:#4A5B6A;border-radius:8px;padding:4px 10px;font-size:11.5px;font-weight:600}
+.pasos{display:grid;gap:12px}
+.paso{display:flex;gap:14px;background:#fff;border:1px solid var(--linea);border-radius:16px;padding:16px}
+.paso .n{flex:none;width:32px;height:32px;border-radius:50%;background:var(--iris);color:#fff;display:grid;place-items:center;font-weight:700;font-family:var(--display);font-size:14px}
+.paso b{display:block;font-family:var(--display);font-size:15.5px;margin-bottom:3px}
+.paso p{color:var(--gris);font-size:14.5px}
+
+/* Demo */
+.demo{background:var(--navy);color:#fff}
+.demo .sec-cab p{color:#C7D1E6}
+.demo .eyebrow{color:var(--cian)}
+.demo-grid{display:grid;gap:16px}
+@media (min-width:800px){.demo-grid{grid-template-columns:1.2fr .8fr}}
+.demo .card{background:var(--navy-2);border-color:var(--navy-line);color:#fff}
+.demo .card p{color:#B7C3DA}
+.demo .card h3{color:#fff}
+.lista{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:9px}
+.lista li{display:flex;gap:10px;font-size:15px;color:#DCE4F2}
+.lista li::before{content:"✓";color:var(--cian);font-weight:700}
+.precio{font-family:var(--display);font-size:30px;font-weight:700;margin:10px 0 2px}
+.precio small{font-size:14px;color:#93A2C2;font-weight:500;font-family:var(--sans)}
+.acceso{margin-top:16px;padding:14px;border-radius:14px;background:rgba(34,211,238,.08);border:1px dashed rgba(34,211,238,.35);font-size:14px;color:#C7D1E6}
+.acceso b{color:#fff}
+
+/* Pie */
+footer{padding:28px 0 calc(28px + env(safe-area-inset-bottom));color:var(--gris);font-size:13.5px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}
+footer a{color:var(--gris)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="logo"><img src="/spumash/jm-antofagasta/logo-jm.png" alt="Lavandería Industrial JM Antofagasta"></div>
+    <div class="para"><span>Demo preparada para</span><b>Lavandería Industrial JM</b></div>
+    <a class="btn btn-wa cta" style="white-space:nowrap" href="https://wa.me/56938740153?text=Hola%2C%20soy%20de%20Lavander%C3%ADa%20Industrial%20JM%20Antofagasta%20y%20quiero%20agendar%20la%20videollamada%20de%20Spumash">Videollamada</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Spumash · sistema con IA para lavanderías</span>
+      <h1>Su WhatsApp atendiendo <em>24/7 de verdad</em>, con sus precios y su ruta en Antofagasta.</h1>
+      <p class="lead">Ustedes ya prometen atención 24/7 y boleta o factura. Spumash lo cumple solo: responde cada mensaje, cotiza con la promo de cobertores vigente, agenda el retiro en un cupo real de su ruta y avisa al cliente en cada etapa. Con el nombre y el logo de JM, no el nuestro.</p>
+      <div class="acciones">
+        <a class="btn btn-wa" href="https://wa.me/56938740153?text=Hola%2C%20soy%20de%20Lavander%C3%ADa%20Industrial%20JM%20Antofagasta%20y%20quiero%20agendar%20la%20videollamada%20de%20Spumash"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>Agendar la videollamada</a>
+        <a class="btn btn-ghost" href="#whatsapp">Ver cómo atiende</a>
+      </div>
+      <p class="nota">Videollamada de 30 minutos esta semana. En ella activamos su acceso a la app con su catálogo cargado.</p>
+    </div>
+    <div class="marca-card">
+      <div class="cab">
+        <img src="/spumash/jm-antofagasta/logo-jm.png" alt="">
+        <div><b>Lavandería Industrial JM Chile SpA</b><small>Sector norte · Antofagasta · atención 24/7</small></div>
+      </div>
+      <div class="datos">
+        <div>WhatsApp<b>+56 9 4991 4233</b></div>
+        <div>Llamadas<b>+56 9 5010 5984</b></div>
+        <div>Horario<b>Lun a sáb 9:00 – 20:00</b></div>
+        <div>Documentos<b>Boleta y factura</b></div>
+        <div>Clientes<b>Particulares y empresas</b></div>
+        <div>Instagram<b>@lavanderia_jm.antofagasta</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="hoy">
+  <div class="wrap">
+    <div class="sec-cab">
+      <span class="eyebrow">Lo que vimos de JM</span>
+      <h2>Tienen la oferta clara. Lo que falta es que trabaje sola.</h2>
+      <p>Revisamos su WhatsApp Business, Instagram, el catálogo online y cómo aparecen en Google frente a las otras lavanderías de Antofagasta.</p>
+    </div>
+    <div class="grid c3">
+      <div class="card ok"><div class="ico">✓</div><h3>Promociones que venden</h3><p>Cobertores de cualquier tamaño a $12.000, 2 por $20.000 y 3 por $28.000, más combos con sábanas. Es lo que más repiten y lo que la gente pregunta por WhatsApp.</p></div>
+      <div class="card ok"><div class="ico">✓</div><h3>Empresas con factura</h3><p>Uniformes, ropa de trabajo y hotelería con retiro en faena. Spumash ya maneja clientes empresa: factura, orden de compra, cuenta corriente y plazo de pago.</p></div>
+      <div class="card alerta"><div class="ico">!</div><h3>Canales repartidos</h3><p>WhatsApp, Instagram, un catálogo en Kyte, una agenda en SumUp sin servicios y un sitio web que no carga. Cada cotización depende de que alguien conteste a mano.</p></div>
+      <div class="card alerta"><div class="ico">!</div><h3>Dos listas de precios públicas</h3><p>El catálogo online muestra 1 cobertor a $13.000 y 2 a $22.000; Instagram, $12.000 y $20.000. Con un solo catálogo en el sistema, la asistente siempre cotiza el precio correcto.</p></div>
+      <div class="card alerta"><div class="ico">!</div><h3>Sin trazabilidad visible</h3><p>Un cobertor que se demora o se confunde termina en una queja pública. Con etapas, foto de entrega y avisos automáticos, el cliente sabe dónde está su pedido antes de preguntar.</p></div>
+      <div class="card"><div class="ico">★</div><h3>Reseñas en Google</h3><p>En Antofagasta compiten lavanderías con 26 y 36 reseñas y avisos pagados de "retiro y entrega gratis". Spumash pide la reseña por WhatsApp al entregar, sin que nadie lo recuerde.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="catalogo" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-cab">
+      <span class="eyebrow">Su catálogo, ya cargado</span>
+      <h2>La asistente cotiza con estos precios desde el primer día.</h2>
+      <p>Lo tomamos de su catálogo online y su Instagram. En la videollamada lo corregimos juntos en dos minutos.</p>
+    </div>
+    <div class="grid c2">
+      <div class="tabla">
+        <div class="fila cab"><span>Cobertores y promociones</span><span>Precio</span></div>
+        <div class="fila"><span>Cobertor, cualquier tamaño</span><b>$12.000</b></div>
+        <div class="fila"><span>Promo 2 cobertores</span><b>$20.000</b></div>
+        <div class="fila"><span>Promo 3 cobertores</span><b>$28.000</b></div>
+        <div class="fila"><span>Combo cobertor + 1 juego de sábanas</span><b>$15.000</b></div>
+        <div class="fila"><span>Combo cobertor + 2 juegos de sábanas</span><b>$20.000</b></div>
+        <div class="fila"><span>Cobertor delicado de plumas</span><b>$22.590</b></div>
+      </div>
+      <div class="tabla">
+        <div class="fila cab"><span>Por kilo, hogar y prendas</span><span>Precio</span></div>
+        <div class="fila"><span>Ropa por kilo</span><b>$3.200 / kg</b></div>
+        <div class="fila"><span>Prenda de ropa</span><b>$1.080</b></div>
+        <div class="fila"><span>Manta</span><b>$5.990</b></div>
+        <div class="fila"><span>Toalla personal</span><b>$1.490</b></div>
+        <div class="fila"><span>Funda de almohada</span><b>$1.290</b></div>
+        <div class="fila"><span>Empresas: uniformes y ropa de cama por kilo</span><b>A su tarifa</b></div>
+      </div>
+    </div>
+    <p class="fuente">Precios públicos de Lavandería Industrial JM al 30 de octubre de 2026. Las tarifas de empresa se cargan por cliente, con precios y plazos distintos a los de público.</p>
+  </div>
+</section>
+
+<section id="whatsapp" style="background:#fff;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)">
+  <div class="wrap">
+    <div class="sec-cab">
+      <span class="eyebrow">Así atiende su WhatsApp</span>
+      <h2>Un cliente escribe un sábado a las 22:40. Nadie de JM tuvo que contestar.</h2>
+      <p>Conversación real del sistema, con el catálogo y la ruta de JM. Sale desde su número de siempre, +56 9 4991 4233.</p>
+    </div>
+    <div class="wa-wrap">
+      <div class="phone">
+        <div class="barra">
+          <div class="av"><img src="/spumash/jm-antofagasta/logo-jm.png" alt=""></div>
+          <div><b>Lavandería Industrial JM</b><small>en línea · responde al instante</small></div>
+        </div>
+        <div class="chat">
+          <span class="dia">Sábado</span>
+          <div class="msg in">Hola, cuánto sale lavar 2 cobertores king? Y si pasan a buscar por la Chimba<time>22:40</time></div>
+          <div class="msg out">¡Hola! Soy la asistente de Lavandería Industrial JM 👋 Dos cobertores de cualquier tamaño quedan en <b>$20.000</b> con la promo vigente. Y sí, retiramos en Antofagasta norte sin costo. ¿Te acomoda el lunes entre 9:00 y 13:00 o entre 15:00 y 20:00?<time>22:40</time></div>
+          <div class="msg in">En la mañana porfa. Av. Pedro Aguirre Cerda 9596<time>22:42</time></div>
+          <div class="msg out">Listo ✅ Retiro agendado para el <b>lunes entre 9:00 y 13:00</b> en Av. Pedro Aguirre Cerda 9596. Los cobertores quedan listos el jueves y te aviso por acá para coordinar la entrega. Cualquier cambio, me escribes.<span class="sys">Pedido 1024 creado · Ruta lunes mañana · Cliente nuevo guardado</span><time>22:42</time></div>
+          <span class="dia">Lunes</span>
+          <div class="msg out">Buenos días 🚚 El conductor va en camino a tu retiro, llega aprox. a las 10:15.<time>09:48</time></div>
+          <span class="dia">Jueves</span>
+          <div class="msg out">Tus 2 cobertores están listos 🧺 ¿Te los llevamos hoy entre 15:00 y 20:00 o mañana en la mañana?<time>12:05</time></div>
+        </div>
+      </div>
+      <div class="pasos">
+        <div class="paso"><div class="n">1</div><div><b>Responde con su catálogo, no de memoria</b><p>Promos de cobertores, kilo, prendas y tarifas de empresa. Si cambian un precio en la app, la asistente lo usa al segundo.</p></div></div>
+        <div class="paso"><div class="n">2</div><div><b>Agenda en su ruta de Antofagasta</b><p>Sectores norte, centro y sur con cupos por bloque: mañana 9:00–13:00 y tarde 15:00–20:00, lunes a sábado. Ofrece solo cupos que existen.</p></div></div>
+        <div class="paso"><div class="n">3</div><div><b>El conductor lo ve en su app</b><p>Ruta del día ordenada, dirección en el mapa, foto al entregar y aviso automático de "voy en camino".</p></div></div>
+        <div class="paso"><div class="n">4</div><div><b>Avisa y cobra sin que nadie lo recuerde</b><p>Pedido recibido, listo, entregado. Link de pago, boleta o factura, y la petición de reseña en Google al terminar.</p></div></div>
+        <div class="paso"><div class="n">5</div><div><b>Lo que necesita una persona, lo pasa a su equipo</b><p>Un reclamo, una tarifa especial de empresa o un retiro en faena: la asistente avisa y deja la conversación para ustedes.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="demo" id="demo">
+  <div class="wrap">
+    <div class="sec-cab">
+      <span class="eyebrow">Su demo</span>
+      <h2>La app ya existe con la marca de JM. Falta activarla con ustedes.</h2>
+      <p>No es una maqueta: es el mismo sistema que opera hoy en Ladys Lavandería (Concón), con 2.000 mensajes y 225 pedidos al mes, compilado con su nombre, su logo y sus datos de contacto.</p>
+    </div>
+    <div class="demo-grid">
+      <div class="card">
+        <h3>Qué verán en la videollamada</h3>
+        <ul class="lista">
+          <li>La asistente cotizando y agendando en vivo con el catálogo de JM.</li>
+          <li>El panel de pedidos, la ruta del conductor y la pantalla del taller.</li>
+          <li>Clientes empresa con factura, orden de compra y cuenta corriente.</li>
+          <li>Cómo se conecta su WhatsApp actual sin cambiar de número.</li>
+        </ul>
+        <div class="acceso"><b>Acceso a su app de prueba:</b> topkreativa.com/spumash/jm-antofagasta/app — lo activamos durante la videollamada, con su catálogo cargado y una semana para probarlo con pedidos reales.</div>
+      </div>
+      <div class="card">
+        <h3>Plan recomendado para JM</h3>
+        <p>Domicilio: la asistente agenda retiros y entregas en su ruta, con app del conductor.</p>
+        <div class="precio">$69.990 <small>/ mes + IVA</small></div>
+        <p style="font-size:13.5px">Desde $29.990 + IVA si solo quieren que responda y cotice. Sin permanencia. Migración y configuración gratis si se suscriben dentro de 72 horas de la demo.</p>
+        <a class="btn btn-marca" style="margin-top:18px;width:100%" href="https://wa.me/56938740153?text=Hola%2C%20soy%20de%20Lavander%C3%ADa%20Industrial%20JM%20Antofagasta%20y%20quiero%20agendar%20la%20videollamada%20de%20Spumash">Agendar videollamada</a>
+        <a class="btn btn-ghost" style="margin-top:10px;width:100%" href="/spumash/#planes">Ver todos los planes</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span><b>Spumash</b> es un producto de Top Kreativa · Concón, Chile</span>
+    <a href="https://wa.me/56938740153">WhatsApp +56 9 3874 0153</a>
+    <a href="mailto:contacto@topkreativa.com">contacto@topkreativa.com</a>
+    <a href="/spumash/">topkreativa.com/spumash</a>
+  </div>
+</footer>
+
+</body>
+</html>
