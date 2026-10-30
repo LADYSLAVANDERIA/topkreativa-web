@@ -11,6 +11,8 @@
 -- Instagram por ser la promoción vigente que ellos mismos repiten; confirmar en la reunión.
 --
 -- Seguro de correr varias veces. Se ejecuta completo o no se ejecuta (una transacción).
+-- CORRIDO el 30-oct-2026 16:05. Antes se respaldó La Pancha Plancha en el esquema respaldo_lpp;
+-- para volver a ella: spumash/restaurar-respaldo.sql.
 
 BEGIN;
 SET search_path = ladys, public;
@@ -129,7 +131,7 @@ FROM (VALUES
 ) v(id, sector, calle, numero, otro, lat, lng) WHERE d.id = v.id;
 
 -- Tres clientes de ejemplo pasan a ser empresas (uniformes, hotel, faena), con factura.
-UPDATE clientes SET tipo = 'EMPRESA', es_empresa = true, tipo_doc = 'FACTURA', iva = true,
+UPDATE clientes SET tipo = 'EMPRESA', tipo_doc = 'FACTURA', iva = true,
   razon_social = v.rs, giro = v.giro, id_fiscal = v.rut, nombre = v.nom, apellido = v.ape, plazo_pago = 30, regla_facturacion = 'CREDITO_RETIRO'
 FROM (VALUES
   (10, 'Transportes del Norte Ltda. (ejemplo)', 'Transporte y logística', '76.111.222-3', 'Transportes del Norte', 'Uniformes'),
