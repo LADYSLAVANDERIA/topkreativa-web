@@ -122,22 +122,29 @@ sed -i \
   -e "s#</head>#<meta name=\"robots\" content=\"noindex\" /></head>#" \
   index.html
 
-# 4b) Colores de Spumash (no los de Ladys): azul #1E6FD9 en lugar del fucsia,
-#     cian #22D3EE en lugar del celeste y violeta #7C5CFF en lugar del lila.
-#     Se reemplaza la escala "pink" de Tailwind y la "primary" del proyecto.
-cat > tailwind.config.js <<'EOF'
+# 4b) Colores. Por defecto los de Spumash (azul #1E6FD9, cian #22D3EE, violeta #7C5CFF), nunca el
+#     fucsia de Ladys. Un cliente puede tener los suyos con COLOR_ESCALA (escala Tailwind del color
+#     principal, objeto JS), COLOR2 y COLOR3 (secundario y terciario) y COLOR_HEX (tono para textos/íconos
+#     escritos a mano). Se reemplaza la escala "pink" de Tailwind y la "primary" del proyecto.
+if [ -z "${COLOR_ESCALA:-}" ]; then
+  COLOR_ESCALA="{ DEFAULT: '#1E6FD9', 50: '#EEF5FE', 100: '#D9E8FC', 200: '#B7D3F9', 300: '#88B6F3', 400: '#5294EA', 500: '#1E6FD9', 600: '#185CB8', 700: '#144A94', 800: '#123E78', 900: '#0A1530' }"
+fi
+COLOR2="${COLOR2:-#22D3EE}"
+COLOR3="${COLOR3:-#7C5CFF}"
+COLOR_HEX="${COLOR_HEX:-#1E6FD9}"
+COLOR_OSCURO="${COLOR_OSCURO:-#144A94}"
+cat > tailwind.config.js <<EOF
 /** @type {import('tailwindcss').Config} */
-const azul = { DEFAULT: '#1E6FD9', 50: '#EEF5FE', 100: '#D9E8FC', 200: '#B7D3F9', 300: '#88B6F3', 400: '#5294EA',
-  500: '#1E6FD9', 600: '#185CB8', 700: '#144A94', 800: '#123E78', 900: '#0A1530' }
+const principal = $COLOR_ESCALA
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
-        primary: azul,
-        pink: azul,
-        blue:    { DEFAULT: '#22D3EE', 500: '#22D3EE', 600: '#0EB8D4' },
-        purple:  { DEFAULT: '#7C5CFF', 500: '#7C5CFF' },
+        primary: principal,
+        pink: principal,
+        blue:    { DEFAULT: '$COLOR2', 500: '$COLOR2', 600: '$COLOR2' },
+        purple:  { DEFAULT: '$COLOR3', 500: '$COLOR3' },
       }
     },
   },
@@ -145,8 +152,8 @@ export default {
 }
 EOF
 grep -rliE "#E8177A|#4AAEE0|#A87BC8|#BE185D" src index.html public | xargs -r sed -i \
-  -e "s/#[Ee]8177[Aa]/#1E6FD9/g" -e "s/#4[Aa][Aa][Ee][Ee]0/#22D3EE/g" \
-  -e "s/#[Aa]87[Bb][Cc]8/#7C5CFF/g" -e "s/#[Bb][Ee]185[Dd]/#144A94/g"
+  -e "s/#[Ee]8177[Aa]/$COLOR_HEX/g" -e "s/#4[Aa][Aa][Ee][Ee]0/$COLOR2/g" \
+  -e "s/#[Aa]87[Bb][Cc]8/$COLOR3/g" -e "s/#[Bb][Ee]185[Dd]/$COLOR_OSCURO/g"
 
 # 5) Variables del build.
 MAPS_KEY="$(grep -E '^VITE_GOOGLE_MAPS_KEY=' "$APP/frontend/.env" | cut -d= -f2- || true)"
