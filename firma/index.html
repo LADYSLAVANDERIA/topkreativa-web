@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Firma de contrato · Top Kreativa</title>
+<style>
+  :root { --negro:#0D0D0D; --magenta:#D6006E; --verde:#00C853; --hueso:#F5F5F0; --gris:#6b6b66; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--negro); color:var(--hueso); font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif; line-height:1.5; }
+  header { padding:20px 24px; display:flex; align-items:center; gap:10px; max-width:860px; margin:0 auto; }
+  .marca { font-weight:800; font-size:20px; letter-spacing:-.02em; }
+  .marca b { color:var(--magenta); }
+  main { max-width:860px; margin:0 auto; padding:0 16px 64px; }
+  .tarjeta { background:#fff; color:#1a1a1a; border-radius:12px; padding:28px 28px; margin-bottom:20px; }
+  .doc h1 { font-size:22px; margin:0 0 4px; } .doc h2 { font-size:16px; margin:22px 0 6px; }
+  .doc p, .doc li { font-size:15px; } .doc ol, .doc ul { padding-left:22px; }
+  .estado { display:flex; gap:10px; flex-wrap:wrap; margin:0 0 20px; }
+  .chip { background:#1c1c1c; border:1px solid #333; border-radius:8px; padding:8px 12px; font-size:14px; }
+  .chip.ok { border-color:var(--verde); }
+  label { display:block; font-size:14px; font-weight:600; margin:14px 0 4px; }
+  input[type=text], input[type=email] { width:100%; padding:11px 12px; border:1px solid #ccc; border-radius:8px; font:inherit; font-size:16px; }
+  .fila { display:grid; grid-template-columns:1fr 1fr; gap:0 14px; }
+  @media (max-width:640px) { .fila { grid-template-columns:1fr; } .tarjeta { padding:20px 16px; } }
+  .lienzo { border:2px dashed #bbb; border-radius:8px; background:#fafafa; touch-action:none; width:100%; height:180px; display:block; }
+  .ayuda { font-size:13px; color:var(--gris); }
+  .acepto { display:flex; gap:10px; align-items:flex-start; margin:18px 0; font-size:15px; }
+  .acepto input { width:22px; height:22px; margin-top:2px; }
+  button { font:inherit; font-weight:800; border:0; border-radius:8px; padding:14px 20px; cursor:pointer; }
+  .principal { background:var(--magenta); color:#fff; width:100%; font-size:17px; }
+  .principal:disabled { opacity:.5; cursor:wait; }
+  .secundario { background:#eee; color:#1a1a1a; font-size:14px; padding:8px 12px; }
+  .error { background:#ffe8f1; color:#8a0047; border-radius:8px; padding:10px 12px; margin-top:12px; display:none; }
+  .aviso { text-align:center; padding:60px 20px; }
+  .huella { font-family:ui-monospace,Menlo,Consolas,monospace; font-size:12px; word-break:break-all; }
+  .firmas { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  @media (max-width:640px) { .firmas { grid-template-columns:1fr; } }
+  .firmas img { max-width:100%; height:110px; object-fit:contain; border-bottom:1px solid #333; display:block; }
+  .registro td { font-size:13px; padding:4px 8px 4px 0; vertical-align:top; }
+  @media print {
+    body { background:#fff; color:#000; } header, .no-imprimir { display:none !important; }
+    .tarjeta { padding:0; margin:0 0 16px; border-radius:0; } main { padding:0; max-width:none; }
+    .salto { page-break-before:always; }
+  }
+</style>
+</head>
+<body>
+<header><span class="marca">Top <b>Kreativa</b></span></header>
+<main id="app"><div class="aviso">Cargando el documento…</div></main>
+
+<script>
+const API = 'https://eprqklkltrevtrvfhcnt.supabase.co/functions/v1/firma';
+// El código va después de # para que nunca viaje a ningún servidor en la dirección.
+const t = new URLSearchParams(location.hash.slice(1)).get('t') || '';
+const app = document.getElementById('app');
+const ROLES = { ENCARGADO: 'Top Kreativa (encargado)', RESPONSABLE: 'Cliente (responsable)' };
+const el = (tag, attrs = {}, ...hijos) => {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) k === 'class' ? e.className = v : e.setAttribute(k, v);
+  for (const h of hijos) e.append(h);
+  return e;
+};
+const fecha = (s) => new Date(s).toLocaleString('es-CL', { timeZone: 'America/Santiago', dateStyle: 'long', timeStyle: 'medium' });
+
+async function cargar() {
+  let d;
+  try {
+    const r = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ t, accion: 'ver' }) });
+    d = await r.json();
+    if (!r.ok) throw new Error(d.error || 'No se pudo abrir');
+  } catch (e) {
+    app.replaceChildren(el('div', { class: 'aviso' }, e.message === 'Enlace no válido'
+      ? 'Este enlace no es válido. Pide uno nuevo a Top Kreativa.' : 'No se pudo abrir el documento. Revisa tu conexión e inténtalo otra vez.'));
+    return;
+  }
+  document.title = d.titulo + ' · Top Kreativa';
+  const doc = el('div', { class: 'tarjeta doc' });
+  doc.innerHTML = d.html;   // texto del contrato, escrito por Top Kreativa
+
+  const estado = el('div', { class: 'estado no-imprimir' });
+  for (const f of d.firmantes) {
+    estado.append(el('div', { class: 'chip' + (f.firmado_en ? ' ok' : '') },
+      (f.firmado_en ? '✓ ' : '○ ') + (ROLES[f.rol] || f.rol) + (f.firmado_en ? ' · firmó' : ' · pendiente')));
+  }
+
+  const partes = [estado, doc];
+  if (d.completo) partes.push(comprobante(d));
+  else if (d.yo.firmado_en) partes.push(el('div', { class: 'tarjeta' },
+    el('p', {}, 'Ya firmaste este contrato el ' + fecha(d.yo.firmado_en) + '.'),
+    el('p', {}, 'Cuando firme la otra parte, en este mismo enlace vas a ver el contrato completo con las dos firmas y podrás descargarlo en PDF.')));
+  else partes.push(formulario(d));
+  app.replaceChildren(...partes);
+}
+
+function formulario(d) {
+  const f = el('form', { class: 'tarjeta no-imprimir', autocomplete: 'on' });
+  const campo = (id, texto, tipo = 'text', ayuda = '') => {
+    const i = el('input', { type: tipo, id, name: id, required: '' });
+    const c = el('div', {}, el('label', { for: id }, texto), i);
+    if (ayuda) c.append(el('div', { class: 'ayuda' }, ayuda));
+    return c;
+  };
+  f.append(el('h2', {}, 'Firmar como ' + (ROLES[d.yo.rol] || d.yo.rol)),
+    el('p', { class: 'ayuda' }, 'Lee el contrato completo antes de firmar. Tus datos, la fecha y hora, tu dirección de internet y la huella del documento quedan registrados como respaldo de la firma.'),
+    el('div', { class: 'fila' }, campo('nombre', 'Tu nombre completo'), campo('rut', 'Tu RUT', 'text', 'Ej: 12.345.678-9')),
+    el('div', { class: 'fila' }, campo('cargo', 'Tu cargo', 'text', 'Ej: Representante legal'), campo('correo', 'Tu correo', 'email')),
+    el('div', { class: 'fila' }, campo('empresa', 'Razón social de la empresa'), campo('rut_empresa', 'RUT de la empresa')),
+    campo('domicilio', 'Domicilio de la empresa'));
+
+  const lienzo = el('canvas', { class: 'lienzo', 'aria-label': 'Espacio para dibujar la firma' });
+  const borrar = el('button', { type: 'button', class: 'secundario' }, 'Borrar firma');
+  f.append(el('label', {}, 'Tu firma'), lienzo,
+    el('div', { style: 'display:flex;justify-content:space-between;align-items:center;margin-top:6px' },
+      el('span', { class: 'ayuda' }, 'Dibuja tu firma con el dedo o el mouse.'), borrar));
+
+  const acepto = el('input', { type: 'checkbox', id: 'acepto' });
+  f.append(el('label', { class: 'acepto', for: 'acepto' }, acepto,
+    el('span', {}, 'Leí el contrato completo, acepto sus términos y lo firmo en representación de la empresa indicada.')));
+  const error = el('div', { class: 'error', role: 'alert' });
+  const boton = el('button', { type: 'submit', class: 'principal' }, 'Firmar contrato');
+  f.append(boton, error);
+
+  // dibujo de la firma
+  const ctx = lienzo.getContext('2d');
+  let trazos = 0, dibujando = false;
+  const ajustar = () => {
+    const r = lienzo.getBoundingClientRect(), k = window.devicePixelRatio || 1;
+    lienzo.width = r.width * k; lienzo.height = r.height * k;
+    ctx.setTransform(k, 0, 0, k, 0, 0); ctx.lineWidth = 2.4; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.strokeStyle = '#111';
+    trazos = 0;
+  };
+  const punto = (e) => { const r = lienzo.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+  lienzo.addEventListener('pointerdown', (e) => { dibujando = true; lienzo.setPointerCapture(e.pointerId); ctx.beginPath(); ctx.moveTo(...punto(e)); });
+  lienzo.addEventListener('pointermove', (e) => { if (!dibujando) return; ctx.lineTo(...punto(e)); ctx.stroke(); trazos++; });
+  ['pointerup', 'pointercancel'].forEach((ev) => lienzo.addEventListener(ev, () => { dibujando = false; }));
+  borrar.addEventListener('click', ajustar);
+  requestAnimationFrame(ajustar);
+
+  f.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    error.style.display = 'none';
+    if (trazos < 15) { error.textContent = 'Falta dibujar la firma.'; error.style.display = 'block'; return; }
+    if (!acepto.checked) { error.textContent = 'Falta marcar que leíste y aceptas el contrato.'; error.style.display = 'block'; return; }
+    const v = (id) => f.querySelector('#' + id).value;
+    boton.disabled = true; boton.textContent = 'Firmando…';
+    try {
+      const r = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
+        t, accion: 'firmar', huella: d.huella, acepto: true, firma_png: lienzo.toDataURL('image/png'),
+        nombre: v('nombre'), rut: v('rut'), cargo: v('cargo'), correo: v('correo'),
+        empresa: v('empresa'), rut_empresa: v('rut_empresa'), domicilio: v('domicilio') }) });
+      const x = await r.json();
+      if (!r.ok) throw new Error(x.error || 'No se pudo firmar');
+      await cargar();
+      window.scrollTo(0, 0);
+    } catch (err) {
+      error.textContent = err.message; error.style.display = 'block';
+      boton.disabled = false; boton.textContent = 'Firmar contrato';
+    }
+  });
+  return f;
+}
+
+function comprobante(d) {
+  const c = el('div', {});
+  const firmas = el('div', { class: 'firmas' });
+  for (const f of d.firmantes) {
+    firmas.append(el('div', {}, el('img', { src: f.firma_png, alt: 'Firma de ' + f.nombre }),
+      el('div', {}, el('strong', {}, f.nombre)), el('div', {}, 'RUT ' + f.rut + ' · ' + f.cargo),
+      el('div', {}, 'p.p. ' + f.empresa + ' · RUT ' + f.rut_empresa)));
+  }
+  c.append(el('div', { class: 'tarjeta' }, el('h2', {}, 'Firmas'), firmas));
+
+  const tabla = el('table', { class: 'registro' });
+  const fila = (a, b) => tabla.append(el('tr', {}, el('td', {}, el('strong', {}, a)), el('td', {}, b)));
+  fila('Documento', d.titulo);
+  fila('Huella del documento (SHA-256)', el('span', { class: 'huella' }, d.huella));
+  for (const f of d.firmantes) {
+    fila(ROLES[f.rol] || f.rol, `${f.nombre} (RUT ${f.rut}), ${f.cargo} de ${f.empresa} (RUT ${f.rut_empresa}), domicilio ${f.domicilio}, correo ${f.correo}. `
+      + `Firmó el ${fecha(f.firmado_en)} desde la dirección ${f.ip || 'no informada'}, sobre el documento con huella ${f.huella_vista === d.huella ? 'idéntica a la de arriba' : 'DISTINTA (revisar)'}.`);
+  }
+  c.append(el('div', { class: 'tarjeta salto' }, el('h2', {}, 'Registro de firma electrónica'),
+    el('p', { class: 'ayuda' }, 'Firma electrónica simple según la Ley 19.799. Cualquier cambio en el texto del contrato cambia su huella.'), tabla));
+  c.append(el('div', { class: 'no-imprimir', style: 'text-align:center' },
+    el('button', { type: 'button', class: 'principal', onclick: 'window.print()' }, 'Descargar en PDF')));
+  return c;
+}
+
+cargar();
+</script>
+</body>
+</html>
