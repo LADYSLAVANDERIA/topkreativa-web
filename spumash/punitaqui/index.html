@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Spumash para Lavandería Punitaqui</title>
+<meta name="description" content="Demo de Spumash preparada para Lavandería Punitaqui: la asistente de WhatsApp que atiende, agenda retiros en su ruta y lleva a sus clientes empresa.">
+<link rel="icon" href="/spumash/punitaqui/logo-punitaqui.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --navy:#0A1530; --navy-2:#111E40; --navy-line:#24335C;
+  --nieve:#F5F8FC; --blanco:#FFFFFF; --texto:#0A1530; --gris:#5B6B85; --linea:#DDE5F0;
+  --cian:#22D3EE; --violeta:#7C5CFF; --magenta:#FF4FB8;
+  --iris:linear-gradient(115deg,#0891B2 0%,#6D4AFF 52%,#E0368F 100%);
+  --marca:#0148B0; --marca-oscuro:#0A2F6E; --marca-suave:#E7F0FC;
+  --wa:#25D366; --wa-fondo:#ECE5DD; --wa-in:#FFFFFF; --wa-out:#DCF8C6;
+  --display:'Sora',system-ui,sans-serif; --sans:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--nieve);color:var(--texto);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);line-height:1.15;margin:0}
+p{margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left)) 0 max(16px,env(safe-area-inset-right))}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--marca)}
+.eyebrow::before{content:"";width:18px;height:3px;border-radius:2px;background:var(--iris)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 20px;border-radius:14px;font-weight:700;text-decoration:none;font-size:15.5px;border:1px solid transparent;transition:transform .12s ease,box-shadow .12s ease}
+.btn:active{transform:translateY(1px)}
+.btn-wa{background:var(--wa);color:#063;color:#073b1c;box-shadow:0 8px 24px rgba(37,211,102,.28)}
+.btn-wa svg{width:20px;height:20px}
+.btn-ghost{background:transparent;color:var(--blanco);border-color:rgba(255,255,255,.28)}
+.btn-marca{background:var(--marca);color:#fff;box-shadow:0 8px 24px rgba(1,72,176,.28)}
+
+/* Barra */
+.top{position:sticky;top:0;z-index:20;background:rgba(10,21,48,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--navy-line);color:#fff}
+.top .wrap{display:flex;align-items:center;gap:12px;min-height:58px}
+.top .logo{height:38px;width:38px;display:flex;align-items:center}
+.top .logo img{height:38px;width:38px}
+.top .para{font-size:13px;color:#B7C3DA;line-height:1.2}
+.top .para b{display:block;color:#fff;font-family:var(--display);font-size:14px}
+.top .cta{margin-left:auto;padding:9px 14px;font-size:13.5px;border-radius:10px}
+@media (max-width:520px){.top .para span{display:none}}
+
+/* Hero */
+.hero{background:var(--navy);color:#fff;padding:52px 0 40px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:auto -20% -60% -20%;height:70%;background:radial-gradient(60% 60% at 50% 0%,rgba(124,92,255,.35),transparent 70%);pointer-events:none;z-index:0}
+.hero .wrap{position:relative;z-index:1;display:grid;gap:34px}
+@media (min-width:880px){.hero .wrap{grid-template-columns:1.1fr .9fr;align-items:center}}
+.hero .eyebrow{color:var(--cian)}
+.hero h1{font-size:clamp(30px,5.4vw,46px);font-weight:700;letter-spacing:-.01em;margin:14px 0 16px}
+.hero h1 em{font-style:normal;background:var(--iris);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lead{font-size:17.5px;color:#C7D1E6;max-width:56ch}
+.hero .acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.hero .nota{margin-top:16px;font-size:13.5px;color:#93A2C2}
+.marca-card{background:#fff;color:var(--texto);border-radius:22px;padding:22px;box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.marca-card .cab{display:flex;align-items:center;gap:14px;padding-bottom:16px;border-bottom:1px solid var(--linea)}
+.marca-card .cab img{height:52px;width:52px}
+.furgon{margin:16px auto 4px;max-width:300px}
+.sello{display:inline-flex;align-items:center;gap:6px;margin-top:14px;padding:6px 11px;border-radius:999px;background:#E8F7EE;color:#17663F;font-size:12.5px;font-weight:700}
+.marca-card .cab small{display:block;color:var(--gris);font-size:13px}
+.marca-card .cab b{font-family:var(--display);font-size:15px}
+.datos{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;padding-top:16px;font-size:14px}
+.datos div{color:var(--gris)}
+.datos div b{display:block;color:var(--texto);font-weight:700;font-size:15px}
+@media (max-width:400px){.datos{grid-template-columns:1fr}}
+
+/* Secciones */
+section{padding:56px 0}
+.sec-cab{max-width:62ch;margin-bottom:28px}
+.sec-cab h2{font-size:clamp(24px,3.6vw,32px);font-weight:700;margin:12px 0 10px}
+.sec-cab p{color:var(--gris);font-size:16.5px}
+.grid{display:grid;gap:14px}
+@media (min-width:700px){.grid.c2{grid-template-columns:1fr 1fr}.grid.c3{grid-template-columns:repeat(3,1fr)}}
+.card{background:#fff;border:1px solid var(--linea);border-radius:18px;padding:20px}
+.card h3{font-size:17px;font-weight:700;margin-bottom:8px}
+.card p{color:var(--gris);font-size:15px}
+.card .ico{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--marca-suave);color:var(--marca);font-size:20px;margin-bottom:14px}
+.card.ok{border-color:#CFE8D8;background:#F3FBF6}
+.card.ok .ico{background:#DCF3E5;color:#1E8E5A}
+.card.alerta{border-color:#F3DFC2;background:#FFF9EF}
+.card.alerta .ico{background:#FBEBD0;color:#B7791F}
+
+/* Catálogo */
+.tabla{background:#fff;border:1px solid var(--linea);border-radius:18px;overflow:hidden}
+.tabla .fila{display:flex;justify-content:space-between;gap:12px;padding:13px 18px;border-top:1px solid var(--linea);font-size:15px}
+.tabla .fila:first-child{border-top:0}
+.tabla .fila.cab{background:var(--marca-suave);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--marca-oscuro)}
+.tabla .fila b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.fuente{font-size:13px;color:var(--gris);margin-top:10px}
+
+/* WhatsApp */
+.wa-wrap{display:grid;gap:22px}
+@media (min-width:880px){.wa-wrap{grid-template-columns:.95fr 1.05fr;align-items:start}}
+.phone{background:var(--wa-fondo);border-radius:26px;border:8px solid #0E1726;box-shadow:0 30px 60px rgba(10,21,48,.25);overflow:hidden;max-width:420px;margin:0 auto;width:100%}
+.phone .barra{background:#075E54;color:#fff;padding:12px 14px;display:flex;align-items:center;gap:10px}
+.phone .barra .av{width:36px;height:36px;border-radius:50%;background:#fff;display:grid;place-items:center;overflow:hidden}
+.phone .barra .av img{height:36px;width:36px}
+.phone .barra b{display:block;font-size:14.5px}
+.phone .barra small{font-size:12px;color:#CFE9E1}
+.chat{padding:14px 12px 18px;display:flex;flex-direction:column;gap:8px;background-image:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1px);background-size:14px 14px}
+.msg{max-width:84%;padding:9px 12px;border-radius:12px;font-size:14.2px;line-height:1.42;box-shadow:0 1px 1px rgba(0,0,0,.08);position:relative}
+.msg.in{background:var(--wa-in);align-self:flex-start;border-top-left-radius:3px}
+.msg.out{background:var(--wa-out);align-self:flex-end;border-top-right-radius:3px}
+.msg time{display:block;text-align:right;font-size:11px;color:#6B7A86;margin-top:3px}
+.msg .sys{display:block;margin-top:6px;padding:7px 9px;border-radius:9px;background:rgba(31,138,214,.1);color:var(--marca-oscuro);font-size:12.5px;font-weight:600}
+.chat>*{opacity:0;transform:translateY(8px);transition:opacity .35s ease,transform .35s ease}
+.chat>.visto{opacity:1;transform:none}
+.escribiendo{align-self:flex-start;background:var(--wa-in);border-radius:12px;border-top-left-radius:3px;padding:10px 14px;display:none;gap:5px;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.escribiendo.out{align-self:flex-end;background:var(--wa-out);border-top-left-radius:12px;border-top-right-radius:3px}
+.escribiendo.visto{display:flex;opacity:1;transform:none}
+.escribiendo i{width:7px;height:7px;border-radius:50%;background:#8E9AA6;animation:pt 1.1s infinite ease-in-out}
+.escribiendo i:nth-child(2){animation-delay:.18s}.escribiendo i:nth-child(3){animation-delay:.36s}
+@keyframes pt{0%,80%,100%{transform:translateY(0);opacity:.5}40%{transform:translateY(-4px);opacity:1}}
+.repetir{align-self:center;margin-top:4px;background:none;border:1px solid #B9C6D0;color:#4A5B6A;border-radius:999px;padding:6px 14px;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer;display:none}
+.repetir.visto{display:inline-block;opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.chat>*{opacity:1;transform:none;transition:none}.escribiendo{display:none!important}.repetir{display:none!important}}
+.dia{align-self:center;background:#DDE7EE;color:#4A5B6A;border-radius:8px;padding:4px 10px;font-size:11.5px;font-weight:600}
+.pasos{display:grid;gap:12px}
+.paso{display:flex;gap:14px;background:#fff;border:1px solid var(--linea);border-radius:16px;padding:16px}
+.paso .n{flex:none;width:32px;height:32px;border-radius:50%;background:var(--iris);color:#fff;display:grid;place-items:center;font-weight:700;font-family:var(--display);font-size:14px}
+.paso b{display:block;font-family:var(--display);font-size:15.5px;margin-bottom:3px}
+.paso p{color:var(--gris);font-size:14.5px}
+
+/* Demo */
+.demo{background:var(--navy);color:#fff}
+.demo .sec-cab p{color:#C7D1E6}
+.demo .eyebrow{color:var(--cian)}
+.demo-grid{display:grid;gap:16px}
+@media (min-width:800px){.demo-grid{grid-template-columns:1.2fr .8fr}}
+.demo .card{background:var(--navy-2);border-color:var(--navy-line);color:#fff}
+.demo .card p{color:#B7C3DA}
+.demo .card h3{color:#fff}
+.lista{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:9px}
+.lista li{display:flex;gap:10px;font-size:15px;color:#DCE4F2}
+.lista li::before{content:"✓";color:var(--cian);font-weight:700}
+.precio{font-family:var(--display);font-size:30px;font-weight:700;margin:10px 0 2px}
+.precio small{font-size:14px;color:#93A2C2;font-weight:500;font-family:var(--sans)}
+.cred{margin:18px 0 0;display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:14.5px;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid var(--navy-line)}
+.cred dt{color:#93A2C2;font-weight:600}
+.cred dd{margin:0;color:#fff;font-family:var(--display);font-size:14px;word-break:break-all}
+.cred dd a{color:var(--cian);text-decoration:none}
+.cred dd.suave{font-family:var(--sans);color:#C8D3EA}
+.acceso{margin-top:16px;padding:14px;border-radius:14px;background:rgba(34,211,238,.08);border:1px dashed rgba(34,211,238,.35);font-size:14px;color:#C7D1E6}
+.acceso b{color:#fff}
+
+/* Pie */
+footer{padding:28px 0 calc(28px + env(safe-area-inset-bottom));color:var(--gris);font-size:13.5px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}
+footer a{color:var(--gris)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:#fff;border:1px solid var(--linea);border-radius:999px;padding:8px 14px;font-size:14.5px;font-weight:600}
+.hoy{counter-reset:h}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="logo"><img src="/spumash/punitaqui/logo-punitaqui.png" alt="Lavandería Punitaqui"></div>
+    <div class="para"><span>Demo preparada para</span><b>Lavandería Punitaqui</b></div>
+    <a class="btn btn-wa cta" style="white-space:nowrap" href="https://wa.me/56938740153?text=Hola%2C%20soy%20Flavia%20de%20Lavander%C3%ADa%20Punitaqui%20y%20quiero%20agendar%20la%20videollamada%20de%20Spumash">Videollamada</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Spumash · sistema con IA para lavanderías</span>
+      <h1>La única lavandería de Limarí con resolución sanitaria, <em>atendiendo sola</em> por WhatsApp.</h1>
+      <p class="lead">Flavia, ustedes ya hicieron lo difícil: resolución sanitaria, agua reutilizada, paneles solares y clientes del rubro minero. Spumash se encarga de lo que hoy depende de contestar a mano: responde cada mensaje, agenda el retiro en su ruta, lleva la cuenta de cada empresa y avisa al cliente cuando su ropa está lista. Con el nombre y el logo de Lavandería Punitaqui, no el nuestro.</p>
+      <div class="acciones">
+        <a class="btn btn-wa" href="https://wa.me/56938740153?text=Hola%2C%20soy%20Flavia%20de%20Lavander%C3%ADa%20Punitaqui%20y%20quiero%20agendar%20la%20videollamada%20de%20Spumash"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>Agendar la videollamada</a>
+        <a class="btn btn-ghost" href="#whatsapp">Ver cómo atiende</a>
+      </div>
+      <p class="nota">Videollamada de 30 minutos esta semana. En ella cargamos su lista de precios y les mostramos la app con su marca.</p>
+    </div>
+    <div class="marca-card">
+      <div class="cab">
+        <img src="/spumash/punitaqui/logo-punitaqui.png" alt="">
+        <div><b>Lavandería Punitaqui</b><small>Caupolicán 763 · centro de Punitaqui · Limarí</small></div>
+      </div>
+      <img class="furgon" src="/spumash/punitaqui/furgon.jpg" alt="Furgón de reparto de Lavandería Punitaqui">
+      <div class="datos">
+        <div>WhatsApp<b>+56 9 5066 7938</b></div>
+        <div>Servicio<b>Por kilo, entrega en 24 h</b></div>
+        <div>Domicilio<b>Retiro y entrega sin costo</b></div>
+        <div>Clientes<b>Hogares y empresas</b></div>
+      </div>
+      <span class="sello">✓ Única con resolución sanitaria en Limarí</span>
+    </div>
+  </div>
+</section>
+
+<section id="hoy">
+  <div class="wrap">
+    <div class="sec-cab">
+      <span class="eyebrow">Lo que vimos de Lavandería Punitaqui</span>
+      <h2>El negocio está sólido. Lo que falta es que se vea y trabaje solo.</h2>
+      <p>Revisamos su WhatsApp Business, Instagram, Facebook, Google Maps y lo que se ha publicado de ustedes en El Ovallino, El Punitaquino, Sercotec y Corfo.</p>
+    </div>
+    <div class="grid c3">
+      <div class="card ok"><div class="ico">✓</div><h3>Un sello que nadie más tiene</h3><p>Única lavandería de la provincia con resolución sanitaria, con agua reutilizada para riego (unos 70 m³ a la semana), paneles solares y detergentes ecológicos. Eso merece estar en cada conversación con un cliente.</p></div>
+      <div class="card ok"><div class="ico">✓</div><h3>Empresas y minería</h3><p>Ya trabajan con empresas del rubro minero y tienen precio especial para empresas. Spumash maneja cada empresa con su tarifa, su cuenta corriente, orden de compra y cobro a fin de mes.</p></div>
+      <div class="card ok"><div class="ico">✓</div><h3>Domicilio con furgón propio</h3><p>Retiro y entrega sin costo adicional. Con rutas por sector y cupos por bloque, el furgón sale con la ruta del día ordenada y el cliente sabe a qué hora llega.</p></div>
+      <div class="card alerta"><div class="ico">!</div><h3>Todo pasa por un solo WhatsApp</h3><p>Pedidos, cotizaciones, empresas y coordinación de retiros dependen de que alguien conteste. Lo que llega de noche o mientras se trabaja en la lavandería, espera.</p></div>
+      <div class="card alerta"><div class="ico">!</div><h3>Precios que no se ven</h3><p>No hay una lista de precios publicada en ninguna parte, así que cada cliente nuevo tiene que preguntar. Con su catálogo cargado, la asistente responde al tiro con el precio correcto.</p></div>
+      <div class="card alerta"><div class="ico">!</div><h3>Redes en pausa</h3><p>El Instagram no publica desde mediados de 2025 y la página de Facebook con 3.200 seguidores hoy aparece con otro nombre. La gente de Ovalle y Punitaqui que los busca no los encuentra bien.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="corregir" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-cab">
+      <span class="eyebrow">Gratis: lo que pueden corregir hoy mismo</span>
+      <h2>Cuatro arreglos de 10 minutos, con o sin Spumash.</h2>
+    </div>
+    <div class="grid c2">
+      <div class="card"><div class="ico">1</div><h3>El pin de Google Maps está lejos del local</h3><p>"Lavandería Punitaqui" aparece en Maps unos 8 km al norte de Caupolicán 763, sin teléfono, horario ni reseñas. Reclamen la ficha en Google Business, muevan el pin y agreguen el +56 9 5066 7938. En Punitaqui no aparece ninguna otra lavandería: el que busque, los encuentra a ustedes.</p></div>
+      <div class="card"><div class="ico">2</div><h3>WhatsApp dice que están cerrados de martes a domingo</h3><p>En el perfil de WhatsApp Business el horario muestra abierto solo el lunes de 8:00 a 19:00. Ajústenlo en Herramientas para la empresa → Perfil → Horario, y cambien "Otra categoría" por "Lavandería".</p></div>
+      <div class="card"><div class="ico">3</div><h3>Recuperen su página de Facebook</h3><p>La página @lavanderia.punitaqui, con unos 3.200 seguidores, hoy se llama "Recicla Zapatos". Si es de ustedes, devuélvanle el nombre; si no, conviene crear una página de empresa nueva y dejar de usar el perfil personal.</p></div>
+      <div class="card"><div class="ico">4</div><h3>Instagram como cuenta de empresa</h3><p>Hoy es una cuenta personal. Pasarla a profesional (categoría Lavandería) habilita el botón de WhatsApp, la dirección, el horario y las estadísticas, y es lo que necesita la asistente para responder mensajes de Instagram más adelante.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="catalogo" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-cab">
+      <span class="eyebrow">Su catálogo en Spumash</span>
+      <h2>Estos son sus servicios. Los precios los cargamos juntos.</h2>
+      <p>Los tomamos de lo que ustedes publican y de la prensa. En la videollamada ponemos sus valores y queda listo para que la asistente cotice.</p>
+    </div>
+    <div class="grid c2">
+      <div class="tabla">
+        <div class="fila cab"><span>Hogar</span><span>Precio</span></div>
+        <div class="fila"><span>Ropa por kilo, entrega en 24 h</span><b>Su valor / kg</b></div>
+        <div class="fila"><span>Servicio express</span><b>Su valor</b></div>
+        <div class="fila"><span>Cobertores y frazadas</span><b>Por tamaño</b></div>
+        <div class="fila"><span>Planchado</span><b>Por prenda</b></div>
+        <div class="fila"><span>Promoción de temporada (ej. 2x1 en frazadas)</span><b>Con fecha de término</b></div>
+      </div>
+      <div class="tabla">
+        <div class="fila cab"><span>Especiales y empresas</span><span>Precio</span></div>
+        <div class="fila"><span>Alfombras</span><b>Por m² o unidad</b></div>
+        <div class="fila"><span>Sillones</span><b>Por cuerpo</b></div>
+        <div class="fila"><span>Sanitizado</span><b>Su valor</b></div>
+        <div class="fila"><span>Empresas: ropa de trabajo y de cama</span><b>Tarifa por empresa</b></div>
+        <div class="fila"><span>Retiro y entrega a domicilio</span><b>Sin costo</b></div>
+      </div>
+    </div>
+    <p class="fuente">Las tarifas de empresa se cargan por cliente, con precios y plazos de pago distintos a los de público. Si una promoción vence, la asistente deja de ofrecerla sola.</p>
+  </div>
+</section>
+
+<section id="whatsapp" style="background:#fff;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)">
+  <div class="wrap">
+    <div class="sec-cab">
+      <span class="eyebrow">Así atiende su WhatsApp</span>
+      <h2>Una clienta escribe un domingo a las 21:30. Nadie tuvo que contestar.</h2>
+      <p>Ejemplo del sistema con la ruta de Lavandería Punitaqui. Sale desde su número de siempre, +56 9 5066 7938.</p>
+    </div>
+    <div class="wa-wrap">
+      <div class="phone">
+        <div class="barra">
+          <div class="av"><img src="/spumash/punitaqui/logo-punitaqui.png" alt=""></div>
+          <div><b>Lavandería Punitaqui</b><small>en línea · responde al instante</small></div>
+        </div>
+        <div class="chat">
+          <span class="dia">Domingo</span>
+          <div class="msg in">Hola! Tengo 3 frazadas y una bolsa de ropa, pueden pasar a buscarlas?<time>21:30</time></div>
+          <div class="msg out">¡Hola! Soy la asistente de Lavandería Punitaqui 👋 Claro, retiramos y entregamos en tu casa sin costo. La ropa se cobra por kilo y te confirmo el total apenas la pesemos; las frazadas van por unidad según su tamaño. ¿Te acomoda mañana lunes en la mañana o en la tarde?<time>21:30</time></div>
+          <div class="msg in">En la tarde. Villa Los Molinos, pasaje 4 casa 12<time>21:33</time></div>
+          <div class="msg out">Listo ✅ Retiro agendado para el <b>lunes en la tarde</b> en Villa Los Molinos, pasaje 4 casa 12. Te aviso cuando el furgón vaya en camino. Por si te interesa: lavamos con detergentes ecológicos y el agua se reutiliza para riego 🌱<span class="sys">Pedido 318 creado · Ruta lunes tarde · Cliente nuevo guardado</span><time>21:33</time></div>
+          <span class="dia">Lunes</span>
+          <div class="msg out">Hola 🚚 El furgón va en camino a tu retiro, llega aprox. a las 16:10.<time>15:52</time></div>
+          <div class="msg out">Pesamos tu ropa: 6,4 kg. Con las 3 frazadas, tu pedido queda listo mañana martes. Te mando el total y el link de pago por acá.<time>17:20</time></div>
+          <div class="escribiendo" aria-hidden="true"><i></i><i></i><i></i></div>
+          <button class="repetir" type="button">Ver de nuevo</button>
+        </div>
+      </div>
+      <div class="pasos">
+        <div class="paso"><div class="n">1</div><div><b>Responde con su catálogo, no de memoria</b><p>Kilo, frazadas, alfombras, sillones y tarifas de empresa. Si cambian un precio en la app, la asistente lo usa al segundo.</p></div></div>
+        <div class="paso"><div class="n">2</div><div><b>Agenda en su ruta</b><p>Punitaqui centro, villas y sectores rurales, y Ovalle si lo quieren: cupos por bloque y por día. Ofrece solo cupos que existen.</p></div></div>
+        <div class="paso"><div class="n">3</div><div><b>El furgón con la ruta ordenada</b><p>App del conductor con las direcciones en el mapa, foto al entregar y aviso automático de "voy en camino".</p></div></div>
+        <div class="paso"><div class="n">4</div><div><b>Empresas sin planillas</b><p>Cada empresa minera con su tarifa, sus pedidos del mes y su estado de cuenta. A fin de mes el resumen sale solo.</p></div></div>
+        <div class="paso"><div class="n">5</div><div><b>Lo que necesita una persona, se lo pasa a usted</b><p>Un reclamo, una tarifa especial o un pedido grande de faena: la asistente avisa y deja la conversación para ustedes.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="demo" id="demo">
+  <div class="wrap">
+    <div class="sec-cab">
+      <span class="eyebrow">Su demo</span>
+      <h2>El sistema ya existe. Lo activamos con su marca en la videollamada.</h2>
+      <p>No es una maqueta: es el mismo sistema que opera hoy en Ladys Lavandería (Concón), con 2.000 mensajes y 225 pedidos al mes, y que desde esta semana opera también en una lavandería de Santiago.</p>
+    </div>
+    <div class="demo-grid">
+      <div class="card">
+        <h3>Qué verán en la videollamada</h3>
+        <ul class="lista">
+          <li>La asistente cotizando y agendando en vivo con los servicios de Lavandería Punitaqui.</li>
+          <li>El panel de pedidos, la ruta del furgón y la pantalla de la lavandería.</li>
+          <li>Clientes empresa con su tarifa, orden de compra y cuenta corriente.</li>
+          <li>Cómo se conecta su WhatsApp actual sin cambiar de número.</li>
+        </ul>
+        <div class="acceso">Después de la videollamada les dejamos <b>una semana de prueba</b> con la app y su catálogo cargado, en un ambiente separado: lo que hagan ahí no afecta a ningún cliente.</div>
+      </div>
+      <div class="card">
+        <h3>Plan recomendado</h3>
+        <p>Domicilio: la asistente agenda retiros y entregas en su ruta, con app del conductor.</p>
+        <div class="precio">$69.990 <small>/ mes + IVA</small></div>
+        <p style="font-size:13.5px">Desde $29.990 + IVA si solo quieren que responda y cotice. Sin permanencia. Configuración gratis si se suscriben dentro de 72 horas de la demo.</p>
+        <a class="btn btn-marca" style="margin-top:18px;width:100%" href="https://wa.me/56938740153?text=Hola%2C%20soy%20Flavia%20de%20Lavander%C3%ADa%20Punitaqui%20y%20quiero%20agendar%20la%20videollamada%20de%20Spumash">Agendar videollamada</a>
+        <a class="btn btn-ghost" style="margin-top:10px;width:100%" href="/spumash/#planes">Ver todos los planes</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span><b>Spumash</b> es un producto de Top Kreativa · Concón, Chile</span>
+    <a href="https://wa.me/56938740153">WhatsApp +56 9 3874 0153</a>
+    <a href="mailto:contacto@topkreativa.com">contacto@topkreativa.com</a>
+    <a href="/spumash/">topkreativa.com/spumash</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var chat=document.querySelector('.chat'); if(!chat) return;
+  var items=[].slice.call(chat.children).filter(function(e){return !e.classList.contains('escribiendo')&&!e.classList.contains('repetir')});
+  var typing=chat.querySelector('.escribiendo'), again=chat.querySelector('.repetir'), timers=[], running=false;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function wait(ms,fn){timers.push(setTimeout(fn,ms))}
+  function reset(){timers.forEach(clearTimeout);timers=[];items.forEach(function(e){e.classList.remove('visto')});typing.classList.remove('visto');again.classList.remove('visto')}
+  function play(){
+    if(reduce){items.forEach(function(e){e.classList.add('visto')});return}
+    reset(); running=true; var t=400;
+    items.forEach(function(e,i){
+      var isMsg=e.classList.contains('msg'), out=e.classList.contains('out');
+      if(isMsg){
+        wait(t,function(){typing.className='escribiendo'+(out?' out':'')+' visto';chat.appendChild(typing)});
+        t+=out?1500:1100;
+        wait(t,function(){typing.classList.remove('visto');e.classList.add('visto')});
+        t+=Math.min(2600,900+e.textContent.length*14);
+      } else { wait(t,function(){e.classList.add('visto')}); t+=700; }
+    });
+    wait(t,function(){again.classList.add('visto');running=false});
+  }
+  again.addEventListener('click',play);
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting&&!running&&!items[0].classList.contains('visto')){play()}})},{threshold:.35});
+    io.observe(chat);
+  } else play();
+})();
+</script>
+</body>
+</html>
