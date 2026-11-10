@@ -1,3 +1,7 @@
+# La página de Spumash vive en su propio dominio (spumash.app); las páginas por cliente siguen aquí
+/spumash         https://spumash.app/   301!
+/spumash/        https://spumash.app/   301!
+
 # Páginas despublicadas (los archivos siguen en el repo; borrar la línea para volver a publicar)
 /gastrovisual    /  302!
 /gastrovisual/*  /  302!

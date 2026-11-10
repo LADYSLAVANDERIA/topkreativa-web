@@ -66,6 +66,12 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .hero-cta{margin-top:36px;display:flex;flex-wrap:wrap;gap:12px;position:relative}
 
 section{padding:88px 0;border-top:1px solid var(--line)}
+.app-own{display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;margin-top:36px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:28px}
+.app-own .app-logo{display:flex;align-items:center;gap:12px;font-weight:1000;font-size:30px;letter-spacing:-.03em;color:var(--text);text-decoration:none}
+.app-own p{color:var(--muted);font-size:17px;max-width:58ch}
+.app-own p strong{color:var(--text);font-weight:500}
+@media (max-width:760px){.app-own{grid-template-columns:1fr;gap:18px}}
+
 h2{font-weight:1000;letter-spacing:-.035em;line-height:1.02;font-size:clamp(34px,5vw,60px);max-width:16ch}
 .sub{margin-top:18px;color:var(--muted);font-size:18px}
 
@@ -500,6 +506,17 @@ html.intro-open #intro{display:block}
         <div class="screen" id="lab-screen" aria-live="polite"></div>
         <div class="lab-bar"><span id="lab-prog"></span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="spumash">
+  <div class="wrap">
+    <h2>Lo convertimos en producto.</h2>
+    <div class="app-own">
+      <a class="app-logo" href="https://spumash.app/" target="_blank" rel="noopener"><svg width="44" height="44" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="spg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset=".5" stop-color="#7C5CFF"/><stop offset="1" stop-color="#FF4FB8"/></linearGradient></defs><circle cx="28" cy="35" r="20" fill="url(#spg)"/><circle cx="48" cy="17" r="8" fill="#fff" fill-opacity=".9"/></svg>spumash</a>
+      <p><strong>Spumash</strong> es el sistema para lavanderías que nació de la app de Ladys: una asistente de IA que responde por WhatsApp, cotiza y agenda retiros y entregas en tu ruta, con la marca de cada lavandería. Una creación de Top Kreativa.</p>
+      <a class="btn" href="https://spumash.app/" target="_blank" rel="noopener">Ir a spumash.app</a>
     </div>
   </div>
 </section>
