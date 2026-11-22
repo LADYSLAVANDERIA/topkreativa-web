@@ -16,8 +16,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="assets/logo-lpp.svg">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;1,9..144,700;1,9..144,800&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/fraunces-latin-800-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/nunito-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face{font-family:Fraunces;font-style:italic;font-weight:700;font-display:swap;src:url(assets/fonts/fraunces-latin-700-italic.woff2) format("woff2")}@font-face{font-family:Fraunces;font-style:italic;font-weight:800;font-display:swap;src:url(assets/fonts/fraunces-latin-800-italic.woff2) format("woff2")}@font-face{font-family:Fraunces;font-style:normal;font-weight:700;font-display:swap;src:url(assets/fonts/fraunces-latin-700-normal.woff2) format("woff2")}@font-face{font-family:Fraunces;font-style:normal;font-weight:800;font-display:swap;src:url(assets/fonts/fraunces-latin-800-normal.woff2) format("woff2")}@font-face{font-family:Nunito;font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/nunito-latin-400-normal.woff2) format("woff2")}@font-face{font-family:Nunito;font-style:normal;font-weight:600;font-display:swap;src:url(assets/fonts/nunito-latin-600-normal.woff2) format("woff2")}@font-face{font-family:Nunito;font-style:normal;font-weight:700;font-display:swap;src:url(assets/fonts/nunito-latin-700-normal.woff2) format("woff2")}@font-face{font-family:Nunito;font-style:normal;font-weight:800;font-display:swap;src:url(assets/fonts/nunito-latin-800-normal.woff2) format("woff2")}</style>
 <style>
 body{margin:0;background:#FFF4EA;font-family:Nunito,system-ui,sans-serif;color:#3B1F14}
 button{font-family:Nunito,system-ui,sans-serif}
@@ -55,6 +56,14 @@ a{color:#C2410C}a:hover{color:#7C2D12}
 .lpp-wa-round{animation:lppWaPulse 1.8s ease-out infinite}
 .lpp-wa-round:hover{animation-play-state:paused}
 #lpp-wa-float.lpp-spot{position:fixed!important;scale:1.18}
+@keyframes lppWaJump{0%,100%{translate:0 0}30%{translate:0 -16px}50%{translate:0 0}65%{translate:0 -7px}80%{translate:0 0}}
+@keyframes lppWaRing{0%{box-shadow:0 0 0 0 rgba(37,211,102,.65)}100%{box-shadow:0 0 0 26px rgba(37,211,102,0)}}
+#lpp-wa-float.lpp-wa-attn{animation:lppWaJump 1.1s ease-in-out infinite,lppWaRing 1.1s ease-out infinite!important;scale:1.22}
+@keyframes lppTourIn{from{opacity:0;translate:-50% -10px}to{opacity:1;translate:-50% 0}}
+.lpp-tourbar{animation:lppTourIn .4s ease-out both}
+#lpp-wa-tag{position:fixed;right:10px;bottom:104px;z-index:33;background:#3B1F14;color:#FFF4EA;font:800 15px/1 Nunito,system-ui,sans-serif;padding:11px 15px;border-radius:999px;box-shadow:0 12px 24px -12px rgba(59,31,20,.7);white-space:nowrap;pointer-events:none;opacity:0;translate:0 10px;transition:opacity .3s ease,translate .3s ease}
+#lpp-wa-tag::after{content:"";position:absolute;right:30px;bottom:-6px;width:12px;height:12px;background:#3B1F14;rotate:45deg;border-radius:2px}
+#lpp-wa-tag.on{opacity:1;translate:0 0}
 @keyframes lppSpotRing{0%{box-shadow:0 0 0 4px #FF7AAC,0 0 0 10px rgba(255,122,172,.35),0 30px 60px -20px rgba(217,72,28,.6)}50%{box-shadow:0 0 0 4px #FF7AAC,0 0 0 22px rgba(255,122,172,0),0 30px 60px -20px rgba(217,72,28,.6)}100%{box-shadow:0 0 0 4px #FF7AAC,0 0 0 10px rgba(255,122,172,.35),0 30px 60px -20px rgba(217,72,28,.6)}}
 .lpp-spot{position:relative;z-index:6;scale:1.035;transition:scale .35s cubic-bezier(.2,.8,.2,1);animation:lppSpotRing 1.4s ease-in-out infinite!important}
 .lpp-spot-img{filter:drop-shadow(0 0 18px rgba(255,122,172,.95)) drop-shadow(0 0 4px #FF7AAC);scale:1.05;transition:scale .35s ease,filter .35s ease}
@@ -133,14 +142,14 @@ a{color:#C2410C}a:hover{color:#7C2D12}
   .rv{animation:lppRvIn linear both;animation-timeline:view();animation-range:entry 0% cover 22%}
 }
 @media (prefers-reduced-motion: reduce){.bubble-soap,.orb,.float-chip,.marquee,.steps-line,.neon::before,.neon::after,.chip i,.rv,.logo3d{animation:none!important}.b3d:hover::after{animation:none}}
-@media (max-width: 860px){.lpp-guide-inner{zoom:.62}.lpp-guide-bubble{display:none !important}.lpp-guide-img{height:150px !important}.float-chip{display:none}.phone3d{transform:none}}
+@media (max-width: 860px){.lpp-guide-inner{zoom:.62}.lpp-guide-img{height:150px !important}.float-chip{display:none}.phone3d{transform:none}}
 
 @media (max-width: 860px){
   .lpp-nav-links{display:none !important}
   .lpp-h1{font-size:44px !important}
   .lpp-h2{font-size:34px !important}
   .lpp-section{padding:64px 20px !important}
-  .lpp-guide-bubble{display:none !important}
+  
   .lpp-side-pancha{max-width:220px !important}
   .lpp-hero-visual{order:-1;min-height:420px !important;margin-top:-30px}
   .lpp-hero-copy{padding-bottom:56px !important}
@@ -148,6 +157,25 @@ a{color:#C2410C}a:hover{color:#7C2D12}
   #lpp-hero-walk{height:433px !important;top:60px !important}
   .lpp-bubble{max-width:210px !important;font-size:14px !important;padding:10px 14px !important}
   .lpp-drive-in{animation:none !important;translate:none !important;opacity:1 !important}
+  #cotizador{padding:20px 16px !important;border-radius:26px !important}
+  #cotizador h3{font-size:26px !important}
+  .lpp-cot-row{padding:7px 8px 7px 12px !important;gap:8px !important;border-radius:14px !important}
+  .lpp-cot-name{font-size:13.5px !important;line-height:1.25}
+  .lpp-cot-btn{width:34px !important;height:34px !important;font-size:18px !important;border-radius:11px !important}
+  .lpp-cot-qty{min-width:20px !important;font-size:17px !important}
+  #lpp-comuna{height:44px !important}
+  #lpp-reviews{display:flex !important;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px !important;margin:0 -20px;padding:4px 20px 14px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  #lpp-reviews::-webkit-scrollbar{display:none}
+  #lpp-reviews figure{flex:0 0 82%;scroll-snap-align:center;padding:20px !important;border-radius:24px !important}
+  #lpp-reviews blockquote{font-size:15.5px !important}
+  .lpp-mob-only{display:block !important}
+  #lpp-wa-tag{bottom:96px;font-size:14px}
+}
+.lpp-mob-only{display:none}
+.lpp-sub-mob{display:none}
+@media (max-width: 860px){
+  .lpp-guide-inner .lpp-guide-bubble{display:none !important}
+  .lpp-sub-mob{display:block;position:fixed;bottom:150px;z-index:31;max-width:min(260px,calc(100vw - 24px));background:rgba(255,255,255,.97);color:#3B1F14;padding:8px 12px;font:700 14px/1.32 Nunito,system-ui,sans-serif;box-shadow:0 10px 22px -12px rgba(59,31,20,.6);border:1px solid rgba(217,72,28,.18);pointer-events:none;animation:lppPop .3s ease-out both}
 }
 </style>
 
@@ -312,15 +340,15 @@ a{color:#C2410C}a:hover{color:#7C2D12}
     <p style="margin: 0 0 20px; color: #6B4A3B; font-size: 15px">Elige tus prendas y agenda con el total por WhatsApp.</p>
     <div style="display: flex; flex-direction: column; gap: 10px">
       <template data-sc-for="items" data-as="item">
-        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; border-radius: 16px; background: #FFF4EA; border: 1px solid rgba(217,72,28,.1); box-shadow: inset 0 1px 0 #fff">
+        <div class="lpp-cot-row" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; border-radius: 16px; background: #FFF4EA; border: 1px solid rgba(217,72,28,.1); box-shadow: inset 0 1px 0 #fff">
           <div style="display: flex; flex-direction: column; min-width: 0">
-            <span style="font-weight: 700; font-size: 15px">{{item.name}}</span>
+            <span class="lpp-cot-name" style="font-weight: 700; font-size: 15px">{{item.name}}</span>
             <span style="font-size: 13px; color: #6B4A3B">{{item.priceText}} c/u</span>
           </div>
           <div style="display: flex; align-items: center; gap: 8px">
-            <button type="button" onClick="{{item.dec}}" aria-label="{{item.decLabel}}" class="b3d b3d-white b3d-sq" style="width: 44px; height: 44px; font-size: 22px; padding: 0">−</button>
-            <span aria-live="polite" style="min-width: 28px; text-align: center; font-size: 22px; font-weight: 800">{{item.qty}}</span>
-            <button type="button" onClick="{{item.inc}}" aria-label="{{item.incLabel}}" class="b3d b3d-orange b3d-sq" style="width: 44px; height: 44px; font-size: 22px; padding: 0">+</button>
+            <button type="button" onClick="{{item.dec}}" aria-label="{{item.decLabel}}" class="b3d b3d-white b3d-sq lpp-cot-btn" style="width: 44px; height: 44px; font-size: 22px; padding: 0">−</button>
+            <span class="lpp-cot-qty" aria-live="polite" style="min-width: 28px; text-align: center; font-size: 22px; font-weight: 800">{{item.qty}}</span>
+            <button type="button" onClick="{{item.inc}}" aria-label="{{item.incLabel}}" class="b3d b3d-orange b3d-sq lpp-cot-btn" style="width: 44px; height: 44px; font-size: 22px; padding: 0">+</button>
           </div>
         </div>
       </template>
@@ -341,6 +369,7 @@ a{color:#C2410C}a:hover{color:#7C2D12}
       Agendar retiro con este pedido
     </a>
     <p style="margin: 10px 0 0; font-size: 12px; color: #6B4A3B; text-align: center">Valor referencial. El total final se confirma al recibir tus prendas.</p>
+    <p style="margin: 6px 0 0; font-size: 12px; color: #6B4A3B; text-align: center">Al escribirme por WhatsApp uso tus datos solo para agendar y atender tu pedido. <a href="privacidad/" style="color: #C2410C; font-weight: 700">Política de privacidad</a>.</p>
   </div>
 </section>
 
@@ -402,6 +431,7 @@ a{color:#C2410C}a:hover{color:#7C2D12}
         </figure>
       </template>
     </div>
+    <p class="lpp-mob-only" aria-hidden="true" style="margin: 2px 0 0; font-size: 14px; font-weight: 800; color: #D9481C">Desliza para ver más reseñas →</p>
     <div style="margin-top: 32px; display: flex; justify-content: center">
       <a class="b3d b3d-dark" href="https://www.google.com/maps/search/La+Pancha+Plancha" style="padding: 16px 26px">Ver todas las reseñas en Google</a>
     </div>
@@ -431,21 +461,7 @@ a{color:#C2410C}a:hover{color:#7C2D12}
 </section>
 
 <!-- CTA FINAL -->
-<section id="contacto" style="padding: 40px 24px 110px">
-  <div class="neon lpp-dots-light" style="max-width: 1192px; margin: 0 auto; background-color: #FF7AAC; border-radius: 40px; padding: 0 56px; display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start; gap: 24px">
-    <div style="flex: 1 1 520px; max-width: 760px; min-width: 0; display: flex; flex-direction: column; gap: 18px; padding: 56px 0">
-      <span class="chip" style="align-self: flex-start"><i></i>Agenda tu retiro</span>
-      <h2 class="lpp-h2" style="margin: 0; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 50px; line-height: 1.02">Envíame un mensaje ahora y paso a buscar tu ropa a tu casa.</h2>
-      <p style="margin: 0; font-size: 18px; font-weight: 600; max-width: 520px">Cuéntame qué necesitas y agendamos tu retiro. Te la devuelvo lista en 48 horas.</p>
-      <p style="margin: 0; display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 800">
-        Toca el botón verde de WhatsApp, abajo a la derecha
-        <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3B1F14" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10"></path><path d="M17 8v9H8"></path></svg>
-      </p>
-      <p style="margin: 0; font-size: 15px; font-weight: 700; color: #5A2E1E">WhatsApp +56 9 5377 8977 · Lunes a viernes, 8:00 a 20:00</p>
-      </div>
-    </div>
-  </div>
-</section>
+<div id="contacto" aria-hidden="true" style="height: 24px"></div>
 
 <!-- FOOTER -->
 <footer class="glow-top lpp-grid-light" style="background-color: #2C160D; color: #F6DCCB">
@@ -464,7 +480,10 @@ a{color:#C2410C}a:hover{color:#7C2D12}
     <div style="display: flex; flex-direction: column; gap: 8px">
       <strong style="color: #FFFFFF">Información</strong>
       <a href="https://lapanchaplancha.cl/wp-content/uploads/TERMINOS-DE-SERVICIO-LPP.pdf" style="color: #F6DCCB">Términos del servicio</a>
+      <a href="privacidad/" style="color: #F6DCCB">Política de privacidad</a>
       <span>Lunes a viernes, 8:00 a 20:00</span>
+      <span style="font-size: 13px; opacity: .8">La Pancha Plancha SpA · Av. Los Leones 1707, Providencia</span>
+      <span style="font-size: 13px; opacity: .8">Este sitio no usa cookies ni herramientas de seguimiento.</span>
     </div>
   </div>
 </footer>
@@ -472,6 +491,7 @@ a{color:#C2410C}a:hover{color:#7C2D12}
 <a id="lpp-wa-float" class="b3d b3d-green lpp-wa-round" href="{{waAgenda}}" aria-label="Escribir a La Pancha Plancha por WhatsApp" title="Escríbeme por WhatsApp" style="position: fixed; right: 20px; bottom: 22px; z-index: 32; width: 66px; height: 66px; padding: 0; border-radius: 50%">
   <svg aria-hidden="true" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.7a8.6 8.6 0 0 1-12.7 7.6L3 20.6l1.4-4.6a8.6 8.6 0 1 1 16.1-4.3z"></path><path d="M9 8.3c.2-.5.5-.5.8-.5h.6c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .6l-.5.7c-.1.2-.1.4 0 .6.6 1 1.4 1.8 2.4 2.4.2.1.4.1.6 0l.7-.5c.2-.1.4-.1.6 0l1.9.8c.4.2.5.4.5.6v.6c0 .3 0 .6-.5.8-.6.3-1.4.5-2.2.3-2.8-.7-5-2.9-5.7-5.7-.2-.8 0-1.6.4-2.1z"></path></svg>
 </a>
+<div id="lpp-wa-tag" aria-hidden="true">¡Agenda ahora! 👇</div>
 
 <!-- BIENVENIDA: el primer toque habilita el sonido -->
 <template data-sc-if="showGate">
@@ -490,6 +510,20 @@ a{color:#C2410C}a:hover{color:#7C2D12}
       <button type="button" onClick="{{enterSilent}}" style="border: none; background: transparent; color: #6B4A3B; font-family: Nunito, sans-serif; font-weight: 700; font-size: 14px; text-decoration: underline; cursor: pointer; padding: 8px">Entrar sin sonido</button>
     </div>
   </div>
+</template>
+
+<!-- RECORRIDO GUIADO -->
+<template data-sc-if="showTourBar">
+  <div class="lpp-tourbar" role="status" style="position: fixed; top: 84px; left: 50%; translate: -50% 0; z-index: 40; display: flex; align-items: center; gap: 12px; background: rgba(59,31,20,.92); backdrop-filter: blur(8px); color: #FFF4EA; padding: 8px 8px 8px 16px; border-radius: 999px; box-shadow: 0 14px 30px -16px rgba(59,31,20,.8); font-size: 14px; font-weight: 700; white-space: nowrap">
+    <span style="width: 8px; height: 8px; border-radius: 50%; background: #7BE0A3; box-shadow: 0 0 0 4px rgba(123,224,163,.25)"></span>
+    <span>{{tourLabel}}</span>
+    <button type="button" onClick="{{skipTour}}" style="border: none; background: #FFF4EA; color: #3B1F14; font-family: Nunito, sans-serif; font-weight: 800; font-size: 13px; padding: 7px 13px; border-radius: 999px; cursor: pointer">Saltar ✕</button>
+  </div>
+</template>
+
+<!-- SUBTÍTULOS DE LA PANCHA EN CELULAR -->
+<template data-sc-if="showBubble">
+  <div class="lpp-sub-mob" aria-hidden="true" style="{{bubbleSide}}: 12px; border-radius: {{bubbleRadius}}">{{guideTyped}}</div>
 </template>
 
 <!-- PANCHA GUÍA: camina, habla con su voz y te acompaña -->
@@ -528,7 +562,10 @@ a{color:#C2410C}a:hover{color:#7C2D12}
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { qty: {}, comuna: 'Providencia', section: 'inicio', showBubble: true, count: 0, phase: 'off', soundOn: false, heroPlaying: false, walkDir: 'L', guideMs: 1900, heroX: '115%', heroPhase: 'walk', heroCount: 0, started: false };
+    this.state = { qty: {}, comuna: 'Providencia', section: 'inicio', showBubble: true, count: 0, phase: 'off', soundOn: false, heroPlaying: false, walkDir: 'L', guideMs: 1900, heroX: '115%', heroPhase: 'walk', heroCount: 0, started: false, touring: false, tourStep: 0, clipKey: null };
+    this.spoken = {}; this.tourDone = false; this.tourT = null; this.ctaIv = null;
+    this.tourOrder = ['como', 'servicios', 'precios', 'novedades', 'resenas', 'cobertura', 'contacto'];
+    this.interruptTour = this.interruptTour.bind(this);
     this.onScroll = this.onScroll.bind(this);
     this.typer = null; this.walkT = null;
     this.isSafari = (typeof navigator !== 'undefined') && /^((?!chrome|android|crios|fxios).)*safari/i.test(navigator.userAgent);
@@ -586,7 +623,7 @@ class Component extends DCLogic {
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onScroll);
     window.removeEventListener('pointerdown', this.firstTap);
-    clearInterval(this.typer); clearTimeout(this.walkT); clearTimeout(this.heroT); clearInterval(this.heroTyper);
+    clearInterval(this.typer); clearTimeout(this.walkT); clearTimeout(this.heroT); clearInterval(this.heroTyper); clearTimeout(this.tourT); clearInterval(this.ctaIv);
   }
   clips() {
     var V = {
@@ -596,7 +633,8 @@ class Component extends DCLogic {
       precios: { webm: 'assets/c3-precios-24.webm', mp4: 'assets/c3-precios-24.mp4' },
       novedades: { webm: 'assets/c4-novedades-24.webm', mp4: 'assets/c4-novedades-24.mp4' },
       resenas: { webm: 'assets/c5-resenas-24.webm', mp4: 'assets/c5-resenas-24.mp4' },
-      cobertura: { webm: 'assets/c6-cobertura-24.webm', mp4: 'assets/c6-cobertura-24.mp4' }
+      cobertura: { webm: 'assets/c6-cobertura-24.webm', mp4: 'assets/c6-cobertura-24.mp4' },
+      cta: { webm: 'assets/c7-cta-24.webm', mp4: 'assets/c7-cta-24.mp4' }
     };
     return {
       inicio: { side: 'off', dur: 9.3, text: '¡Hola! Soy la Pancha. Yo retiro tu ropa, la lavo, la plancho y te la devuelvo lista en 48 horas. ¡Ven, te muestro cómo!', v: V.inicio },
@@ -606,7 +644,7 @@ class Component extends DCLogic {
       novedades: { cues: [[2.2,'lpp-chat']], side: 'right', dur: 9.5, text: '¿Y sabes qué? Ahora te respondo al instante, a cualquier hora. ¡Hasta un domingo en la noche!', v: V.novedades },
       resenas: { cues: [[0.4,'lpp-reviews']], side: 'left', dur: 7.0, text: 'Ay, mira lo que dicen de mí. ¡Me sonrojo! Gracias a todas mis clientas.', v: V.resenas },
       cobertura: { cues: [[0.9,'lpp-auto'],[2.3,'lpp-comunas'],[4.3,'lpp-wa-float']], side: 'right', dur: 7.0, text: 'Yo paso con mi auto morado por tu casa. ¿Estás en una de estas comunas? ¡Te agendo un retiro!', v: V.cobertura },
-      contacto: { side: 'right', silent: true, cues: [[0, 'lpp-wa-float']], dur: 6, text: '¡Toca el botón verde y escríbeme por WhatsApp! Te respondo al tiro.', v: V.cobertura }
+      contacto: { side: 'right', cta: true, cues: [[0.3, 'lpp-wa-float']], dur: 6.1, text: '¡Agenda ahora! Toca el botón verde de WhatsApp, aquí abajito, y paso a buscar tu ropa a tu casa.', v: V.cta }
     };
   }
   onScroll() {
@@ -617,6 +655,7 @@ class Component extends DCLogic {
       var el = document.getElementById(ids[i]);
       if (el && el.getBoundingClientRect().top < mid) { current = ids[i]; }
     }
+    if (this.state.touring) { return; }
     if (current !== this.state.section && this.state.started) { this.goTo(current); }
   }
   clearSpot() {
@@ -644,10 +683,11 @@ class Component extends DCLogic {
     var g = document.getElementById('lpp-guide-vid');
     if (g) { try { g.pause(); } catch (e) {} }
   }
-  goTo(sec) {
+  goTo(sec, opts) {
+    opts = opts || {};
     var self = this;
     var data = this.clips();
-    var prevSide = data[this.state.section].side;
+    var prevSide = data[this.state.clipKey || this.state.section].side;
     var nextSide = data[sec].side;
     var moving = prevSide !== nextSide;
     this.stopGuide();
@@ -655,13 +695,15 @@ class Component extends DCLogic {
       var h = document.getElementById('lpp-hero-vid');
       if (h && !h.paused) { h.pause(); }
     }
-    if (nextSide === 'off') { this.setState({ section: sec, phase: 'off', count: 0 }); return; }
-    if (this.state.guideHidden) { this.setState({ section: sec, phase: 'idle', count: 0 }); return; }
+    var key = opts.clip || sec;
+    var secPatch = opts.clip ? { clipKey: opts.clip } : { section: sec, clipKey: null };
+    if (nextSide === 'off') { this.setState(Object.assign({ phase: 'off', count: 0 }, secPatch)); return 0; }
+    if (this.state.guideHidden) { this.setState(Object.assign({ phase: 'idle', count: 0 }, secPatch)); return 0; }
     var pos = { off: 3, right: 2, center: 1, left: 0 };
     var dir = pos[nextSide] < pos[prevSide] ? 'L' : 'R';
     var dist = Math.abs(pos[nextSide] - pos[prevSide]);
     var ms = moving ? (nextSide === 'right' && prevSide === 'off' ? 1900 : 1500 * dist + 300) : 200;
-    this.setState({ section: sec, count: 0, phase: moving ? 'walk' : 'idle', showBubble: !moving, walkDir: dir, guideMs: ms });
+    this.setState(Object.assign({ count: 0, phase: moving ? 'walk' : 'idle', showBubble: !moving, walkDir: dir, guideMs: ms }, secPatch));
     if (moving) {
       setTimeout(function () {
         var w = document.getElementById('lpp-walk-vid');
@@ -670,13 +712,82 @@ class Component extends DCLogic {
     }
     this.walkT = setTimeout(function () {
       var w = document.getElementById('lpp-walk-vid'); if (w) { try { w.pause(); } catch (e) {} }
-      self.talk(sec);
+      if (self.spoken[key] && !opts.force && !self.state.touring) { self.rest(); return; }
+      self.talk(key);
     }, ms);
+    return ms;
+  }
+  rest() {
+    this.setState({ phase: 'idle', showBubble: false });
+    setTimeout(function () {
+      var g = document.getElementById('lpp-guide-vid');
+      if (g) { try { g.muted = true; g.load(); g.pause(); } catch (e) {} }
+    }, 60);
+  }
+  startTour() {
+    if (this.tourDone || this.state.touring) { return; }
+    var self = this;
+    this.tourIdx = 0;
+    this.setState({ touring: true, tourStep: 0 });
+    ['wheel', 'touchmove'].forEach(function (ev) { window.addEventListener(ev, self.interruptTour, { passive: true }); });
+    window.addEventListener('keydown', this.interruptTour);
+    this.nextStop();
+  }
+  nextStop() {
+    var self = this;
+    if (!this.state.touring) { return; }
+    if (this.tourIdx >= this.tourOrder.length) { this.endTour(); return; }
+    var sec = this.tourOrder[this.tourIdx++];
+    this.setState({ tourStep: this.tourIdx });
+    var el = document.getElementById(sec);
+    if (el) {
+      var top = el.getBoundingClientRect().top + window.pageYOffset - 76;
+      try { window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' }); } catch (e) { window.scrollTo(0, top); }
+    }
+    clearTimeout(this.tourT);
+    this.tourT = setTimeout(function () {
+      if (!self.state.touring) { return; }
+      var ms = self.goTo(sec, { force: true }) || 0;
+      var c = self.clips()[sec];
+      self.tourT = setTimeout(function () { self.nextStop(); }, ms + c.dur * 1000 + 1300);
+    }, 850);
+  }
+  interruptTour(e) {
+    if (e && e.type === 'keydown' && ['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', ' ', 'Home', 'End'].indexOf(e.key) < 0) { return; }
+    this.endTour();
+  }
+  endTour() {
+    var self = this;
+    var was = this.state.touring;
+    clearTimeout(this.tourT);
+    ['wheel', 'touchmove'].forEach(function (ev) { window.removeEventListener(ev, self.interruptTour); });
+    window.removeEventListener('keydown', this.interruptTour);
+    this.tourDone = true;
+    if (was) { this.setState({ touring: false }); }
+    if (!this.ctaIv) { this.ctaIv = setInterval(function () { self.callToAction(); }, 300000); }
+  }
+  waAttn(ms) {
+    var wa = document.getElementById('lpp-wa-float'), tag = document.getElementById('lpp-wa-tag');
+    if (wa) { wa.classList.add('lpp-wa-attn'); }
+    if (tag) { tag.classList.add('on'); }
+    clearTimeout(this.waT);
+    this.waT = setTimeout(function () { if (wa) { wa.classList.remove('lpp-wa-attn'); } if (tag) { tag.classList.remove('on'); } }, ms);
+  }
+  callToAction() {
+    if (this.state.touring || !this.state.started) { return; }
+    var wa = document.getElementById('lpp-wa-float');
+    if (this.state.guideHidden) {
+      this.waAttn(7000);
+      return;
+    }
+    this.goTo(this.state.section, { clip: 'contacto', force: true });
   }
   talk(sec) {
     var self = this;
     if (this.state.guideHidden) { return; }
     var c = this.clips()[sec];
+    this.spoken[sec] = true;
+    if (c.cta) { this.waAttn(c.dur * 1000 + 2500); }
     if (c.silent) {
       this.clearSpot();
       this.setState({ phase: 'talk', showBubble: true, count: c.text.length });
@@ -758,7 +869,7 @@ class Component extends DCLogic {
       { name: 'Lizeth C.', text: 'Siempre me llega todo impecable. Los sigo también por Instagram y sus tips de cuidados me han servido. Gracias Pancha Plancha.' },
       { name: 'Claudia A.', text: 'Es mejor que la Pancha planche en vez que se acumulen las blusas y vestidos en el clóset sin poder usarlas.' }
     ];
-    var gc = this.clips(); var gcur = gc[this.state.section] || gc.inicio;
+    var gc = this.clips(); var gcur = gc[this.state.clipKey || this.state.section] || gc.inicio;
     var saf = this.isSafari; var ph = this.state.phase;
     var WALK = { R: { webm: 'assets/walkL.webm', mp4: 'assets/walkL.mp4' }, L: { webm: 'assets/walkR.webm', mp4: 'assets/walkR.mp4' } };
     var bgs = ['#FFC9DD', '#FFC59E', '#D9CFFF', '#FFE7B0', '#FFC9DD', '#FFC59E'];
@@ -780,8 +891,11 @@ class Component extends DCLogic {
       bubbleRadius: gcur.side === 'left' ? '16px 16px 16px 4px' : '16px 16px 4px 16px',
       ctrlSide: 'left',
       guideHidden: !!this.state.guideHidden,
-      hideGuide: function () { self.stopGuide(); self.setState({ guideHidden: true, guideMs: 900, phase: 'idle' }); },
-      showGuide: function () { self.setState({ guideHidden: false, guideMs: 900 }); setTimeout(function () { self.talk(self.state.section); }, 950); },
+      hideGuide: function () { self.endTour(); self.stopGuide(); self.setState({ guideHidden: true, guideMs: 900, phase: 'idle' }); },
+      showTourBar: !!this.state.touring,
+      tourLabel: 'Recorrido con la Pancha · ' + Math.max(1, this.state.tourStep) + ' de ' + this.tourOrder.length,
+      skipTour: function () { self.endTour(); self.stopGuide(); self.rest(); },
+      showGuide: function () { self.setState({ guideHidden: false, guideMs: 900 }); setTimeout(function () { var k = self.state.clipKey || self.state.section; if (self.spoken[k]) { self.rest(); } else { self.talk(k); } }, 950); },
       voiceIcon: this.state.soundOn ? 'M15.5 8.5a5 5 0 0 1 0 7' : 'M22 9l-6 6M16 9l6 6',
       guideTyped: (function (t) { return t.length > 95 ? '…' + t.slice(t.length - 95) : t; })(gcur.text.slice(0, this.state.count)),
       bodyClass: '',
@@ -820,7 +934,7 @@ class Component extends DCLogic {
       heroBubbleOp: this.state.heroPhase === 'walk' ? '0' : '1',
       heroBtn: !this.state.soundOn ? 'Activar sonido' : (this.state.heroPhase === 'done' ? 'Escuchar de nuevo' : 'Escuchar a la Pancha'),
       heroAskClass: this.state.soundOn ? '' : 'lpp-ask',
-      heroEnded: function () { self.setState({ heroPlaying: false, heroPhase: 'done' }); },
+      heroEnded: function () { self.setState({ heroPlaying: false, heroPhase: 'done' }); if (!self.tourDone && !self.state.touring && self.state.started) { clearTimeout(self.tourT); self.tourT = setTimeout(function () { if (window.pageYOffset < 320) { self.startTour(); } else { self.endTour(); } }, 900); } },
       playHeroVoice: function () { self.setState({ soundOn: true }); self.heroTalk(true); }
     };
   }
