@@ -50,7 +50,7 @@ a{color:#C2410C}a:hover{color:#7C2D12}
 @keyframes lppEngine{0%,100%{transform:translateY(0) rotate(0deg)}25%{transform:translateY(-3px) rotate(-.4deg)}50%{transform:translateY(0) rotate(0deg)}75%{transform:translateY(-2px) rotate(.4deg)}}
 .lpp-engine{animation:lppEngine .9s ease-in-out infinite;transform-origin:50% 90%}
 @keyframes lppDriveIn{from{translate:70% 0;opacity:0}60%{opacity:1}to{translate:0 0;opacity:1}}
-@supports (animation-timeline: view()){.lpp-drive-in{animation:lppDriveIn linear both;animation-timeline:view();animation-range:entry 5% cover 40%}}
+@supports (animation-timeline: view()){.lpp-drive-in{animation:lppDriveIn linear both;animation-timeline:view();animation-range:entry 0% entry 85%}}
 @media (prefers-reduced-motion: reduce){.lpp-engine,.lpp-drive-in{animation:none!important}}
 @keyframes lppWaPulse{0%{box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 6px 0 #0D4425,0 0 0 0 rgba(37,192,99,.7)}70%{box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 6px 0 #0D4425,0 0 0 22px rgba(37,192,99,0)}100%{box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 6px 0 #0D4425,0 0 0 0 rgba(37,192,99,0)}}
 .lpp-wa-round{animation:lppWaPulse 1.8s ease-out infinite}
@@ -139,7 +139,7 @@ a{color:#C2410C}a:hover{color:#7C2D12}
 .nav-link::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;border-radius:2px;background:#D9481C;transform:scaleX(0);transition:transform .25s ease}
 .nav-link:hover::after{transform:scaleX(1)}
 @supports (animation-timeline: view()){
-  .rv{animation:lppRvIn linear both;animation-timeline:view();animation-range:entry 0% cover 22%}
+  .rv{animation:lppRvIn linear both;animation-timeline:view();animation-range:entry 0% entry 70%}
 }
 @media (prefers-reduced-motion: reduce){.bubble-soap,.orb,.float-chip,.marquee,.steps-line,.neon::before,.neon::after,.chip i,.rv,.logo3d{animation:none!important}.b3d:hover::after{animation:none}}
 @media (max-width: 860px){.lpp-guide-inner{zoom:.62}.lpp-guide-img{height:150px !important}.float-chip{display:none}.phone3d{transform:none}}
@@ -173,6 +173,10 @@ a{color:#C2410C}a:hover{color:#7C2D12}
 }
 .lpp-mob-only{display:none}
 .lpp-sub-mob{display:none}
+@media (max-width: 860px){
+  .lpp-tourbar{left:auto !important;right:10px;top:78px !important;translate:none !important;padding:3px !important;background:rgba(59,31,20,.35) !important;animation:none !important}
+  .lpp-tour-label{display:none !important}
+}
 @media (max-width: 860px){
   .lpp-guide-inner .lpp-guide-bubble{display:none !important}
   .lpp-sub-mob{display:block;position:fixed;bottom:150px;z-index:31;max-width:min(260px,calc(100vw - 24px));background:rgba(255,255,255,.97);color:#3B1F14;padding:8px 12px;font:700 14px/1.32 Nunito,system-ui,sans-serif;box-shadow:0 10px 22px -12px rgba(59,31,20,.6);border:1px solid rgba(217,72,28,.18);pointer-events:none;animation:lppPop .3s ease-out both}
@@ -514,10 +518,9 @@ a{color:#C2410C}a:hover{color:#7C2D12}
 
 <!-- RECORRIDO GUIADO -->
 <template data-sc-if="showTourBar">
-  <div class="lpp-tourbar" role="status" style="position: fixed; top: 84px; left: 50%; translate: -50% 0; z-index: 40; display: flex; align-items: center; gap: 12px; background: rgba(59,31,20,.92); backdrop-filter: blur(8px); color: #FFF4EA; padding: 8px 8px 8px 16px; border-radius: 999px; box-shadow: 0 14px 30px -16px rgba(59,31,20,.8); font-size: 14px; font-weight: 700; white-space: nowrap">
-    <span style="width: 8px; height: 8px; border-radius: 50%; background: #7BE0A3; box-shadow: 0 0 0 4px rgba(123,224,163,.25)"></span>
-    <span>{{tourLabel}}</span>
-    <button type="button" onClick="{{skipTour}}" style="border: none; background: #FFF4EA; color: #3B1F14; font-family: Nunito, sans-serif; font-weight: 800; font-size: 13px; padding: 7px 13px; border-radius: 999px; cursor: pointer">Saltar ✕</button>
+  <div class="lpp-tourbar" role="status" style="position: fixed; top: 84px; left: 50%; translate: -50% 0; z-index: 40; display: flex; align-items: center; gap: 8px; background: rgba(59,31,20,.55); backdrop-filter: blur(6px); color: #FFF4EA; padding: 4px 4px 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; white-space: nowrap">
+    <span class="lpp-tour-label" style="display: flex; align-items: center; gap: 7px"><span style="width: 7px; height: 7px; border-radius: 50%; background: #7BE0A3"></span>{{tourLabel}}</span>
+    <button type="button" onClick="{{skipTour}}" style="border: none; background: rgba(255,244,234,.85); color: #3B1F14; font-family: Nunito, sans-serif; font-weight: 800; font-size: 12px; padding: 5px 10px; border-radius: 999px; cursor: pointer">Saltar ✕</button>
   </div>
 </template>
 
@@ -729,7 +732,7 @@ class Component extends DCLogic {
     var self = this;
     this.tourIdx = 0;
     this.setState({ touring: true, tourStep: 0 });
-    ['wheel', 'touchmove'].forEach(function (ev) { window.addEventListener(ev, self.interruptTour, { passive: true }); });
+    ['wheel', 'touchmove', 'pointerdown'].forEach(function (ev) { window.addEventListener(ev, self.interruptTour, { passive: true }); });
     window.addEventListener('keydown', this.interruptTour);
     this.nextStop();
   }
@@ -739,7 +742,7 @@ class Component extends DCLogic {
     if (this.tourIdx >= this.tourOrder.length) { this.endTour(); return; }
     var sec = this.tourOrder[this.tourIdx++];
     this.setState({ tourStep: this.tourIdx });
-    var el = document.getElementById(sec);
+    var el = sec === 'contacto' ? null : document.getElementById(sec);
     if (el) {
       var top = el.getBoundingClientRect().top + window.pageYOffset - 76;
       try { window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' }); } catch (e) { window.scrollTo(0, top); }
@@ -760,7 +763,7 @@ class Component extends DCLogic {
     var self = this;
     var was = this.state.touring;
     clearTimeout(this.tourT);
-    ['wheel', 'touchmove'].forEach(function (ev) { window.removeEventListener(ev, self.interruptTour); });
+    ['wheel', 'touchmove', 'pointerdown'].forEach(function (ev) { window.removeEventListener(ev, self.interruptTour); });
     window.removeEventListener('keydown', this.interruptTour);
     this.tourDone = true;
     if (was) { this.setState({ touring: false }); }
