@@ -248,7 +248,7 @@ a{color:#C2410C}a:hover{color:#7C2D12}
           <source src="{{hw1}}" type="{{heroType1}}">
           <source src="{{hw2}}" type="{{heroType2}}">
         </video>
-        <video id="lpp-hero-vid" preload="auto" aria-label="La Pancha saludando y presentándose" onEnded="{{heroEnded}}" style="display: block; opacity: {{heroTalkOp}}; transition: opacity .55s ease; height: 560px; width: auto; max-width: 100%; object-fit: contain; border-radius: {{heroRadius}}">
+        <video id="lpp-hero-vid" preload="auto" aria-label="La Pancha saludando y presentándose" onEnded="{{heroEnded}}" onTimeUpdate="{{heroTime}}" style="display: block; opacity: {{heroTalkOp}}; transition: opacity .55s ease; height: 560px; width: auto; max-width: 100%; object-fit: contain; border-radius: {{heroRadius}}">
           <source src="{{hero1}}" type="{{heroType1}}">
           <source src="{{hero2}}" type="{{heroType2}}">
         </video>
@@ -705,7 +705,7 @@ class Component extends DCLogic {
     var pos = { off: 3, right: 2, center: 1, left: 0 };
     var dir = pos[nextSide] < pos[prevSide] ? 'L' : 'R';
     var dist = Math.abs(pos[nextSide] - pos[prevSide]);
-    var ms = moving ? (nextSide === 'right' && prevSide === 'off' ? 1900 : 1500 * dist + 300) : 200;
+    var ms = moving ? (nextSide === 'right' && prevSide === 'off' ? 1100 : 1300 * dist + 250) : 200;
     this.setState(Object.assign({ count: 0, phase: moving ? 'walk' : 'idle', showBubble: !moving, walkDir: dir, guideMs: ms }, secPatch));
     if (moving) {
       setTimeout(function () {
@@ -732,7 +732,7 @@ class Component extends DCLogic {
     var self = this;
     this.tourIdx = 0;
     this.setState({ touring: true, tourStep: 0 });
-    ['wheel', 'touchmove', 'pointerdown'].forEach(function (ev) { window.addEventListener(ev, self.interruptTour, { passive: true }); });
+    ['wheel', 'touchmove'].forEach(function (ev) { window.addEventListener(ev, self.interruptTour, { passive: true }); });
     window.addEventListener('keydown', this.interruptTour);
     this.nextStop();
   }
@@ -753,7 +753,7 @@ class Component extends DCLogic {
       var ms = self.goTo(sec, { force: true }) || 0;
       var c = self.clips()[sec];
       self.tourT = setTimeout(function () { self.nextStop(); }, ms + c.dur * 1000 + 1300);
-    }, 850);
+    }, self.tourIdx === 1 ? 350 : 700);
   }
   interruptTour(e) {
     if (e && e.type === 'keydown' && ['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', ' ', 'Home', 'End'].indexOf(e.key) < 0) { return; }
@@ -763,7 +763,7 @@ class Component extends DCLogic {
     var self = this;
     var was = this.state.touring;
     clearTimeout(this.tourT);
-    ['wheel', 'touchmove', 'pointerdown'].forEach(function (ev) { window.removeEventListener(ev, self.interruptTour); });
+    ['wheel', 'touchmove'].forEach(function (ev) { window.removeEventListener(ev, self.interruptTour); });
     window.removeEventListener('keydown', this.interruptTour);
     this.tourDone = true;
     if (was) { this.setState({ touring: false }); }
@@ -937,7 +937,8 @@ class Component extends DCLogic {
       heroBubbleOp: this.state.heroPhase === 'walk' ? '0' : '1',
       heroBtn: !this.state.soundOn ? 'Activar sonido' : (this.state.heroPhase === 'done' ? 'Escuchar de nuevo' : 'Escuchar a la Pancha'),
       heroAskClass: this.state.soundOn ? '' : 'lpp-ask',
-      heroEnded: function () { self.setState({ heroPlaying: false, heroPhase: 'done' }); if (!self.tourDone && !self.state.touring && self.state.started) { clearTimeout(self.tourT); self.tourT = setTimeout(function () { if (window.pageYOffset < 320) { self.startTour(); } else { self.endTour(); } }, 900); } },
+      heroTime: function (e) { var v = e && e.target; if (v && v.currentTime >= 9.05 && self.state.heroPhase === 'talk' && !self.tourDone && !self.state.touring && self.state.started && !self.tourQueued) { self.tourQueued = true; clearTimeout(self.tourT); self.tourT = setTimeout(function () { if (window.pageYOffset < 320) { self.startTour(); } else { self.endTour(); } }, 100); } },
+      heroEnded: function () { self.setState({ heroPlaying: false, heroPhase: 'done' }); if (!self.tourDone && !self.state.touring && self.state.started) { clearTimeout(self.tourT); self.tourT = setTimeout(function () { if (window.pageYOffset < 320) { self.startTour(); } else { self.endTour(); } }, 150); } },
       playHeroVoice: function () { self.setState({ soundOn: true }); self.heroTalk(true); }
     };
   }
