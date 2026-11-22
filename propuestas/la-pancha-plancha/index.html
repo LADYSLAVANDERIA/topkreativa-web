@@ -658,7 +658,7 @@ class Component extends DCLogic {
       var el = document.getElementById(ids[i]);
       if (el && el.getBoundingClientRect().top < mid) { current = ids[i]; }
     }
-    if (this.state.touring) { return; }
+    if (this.state.touring || this.ctaBusy) { return; }
     if (current !== this.state.section && this.state.started) { this.goTo(current); }
   }
   clearSpot() {
@@ -747,13 +747,15 @@ class Component extends DCLogic {
       var top = el.getBoundingClientRect().top + window.pageYOffset - 76;
       try { window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' }); } catch (e) { window.scrollTo(0, top); }
     }
+    var extra = sec === 'contacto' ? this.ctaView() : 0;
     clearTimeout(this.tourT);
     this.tourT = setTimeout(function () {
       if (!self.state.touring) { return; }
       var ms = self.goTo(sec, { force: true }) || 0;
       var c = self.clips()[sec];
-      self.tourT = setTimeout(function () { self.nextStop(); }, ms + c.dur * 1000 + 1300);
-    }, self.tourIdx === 1 ? 350 : 700);
+      var nxt = self.tourOrder[self.tourIdx];
+      self.tourT = setTimeout(function () { self.nextStop(); }, ms + c.dur * 1000 + (nxt === 'contacto' ? 150 : 1300));
+    }, sec === 'contacto' ? Math.max(150, extra) : (self.tourIdx === 1 ? 350 : 700));
   }
   interruptTour(e) {
     if (e && e.type === 'keydown' && ['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', ' ', 'Home', 'End'].indexOf(e.key) < 0) { return; }
@@ -769,6 +771,15 @@ class Component extends DCLogic {
     if (was) { this.setState({ touring: false }); }
     if (!this.ctaIv) { this.ctaIv = setInterval(function () { self.callToAction(); }, 300000); }
   }
+  ctaView() {
+    var cob = document.getElementById('cobertura');
+    if (!cob) { return 0; }
+    var r = cob.getBoundingClientRect();
+    var target = Math.max(0, Math.round(r.bottom + window.pageYOffset - window.innerHeight));
+    if (Math.abs(window.pageYOffset - target) < 4) { return 0; }
+    try { window.scrollTo({ top: target, behavior: 'smooth' }); } catch (e) { window.scrollTo(0, target); }
+    return 450;
+  }
   waAttn(ms) {
     var wa = document.getElementById('lpp-wa-float'), tag = document.getElementById('lpp-wa-tag');
     if (wa) { wa.classList.add('lpp-wa-attn'); }
@@ -783,7 +794,13 @@ class Component extends DCLogic {
       this.waAttn(7000);
       return;
     }
-    this.goTo(this.state.section, { clip: 'contacto', force: true });
+    var self = this;
+    var c = this.clips().contacto;
+    var wait = this.ctaView();
+    this.ctaBusy = true;
+    clearTimeout(this.ctaBusyT);
+    this.ctaBusyT = setTimeout(function () { self.ctaBusy = false; }, wait + 2500 + c.dur * 1000 + 1500);
+    setTimeout(function () { self.goTo(self.state.section, { clip: 'contacto', force: true }); }, wait);
   }
   talk(sec) {
     var self = this;
