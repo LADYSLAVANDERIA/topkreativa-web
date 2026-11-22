@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Pancha Plancha — lavado y planchado a domicilio</title>
+<meta name="description" content="Lavado y planchado a domicilio en Santiago. Retiro y entrega en tu casa, lista en 48 horas. Conoce a la Pancha.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="La Pancha Plancha — propuesta de nueva página">
+<meta property="og:description" content="Lavado y planchado a domicilio en Santiago. Retiro y entrega en tu casa, lista en 48 horas. Conoce a la Pancha.">
+<meta property="og:image" content="https://topkreativa.com/propuestas/la-pancha-plancha/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://topkreativa.com/propuestas/la-pancha-plancha/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="assets/logo-lpp.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;1,9..144,700;1,9..144,800&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFF4EA;font-family:Nunito,system-ui,sans-serif;color:#3B1F14}
+button{font-family:Nunito,system-ui,sans-serif}
+a{color:#C2410C}a:hover{color:#7C2D12}
+@keyframes lppBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes lppPop{0%{transform:scale(.6);opacity:0}100%{transform:scale(1);opacity:1}}
+.lpp-bob{animation:lppBob 4.5s ease-in-out infinite}
+.lpp-bubble{animation:lppPop .35s ease-out both}
+.lpp-btn{transition:transform .2s ease}
+.lpp-btn:hover{transform:translateY(-2px)}
+.lpp-card{transition:transform .25s ease}
+.lpp-card:hover{transform:translateY(-4px)}
+@media (prefers-reduced-motion: reduce){.lpp-bob,.lpp-bubble{animation:none}}
+@keyframes lppWalk{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(3deg)}}
+@keyframes lppTalk{0%,100%{transform:rotate(0deg) translateY(0)}25%{transform:rotate(-1.6deg) translateY(-3px)}75%{transform:rotate(1.6deg) translateY(-1px)}}
+@keyframes lppIdle{0%,100%{transform:scale(1,1) rotate(0deg)}50%{transform:scale(1.012,1.02) rotate(.6deg)}}
+@keyframes lppEnter{0%{transform:translateX(140px);opacity:0}100%{transform:translateX(0);opacity:1}}
+@keyframes lppWave{0%,100%{transform:rotate(0deg)}20%{transform:rotate(-2.5deg)}40%{transform:rotate(2deg)}60%{transform:rotate(-1.5deg)}}
+.lpp-walk{animation:lppWalk .42s ease-in-out infinite;transform-origin:50% 100%}
+.lpp-talk{animation:lppTalk .55s ease-in-out infinite;transform-origin:50% 100%}
+.lpp-idle{animation:lppIdle 3.2s ease-in-out infinite;transform-origin:50% 100%}
+
+.lpp-wave{animation:lppWave 2.6s ease-in-out 1.2s infinite;transform-origin:50% 100%}
+@media (prefers-reduced-motion: reduce){.lpp-walk,.lpp-talk,.lpp-idle,.lpp-enter,.lpp-wave{animation:none}}
+
+/* ===== Capa visual tecnológica ===== */
+@keyframes lppAsk{0%{box-shadow:0 0 0 0 rgba(255,209,102,.9),0 6px 0 #160A05}70%{box-shadow:0 0 0 16px rgba(255,209,102,0),0 6px 0 #160A05}100%{box-shadow:0 0 0 0 rgba(255,209,102,0),0 6px 0 #160A05}}
+.lpp-ask{animation:lppAsk 1.4s ease-out infinite}
+@keyframes lppEngine{0%,100%{transform:translateY(0) rotate(0deg)}25%{transform:translateY(-3px) rotate(-.4deg)}50%{transform:translateY(0) rotate(0deg)}75%{transform:translateY(-2px) rotate(.4deg)}}
+.lpp-engine{animation:lppEngine .9s ease-in-out infinite;transform-origin:50% 90%}
+@keyframes lppDriveIn{from{translate:70% 0;opacity:0}60%{opacity:1}to{translate:0 0;opacity:1}}
+@supports (animation-timeline: view()){.lpp-drive-in{animation:lppDriveIn linear both;animation-timeline:view();animation-range:entry 5% cover 40%}}
+@media (prefers-reduced-motion: reduce){.lpp-engine,.lpp-drive-in{animation:none!important}}
+@keyframes lppWaPulse{0%{box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 6px 0 #0D4425,0 0 0 0 rgba(37,192,99,.7)}70%{box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 6px 0 #0D4425,0 0 0 22px rgba(37,192,99,0)}100%{box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 6px 0 #0D4425,0 0 0 0 rgba(37,192,99,0)}}
+.lpp-wa-round{animation:lppWaPulse 1.8s ease-out infinite}
+.lpp-wa-round:hover{animation-play-state:paused}
+#lpp-wa-float.lpp-spot{position:fixed!important;scale:1.18}
+@keyframes lppSpotRing{0%{box-shadow:0 0 0 4px #FF7AAC,0 0 0 10px rgba(255,122,172,.35),0 30px 60px -20px rgba(217,72,28,.6)}50%{box-shadow:0 0 0 4px #FF7AAC,0 0 0 22px rgba(255,122,172,0),0 30px 60px -20px rgba(217,72,28,.6)}100%{box-shadow:0 0 0 4px #FF7AAC,0 0 0 10px rgba(255,122,172,.35),0 30px 60px -20px rgba(217,72,28,.6)}}
+.lpp-spot{position:relative;z-index:6;scale:1.035;transition:scale .35s cubic-bezier(.2,.8,.2,1);animation:lppSpotRing 1.4s ease-in-out infinite!important}
+.lpp-spot-img{filter:drop-shadow(0 0 18px rgba(255,122,172,.95)) drop-shadow(0 0 4px #FF7AAC);scale:1.05;transition:scale .35s ease,filter .35s ease}
+
+.logo3d{transition:transform .35s cubic-bezier(.2,.8,.2,1),filter .35s;filter:drop-shadow(0 6px 10px rgba(59,31,20,.12))}
+.logo3d:hover{transform:translateY(-2px) scale(1.04);filter:drop-shadow(0 10px 14px rgba(59,31,20,.18))}
+@keyframes lppLogo{0%,100%{transform:perspective(600px) rotateX(6deg) rotateY(-5deg)}50%{transform:perspective(600px) rotateX(4deg) rotateY(5deg)}}
+
+@property --lppA{syntax:'<angle>';inherits:false;initial-value:0deg}
+@keyframes lppSpin{to{--lppA:360deg}}
+@keyframes lppRise{0%{transform:translateY(0) scale(.6);opacity:0}10%{opacity:.9}100%{transform:translateY(-620px) scale(1.1);opacity:0}}
+@keyframes lppOrb{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.15)}}
+@keyframes lppMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes lppPulse{0%{box-shadow:0 0 0 0 rgba(217,72,28,.55)}100%{box-shadow:0 0 0 10px rgba(217,72,28,0)}}
+@keyframes lppShine{0%{transform:translateX(-120%) skewX(-20deg)}100%{transform:translateX(220%) skewX(-20deg)}}
+@keyframes lppFloatChip{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-12px) rotate(var(--r,0deg))}}
+@keyframes lppDash{to{background-position:0 40px}}
+@keyframes lppType{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+@keyframes lppRvIn{from{opacity:0;translate:0 36px;scale:.98}to{opacity:1;translate:0 0;scale:1}}
+
+.lpp-dots{background-image:radial-gradient(rgba(59,31,20,.09) 1.2px,transparent 1.3px);background-size:22px 22px}
+.lpp-dots-light{background-image:radial-gradient(rgba(255,255,255,.22) 1.2px,transparent 1.3px);background-size:22px 22px}
+.lpp-grid-light{background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:44px 44px}
+
+/* botones 3D */
+.b3d{position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font-family:Nunito,sans-serif;font-weight:800;border:none;border-radius:999px;cursor:pointer;transform:translateY(0);transition:transform .15s ease,box-shadow .15s ease,filter .2s ease;white-space:nowrap}
+.b3d::after{content:"";position:absolute;top:0;bottom:0;left:0;width:40%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transform:translateX(-120%) skewX(-20deg);z-index:-1;pointer-events:none}
+.b3d:hover::after{animation:lppShine .9s ease}
+.b3d:hover{transform:translateY(-2px);filter:saturate(1.08)}
+.b3d:active{transform:translateY(4px)}
+.b3d:focus-visible{outline:3px solid #8E7CF0;outline-offset:3px}
+.b3d-dark{background:linear-gradient(180deg,#5A3424 0%,#3B1F14 55%,#2C160D 100%);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 6px 0 #160A05,0 16px 26px -10px rgba(59,31,20,.7)}
+.b3d-dark:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 8px 0 #160A05,0 20px 30px -10px rgba(59,31,20,.7)}
+.b3d-dark:active{box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 2px 0 #160A05,0 6px 12px -6px rgba(59,31,20,.7)}
+.b3d-white{background:linear-gradient(180deg,#FFFFFF 0%,#FFF4EC 100%);color:#3B1F14;box-shadow:inset 0 1px 0 #fff,0 6px 0 #E3BBA4,0 16px 26px -12px rgba(59,31,20,.45)}
+.b3d-white:hover{box-shadow:inset 0 1px 0 #fff,0 8px 0 #E3BBA4,0 20px 30px -12px rgba(59,31,20,.45)}
+.b3d-white:active{box-shadow:inset 0 1px 0 #fff,0 2px 0 #E3BBA4,0 6px 12px -6px rgba(59,31,20,.4)}
+.b3d-orange{background:linear-gradient(180deg,#F27247 0%,#D9481C 60%,#C23C14 100%);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 0 #8E2A0E,0 16px 26px -10px rgba(217,72,28,.6)}
+.b3d-orange:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 8px 0 #8E2A0E,0 20px 30px -10px rgba(217,72,28,.6)}
+.b3d-orange:active{box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 2px 0 #8E2A0E,0 6px 12px -6px rgba(217,72,28,.6)}
+.b3d-green{background:linear-gradient(180deg,#2FB26A 0%,#1E7F46 70%,#196B3B 100%);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 6px 0 #0D4425,0 16px 26px -10px rgba(30,127,70,.6)}
+.b3d-green:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 8px 0 #0D4425,0 20px 30px -10px rgba(30,127,70,.6)}
+.b3d-green:active{box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 2px 0 #0D4425,0 6px 12px -6px rgba(30,127,70,.6)}
+.b3d-sq{border-radius:14px}
+
+/* tarjetas */
+.glass{background:linear-gradient(180deg,#FFFFFF,#FFFAF6) padding-box,linear-gradient(140deg,rgba(255,122,172,.55),rgba(255,197,158,.35) 40%,rgba(142,124,240,.45)) border-box;border:1.5px solid transparent;box-shadow:inset 0 1px 0 #fff,0 2px 4px rgba(59,31,20,.04),0 22px 44px -26px rgba(59,31,20,.38);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
+.glass:hover{transform:perspective(900px) rotateX(3deg) rotateY(-3deg) translateY(-6px);box-shadow:inset 0 1px 0 #fff,0 2px 4px rgba(59,31,20,.04),0 34px 60px -28px rgba(142,124,240,.55),0 0 0 4px rgba(255,122,172,.12)}
+.tile3d{box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -3px 0 rgba(59,31,20,.12),0 8px 14px -8px rgba(59,31,20,.5)}
+.sphere{background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.85) 0 8%,transparent 30%),var(--c,#FF7AAC);box-shadow:inset 0 -6px 10px rgba(0,0,0,.18),0 10px 18px -8px rgba(59,31,20,.6)}
+.neon{position:relative;isolation:isolate}
+.neon::before{content:"";position:absolute;inset:-3px;padding:3px;border-radius:inherit;background:conic-gradient(from var(--lppA),#FF7AAC,#8E7CF0,#FFC59E,#D9481C,#FF7AAC);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);pointer-events:none;animation:lppSpin 6s linear infinite}
+.neon{box-shadow:0 30px 60px -30px rgba(142,124,240,.55),0 0 40px -10px rgba(255,122,172,.45)!important}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;font-weight:800;font-size:13px;letter-spacing:.8px;text-transform:uppercase;background:rgba(255,255,255,.75);border:1px solid rgba(217,72,28,.25);color:#C23C14;backdrop-filter:blur(8px)}
+.chip i{width:8px;height:8px;border-radius:50%;background:#D9481C;animation:lppPulse 1.6s ease-out infinite}
+.chip-dark{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:#FFC9DD}
+.chip-dark i{background:#FFD166}
+.bubble-soap{position:absolute;bottom:-40px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.95) 0 6%,rgba(255,255,255,.25) 18%,rgba(255,255,255,.08) 55%,rgba(255,255,255,.35) 70%,transparent 72%);border:1px solid rgba(255,255,255,.55);animation:lppRise linear infinite;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;animation:lppOrb 12s ease-in-out infinite;pointer-events:none}
+.float-chip{position:absolute;z-index:3;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:18px;background:rgba(255,255,255,.82);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.9);box-shadow:0 18px 30px -18px rgba(59,31,20,.6);font-weight:800;animation:lppFloatChip 5s ease-in-out infinite}
+.marquee{display:flex;width:max-content;animation:lppMarquee 32s linear infinite}
+.marquee:hover{animation-play-state:paused}
+.steps-line{position:absolute;left:49px;top:40px;bottom:40px;width:3px;border-radius:3px;background:repeating-linear-gradient(180deg,#FF7AAC 0 10px,transparent 10px 20px);background-size:3px 40px;animation:lppDash 1.2s linear infinite;opacity:.7}
+.phone3d{transform:perspective(1200px) rotateY(-14deg) rotateX(4deg);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.phone3d:hover{transform:perspective(1200px) rotateY(-4deg) rotateX(1deg)}
+.typing span{display:inline-block;width:7px;height:7px;margin:0 2px;border-radius:50%;background:#8A8A8A;animation:lppType 1.2s infinite}
+.typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}
+.stat-num{background:linear-gradient(180deg,#FFFFFF,#FF9DC2);-webkit-background-clip:text;background-clip:text;color:transparent}
+.glow-top{position:relative}
+.glow-top::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,#FF7AAC,#8E7CF0,#FFC59E,transparent)}
+.header-glass{background:rgba(255,244,234,.78)!important;backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3)}
+.nav-link{position:relative}
+.nav-link::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;border-radius:2px;background:#D9481C;transform:scaleX(0);transition:transform .25s ease}
+.nav-link:hover::after{transform:scaleX(1)}
+@supports (animation-timeline: view()){
+  .rv{animation:lppRvIn linear both;animation-timeline:view();animation-range:entry 0% cover 22%}
+}
+@media (prefers-reduced-motion: reduce){.bubble-soap,.orb,.float-chip,.marquee,.steps-line,.neon::before,.neon::after,.chip i,.rv,.logo3d{animation:none!important}.b3d:hover::after{animation:none}}
+@media (max-width: 860px){.lpp-guide-inner{zoom:.62}.lpp-guide-bubble{display:none !important}.lpp-guide-img{height:150px !important}.float-chip{display:none}.phone3d{transform:none}}
+
+@media (max-width: 860px){
+  .lpp-nav-links{display:none !important}
+  .lpp-h1{font-size:44px !important}
+  .lpp-h2{font-size:34px !important}
+  .lpp-section{padding:64px 20px !important}
+  .lpp-guide-bubble{display:none !important}
+  .lpp-side-pancha{max-width:220px !important}
+}
+</style>
+
+</head>
+<body>
+<div id="dc-root"></div>
+<template id="dc-template">
+
+
+<div class="lpp-dots" style="font-family: Nunito, system-ui, sans-serif; color: #3B1F14; background-color: #FFF4EA; width: 100%; overflow: hidden">
+
+<!-- NAV -->
+<header class="header-glass" style="position: sticky; top: 0; z-index: 20; border-bottom: 1px solid rgba(217,72,28,.15)">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px">
+    <a href="#inicio" style="display: flex; align-items: center" aria-label="La Pancha Plancha, inicio"><img class="logo3d" src="assets/logo-lpp.svg" alt="La Pancha Plancha" style="height: 72px; width: auto; display: block"></a>
+    <nav class="lpp-nav-links" aria-label="Principal" style="display: flex; gap: 26px; font-weight: 800; font-size: 15px">
+      <a href="#como" class="nav-link" style="text-decoration: none; color: #3B1F14">Cómo funciona</a>
+      <a href="#servicios" class="nav-link" style="text-decoration: none; color: #3B1F14">Servicios</a>
+      <a href="#precios" class="nav-link" style="text-decoration: none; color: #3B1F14">Precios</a>
+      <a href="#resenas" class="nav-link" style="text-decoration: none; color: #3B1F14">Reseñas</a>
+      <a href="#cobertura" class="nav-link" style="text-decoration: none; color: #3B1F14">Cobertura</a>
+    </nav>
+    <a class="b3d b3d-orange" href="{{waAgenda}}" style="font-size: 15px; padding: 12px 20px">Agendar retiro</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="inicio" style="background: linear-gradient(160deg,#FF8DB8 0%,#FF7AAC 45%,#F2689D 100%); position: relative; overflow: hidden">
+  <div aria-hidden="true" class="lpp-dots-light" style="position: absolute; inset: 0"></div>
+  <div aria-hidden="true" class="orb" style="width: 420px; height: 420px; left: -120px; top: -80px; background: #8E7CF0"></div>
+  <div aria-hidden="true" class="orb" style="width: 360px; height: 360px; right: 8%; bottom: -120px; background: #FFC59E; animation-delay: -4s"></div>
+  <div aria-hidden="true">
+    <span class="bubble-soap" style="left: 6%; width: 34px; height: 34px; animation-duration: 11s"></span>
+    <span class="bubble-soap" style="left: 18%; width: 18px; height: 18px; animation-duration: 8s; animation-delay: -3s"></span>
+    <span class="bubble-soap" style="left: 34%; width: 46px; height: 46px; animation-duration: 14s; animation-delay: -6s"></span>
+    <span class="bubble-soap" style="left: 52%; width: 22px; height: 22px; animation-duration: 9s; animation-delay: -1s"></span>
+    <span class="bubble-soap" style="left: 66%; width: 30px; height: 30px; animation-duration: 12s; animation-delay: -8s"></span>
+    <span class="bubble-soap" style="left: 82%; width: 52px; height: 52px; animation-duration: 15s; animation-delay: -2s"></span>
+    <span class="bubble-soap" style="left: 93%; width: 20px; height: 20px; animation-duration: 10s; animation-delay: -5s"></span>
+  </div>
+  <div class="lpp-section" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 56px 24px 0; display: flex; flex-wrap: wrap; align-items: flex-end; gap: 32px">
+    <div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 22px; padding-bottom: 72px">
+      <a href="#resenas" style="align-self: flex-start; text-decoration: none; display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,.85); backdrop-filter: blur(8px); color: #3B1F14; padding: 8px 16px 8px 10px; border-radius: 999px; font-size: 14px; font-weight: 700; box-shadow: 0 10px 24px -14px rgba(59,31,20,.6), inset 0 1px 0 #fff">
+        <span style="background: #3B1F14; color: #FFD166; border-radius: 999px; padding: 4px 10px; font-weight: 800">★ 4,8</span>
+        23 reseñas en Google
+      </a>
+      <h1 class="lpp-h1" style="margin: 0; font-family: Fraunces, Georgia, serif; font-style: italic; font-weight: 800; font-size: 70px; line-height: 1; color: #3B1F14">¡Hola! Soy la Pancha.<br><span style="color: #FFFFFF">Y yo plancho por ti.</span></h1>
+      <p style="margin: 0; font-size: 21px; line-height: 1.5; max-width: 540px; color: #3B1F14; font-weight: 600">Retiro tu ropa en tu casa, la lavo, la plancho y te la devuelvo <strong style="background: #FFFFFF; padding: 0 6px; border-radius: 6px">lista en 48 horas</strong>. Doblada, con rico aroma y a un precio que te va a gustar.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px">
+        <a class="b3d b3d-dark" href="{{waAgenda}}" style="font-size: 18px; padding: 18px 28px">
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7BE0A3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.5 7.4L3 20.5l1.6-5.3A8.4 8.4 0 1 1 21 11.5z"></path></svg>
+          Agenda tu retiro por WhatsApp
+        </a>
+        <a class="b3d b3d-white" href="#cotizador" style="font-size: 18px; padding: 18px 28px">Cotiza tu pedido</a>
+      </div>
+      <p style="margin: 0; font-size: 15px; font-weight: 700">Retiro y entrega a domicilio · Lunes a viernes · Santiago oriente, centro y Colina</p>
+    </div>
+    <div style="flex: 1 1 420px; min-width: 0; position: relative; display: flex; justify-content: center; align-items: flex-end; min-height: 660px">
+      <div aria-hidden="true" style="position: absolute; bottom: 70px; width: 440px; max-width: 92%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 50% 40%, rgba(255,255,255,.55), rgba(255,255,255,.08) 60%, transparent 70%); border: 2px solid rgba(255,255,255,.45)"></div>
+      <div aria-hidden="true" style="position: absolute; bottom: -34px; width: 420px; max-width: 90%; height: 90px; border-radius: 50%; background: radial-gradient(ellipse at 50% 35%, #FFD3E3 0%, #FF9DC2 45%, #E2588C 100%); box-shadow: 0 -2px 0 rgba(255,255,255,.7) inset, 0 24px 40px -10px rgba(59,31,20,.45)"></div>
+      <div class="float-chip" style="left: -12px; bottom: 60px; --r: -4deg; animation-delay: -1s"><span class="sphere" style="--c: #1E7F46; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 13px">48h</span><span style="display: flex; flex-direction: column; line-height: 1.15"><span style="font-size: 15px">Lista en 48 h</span><span style="font-size: 12px; color: #6B4A3B; font-weight: 700">retiro y entrega</span></span></div>
+      <div class="float-chip" style="right: -12px; bottom: 120px; --r: 3deg; animation-delay: -2.5s"><span class="sphere" style="--c: #FFB020; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #3B1F14; font-size: 15px">★</span><span style="display: flex; flex-direction: column; line-height: 1.15"><span style="font-size: 15px">4,8 en Google</span><span style="font-size: 12px; color: #6B4A3B; font-weight: 700">23 reseñas</span></span></div>
+      <div class="lpp-bubble" style="position: absolute; top: 0; left: 0; z-index: 3; background: #FFFFFF; border-radius: 22px 22px 22px 4px; padding: 12px 18px; max-width: 320px; min-height: 22px; font-weight: 700; font-size: 16px; line-height: 1.35; box-shadow: 0 14px 30px -18px rgba(59,31,20,.6); opacity: {{heroBubbleOp}}; transition: opacity .4s ease" aria-live="polite">{{heroText}}</div>
+      <div style="position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; transform: translateX({{heroX}}); transition: transform 2.6s linear">
+        <video id="lpp-hero-walk" aria-hidden="true" style="position: absolute; left: 50%; top: 91px; height: 655px; width: auto; max-width: none; transform: translateX(-50%); opacity: {{heroWalkOp}}; transition: opacity .55s ease; pointer-events: none; border-radius: {{heroRadius}}">
+          <source src="{{hw1}}" type="{{heroType1}}">
+          <source src="{{hw2}}" type="{{heroType2}}">
+        </video>
+        <video id="lpp-hero-vid" preload="auto" aria-label="La Pancha saludando y presentándose" onEnded="{{heroEnded}}" style="display: block; opacity: {{heroTalkOp}}; transition: opacity .55s ease; height: 560px; width: auto; max-width: 100%; object-fit: contain; border-radius: {{heroRadius}}">
+          <source src="{{hero1}}" type="{{heroType1}}">
+          <source src="{{hero2}}" type="{{heroType2}}">
+        </video>
+        <span style="position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); z-index: 4; display: {{heroBtnDisp}}"><button type="button" class="b3d b3d-dark {{heroAskClass}}" onClick="{{playHeroVoice}}" style="font-size: 16px; padding: 12px 20px; gap: 8px">
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFD166" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path><path d="M19 5a10 10 0 0 1 0 14"></path></svg>
+          {{heroBtn}}
+        </button></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CIFRAS -->
+<section aria-label="La Pancha en números" class="glow-top lpp-grid-light" style="background-color: #2C160D; color: #FFFFFF">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 28px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; text-align: center">
+    <div><div class="stat-num" style="font-family: Fraunces, serif; font-style: italic; font-size: 44px; font-weight: 800">+28.000</div><div style="font-size: 15px; color: #F6DCCB">pedidos entregados desde 2021</div></div>
+    <div><div class="stat-num" style="font-family: Fraunces, serif; font-style: italic; font-size: 44px; font-weight: 800">+2.900</div><div style="font-size: 15px; color: #F6DCCB">clientes en Santiago</div></div>
+    <div><div class="stat-num" style="font-family: Fraunces, serif; font-style: italic; font-size: 44px; font-weight: 800">48 h</div><div style="font-size: 15px; color: #F6DCCB">y tu ropa vuelve lista</div></div>
+    <div><div class="stat-num" style="font-family: Fraunces, serif; font-style: italic; font-size: 44px; font-weight: 800">4,8 ★</div><div style="font-size: 15px; color: #F6DCCB">en Google Maps</div></div>
+  </div>
+</section>
+
+<div aria-hidden="true" style="background: #FFE6D6; border-bottom: 1px solid rgba(217,72,28,.12); padding: 18px 0; overflow: hidden"><div class="marquee"><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Camisas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Sábanas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Plumones<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Cortinas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Trajes<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Vestidos de fiesta<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Toallas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Manteles<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Cubrecamas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Uniformes<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Camisas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Sábanas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Plumones<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Cortinas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Trajes<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Vestidos de fiesta<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Toallas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Manteles<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Cubrecamas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Uniformes<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span></div></div>
+
+<!-- COMO FUNCIONA -->
+<section id="como" class="lpp-section" style="max-width: 1240px; margin: 0 auto; padding: 104px 24px 56px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
+    <div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
+    <span class="chip" style="align-self: flex-start"><i></i>Así de fácil</span>
+    <h2 class="lpp-h2 rv" style="margin: 0; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 52px; line-height: 1.02">Tres pasos y te olvidas del planchado.</h2>
+    <ol id="lpp-pasos" style="position: relative; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 18px">
+      <li aria-hidden="true" class="steps-line"></li>
+      <li id="step1" class="glass rv" style="position: relative; display: flex; gap: 18px; align-items: flex-start; border-radius: 24px; padding: 22px 24px">
+        <span class="sphere" style="--c: #FF7AAC; flex: none; width: 52px; height: 52px; border-radius: 50%; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; display: flex; align-items: center; justify-content: center">1</span>
+        <span style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 20px">Me escribes por WhatsApp</strong><span style="font-size: 16px; line-height: 1.5; color: #6B4A3B">Me dices qué necesitas y elegimos juntas el día del retiro.</span></span>
+      </li>
+      <li id="step2" class="glass rv" style="position: relative; display: flex; gap: 18px; align-items: flex-start; border-radius: 24px; padding: 22px 24px">
+        <span class="sphere" style="--c: #FFB07A; flex: none; width: 52px; height: 52px; border-radius: 50%; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; display: flex; align-items: center; justify-content: center">2</span>
+        <span style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 20px">Paso a buscar tu ropa</strong><span style="font-size: 16px; line-height: 1.5; color: #6B4A3B">Anoto cada prenda en tu orden. La lavo, saco las manchas difíciles y la plancho con cariño.</span></span>
+      </li>
+      <li id="step3" class="glass rv" style="position: relative; display: flex; gap: 18px; align-items: flex-start; border-radius: 24px; padding: 22px 24px">
+        <span class="sphere" style="--c: #3B1F14; color: #FFD166; flex: none; width: 52px; height: 52px; border-radius: 50%; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; display: flex; align-items: center; justify-content: center">3</span>
+        <span style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 20px">Te la devuelvo lista en 48 horas</strong><span style="font-size: 16px; line-height: 1.5; color: #6B4A3B">Doblada o colgada, lista para guardar. Te aviso por WhatsApp cuando voy en camino.</span></span>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="lpp-dots" style="background-color: #FFE6D6">
+  <div class="lpp-section" style="max-width: 1240px; margin: 0 auto; padding: 96px 24px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
+    <div style="flex: 1 1 640px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
+      <span class="chip" style="align-self: flex-start"><i></i>Servicios</span>
+      <h2 class="lpp-h2 rv" style="margin: 0; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 52px; line-height: 1.02">Lo que se lava, se plancha o se cuida, <span style="color: #D9481C">yo lo hago.</span></h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px">
+        <template data-sc-for="servicios" data-as="s">
+          <div id="{{s.id}}" class="glass rv" style="border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 8px">
+            <span class="tile3d" style="width: 52px; height: 52px; border-radius: 16px; background: {{s.bg}}; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B1F14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{s.icon}}"></path></svg></span>
+            <strong style="font-size: 19px">{{s.title}}</strong>
+            <span style="font-size: 15px; line-height: 1.45; color: #6B4A3B">{{s.desc}}</span>
+            <span style="margin-top: 4px; font-weight: 800; color: #D9481C">{{s.price}}</span>
+          </div>
+        </template>
+      </div>
+    </div>
+      </div>
+</section>
+
+<!-- PRECIOS + COTIZADOR -->
+<section id="precios" class="lpp-section" style="max-width: 1240px; margin: 0 auto; padding: 104px 24px; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start">
+  <div style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+    <span class="chip" style="align-self: flex-start"><i></i>Los mejores precios</span>
+    <h2 class="lpp-h2 rv" style="margin: 0; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 52px; line-height: 1.02">Precio por prenda, claro y sin letra chica.</h2>
+    <div id="lpp-tabla" class="glass rv" style="border-radius: 24px; overflow: hidden">
+      <table style="width: 100%; border-collapse: collapse; font-size: 16px">
+        <caption style="text-align: left; padding: 16px 20px 4px; font-weight: 800; color: #6B4A3B">Lo más pedido (por unidad)</caption>
+        <thead><tr style="color: #6B4A3B; font-size: 13px"><th scope="col" style="text-align: left; padding: 10px 20px; font-weight: 700">Prenda</th><th scope="col" style="text-align: right; padding: 10px 12px; font-weight: 700">Solo planchado</th><th scope="col" style="text-align: right; padding: 10px 20px; font-weight: 700">Lavado + planchado</th></tr></thead>
+        <tbody>
+          <tr style="border-top: 1px solid #F6DCCB"><th scope="row" style="text-align: left; padding: 12px 20px; font-weight: 600">Prenda de vestir</th><td style="text-align: right; padding: 12px">$1.500</td><td style="text-align: right; padding: 12px 20px; font-weight: 800">$2.600</td></tr>
+          <tr style="border-top: 1px solid #F6DCCB"><th scope="row" style="text-align: left; padding: 12px 20px; font-weight: 600">Sábana</th><td style="text-align: right; padding: 12px">$1.800</td><td style="text-align: right; padding: 12px 20px; font-weight: 800">$2.500</td></tr>
+          <tr style="border-top: 1px solid #F6DCCB"><th scope="row" style="text-align: left; padding: 12px 20px; font-weight: 600">Funda de almohada</th><td style="text-align: right; padding: 12px">$1.000</td><td style="text-align: right; padding: 12px 20px; font-weight: 800">$1.300</td></tr>
+          <tr style="border-top: 1px solid #F6DCCB"><th scope="row" style="text-align: left; padding: 12px 20px; font-weight: 600">Cubreplumón</th><td style="text-align: right; padding: 12px">$2.900</td><td style="text-align: right; padding: 12px 20px; font-weight: 800">$5.500</td></tr>
+          <tr style="border-top: 1px solid #F6DCCB"><th scope="row" style="text-align: left; padding: 12px 20px; font-weight: 600">Toalla de baño</th><td style="text-align: right; padding: 12px">$1.900</td><td style="text-align: right; padding: 12px 20px; font-weight: 800">$2.500</td></tr>
+          <tr style="border-top: 1px solid #F6DCCB"><th scope="row" style="text-align: left; padding: 12px 20px; font-weight: 600">Mantel</th><td style="text-align: right; padding: 12px">$2.400</td><td style="text-align: right; padding: 12px 20px; font-weight: 800">$4.500</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin: 0; font-size: 15px; color: #6B4A3B">Despacho (retiro + entrega en un solo cobro): Colina $1.500 · otras comunas $3.500.</p>
+      </div>
+
+  <div id="cotizador" class="neon" style="flex: 1 1 460px; min-width: 0; background: linear-gradient(180deg,#FFFFFF,#FFF8F3); border-radius: 32px; padding: 32px; box-shadow: 0 40px 70px -40px rgba(59,31,20,.6)">
+    <span class="chip" style="margin-bottom: 10px"><i></i>Cotizador en vivo</span>
+    <h3 style="margin: 0 0 4px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 32px">Cotiza tu pedido</h3>
+    <p style="margin: 0 0 20px; color: #6B4A3B; font-size: 15px">Elige tus prendas y agenda con el total por WhatsApp.</p>
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <template data-sc-for="items" data-as="item">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; border-radius: 16px; background: #FFF4EA; border: 1px solid rgba(217,72,28,.1); box-shadow: inset 0 1px 0 #fff">
+          <div style="display: flex; flex-direction: column; min-width: 0">
+            <span style="font-weight: 700; font-size: 15px">{{item.name}}</span>
+            <span style="font-size: 13px; color: #6B4A3B">{{item.priceText}} c/u</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px">
+            <button type="button" onClick="{{item.dec}}" aria-label="{{item.decLabel}}" class="b3d b3d-white b3d-sq" style="width: 44px; height: 44px; font-size: 22px; padding: 0">−</button>
+            <span aria-live="polite" style="min-width: 28px; text-align: center; font-size: 22px; font-weight: 800">{{item.qty}}</span>
+            <button type="button" onClick="{{item.inc}}" aria-label="{{item.incLabel}}" class="b3d b3d-orange b3d-sq" style="width: 44px; height: 44px; font-size: 22px; padding: 0">+</button>
+          </div>
+        </div>
+      </template>
+    </div>
+    <label for="lpp-comuna" style="display: block; margin: 20px 0 6px; font-weight: 800; font-size: 14px">¿En qué comuna estás?</label>
+    <select id="lpp-comuna" value="{{comuna}}" onChange="{{setComuna}}" style="width: 100%; height: 48px; border-radius: 14px; border: 2px solid #F6DCCB; padding: 0 14px; font-size: 16px; font-family: Nunito, sans-serif; color: #3B1F14; background: #FFFFFF">
+      <template data-sc-for="comunas" data-as="c">
+        <option value="{{c}}">{{c}}</option>
+      </template>
+    </select>
+    <div class="lpp-grid-light" style="margin-top: 20px; padding: 18px 20px; border-radius: 20px; background-color: #2C160D; color: #FFFFFF; display: flex; flex-direction: column; gap: 6px; box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 14px 24px -14px rgba(59,31,20,.8)">
+      <div style="display: flex; justify-content: space-between; font-size: 14px; color: #F6DCCB"><span>Prendas</span><span>{{subtotalText}}</span></div>
+      <div style="display: flex; justify-content: space-between; font-size: 14px; color: #F6DCCB"><span>Despacho ({{comuna}})</span><span>{{despachoText}}</span></div>
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 4px"><span style="font-weight: 700">Total estimado</span><span style="font-family: Fraunces, serif; font-style: italic; font-size: 36px; font-weight: 800; color: #FFD166">{{totalText}}</span></div>
+    </div>
+    <a class="b3d b3d-green" href="{{waCotiza}}" style="margin-top: 18px; display: flex; font-size: 17px; padding: 18px">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.5 7.4L3 20.5l1.6-5.3A8.4 8.4 0 1 1 21 11.5z"></path></svg>
+      Agendar retiro con este pedido
+    </a>
+    <p style="margin: 10px 0 0; font-size: 12px; color: #6B4A3B; text-align: center">Valor referencial. El total final se confirma al recibir tus prendas.</p>
+  </div>
+</section>
+
+<!-- LO NUEVO -->
+<section id="novedades" class="lpp-grid-light" style="background-color: #3F2F99; color: #FFFFFF; position: relative; overflow: hidden">
+  <div aria-hidden="true" class="orb" style="width: 480px; height: 480px; right: -140px; top: -120px; background: #FF7AAC; opacity: .35"></div>
+  <div aria-hidden="true" class="orb" style="width: 380px; height: 380px; left: -120px; bottom: -160px; background: #2EC5FF; opacity: .25; animation-delay: -6s"></div>
+  <div class="lpp-section" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 96px 24px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
+    <div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+      <span class="chip chip-dark" style="align-self: flex-start"><i></i>Lo nuevo de la Pancha</span>
+      <h2 class="lpp-h2" style="margin: 0; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 50px; line-height: 1.02">Ahora te respondo al instante, a cualquier hora.</h2>
+      <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #E6E0FF">Me puse al día con inteligencia artificial para atenderte mejor. Tú lo notas en cosas simples:</p>
+      <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 17px">
+        <li class="rv" style="display: flex; gap: 12px; align-items: flex-start; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 16px; padding: 12px 14px; backdrop-filter: blur(6px)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFD166" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span><strong>Cotizas y agendas por WhatsApp</strong> sin esperar a que alguien conteste.</span></li>
+        <li class="rv" style="display: flex; gap: 12px; align-items: flex-start; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 16px; padding: 12px 14px; backdrop-filter: blur(6px)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFD166" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span><strong>Te aviso en cada paso:</strong> cuando retiro, cuando está lista y cuando voy en camino.</span></li>
+        <li class="rv" style="display: flex; gap: 12px; align-items: flex-start; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 16px; padding: 12px 14px; backdrop-filter: blur(6px)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFD166" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span><strong>Rutas ordenadas por comuna,</strong> para llegar puntual.</span></li>
+        <li class="rv" style="display: flex; gap: 12px; align-items: flex-start; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 16px; padding: 12px 14px; backdrop-filter: blur(6px)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFD166" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span><strong>Pagas como quieras:</strong> efectivo, transferencia, tarjeta o link de pago.</span></li>
+      </ul>
+    </div>
+    <div style="flex: 1 1 440px; min-width: 0; display: flex; align-items: flex-end; gap: 0; justify-content: center">
+      <div id="lpp-chat" class="phone3d" style="background: #15121F; border-radius: 44px; padding: 12px; box-shadow: inset 0 0 0 2px #3A3450, 0 50px 80px -30px rgba(0,0,0,.7), -20px 30px 60px -30px rgba(255,122,172,.5)">
+      <div style="background: #EDE7DF; border-radius: 34px; padding: 18px; width: 330px; max-width: 100%; display: flex; flex-direction: column; gap: 10px; color: #1F2937; font-size: 15px">
+        <div style="display: flex; align-items: center; gap: 10px; padding-bottom: 8px; border-bottom: 1px solid #D6CFC6">
+          <img src="assets/av-busto.png" alt="" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; object-position: top; background: #FF7AAC">
+          <span style="display: flex; flex-direction: column"><strong>La Pancha Plancha</strong><span style="font-size: 12px; color: #1E7F46">en línea</span></span>
+        </div>
+        <div style="align-self: flex-end; background: #D9FDD3; border-radius: 14px 14px 4px 14px; padding: 8px 12px; max-width: 80%">Hola Pancha, ¿pueden retirar mañana en Ñuñoa?</div>
+        <div style="align-self: flex-start; background: #FFFFFF; border-radius: 14px 14px 14px 4px; padding: 8px 12px; max-width: 85%">¡Hola! Sí, mañana paso por Ñuñoa. ¿Te acomoda en la mañana o en la tarde?</div>
+        <div style="align-self: flex-end; background: #D9FDD3; border-radius: 14px 14px 4px 14px; padding: 8px 12px; max-width: 80%">En la mañana. Son 10 camisas</div>
+        <div style="align-self: flex-start; background: #FFFFFF; border-radius: 14px 14px 14px 4px; padding: 8px 12px; max-width: 85%">¡Listo, quedaste agendada! 10 camisas lavadas y planchadas: $26.000 + $3.500 de despacho. Te aviso cuando voy en camino.</div>
+        <div class="typing" aria-hidden="true" style="align-self: flex-start; background: #FFFFFF; border-radius: 14px; padding: 10px 12px"><span></span><span></span><span></span></div>
+      </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section id="resenas" class="lpp-dots" style="background-color: #FFE3EC">
+  <div class="lpp-section" style="max-width: 1240px; margin: 0 auto; padding: 112px 24px 96px">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 40px">
+      <div style="display: flex; flex-direction: column; gap: 14px"><span class="chip" style="align-self: flex-start"><i></i>Reseñas reales de Google</span><h2 class="lpp-h2 rv" style="margin: 0; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 52px; line-height: 1.02; max-width: 680px">“Impecable” y “puntuales”: <span style="color: #D9481C">las dos palabras que más se repiten.</span></h2></div>
+      <div class="glass" style="border-radius: 24px; padding: 18px 22px; display: flex; align-items: center; gap: 14px">
+        <span style="font-family: Fraunces, serif; font-style: italic; font-size: 52px; font-weight: 800; line-height: 1">4,8</span>
+        <span style="display: flex; flex-direction: column; gap: 2px"><span role="img" aria-label="4,8 de 5 estrellas" style="color: #E8A400; font-size: 22px; letter-spacing: 2px">★★★★★</span><span style="font-size: 14px; color: #6B4A3B">23 reseñas · 22 de 5 estrellas</span></span>
+      </div>
+    </div>
+    <div id="lpp-reviews" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; border-radius: 32px">
+      <template data-sc-for="reviews" data-as="r">
+        <figure class="glass rv" style="position: relative; margin: 0; border-radius: 28px; padding: 26px; display: flex; flex-direction: column; gap: 12px">
+          <span aria-hidden="true" style="position: absolute; right: 22px; top: 6px; font-family: Fraunces, serif; font-size: 90px; line-height: 1; color: rgba(255,122,172,.25)">”</span>
+          <span role="img" aria-label="5 de 5 estrellas" style="color: #E8A400; font-size: 18px; letter-spacing: 2px">★★★★★</span>
+          <blockquote style="margin: 0; font-size: 17px; line-height: 1.55">“{{r.text}}”</blockquote>
+          <figcaption style="margin-top: auto; display: flex; align-items: center; gap: 12px">
+            <span aria-hidden="true" class="tile3d" style="width: 40px; height: 40px; border-radius: 50%; background: {{r.bg}}; font-weight: 800; display: flex; align-items: center; justify-content: center">{{r.initial}}</span>
+            <span style="display: flex; flex-direction: column"><strong style="font-size: 15px">{{r.name}}</strong><span style="font-size: 13px; color: #6B4A3B">Reseña en Google</span></span>
+          </figcaption>
+        </figure>
+      </template>
+    </div>
+    <div style="margin-top: 32px; display: flex; justify-content: center">
+      <a class="b3d b3d-dark" href="https://www.google.com/maps/search/La+Pancha+Plancha" style="padding: 16px 26px">Ver todas las reseñas en Google</a>
+    </div>
+  </div>
+</section>
+
+<!-- COBERTURA -->
+<section id="cobertura" class="lpp-section" style="max-width: 1240px; margin: 0 auto; padding: 104px 24px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
+  <div style="flex: 1 1 500px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+    <span class="chip" style="align-self: flex-start"><i></i>Solo a domicilio</span>
+    <h2 class="lpp-h2 rv" style="margin: 0; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 52px; line-height: 1.02">No tienes que ir a la lavandería. <span style="color: #D9481C">Yo voy a tu casa.</span></h2>
+    <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #6B4A3B">Trabajo solo a domicilio, no atiendo en local. Paso con mi auto morado por estas comunas:</p>
+    <ul id="lpp-comunas" aria-label="Comunas con cobertura" style="border-radius: 24px; padding: 6px; list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px">
+      <template data-sc-for="comunas" data-as="c">
+        <li class="glass" style="display: flex; align-items: center; gap: 8px; border-radius: 999px; padding: 10px 18px; font-weight: 800; font-size: 15px"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D9481C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"></path></svg>{{c}}</li>
+      </template>
+    </ul>
+    <p style="margin: 0; font-size: 16px; color: #6B4A3B">¿Tu comuna no está? <a href="{{waComuna}}" style="font-weight: 800">Escríbeme</a> y lo vemos.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 14px">
+      <div class="glass" style="border-radius: 20px; padding: 14px 20px"><strong style="display: block">Horario</strong><span style="font-size: 15px; color: #6B4A3B">Lunes a viernes, 8:00 a 20:00</span></div>
+      <div class="glass" style="border-radius: 20px; padding: 14px 20px"><strong style="display: block">Despacho</strong><span style="font-size: 15px; color: #6B4A3B">Colina $1.500 · resto $3.500</span></div>
+    </div>
+  </div>
+  <div style="flex: 1 1 440px; min-width: 0; display: flex; justify-content: center">
+    <div class="lpp-drive-in" style="width: 100%; max-width: 560px"><img id="lpp-auto" class="lpp-engine" src="assets/auto3d.png" alt="La Pancha manejando su auto morado con ropa doblada en el techo" style="display: block; width: 100%; height: auto; filter: drop-shadow(0 30px 24px rgba(59,31,20,.25))"></div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section id="contacto" style="padding: 40px 24px 110px">
+  <div class="neon lpp-dots-light" style="max-width: 1192px; margin: 0 auto; background-color: #FF7AAC; border-radius: 40px; padding: 0 56px; display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start; gap: 24px">
+    <div style="flex: 1 1 520px; max-width: 760px; min-width: 0; display: flex; flex-direction: column; gap: 18px; padding: 56px 0">
+      <span class="chip" style="align-self: flex-start"><i></i>Agenda tu retiro</span>
+      <h2 class="lpp-h2" style="margin: 0; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 50px; line-height: 1.02">Envíame un mensaje ahora y paso a buscar tu ropa a tu casa.</h2>
+      <p style="margin: 0; font-size: 18px; font-weight: 600; max-width: 520px">Cuéntame qué necesitas y agendamos tu retiro. Te la devuelvo lista en 48 horas.</p>
+      <p style="margin: 0; display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 800">
+        Toca el botón verde de WhatsApp, abajo a la derecha
+        <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3B1F14" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10"></path><path d="M17 8v9H8"></path></svg>
+      </p>
+      <p style="margin: 0; font-size: 15px; font-weight: 700; color: #5A2E1E">WhatsApp +56 9 5377 8977 · Lunes a viernes, 8:00 a 20:00</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="glow-top lpp-grid-light" style="background-color: #2C160D; color: #F6DCCB">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 48px 24px 120px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; font-size: 15px">
+    <div style="display: flex; flex-direction: column; gap: 10px; max-width: 320px">
+      <img class="logo3d" src="assets/logo-lpp.svg" alt="La Pancha Plancha" style="height: 80px; width: auto; align-self: flex-start">
+      <span>Delivery de planchado: retiro tu ropa a domicilio, la plancho y te la entrego lista en 48 horas.</span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <strong style="color: #FFFFFF">Contacto</strong>
+      <a href="{{waAgenda}}" style="color: #F6DCCB">WhatsApp +56 9 5377 8977</a>
+      <a href="mailto:contacto@lapanchaplancha.cl" style="color: #F6DCCB">contacto@lapanchaplancha.cl</a>
+      <a href="https://www.instagram.com/lapanchaplancha/" style="color: #F6DCCB">Instagram @LaPanchaPlancha</a>
+      <a href="https://www.facebook.com/LaPanchaPlancha" style="color: #F6DCCB">Facebook La Pancha Plancha</a>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <strong style="color: #FFFFFF">Información</strong>
+      <a href="https://lapanchaplancha.cl/wp-content/uploads/TERMINOS-DE-SERVICIO-LPP.pdf" style="color: #F6DCCB">Términos del servicio</a>
+      <span>Lunes a viernes, 8:00 a 20:00</span>
+    </div>
+  </div>
+</footer>
+
+<a id="lpp-wa-float" class="b3d b3d-green lpp-wa-round" href="{{waAgenda}}" aria-label="Escribir a La Pancha Plancha por WhatsApp" title="Escríbeme por WhatsApp" style="position: fixed; right: 20px; bottom: 22px; z-index: 32; width: 66px; height: 66px; padding: 0; border-radius: 50%">
+  <svg aria-hidden="true" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.7a8.6 8.6 0 0 1-12.7 7.6L3 20.6l1.4-4.6a8.6 8.6 0 1 1 16.1-4.3z"></path><path d="M9 8.3c.2-.5.5-.5.8-.5h.6c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .6l-.5.7c-.1.2-.1.4 0 .6.6 1 1.4 1.8 2.4 2.4.2.1.4.1.6 0l.7-.5c.2-.1.4-.1.6 0l1.9.8c.4.2.5.4.5.6v.6c0 .3 0 .6-.5.8-.6.3-1.4.5-2.2.3-2.8-.7-5-2.9-5.7-5.7-.2-.8 0-1.6.4-2.1z"></path></svg>
+</a>
+
+<!-- BIENVENIDA: el primer toque habilita el sonido -->
+<template data-sc-if="showGate">
+  <div role="dialog" aria-modal="true" aria-label="Bienvenida de La Pancha Plancha" style="position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(255,122,172,.55); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px)">
+    <div class="glass" style="width: 100%; max-width: 440px; box-sizing: border-box; border-radius: 36px; padding: 34px 30px 28px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center">
+      <img class="logo3d" src="assets/logo-lpp.svg" alt="La Pancha Plancha" style="height: 64px; width: auto">
+      <div style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden; background: radial-gradient(circle at 50% 35%, #FFD3E3, #FF7AAC); box-shadow: inset 0 -6px 14px rgba(0,0,0,.12), 0 16px 30px -14px rgba(59,31,20,.6)">
+        <img src="assets/av-busto.png" alt="La Pancha" style="width: 100%; height: 100%; object-fit: cover; object-position: top">
+      </div>
+      <h2 style="margin: 4px 0 0; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 32px; line-height: 1.05">¡Hola! Te quiero contar algo.</h2>
+      <p style="margin: 0; font-size: 16px; color: #6B4A3B">Sube el volumen y deja que la Pancha te muestre cómo funciona.</p>
+      <button type="button" class="b3d b3d-dark lpp-ask" onClick="{{enterWithSound}}" style="margin-top: 6px; font-size: 18px; padding: 18px 28px; gap: 10px">
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFD166" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path><path d="M19 5a10 10 0 0 1 0 14"></path></svg>
+        Entrar y escuchar a la Pancha
+      </button>
+      <button type="button" onClick="{{enterSilent}}" style="border: none; background: transparent; color: #6B4A3B; font-family: Nunito, sans-serif; font-weight: 700; font-size: 14px; text-decoration: underline; cursor: pointer; padding: 8px">Entrar sin sonido</button>
+    </div>
+  </div>
+</template>
+
+<!-- PANCHA GUÍA: camina, habla con su voz y te acompaña -->
+<div style="position: fixed; left: 0; bottom: 0; z-index: 30; pointer-events: none; transform: translateX({{guideX}}); transition: transform {{guideDur}} linear">
+  <div class="lpp-guide-inner" style="position: relative; width: 190px; display: flex; flex-direction: column; align-items: center">
+    <template data-sc-if="showBubble">
+      <div class="lpp-guide-bubble" role="status" aria-live="polite" style="position: absolute; bottom: 130px; {{bubbleSide}}: 150px; z-index: 2; background: rgba(255,255,255,.95); backdrop-filter: blur(6px); color: #3B1F14; border-radius: {{bubbleRadius}}; padding: 8px 11px; width: 210px; box-sizing: border-box; font-weight: 700; font-size: 13px; line-height: 1.3; box-shadow: 0 10px 22px -12px rgba(59,31,20,.6); border: 1px solid rgba(217,72,28,.18)">{{guideTyped}}</div>
+    </template>
+    <div class="{{bodyClass}}" style="position: relative; height: 240px; width: 180px; display: flex; justify-content: center; align-items: flex-end">
+      <video id="lpp-guide-vid" preload="auto" onEnded="{{guideEnded}}" aria-hidden="true" style="display: block; opacity: {{vidOp}}; transition: opacity .5s ease; height: 240px; width: 180px; object-fit: contain; border-radius: {{guideRadius}}">
+        <source src="{{gsrc1}}" type="{{gtype1}}">
+        <source src="{{gsrc2}}" type="{{gtype2}}">
+      </video>
+      <video id="lpp-walk-vid" aria-hidden="true" style="position: absolute; left: 50%; top: 39px; height: 281px; width: auto; transform: translateX(-50%); opacity: {{walkOp}}; transition: opacity .5s ease; border-radius: {{guideRadius}}">
+        <source src="{{wsrc1}}" type="{{gtype1}}">
+        <source src="{{wsrc2}}" type="{{gtype2}}">
+      </video>
+      <div style="position: absolute; {{ctrlSide}}: -6px; bottom: 40px; display: flex; flex-direction: column; gap: 8px; pointer-events: auto">
+        <button type="button" onClick="{{toggleVoice}}" aria-pressed="{{voiceOn}}" aria-label="{{voiceLabel}}" title="{{voiceLabel}}" class="b3d b3d-dark {{heroAskClass}}" style="width: 40px; height: 40px; padding: 0">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFD166" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"></path><path d="{{voiceIcon}}"></path></svg>
+        </button>
+        <button type="button" onClick="{{hideGuide}}" aria-label="Ocultar a la Pancha" title="Ocultar a la Pancha" class="b3d b3d-white" style="width: 40px; height: 40px; padding: 0; font-size: 20px">×</button>
+      </div>
+    </div>
+    <div aria-hidden="true" style="width: 100px; height: 12px; margin-top: -8px; border-radius: 50%; background: rgba(59,31,20,.25); filter: blur(3px)"></div>
+  </div>
+</div>
+<template data-sc-if="guideHidden">
+  <button type="button" onClick="{{showGuide}}" aria-label="Mostrar a la Pancha" title="Mostrar a la Pancha" class="b3d b3d-white" style="position: fixed; right: 100px; bottom: 22px; z-index: 31; width: 64px; height: 64px; padding: 0; overflow: hidden; border: 3px solid #FF7AAC">
+    <img src="assets/av-busto.png" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: top">
+  </button>
+</template>
+</div>
+</template>
+<script type="text/x-dc-logic" id="dc-logic">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { qty: {}, comuna: 'Providencia', section: 'inicio', showBubble: true, count: 0, phase: 'off', soundOn: false, heroPlaying: false, walkDir: 'L', guideMs: 1900, heroX: '115%', heroPhase: 'walk', heroCount: 0, started: false };
+    this.onScroll = this.onScroll.bind(this);
+    this.typer = null; this.walkT = null;
+    this.isSafari = (typeof navigator !== 'undefined') && /^((?!chrome|android|crios|fxios).)*safari/i.test(navigator.userAgent);
+  }
+  componentDidMount() {
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    var self = this;
+    this.onScroll();
+    this.firstTap = function () {
+      window.removeEventListener('pointerdown', self.firstTap);
+      var wasOn = self.state.soundOn;
+      self.setState({ soundOn: true });
+      var h = document.getElementById('lpp-hero-vid');
+      if (!wasOn && h && self.state.section === 'inicio' && self.state.heroPhase !== 'walk') { self.heroTalk(true); }
+      var g = document.getElementById('lpp-guide-vid');
+      if (g && self.state.phase === 'talk' && g.muted) { g.muted = false; }
+    };
+    window.addEventListener('pointerdown', this.firstTap);
+  }
+  startIntro(withSound) {
+    var self = this;
+    window.removeEventListener('pointerdown', this.firstTap);
+    this.setState({ started: true, soundOn: withSound });
+    try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) {}
+    var h = document.getElementById('lpp-hero-vid');
+    if (h && withSound) { try { h.muted = true; var ph = h.play(); if (ph && ph.then) { ph.then(function () { h.pause(); h.currentTime = 0; }).catch(function () {}); } } catch (e) {} }
+    var g = document.getElementById('lpp-guide-vid');
+    if (g && withSound) { try { g.muted = true; var pg = g.play(); if (pg && pg.then) { pg.then(function () { g.pause(); }).catch(function () {}); } } catch (e) {} }
+    var w = document.getElementById('lpp-hero-walk');
+    if (w) { w.muted = true; w.loop = true; w.playsInline = true; var pw = w.play(); if (pw && pw.catch) { pw.catch(function () {}); } }
+    setTimeout(function () { self.setState({ heroX: '0%' }); }, 120);
+    this.heroT = setTimeout(function () { self.heroTalk(withSound); }, 2650);
+  }
+  heroTalk(fromButton) {
+    var self = this;
+    var w = document.getElementById('lpp-hero-walk'); if (w) { try { w.pause(); } catch (e) {} }
+    var h = document.getElementById('lpp-hero-vid');
+    clearInterval(this.heroTyper);
+    this.setState({ heroPhase: 'talk', heroCount: 0, heroPlaying: true });
+    if (h) {
+      h.playsInline = true;
+      try { h.pause(); h.currentTime = 0; } catch (e) {}
+      h.muted = !(fromButton || this.state.soundOn);
+      var p = h.play();
+      if (p && p.catch) { p.catch(function () { h.muted = true; var p2 = h.play(); if (p2 && p2.catch) { p2.catch(function () {}); } self.setState({ heroMutedAuto: true }); }); }
+    }
+    var full = this.clips().inicio.text;
+    var step = Math.round(9300 / full.length);
+    this.heroTyper = setInterval(function () {
+      var n = self.state.heroCount + 1;
+      if (n >= full.length) { n = full.length; clearInterval(self.heroTyper); }
+      self.setState({ heroCount: n });
+    }, step);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('pointerdown', this.firstTap);
+    clearInterval(this.typer); clearTimeout(this.walkT); clearTimeout(this.heroT); clearInterval(this.heroTyper);
+  }
+  clips() {
+    var V = {
+      inicio: { heroWebm: 'assets/c0-inicio-hero30.webm', heroMp4: 'assets/c0-inicio-hero30.mp4', webm: 'assets/c0-inicio-hero.webm', mp4: 'assets/c0-inicio-hero.mp4' },
+      como: { webm: 'assets/c1-como-24.webm', mp4: 'assets/c1-como-24.mp4' },
+      servicios: { webm: 'assets/c2-servicios-24.webm', mp4: 'assets/c2-servicios-24.mp4' },
+      precios: { webm: 'assets/c3-precios-24.webm', mp4: 'assets/c3-precios-24.mp4' },
+      novedades: { webm: 'assets/c4-novedades-24.webm', mp4: 'assets/c4-novedades-24.mp4' },
+      resenas: { webm: 'assets/c5-resenas-24.webm', mp4: 'assets/c5-resenas-24.mp4' },
+      cobertura: { webm: 'assets/c6-cobertura-24.webm', mp4: 'assets/c6-cobertura-24.mp4' }
+    };
+    return {
+      inicio: { side: 'off', dur: 9.3, text: '¡Hola! Soy la Pancha. Yo retiro tu ropa, la lavo, la plancho y te la devuelvo lista en 48 horas. ¡Ven, te muestro cómo!', v: V.inicio },
+      como: { cues: [[0.2,'lpp-pasos'],[3.0,'step1'],[4.6,'step2'],[6.4,'step3']], side: 'right', dur: 11.7, text: 'Mira, son solo tres pasos: me escribes por WhatsApp, paso a buscar tu ropa, y en 48 horas la tienes de vuelta, dobladita y con rico olor.', v: V.como },
+      servicios: { cues: [[0.0,'srv-0'],[1.0,'srv-2'],[2.25,'srv-4'],[3.6,'srv-3'],[5.2,'']], side: 'right', dur: 8.0, text: 'Camisas, sábanas, plumones, cortinas, ¡hasta el traje del matrimonio! Lo que se lava o se plancha, yo me encargo.', v: V.servicios },
+      precios: { cues: [[1.2,'lpp-tabla'],[6.2,'cotizador!']], side: 'center', dur: 9.7, text: 'Acá están mis precios, clarito y sin letra chica. Suma tus prendas en el cotizador y mándame el pedido al tiro.', v: V.precios },
+      novedades: { cues: [[2.2,'lpp-chat']], side: 'right', dur: 9.5, text: '¿Y sabes qué? Ahora te respondo al instante, a cualquier hora. ¡Hasta un domingo en la noche!', v: V.novedades },
+      resenas: { cues: [[0.4,'lpp-reviews']], side: 'left', dur: 7.0, text: 'Ay, mira lo que dicen de mí. ¡Me sonrojo! Gracias a todas mis clientas.', v: V.resenas },
+      cobertura: { cues: [[0.9,'lpp-auto'],[2.3,'lpp-comunas'],[4.3,'lpp-wa-float']], side: 'right', dur: 7.0, text: 'Yo paso con mi auto morado por tu casa. ¿Estás en una de estas comunas? ¡Te agendo un retiro!', v: V.cobertura },
+      contacto: { side: 'right', silent: true, cues: [[0, 'lpp-wa-float']], dur: 6, text: '¡Toca el botón verde y escríbeme por WhatsApp! Te respondo al tiro.', v: V.cobertura }
+    };
+  }
+  onScroll() {
+    var ids = ['inicio', 'como', 'servicios', 'precios', 'novedades', 'resenas', 'cobertura', 'contacto'];
+    var current = 'inicio';
+    var mid = window.innerHeight * 0.55;
+    for (var i = 0; i < ids.length; i++) {
+      var el = document.getElementById(ids[i]);
+      if (el && el.getBoundingClientRect().top < mid) { current = ids[i]; }
+    }
+    if (current !== this.state.section && this.state.started) { this.goTo(current); }
+  }
+  clearSpot() {
+    (this.cueT || []).forEach(function (t) { clearTimeout(t); });
+    this.cueT = [];
+    var olds = document.querySelectorAll('.lpp-spot, .lpp-spot-img');
+    for (var i = 0; i < olds.length; i++) { olds[i].classList.remove('lpp-spot'); olds[i].classList.remove('lpp-spot-img'); }
+  }
+  spot(id) {
+    var olds = document.querySelectorAll('.lpp-spot, .lpp-spot-img');
+    for (var i = 0; i < olds.length; i++) { olds[i].classList.remove('lpp-spot'); olds[i].classList.remove('lpp-spot-img'); }
+    if (!id) { return; }
+    var force = id.charAt(id.length - 1) === '!';
+    if (force) { id = id.slice(0, -1); }
+    var el = document.getElementById(id);
+    if (!el) { return; }
+    el.classList.add(el.tagName === 'IMG' ? 'lpp-spot-img' : 'lpp-spot');
+    var r = el.getBoundingClientRect();
+    var visible = r.top >= 70 && r.bottom <= window.innerHeight - 20;
+    if (force || !visible) { try { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {} }
+  }
+  stopGuide() {
+    this.clearSpot();
+    clearInterval(this.typer); clearTimeout(this.walkT);
+    var g = document.getElementById('lpp-guide-vid');
+    if (g) { try { g.pause(); } catch (e) {} }
+  }
+  goTo(sec) {
+    var self = this;
+    var data = this.clips();
+    var prevSide = data[this.state.section].side;
+    var nextSide = data[sec].side;
+    var moving = prevSide !== nextSide;
+    this.stopGuide();
+    if (sec !== 'inicio') {
+      var h = document.getElementById('lpp-hero-vid');
+      if (h && !h.paused) { h.pause(); }
+    }
+    if (nextSide === 'off') { this.setState({ section: sec, phase: 'off', count: 0 }); return; }
+    if (this.state.guideHidden) { this.setState({ section: sec, phase: 'idle', count: 0 }); return; }
+    var pos = { off: 3, right: 2, center: 1, left: 0 };
+    var dir = pos[nextSide] < pos[prevSide] ? 'L' : 'R';
+    var dist = Math.abs(pos[nextSide] - pos[prevSide]);
+    var ms = moving ? (nextSide === 'right' && prevSide === 'off' ? 1900 : 1500 * dist + 300) : 200;
+    this.setState({ section: sec, count: 0, phase: moving ? 'walk' : 'idle', showBubble: !moving, walkDir: dir, guideMs: ms });
+    if (moving) {
+      setTimeout(function () {
+        var w = document.getElementById('lpp-walk-vid');
+        if (w) { w.muted = true; w.loop = true; w.playsInline = true; try { w.load(); var p = w.play(); if (p && p.catch) { p.catch(function () {}); } } catch (e) {} }
+      }, 30);
+    }
+    this.walkT = setTimeout(function () {
+      var w = document.getElementById('lpp-walk-vid'); if (w) { try { w.pause(); } catch (e) {} }
+      self.talk(sec);
+    }, ms);
+  }
+  talk(sec) {
+    var self = this;
+    if (this.state.guideHidden) { return; }
+    var c = this.clips()[sec];
+    if (c.silent) {
+      this.clearSpot();
+      this.setState({ phase: 'talk', showBubble: true, count: c.text.length });
+      (c.cues || []).forEach(function (q) { self.cueT.push(setTimeout(function () { self.spot(q[1]); }, q[0] * 1000 + 80)); });
+      return;
+    }
+    this.setState({ phase: 'talk', showBubble: true, count: 0 });
+    setTimeout(function () {
+      var g = document.getElementById('lpp-guide-vid');
+      if (g) {
+        g.muted = !self.state.soundOn; g.playsInline = true;
+        try { g.load(); var p = g.play(); if (p && p.catch) { p.catch(function () { g.muted = true; g.play(); }); } } catch (e) {}
+      }
+    }, 40);
+    var full = c.text;
+    this.clearSpot();
+    (c.cues || []).forEach(function (q) { self.cueT.push(setTimeout(function () { self.spot(q[1]); }, q[0] * 1000 + 80)); });
+    self.cueT.push(setTimeout(function () { self.spot(''); }, c.dur * 1000 + 600));
+    var step = Math.max(25, Math.round(c.dur * 1000 / full.length));
+    this.typer = setInterval(function () {
+      var n = self.state.count + 1;
+      if (n >= full.length) { n = full.length; clearInterval(self.typer); }
+      self.setState({ count: n });
+    }, step);
+  }
+  renderVals() {
+    var isMob = (typeof window !== 'undefined') && window.matchMedia && window.matchMedia('(max-width: 860px)').matches;
+    var self = this;
+    var fmt = function (n) { return '$' + Math.round(n).toLocaleString('es-CL'); };
+    var catalog = [
+      { id: 'pv', name: 'Prenda de vestir (lavado + planchado)', price: 2600 },
+      { id: 'pl', name: 'Solo planchado (prenda)', price: 1500 },
+      { id: 'sa', name: 'Sábana (lavado + planchado)', price: 2500 },
+      { id: 'to', name: 'Toalla de baño (lavado)', price: 1900 },
+      { id: 'cg', name: 'Cobertor grueso o plumón sintético', price: 15000 },
+      { id: 't2', name: 'Traje 2 piezas (tintorería)', price: 12500 }
+    ];
+    var qty = this.state.qty;
+    var subtotal = 0;
+    var lines = [];
+    var items = catalog.map(function (c) {
+      var q = qty[c.id] || 0;
+      subtotal += q * c.price;
+      if (q > 0) { lines.push(q + ' x ' + c.name); }
+      return {
+        name: c.name, priceText: fmt(c.price), qty: q,
+        incLabel: 'Agregar ' + c.name, decLabel: 'Quitar ' + c.name,
+        inc: function () { var n = Object.assign({}, self.state.qty); n[c.id] = (n[c.id] || 0) + 1; self.setState({ qty: n }); },
+        dec: function () { var n = Object.assign({}, self.state.qty); n[c.id] = Math.max(0, (n[c.id] || 0) - 1); self.setState({ qty: n }); }
+      };
+    });
+    var comunas = ['Colina', 'Lo Barnechea', 'Vitacura', 'Las Condes', 'Providencia', 'La Reina', 'Peñalolén', 'Ñuñoa', 'Macul', 'La Florida'];
+    var comuna = this.state.comuna;
+    var despacho = comuna === 'Colina' ? 1500 : 3500;
+    var total = subtotal + (subtotal > 0 ? despacho : 0);
+    var wa = function (t) { return 'https://wa.me/56953778977?text=' + encodeURIComponent(t); };
+    var msgCot = '¡Hola Pancha! Quiero agendar un retiro en ' + comuna + '.' + (lines.length ? ' Mi pedido: ' + lines.join(', ') + '. Total estimado: ' + fmt(total) + '.' : '');
+    var P = {
+      shirt: 'M8 3 4 6l2 4 2-1v12h8V9l2 1 2-4-4-3c0 1.7-1.8 3-4 3S8 4.7 8 3z',
+      bed: 'M3 18V8m0 6h18v4M3 11h6a2 2 0 0 1 2 2v1M21 18v-5a3 3 0 0 0-3-3h-7',
+      hanger: 'M12 6a2 2 0 1 1 2 2c-1 .4-2 1-2 2v1L3 17a1 1 0 0 0 .6 2h16.8a1 1 0 0 0 .6-2l-9-6',
+      curtain: 'M4 3h16M6 3v18M18 3v18M6 9c2 0 3 2 3 6M18 9c-2 0-3 2-3 6',
+      needle: 'M14 4l6 6M4 20l9-9M15 3c2 0 6 4 6 6L11 19 5 13z',
+      drop: 'M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z'
+    };
+    var servicios0 = [
+      { title: 'Planchado', desc: 'Camisas, blusas, pantalones y vestidos. Doblados o colgados.', price: 'Desde $1.500', icon: P.shirt, bg: '#FFE3EC' },
+      { title: 'Lavado y planchado', desc: 'La ropa del día a día, lavada, planchada y con rico aroma.', price: 'Desde $2.600', icon: P.drop, bg: '#FFE6D6' },
+      { title: 'Ropa de cama', desc: 'Sábanas, plumones, quilts, mantas, frazadas y almohadas.', price: 'Cobertor desde $9.200', icon: P.bed, bg: '#E6E0FF' },
+      { title: 'Tintorería', desc: 'Trajes, abrigos, vestidos de fiesta y de novia.', price: 'Desde $7.500', icon: P.hanger, bg: '#FFE3EC' },
+      { title: 'Cortinas y fundas', desc: 'Cortinas por m², cortinas de baño y fundas de terraza.', price: 'Desde $3.000', icon: P.curtain, bg: '#FFE6D6' },
+      { title: 'Reparación de ropa', desc: 'Bastas, cierres y arreglos para que tu ropa dure más.', price: 'Consúltame', icon: P.needle, bg: '#E6E0FF' }
+    ];
+    var reviews = [
+      { name: 'Francisca J.', text: 'Fueron a retirar en el día y horario acordado. Mis cubrecamas llegaron impeques, súper bien planchados y con rico aroma.' },
+      { name: 'Johanna M.', text: 'Mando camisas y pantalones y llegan impecables. Precio muy razonable y es demasiado cómodo que te vengan a buscar y a dejar la ropa.' },
+      { name: 'María Elena D.', text: 'Todo impecable y son ultra puntuales. Tenía cosas con manchas muy difíciles y se ven como nuevas.' },
+      { name: 'María José P.', text: 'Te retiran y te devuelven todo planchadito y doblado perfecto. Muy profesionales y muy puntuales. Por lejos el mejor dato.' },
+      { name: 'Lizeth C.', text: 'Siempre me llega todo impecable. Los sigo también por Instagram y sus tips de cuidados me han servido. Gracias Pancha Plancha.' },
+      { name: 'Claudia A.', text: 'Es mejor que la Pancha planche en vez que se acumulen las blusas y vestidos en el clóset sin poder usarlas.' }
+    ];
+    var gc = this.clips(); var gcur = gc[this.state.section] || gc.inicio;
+    var saf = this.isSafari; var ph = this.state.phase;
+    var WALK = { R: { webm: 'assets/walkL.webm', mp4: 'assets/walkL.mp4' }, L: { webm: 'assets/walkR.webm', mp4: 'assets/walkR.mp4' } };
+    var bgs = ['#FFC9DD', '#FFC59E', '#D9CFFF', '#FFE7B0', '#FFC9DD', '#FFC59E'];
+    return {
+      items: items,
+      comunas: comunas,
+      comuna: comuna,
+      setComuna: function (e) { self.setState({ comuna: e.target.value }); },
+      subtotalText: fmt(subtotal),
+      despachoText: subtotal > 0 ? fmt(despacho) : '—',
+      totalText: fmt(total),
+      waCotiza: wa(msgCot),
+      waAgenda: wa('¡Hola Pancha! Quiero agendar un retiro a domicilio.'),
+      waComuna: wa('¡Hola Pancha! ¿Llegas a mi comuna? Estoy en: '),
+      servicios: servicios0.map(function (x, i) { return Object.assign({ id: 'srv-' + i }, x); }),
+      reviews: reviews.map(function (r, i) { return { name: r.name, text: r.text, initial: r.name.charAt(0), bg: bgs[i] }; }),
+      guideX: this.state.guideHidden ? 'calc(100vw + 80px)' : (isMob ? (gcur.side === 'left' ? '2px' : (gcur.side === 'off' ? 'calc(100vw + 80px)' : 'calc(100vw - 205px)')) : gcur.side === 'right' ? 'calc(100vw - 285px)' : (gcur.side === 'left' ? '8px' : (gcur.side === 'center' ? 'calc(50vw - 230px)' : 'calc(100vw + 80px)'))),
+      bubbleSide: gcur.side === 'left' ? 'left' : 'right',
+      bubbleRadius: gcur.side === 'left' ? '16px 16px 16px 4px' : '16px 16px 4px 16px',
+      ctrlSide: 'left',
+      guideHidden: !!this.state.guideHidden,
+      hideGuide: function () { self.stopGuide(); self.setState({ guideHidden: true, guideMs: 900, phase: 'idle' }); },
+      showGuide: function () { self.setState({ guideHidden: false, guideMs: 900 }); setTimeout(function () { self.talk(self.state.section); }, 950); },
+      voiceIcon: this.state.soundOn ? 'M15.5 8.5a5 5 0 0 1 0 7' : 'M22 9l-6 6M16 9l6 6',
+      guideTyped: (function (t) { return t.length > 95 ? '…' + t.slice(t.length - 95) : t; })(gcur.text.slice(0, this.state.count)),
+      bodyClass: '',
+      guideDur: (this.state.guideMs / 1000) + 's',
+      walkOp: ph === 'walk' ? '1' : '0',
+      wsrc1: saf ? WALK[this.state.walkDir].mp4 : WALK[this.state.walkDir].webm,
+      wsrc2: saf ? WALK[this.state.walkDir].webm : WALK[this.state.walkDir].mp4,
+      vidOp: ph === 'walk' ? '0' : '1',
+      showBubble: this.state.showBubble && gcur.side !== 'off' && ph === 'talk' && !this.state.guideHidden,
+      hideBubble: function () { self.setState({ showBubble: false }); },
+      gsrc1: saf ? gcur.v.mp4 : gcur.v.webm, gtype1: saf ? 'video/mp4' : 'video/webm',
+      gsrc2: saf ? gcur.v.webm : gcur.v.mp4, gtype2: saf ? 'video/webm' : 'video/mp4',
+      guideRadius: saf ? '24px' : '0',
+      guideEnded: function () { self.setState({ phase: 'idle' }); },
+      voiceOn: this.state.soundOn ? 'true' : 'false',
+      voiceLabel: this.state.soundOn ? 'Silenciar a la Pancha' : 'Escuchar la voz de la Pancha',
+      toggleVoice: function () {
+        var on = !self.state.soundOn;
+        self.setState({ soundOn: on });
+        var g = document.getElementById('lpp-guide-vid');
+        if (on) { self.stopGuide(); self.talk(self.state.section); }
+        else if (g) { g.muted = true; }
+      },
+      hero1: saf ? gc.inicio.v.heroMp4 : gc.inicio.v.heroWebm, heroType1: saf ? 'video/mp4' : 'video/webm',
+      hero2: saf ? gc.inicio.v.heroWebm : gc.inicio.v.heroMp4, heroType2: saf ? 'video/webm' : 'video/mp4',
+      heroRadius: saf ? '32px' : '0',
+      heroX: this.state.heroX,
+      showGate: !this.state.started,
+      enterWithSound: function () { self.startIntro(true); },
+      enterSilent: function () { self.startIntro(false); },
+      hw1: saf ? WALK.L.mp4 : WALK.L.webm, hw2: saf ? WALK.L.webm : WALK.L.mp4,
+      heroWalkOp: this.state.heroPhase === 'walk' ? '1' : '0',
+      heroTalkOp: this.state.heroPhase === 'walk' ? '0' : '1',
+      heroBtnDisp: this.state.heroPhase === 'walk' ? 'none' : 'block',
+      heroText: this.state.heroPhase === 'walk' ? '…' : (this.state.heroPhase === 'talk' ? gc.inicio.text.slice(0, this.state.heroCount) : 'Mándame tu canasto del planchado. ¡Yo me encargo!'),
+      heroBubbleOp: this.state.heroPhase === 'walk' ? '0' : '1',
+      heroBtn: !this.state.soundOn ? 'Activar sonido' : (this.state.heroPhase === 'done' ? 'Escuchar de nuevo' : 'Escuchar a la Pancha'),
+      heroAskClass: this.state.soundOn ? '' : 'lpp-ask',
+      heroEnded: function () { self.setState({ heroPlaying: false, heroPhase: 'done' }); },
+      playHeroVoice: function () { self.setState({ soundOn: true }); self.heroTalk(true); }
+    };
+  }
+}
+</script>
+<script src="dc-mini.js"></script>
+</body>
+</html>
