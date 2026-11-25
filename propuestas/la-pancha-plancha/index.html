@@ -16,13 +16,13 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="assets/logo-lpp.svg">
 
-<link rel="preload" href="assets/fonts/fraunces-latin-800-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/nunito-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/nunito-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<style>@font-face{font-family:Fraunces;font-style:italic;font-weight:700;font-display:swap;src:url(assets/fonts/fraunces-latin-700-italic.woff2) format("woff2")}@font-face{font-family:Fraunces;font-style:italic;font-weight:800;font-display:swap;src:url(assets/fonts/fraunces-latin-800-italic.woff2) format("woff2")}@font-face{font-family:Fraunces;font-style:normal;font-weight:700;font-display:swap;src:url(assets/fonts/fraunces-latin-700-normal.woff2) format("woff2")}@font-face{font-family:Fraunces;font-style:normal;font-weight:800;font-display:swap;src:url(assets/fonts/fraunces-latin-800-normal.woff2) format("woff2")}@font-face{font-family:Nunito;font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/nunito-latin-400-normal.woff2) format("woff2")}@font-face{font-family:Nunito;font-style:normal;font-weight:600;font-display:swap;src:url(assets/fonts/nunito-latin-600-normal.woff2) format("woff2")}@font-face{font-family:Nunito;font-style:normal;font-weight:700;font-display:swap;src:url(assets/fonts/nunito-latin-700-normal.woff2) format("woff2")}@font-face{font-family:Nunito;font-style:normal;font-weight:800;font-display:swap;src:url(assets/fonts/nunito-latin-800-normal.woff2) format("woff2")}</style>
+<style>@font-face{font-family:"Nunito";font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/nunito-latin-400-normal.woff2) format("woff2")}@font-face{font-family:"Nunito";font-style:normal;font-weight:600;font-display:swap;src:url(assets/fonts/nunito-latin-600-normal.woff2) format("woff2")}@font-face{font-family:"Nunito";font-style:normal;font-weight:700;font-display:swap;src:url(assets/fonts/nunito-latin-700-normal.woff2) format("woff2")}@font-face{font-family:"Nunito";font-style:normal;font-weight:800;font-display:swap;src:url(assets/fonts/nunito-latin-800-normal.woff2) format("woff2")}@font-face{font-family:"Nunito";font-style:normal;font-weight:900;font-display:swap;src:url(assets/fonts/nunito-latin-900-normal.woff2) format("woff2")}@font-face{font-family:"Caveat Brush";font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/caveat-brush-latin-400-normal.woff2) format("woff2")}@font-face{font-family:"Caveat";font-style:normal;font-weight:700;font-display:swap;src:url(assets/fonts/caveat-latin-700-normal.woff2) format("woff2")}</style>
 <style>
-body{margin:0;background:#FFF4EA;font-family:Nunito,system-ui,sans-serif;color:#3B1F14}
+body{margin:0;background:#FFFAF6;font-family:Nunito,system-ui,sans-serif;color:#1C2541}
 button{font-family:Nunito,system-ui,sans-serif}
-a{color:#C2410C}a:hover{color:#7C2D12}
+a{color:#E8462F}a:hover{color:#B8301E}
 @keyframes lppBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 @keyframes lppPop{0%{transform:scale(.6);opacity:0}100%{transform:scale(1);opacity:1}}
 .lpp-bob{animation:lppBob 4.5s ease-in-out infinite}
@@ -45,7 +45,7 @@ a{color:#C2410C}a:hover{color:#7C2D12}
 @media (prefers-reduced-motion: reduce){.lpp-walk,.lpp-talk,.lpp-idle,.lpp-enter,.lpp-wave{animation:none}}
 
 /* ===== Capa visual tecnológica ===== */
-@keyframes lppAsk{0%{box-shadow:0 0 0 0 rgba(255,209,102,.9),0 6px 0 #160A05}70%{box-shadow:0 0 0 16px rgba(255,209,102,0),0 6px 0 #160A05}100%{box-shadow:0 0 0 0 rgba(255,209,102,0),0 6px 0 #160A05}}
+@keyframes lppAsk{0%{box-shadow:0 0 0 0 rgba(255,209,102,.9),0 6px 0 #0E1430}70%{box-shadow:0 0 0 16px rgba(255,209,102,0),0 6px 0 #0E1430}100%{box-shadow:0 0 0 0 rgba(255,209,102,0),0 6px 0 #0E1430}}
 .lpp-ask{animation:lppAsk 1.4s ease-out infinite}
 @keyframes lppEngine{0%,100%{transform:translateY(0) rotate(0deg)}25%{transform:translateY(-3px) rotate(-.4deg)}50%{transform:translateY(0) rotate(0deg)}75%{transform:translateY(-2px) rotate(.4deg)}}
 .lpp-engine{animation:lppEngine .9s ease-in-out infinite;transform-origin:50% 90%}
@@ -61,15 +61,15 @@ a{color:#C2410C}a:hover{color:#7C2D12}
 #lpp-wa-float.lpp-wa-attn{animation:lppWaJump 1.1s ease-in-out infinite,lppWaRing 1.1s ease-out infinite!important;scale:1.22}
 @keyframes lppTourIn{from{opacity:0;translate:-50% -10px}to{opacity:1;translate:-50% 0}}
 .lpp-tourbar{animation:lppTourIn .4s ease-out both}
-#lpp-wa-tag{position:fixed;right:10px;bottom:104px;z-index:33;background:#3B1F14;color:#FFF4EA;font:800 15px/1 Nunito,system-ui,sans-serif;padding:11px 15px;border-radius:999px;box-shadow:0 12px 24px -12px rgba(59,31,20,.7);white-space:nowrap;pointer-events:none;opacity:0;translate:0 10px;transition:opacity .3s ease,translate .3s ease}
-#lpp-wa-tag::after{content:"";position:absolute;right:30px;bottom:-6px;width:12px;height:12px;background:#3B1F14;rotate:45deg;border-radius:2px}
+#lpp-wa-tag{position:fixed;right:10px;bottom:104px;z-index:33;background:#1C2541;color:#FFFAF6;font:800 15px/1 Nunito,system-ui,sans-serif;padding:11px 15px;border-radius:999px;box-shadow:0 12px 24px -12px rgba(28,37,65,.7);white-space:nowrap;pointer-events:none;opacity:0;translate:0 10px;transition:opacity .3s ease,translate .3s ease}
+#lpp-wa-tag::after{content:"";position:absolute;right:30px;bottom:-6px;width:12px;height:12px;background:#1C2541;rotate:45deg;border-radius:2px}
 #lpp-wa-tag.on{opacity:1;translate:0 0}
-@keyframes lppSpotRing{0%{box-shadow:0 0 0 4px #FF7AAC,0 0 0 10px rgba(255,122,172,.35),0 30px 60px -20px rgba(217,72,28,.6)}50%{box-shadow:0 0 0 4px #FF7AAC,0 0 0 22px rgba(255,122,172,0),0 30px 60px -20px rgba(217,72,28,.6)}100%{box-shadow:0 0 0 4px #FF7AAC,0 0 0 10px rgba(255,122,172,.35),0 30px 60px -20px rgba(217,72,28,.6)}}
+@keyframes lppSpotRing{0%{box-shadow:0 0 0 4px #F2553D,0 0 0 10px rgba(242,85,61,.35),0 30px 60px -20px rgba(232,70,47,.6)}50%{box-shadow:0 0 0 4px #F2553D,0 0 0 22px rgba(242,85,61,0),0 30px 60px -20px rgba(232,70,47,.6)}100%{box-shadow:0 0 0 4px #F2553D,0 0 0 10px rgba(242,85,61,.35),0 30px 60px -20px rgba(232,70,47,.6)}}
 .lpp-spot{position:relative;z-index:6;scale:1.035;transition:scale .35s cubic-bezier(.2,.8,.2,1);animation:lppSpotRing 1.4s ease-in-out infinite!important}
-.lpp-spot-img{filter:drop-shadow(0 0 18px rgba(255,122,172,.95)) drop-shadow(0 0 4px #FF7AAC);scale:1.05;transition:scale .35s ease,filter .35s ease}
+.lpp-spot-img{filter:drop-shadow(0 0 18px rgba(242,85,61,.95)) drop-shadow(0 0 4px #F2553D);scale:1.05;transition:scale .35s ease,filter .35s ease}
 
-.logo3d{transition:transform .35s cubic-bezier(.2,.8,.2,1),filter .35s;filter:drop-shadow(0 6px 10px rgba(59,31,20,.12))}
-.logo3d:hover{transform:translateY(-2px) scale(1.04);filter:drop-shadow(0 10px 14px rgba(59,31,20,.18))}
+.logo3d{transition:transform .35s cubic-bezier(.2,.8,.2,1),filter .35s;filter:drop-shadow(0 6px 10px rgba(28,37,65,.12))}
+.logo3d:hover{transform:translateY(-2px) scale(1.04);filter:drop-shadow(0 10px 14px rgba(28,37,65,.18))}
 @keyframes lppLogo{0%,100%{transform:perspective(600px) rotateX(6deg) rotateY(-5deg)}50%{transform:perspective(600px) rotateX(4deg) rotateY(5deg)}}
 
 @property --lppA{syntax:'<angle>';inherits:false;initial-value:0deg}
@@ -77,14 +77,14 @@ a{color:#C2410C}a:hover{color:#7C2D12}
 @keyframes lppRise{0%{transform:translateY(0) scale(.6);opacity:0}10%{opacity:.9}100%{transform:translateY(-620px) scale(1.1);opacity:0}}
 @keyframes lppOrb{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.15)}}
 @keyframes lppMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes lppPulse{0%{box-shadow:0 0 0 0 rgba(217,72,28,.55)}100%{box-shadow:0 0 0 10px rgba(217,72,28,0)}}
+@keyframes lppPulse{0%{box-shadow:0 0 0 0 rgba(232,70,47,.55)}100%{box-shadow:0 0 0 10px rgba(232,70,47,0)}}
 @keyframes lppShine{0%{transform:translateX(-120%) skewX(-20deg)}100%{transform:translateX(220%) skewX(-20deg)}}
 @keyframes lppFloatChip{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-12px) rotate(var(--r,0deg))}}
 @keyframes lppDash{to{background-position:0 40px}}
 @keyframes lppType{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
 @keyframes lppRvIn{from{opacity:0;translate:0 36px;scale:.98}to{opacity:1;translate:0 0;scale:1}}
 
-.lpp-dots{background-image:radial-gradient(rgba(59,31,20,.09) 1.2px,transparent 1.3px);background-size:22px 22px}
+.lpp-dots{background-image:radial-gradient(rgba(28,37,65,.09) 1.2px,transparent 1.3px);background-size:22px 22px}
 .lpp-dots-light{background-image:radial-gradient(rgba(255,255,255,.22) 1.2px,transparent 1.3px);background-size:22px 22px}
 .lpp-grid-light{background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:44px 44px}
 
@@ -94,49 +94,49 @@ a{color:#C2410C}a:hover{color:#7C2D12}
 .b3d:hover::after{animation:lppShine .9s ease}
 .b3d:hover{transform:translateY(-2px);filter:saturate(1.08)}
 .b3d:active{transform:translateY(4px)}
-.b3d:focus-visible{outline:3px solid #8E7CF0;outline-offset:3px}
-.b3d-dark{background:linear-gradient(180deg,#5A3424 0%,#3B1F14 55%,#2C160D 100%);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 6px 0 #160A05,0 16px 26px -10px rgba(59,31,20,.7)}
-.b3d-dark:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 8px 0 #160A05,0 20px 30px -10px rgba(59,31,20,.7)}
-.b3d-dark:active{box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 2px 0 #160A05,0 6px 12px -6px rgba(59,31,20,.7)}
-.b3d-white{background:linear-gradient(180deg,#FFFFFF 0%,#FFF4EC 100%);color:#3B1F14;box-shadow:inset 0 1px 0 #fff,0 6px 0 #E3BBA4,0 16px 26px -12px rgba(59,31,20,.45)}
-.b3d-white:hover{box-shadow:inset 0 1px 0 #fff,0 8px 0 #E3BBA4,0 20px 30px -12px rgba(59,31,20,.45)}
-.b3d-white:active{box-shadow:inset 0 1px 0 #fff,0 2px 0 #E3BBA4,0 6px 12px -6px rgba(59,31,20,.4)}
-.b3d-orange{background:linear-gradient(180deg,#F27247 0%,#D9481C 60%,#C23C14 100%);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 0 #8E2A0E,0 16px 26px -10px rgba(217,72,28,.6)}
-.b3d-orange:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 8px 0 #8E2A0E,0 20px 30px -10px rgba(217,72,28,.6)}
-.b3d-orange:active{box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 2px 0 #8E2A0E,0 6px 12px -6px rgba(217,72,28,.6)}
+.b3d:focus-visible{outline:3px solid #2BA3B4;outline-offset:3px}
+.b3d-dark{background:linear-gradient(180deg,#2D3A63 0%,#1C2541 55%,#1C2541 100%);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 6px 0 #0E1430,0 16px 26px -10px rgba(28,37,65,.7)}
+.b3d-dark:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 8px 0 #0E1430,0 20px 30px -10px rgba(28,37,65,.7)}
+.b3d-dark:active{box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 2px 0 #0E1430,0 6px 12px -6px rgba(28,37,65,.7)}
+.b3d-white{background:linear-gradient(180deg,#FFFFFF 0%,#FFFFFF 100%);color:#1C2541;box-shadow:inset 0 1px 0 #fff,0 6px 0 #F0E4DD,0 16px 26px -12px rgba(28,37,65,.45)}
+.b3d-white:hover{box-shadow:inset 0 1px 0 #fff,0 8px 0 #F0E4DD,0 20px 30px -12px rgba(28,37,65,.45)}
+.b3d-white:active{box-shadow:inset 0 1px 0 #fff,0 2px 0 #F0E4DD,0 6px 12px -6px rgba(28,37,65,.4)}
+.b3d-orange{background:linear-gradient(180deg,#F2553D 0%,#E8462F 60%,#D63A24 100%);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 0 #B8301E,0 16px 26px -10px rgba(232,70,47,.6)}
+.b3d-orange:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 8px 0 #B8301E,0 20px 30px -10px rgba(232,70,47,.6)}
+.b3d-orange:active{box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 2px 0 #B8301E,0 6px 12px -6px rgba(232,70,47,.6)}
 .b3d-green{background:linear-gradient(180deg,#2FB26A 0%,#1E7F46 70%,#196B3B 100%);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 6px 0 #0D4425,0 16px 26px -10px rgba(30,127,70,.6)}
 .b3d-green:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 8px 0 #0D4425,0 20px 30px -10px rgba(30,127,70,.6)}
 .b3d-green:active{box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 2px 0 #0D4425,0 6px 12px -6px rgba(30,127,70,.6)}
 .b3d-sq{border-radius:14px}
 
 /* tarjetas */
-.glass{background:linear-gradient(180deg,#FFFFFF,#FFFAF6) padding-box,linear-gradient(140deg,rgba(255,122,172,.55),rgba(255,197,158,.35) 40%,rgba(142,124,240,.45)) border-box;border:1.5px solid transparent;box-shadow:inset 0 1px 0 #fff,0 2px 4px rgba(59,31,20,.04),0 22px 44px -26px rgba(59,31,20,.38);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
-.glass:hover{transform:perspective(900px) rotateX(3deg) rotateY(-3deg) translateY(-6px);box-shadow:inset 0 1px 0 #fff,0 2px 4px rgba(59,31,20,.04),0 34px 60px -28px rgba(142,124,240,.55),0 0 0 4px rgba(255,122,172,.12)}
-.tile3d{box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -3px 0 rgba(59,31,20,.12),0 8px 14px -8px rgba(59,31,20,.5)}
-.sphere{background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.85) 0 8%,transparent 30%),var(--c,#FF7AAC);box-shadow:inset 0 -6px 10px rgba(0,0,0,.18),0 10px 18px -8px rgba(59,31,20,.6)}
+.glass{background:linear-gradient(180deg,#FFFFFF,#FFFAF6) padding-box,linear-gradient(140deg,rgba(242,85,61,.55),rgba(255,210,196,.35) 40%,rgba(43,163,180,.45)) border-box;border:1.5px solid transparent;box-shadow:inset 0 1px 0 #fff,0 2px 4px rgba(28,37,65,.04),0 22px 44px -26px rgba(28,37,65,.38);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
+.glass:hover{transform:perspective(900px) rotateX(3deg) rotateY(-3deg) translateY(-6px);box-shadow:inset 0 1px 0 #fff,0 2px 4px rgba(28,37,65,.04),0 34px 60px -28px rgba(43,163,180,.55),0 0 0 4px rgba(242,85,61,.12)}
+.tile3d{box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -3px 0 rgba(28,37,65,.12),0 8px 14px -8px rgba(28,37,65,.5)}
+.sphere{background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.85) 0 8%,transparent 30%),var(--c,#F2553D);box-shadow:inset 0 -6px 10px rgba(0,0,0,.18),0 10px 18px -8px rgba(28,37,65,.6)}
 .neon{position:relative;isolation:isolate}
-.neon::before{content:"";position:absolute;inset:-3px;padding:3px;border-radius:inherit;background:conic-gradient(from var(--lppA),#FF7AAC,#8E7CF0,#FFC59E,#D9481C,#FF7AAC);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);pointer-events:none;animation:lppSpin 6s linear infinite}
-.neon{box-shadow:0 30px 60px -30px rgba(142,124,240,.55),0 0 40px -10px rgba(255,122,172,.45)!important}
-.chip{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;font-weight:800;font-size:13px;letter-spacing:.8px;text-transform:uppercase;background:rgba(255,255,255,.75);border:1px solid rgba(217,72,28,.25);color:#C23C14;backdrop-filter:blur(8px)}
-.chip i{width:8px;height:8px;border-radius:50%;background:#D9481C;animation:lppPulse 1.6s ease-out infinite}
-.chip-dark{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:#FFC9DD}
+.neon::before{content:"";position:absolute;inset:-3px;padding:3px;border-radius:inherit;background:conic-gradient(from var(--lppA),#F2553D,#2BA3B4,#FFD2C4,#E8462F,#F2553D);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);pointer-events:none;animation:lppSpin 6s linear infinite}
+.neon{box-shadow:0 30px 60px -30px rgba(43,163,180,.55),0 0 40px -10px rgba(242,85,61,.45)!important}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;font-weight:800;font-size:13px;letter-spacing:.8px;text-transform:uppercase;background:rgba(255,255,255,.75);border:1px solid rgba(232,70,47,.25);color:#D63A24;backdrop-filter:blur(8px)}
+.chip i{width:8px;height:8px;border-radius:50%;background:#E8462F;animation:lppPulse 1.6s ease-out infinite}
+.chip-dark{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:#FFD2C4}
 .chip-dark i{background:#FFD166}
 .bubble-soap{position:absolute;bottom:-40px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.95) 0 6%,rgba(255,255,255,.25) 18%,rgba(255,255,255,.08) 55%,rgba(255,255,255,.35) 70%,transparent 72%);border:1px solid rgba(255,255,255,.55);animation:lppRise linear infinite;pointer-events:none}
 .orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;animation:lppOrb 12s ease-in-out infinite;pointer-events:none}
-.float-chip{position:absolute;z-index:3;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:18px;background:rgba(255,255,255,.82);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.9);box-shadow:0 18px 30px -18px rgba(59,31,20,.6);font-weight:800;animation:lppFloatChip 5s ease-in-out infinite}
+.float-chip{position:absolute;z-index:3;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:18px;background:rgba(255,255,255,.82);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.9);box-shadow:0 18px 30px -18px rgba(28,37,65,.6);font-weight:800;animation:lppFloatChip 5s ease-in-out infinite}
 .marquee{display:flex;width:max-content;animation:lppMarquee 32s linear infinite}
 .marquee:hover{animation-play-state:paused}
-.steps-line{position:absolute;left:49px;top:40px;bottom:40px;width:3px;border-radius:3px;background:repeating-linear-gradient(180deg,#FF7AAC 0 10px,transparent 10px 20px);background-size:3px 40px;animation:lppDash 1.2s linear infinite;opacity:.7}
+.steps-line{position:absolute;left:49px;top:40px;bottom:40px;width:3px;border-radius:3px;background:repeating-linear-gradient(180deg,#F2553D 0 10px,transparent 10px 20px);background-size:3px 40px;animation:lppDash 1.2s linear infinite;opacity:.7}
 .phone3d{transform:perspective(1200px) rotateY(-14deg) rotateX(4deg);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
 .phone3d:hover{transform:perspective(1200px) rotateY(-4deg) rotateX(1deg)}
 .typing span{display:inline-block;width:7px;height:7px;margin:0 2px;border-radius:50%;background:#8A8A8A;animation:lppType 1.2s infinite}
 .typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}
-.stat-num{background:linear-gradient(180deg,#FFFFFF,#FF9DC2);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat-num{background:linear-gradient(180deg,#FFFFFF,#FFB7A6);-webkit-background-clip:text;background-clip:text;color:transparent}
 .glow-top{position:relative}
-.glow-top::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,#FF7AAC,#8E7CF0,#FFC59E,transparent)}
-.header-glass{background:rgba(255,244,234,.78)!important;backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3)}
+.glow-top::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,#F2553D,#2BA3B4,#FFD2C4,transparent)}
+.header-glass{background:rgba(255,255,255,.78)!important;backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3)}
 .nav-link{position:relative}
-.nav-link::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;border-radius:2px;background:#D9481C;transform:scaleX(0);transition:transform .25s ease}
+.nav-link::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;border-radius:2px;background:#E8462F;transform:scaleX(0);transition:transform .25s ease}
 .nav-link:hover::after{transform:scaleX(1)}
 @supports (animation-timeline: view()){
   .rv{animation:lppRvIn linear both;animation-timeline:view();animation-range:entry 0% entry 70%}
@@ -174,13 +174,191 @@ a{color:#C2410C}a:hover{color:#7C2D12}
 .lpp-mob-only{display:none}
 .lpp-sub-mob{display:none}
 @media (max-width: 860px){
-  .lpp-tourbar{left:auto !important;right:10px;top:78px !important;translate:none !important;padding:3px !important;background:rgba(59,31,20,.35) !important;animation:none !important}
+  .lpp-tourbar{left:auto !important;right:10px;top:78px !important;translate:none !important;padding:3px !important;background:rgba(28,37,65,.35) !important;animation:none !important}
   .lpp-tour-label{display:none !important}
 }
 @media (max-width: 860px){
   .lpp-guide-inner .lpp-guide-bubble{display:none !important}
-  .lpp-sub-mob{display:block;position:fixed;bottom:150px;z-index:31;max-width:min(260px,calc(100vw - 24px));background:rgba(255,255,255,.97);color:#3B1F14;padding:8px 12px;font:700 14px/1.32 Nunito,system-ui,sans-serif;box-shadow:0 10px 22px -12px rgba(59,31,20,.6);border:1px solid rgba(217,72,28,.18);pointer-events:none;animation:lppPop .3s ease-out both}
+  .lpp-sub-mob{display:block;position:fixed;bottom:150px;z-index:31;max-width:min(260px,calc(100vw - 24px));background:rgba(255,255,255,.97);color:#1C2541;padding:8px 12px;font:700 14px/1.32 Nunito,system-ui,sans-serif;box-shadow:0 10px 22px -12px rgba(28,37,65,.6);border:1px solid rgba(232,70,47,.18);pointer-events:none;animation:lppPop .3s ease-out both}
 }
+
+/* ===== Estilo de la maqueta de la clienta: navy + coral + turquesa, sans pesada + manuscrita ===== */
+body{background:#FFFAF6;color:#1C2541}
+.scr{font-family:"Caveat Brush",Caveat,cursive;font-weight:400;color:#F2553D;font-size:1.14em;letter-spacing:0;line-height:.9}
+.scr-light{color:#FF8E78}
+.hand{font-family:Caveat,"Caveat Brush",cursive;font-weight:700}
+.lpp-dots{background-image:none}
+.lpp-dots-light{background-image:none}
+.header-glass{background:rgba(255,255,255,.9)!important}
+.nav-link{color:#1C2541}
+.nav-link::after{background:#F2553D}
+.glow-top::before{background:linear-gradient(90deg,transparent,#F2553D,#2BA3B4,transparent)}
+.stat-num{background:linear-gradient(180deg,#FFFFFF,#FFC2B5);-webkit-background-clip:text;background-clip:text}
+
+/* botones planos tipo píldora */
+.b3d{border-radius:999px;transition:transform .15s ease,background-color .15s ease,box-shadow .15s ease;font-weight:800}
+.b3d::after{display:none}
+.b3d:hover{transform:translateY(-1px);filter:none}
+.b3d:active{transform:translateY(1px)}
+.b3d:focus-visible{outline:3px solid #2BA3B4}
+.b3d-orange{background:#F2553D;color:#fff;box-shadow:0 14px 26px -14px rgba(242,85,61,.85)}
+.b3d-orange:hover{background:#E8462F;box-shadow:0 16px 30px -14px rgba(242,85,61,.9)}
+.b3d-orange:active{box-shadow:0 6px 12px -8px rgba(242,85,61,.9)}
+.b3d-dark{background:#1C2541;color:#fff;box-shadow:0 14px 26px -14px rgba(28,37,65,.75)}
+.b3d-dark:hover{background:#2A3560;box-shadow:0 16px 30px -14px rgba(28,37,65,.8)}
+.b3d-dark:active{box-shadow:0 6px 12px -8px rgba(28,37,65,.8)}
+.b3d-white{background:#FFFFFF;color:#E8462F;box-shadow:inset 0 0 0 1.5px #F2553D}
+.b3d-white:hover{background:#FFF1EC;box-shadow:inset 0 0 0 1.5px #F2553D}
+.b3d-white:active{box-shadow:inset 0 0 0 1.5px #F2553D}
+.b3d-green{background:#22B35E;color:#fff;box-shadow:0 14px 26px -14px rgba(34,179,94,.85)}
+.b3d-green:hover{background:#1CA053;box-shadow:0 16px 30px -14px rgba(34,179,94,.9)}
+.b3d-green:active{box-shadow:0 6px 12px -8px rgba(34,179,94,.9)}
+.b3d-sq{border-radius:12px}
+
+/* tarjetas blancas suaves */
+.glass{background:#FFFFFF;border:1px solid #F1E6E0;box-shadow:0 18px 40px -30px rgba(28,37,65,.45)}
+.glass:hover{transform:translateY(-4px);box-shadow:0 26px 50px -30px rgba(28,37,65,.5)}
+.neon::before{display:none}
+.neon{box-shadow:0 30px 60px -34px rgba(28,37,65,.45)!important}
+.chip{background:#FFE9E3;border:none;color:#E8462F;backdrop-filter:none;font-size:12.5px;letter-spacing:1.2px}
+.chip i{background:#F2553D}
+.chip-dark{background:rgba(255,255,255,.12);color:#FFD2C4}
+.chip-paso{font-size:13px;padding:8px 16px}
+.tile3d{box-shadow:inset 0 -2px 0 rgba(28,37,65,.08),0 6px 12px -8px rgba(28,37,65,.4)}
+
+/* ===== cotizador de 3 pasos ===== */
+.cot-grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:44px;align-items:start}
+.cot-main{display:flex;flex-direction:column;gap:18px;min-width:0}
+.cot-side{position:sticky;top:96px;display:flex;flex-direction:column;min-width:0}
+.cot-pose{position:relative;height:240px;margin-bottom:-26px;z-index:1;display:flex;justify-content:center;pointer-events:none}
+.cot-pose img{width:230px;height:240px;object-fit:cover;object-position:top;-webkit-mask-image:linear-gradient(#000 72%,transparent);mask-image:linear-gradient(#000 72%,transparent);margin-right:110px}
+.cot-note{position:absolute;right:0;top:18px;width:170px;margin:0;transform:rotate(-7deg);color:#2BA3B4;font-size:30px;line-height:.95;text-align:center}
+.cot-card{position:relative;z-index:2;background:#FFFFFF;border-radius:28px;padding:26px;border:1px solid #F1E6E0;box-shadow:0 30px 60px -32px rgba(28,37,65,.4);display:flex;flex-direction:column;gap:10px}
+.scrib{display:inline-block;width:22px;height:16px;vertical-align:top;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 16'%3E%3Cpath d='M3 12l7-4M5 5l5-3M13 13l7-2' stroke='%23F2553D' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat}
+.est-line{display:flex;justify-content:space-between;gap:12px;font-size:15px;color:#5B6478}
+.est-line span:last-child{color:#1C2541;font-weight:700;text-align:right}
+.est-total{font-weight:900;font-size:52px;line-height:1;color:#F2553D;letter-spacing:-.03em}
+.est-info{display:flex;gap:10px;align-items:flex-start;background:#FDF3DC;border-radius:14px;padding:12px 14px;font-size:13.5px;line-height:1.4;color:#5E4B17}
+.est-info svg{flex:none;margin-top:1px}
+.est-btn{width:100%;box-sizing:border-box;padding:16px 18px;font-size:17px;text-align:center}
+.est-foot{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.4;color:#5B6478;margin:2px 0 0}
+.est-foot svg{flex:none}
+.est-priv{font-size:12px;line-height:1.4;color:#8A90A0;margin:2px 0 0;text-align:center}
+.est-priv a{color:#E8462F;font-weight:700}
+.stepper{list-style:none;margin:6px 0 4px;padding:0;display:flex}
+.stp{flex:1;display:grid;grid-template-columns:46px 1fr;grid-template-rows:42px auto;align-items:center;row-gap:4px}
+.stp-dot{width:40px;height:40px;box-sizing:border-box;border-radius:50%;border:2px solid #D9DCE3;background:#FFFFFF;display:flex;align-items:center;justify-content:center;font-weight:800;color:#8A90A0;font-size:16px}
+.stp-bar{height:4px;border-radius:4px;background:#E7E9EE;margin-right:12px}
+.stp-lbl{grid-column:2;font-size:14px;color:#8A90A0;font-weight:600}
+.stp.cur .stp-dot{background:#F2553D;border-color:#F2553D;color:#FFFFFF;box-shadow:0 8px 16px -8px rgba(242,85,61,.9)}
+.stp.cur .stp-bar{background:linear-gradient(90deg,#F2553D 55%,#E7E9EE 55%)}
+.stp.cur .stp-lbl{color:#1C2541;font-weight:800}
+.stp.done .stp-dot{background:#2BA3B4;border-color:#2BA3B4}
+.stp.done .stp-bar{background:#2BA3B4}
+.stp.done .stp-lbl{color:#1C2541}
+.stp-ok{display:none}.stp.done .stp-ok{display:block}.stp.done b{display:none}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.svc-card{position:relative;text-align:left;display:flex;flex-wrap:wrap;align-items:center;gap:6px;background:#FFFFFF;border:1.5px solid #EFE4DE;border-radius:20px;padding:18px 18px 20px;cursor:pointer;font-family:Nunito,system-ui,sans-serif;color:#1C2541;transition:border-color .2s,background-color .2s,box-shadow .2s,transform .2s}
+.svc-card:hover{transform:translateY(-2px);border-color:#F6B3A5}
+.svc-card strong{flex-basis:100%;font-size:19px;font-weight:900;margin-top:8px}
+.svc-desc{flex-basis:100%;font-size:14px;line-height:1.4;color:#5B6478}
+.svc-ico{width:64px;height:64px;border-radius:50%;background:#FFE9E3;display:flex;align-items:center;justify-content:center}
+.svc-plus{color:#F2553D;font-weight:900;font-size:20px}
+.svc-radio{position:absolute;right:16px;top:16px;width:20px;height:20px;box-sizing:border-box;border-radius:50%;border:2px solid #C9CDD6;background:#FFFFFF}
+.svc-card.on{border-color:#2BA3B4;background:#F2FAFB;box-shadow:0 0 0 3px rgba(43,163,180,.16)}
+.svc-card.on .svc-radio{border-color:#2BA3B4;background:#2BA3B4;box-shadow:inset 0 0 0 3px #FFFFFF}
+.svc-card:focus-visible{outline:3px solid #2BA3B4;outline-offset:2px}
+.cot-h3{margin:0;font-weight:900;font-size:24px;letter-spacing:-.01em;color:#1C2541;font-family:Nunito,system-ui,sans-serif}
+.cot-h3i{display:flex;align-items:center;gap:10px;font-size:20px}
+.cot-hi{width:38px;height:38px;border-radius:50%;background:#FFE9E3;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.cot-hi-lg{width:56px;height:56px}
+.cot-head,.cot-row{display:grid;grid-template-columns:52px minmax(0,1.6fr) minmax(0,1fr) 124px minmax(0,1fr) 36px;align-items:center;gap:12px}
+.cot-head{font-size:13px;color:#8A90A0;font-weight:700;padding:0 15px;margin-bottom:-8px}
+.cot-row{background:#FFFFFF;border:1px solid #F0E6E0;border-radius:16px;padding:10px 14px;box-shadow:0 8px 18px -16px rgba(28,37,65,.45)}
+.cot-ico{width:52px;height:52px;border-radius:12px;background:#FFF1EC;display:flex;align-items:center;justify-content:center}
+.cot-name{font-weight:800;font-size:16px;display:flex;flex-direction:column;min-width:0}
+.cot-unit-m{display:none;font-weight:600;font-size:13px;color:#5B6478}
+.cot-unit{font-size:15px}
+.cot-qty{display:inline-flex;align-items:stretch;justify-content:space-between;border:1px solid #E5E7EC;border-radius:12px;background:#F7F8FA;overflow:hidden;width:124px;box-sizing:border-box}
+.cot-qty button{width:40px;height:40px;border:none;background:transparent;font-size:20px;color:#1C2541;cursor:pointer;font-family:Nunito,sans-serif}
+.cot-qty button:hover{background:#FFE9E3;color:#F2553D}
+.cot-qty span{flex:1;text-align:center;font-weight:800;background:#FFFFFF;display:flex;align-items:center;justify-content:center}
+.cot-subt{font-weight:900;font-size:16px}
+.cot-del{border:none;background:transparent;color:#A3A9B6;cursor:pointer;width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.cot-del:hover{background:#FFE9E3;color:#E8462F}
+.cot-add{border:1.5px solid #F6B3A5;background:#FFFFFF;color:#E8462F;border-radius:999px;padding:8px 14px;font:700 14px Nunito,system-ui,sans-serif;cursor:pointer;transition:background-color .15s,border-color .15s}
+.cot-add small{color:#5B6478;font-weight:600;margin-left:4px;font-size:13px}
+.cot-add:hover{background:#FFE9E3;border-color:#F2553D}
+.cot-box{background:#FFFFFF;border:1px solid #F0E6E0;border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:16px;box-shadow:0 14px 30px -24px rgba(28,37,65,.45)}
+.cot-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
+.fld{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:700;color:#1C2541;min-width:0}
+.fld em{font-style:normal;font-weight:600;color:#8A90A0}
+.fld-full{grid-column:1/-1}
+.fld input,.fld select,.fld textarea{box-sizing:border-box;width:100%;height:48px;border-radius:12px;border:1.5px solid #E2E5EB;padding:0 14px;font:600 16px Nunito,system-ui,sans-serif;color:#1C2541;background:#FFFFFF;outline:none}
+.fld textarea{height:auto;padding:12px 14px;resize:vertical}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:#2BA3B4;box-shadow:0 0 0 3px rgba(43,163,180,.16)}
+.cot-sum{flex-direction:row;align-items:flex-start;gap:16px}
+.sum-k{display:block;color:#5B6478;font-size:13px;font-weight:700}
+.sum-t{display:block;font-size:19px;font-weight:900;margin-bottom:6px}
+.sum-d{color:#5B6478;font-size:14px}
+.sum-line{display:grid;grid-template-columns:minmax(0,1fr) auto 84px;gap:12px;padding:8px 0;border-top:1px solid #F3ECE8;font-size:15px}
+.sum-line b{text-align:right}
+.sum-kv{display:flex;flex-wrap:wrap;gap:10px 28px}
+.sum-kv span{display:flex;flex-direction:column;font-weight:700;font-size:15px;min-width:0;overflow-wrap:anywhere}
+.sum-kv small{color:#8A90A0;font-weight:600;font-size:12.5px}
+.cot-edit{border:none;background:transparent;color:#E8462F;font:800 14px Nunito,system-ui,sans-serif;cursor:pointer;text-decoration:underline;white-space:nowrap;padding:4px}
+.cot-lista{margin-top:40px}
+.cot-lista summary{cursor:pointer;font-weight:800;color:#E8462F;font-size:16px;display:inline-flex;align-items:center;gap:8px}
+.cot-lista #lpp-tabla{margin-top:14px;max-width:720px}
+
+/* ===== preguntas frecuentes ===== */
+.faq{background:#FFFFFF;border:1px solid #F0E6E0;border-radius:18px;padding:0 20px;box-shadow:0 12px 26px -24px rgba(28,37,65,.45)}
+.faq summary{cursor:pointer;list-style:none;padding:18px 40px 18px 0;font-weight:800;font-size:17px;position:relative;color:#1C2541}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:0;top:50%;translate:0 -50%;width:28px;height:28px;border-radius:50%;background:#FFE9E3;color:#F2553D;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px}
+.faq[open] summary::after{content:"−"}
+.faq p{margin:0 0 18px;color:#5B6478;line-height:1.55;font-size:16px}
+
+@media (max-width: 860px){
+  .lpp-hero-copy .hand{font-size:21px !important}
+  .cot-grid{grid-template-columns:1fr;gap:22px}
+  .cot-side{position:static}
+  .cot-pose{display:none}
+  .svc-grid{gap:10px}
+  .svc-card{padding:14px 12px 16px}
+  .svc-ico{width:44px;height:44px}
+  .svc-ico svg{width:28px;height:28px}
+  .svc-card strong{font-size:15.5px}
+  .svc-desc{font-size:12.5px}
+  .svc-radio{right:10px;top:10px}
+  .cot-head{display:none}
+  .cot-row{grid-template-columns:42px minmax(0,1fr) auto;grid-template-areas:"ic nm del" "ic qt st";row-gap:8px;padding:10px 10px 10px 12px}
+  .cot-ico{grid-area:ic;width:42px;height:42px;align-self:start}
+  .cot-name{grid-area:nm;font-size:15px}
+  .cot-unit{display:none}
+  .cot-unit-m{display:block}
+  .cot-qty{grid-area:qt;justify-self:start;width:112px}
+  .cot-qty button{width:36px;height:36px}
+  .cot-subt{grid-area:st;text-align:right}
+  .cot-del{grid-area:del;justify-self:end}
+  .cot-box{padding:18px 16px}
+  .cot-fields{grid-template-columns:1fr}
+  .cot-sum{flex-wrap:wrap;gap:12px}
+  .cot-hi-lg{width:44px;height:44px}
+  .cot-card{padding:22px 18px}
+  .est-total{font-size:42px}
+  .stp{grid-template-columns:38px 1fr;grid-template-rows:36px auto}
+  .stp-dot{width:34px;height:34px;font-size:14px}
+  .stp-bar{margin-right:8px}
+  .stp-lbl{font-size:12px;line-height:1.2}
+  .sum-line{grid-template-columns:minmax(0,1fr) auto;font-size:14px}
+  .sum-line span:nth-child(2){grid-column:1;grid-row:2;color:#5B6478;font-size:13px}
+  .sum-line b{grid-column:2;grid-row:1/3;align-self:center}
+  .faq summary{font-size:16px}
+}
+.b3d-orange:hover,.b3d-dark:hover,.b3d-green:hover{color:#FFFFFF}
+.b3d-white:hover{color:#E8462F}
+
 </style>
 
 </head>
@@ -189,28 +367,29 @@ a{color:#C2410C}a:hover{color:#7C2D12}
 <template id="dc-template">
 
 
-<div class="lpp-dots" style="font-family: Nunito, system-ui, sans-serif; color: #3B1F14; background-color: #FFF4EA; width: 100%; overflow: hidden">
+<div class="lpp-dots" style="font-family: Nunito, system-ui, sans-serif; color: #1C2541; background-color: #FFFAF6; width: 100%; overflow: hidden">
 
 <!-- NAV -->
-<header class="header-glass" style="position: sticky; top: 0; z-index: 20; border-bottom: 1px solid rgba(217,72,28,.15)">
+<header class="header-glass" style="position: sticky; top: 0; z-index: 20; border-bottom: 1px solid rgba(232,70,47,.15)">
   <div style="max-width: 1240px; margin: 0 auto; padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px">
     <a href="#inicio" style="display: flex; align-items: center" aria-label="La Pancha Plancha, inicio"><img class="logo3d" src="assets/logo-lpp.svg" alt="La Pancha Plancha" style="height: 72px; width: auto; display: block"></a>
-    <nav class="lpp-nav-links" aria-label="Principal" style="display: flex; gap: 26px; font-weight: 800; font-size: 15px">
-      <a href="#como" class="nav-link" style="text-decoration: none; color: #3B1F14">Cómo funciona</a>
-      <a href="#servicios" class="nav-link" style="text-decoration: none; color: #3B1F14">Servicios</a>
-      <a href="#precios" class="nav-link" style="text-decoration: none; color: #3B1F14">Precios</a>
-      <a href="#resenas" class="nav-link" style="text-decoration: none; color: #3B1F14">Reseñas</a>
-      <a href="#cobertura" class="nav-link" style="text-decoration: none; color: #3B1F14">Cobertura</a>
+    <nav class="lpp-nav-links" aria-label="Principal" style="display: flex; gap: 26px; font-weight: 700; font-size: 15px">
+      <a href="#servicios" class="nav-link" style="text-decoration: none; color: #1C2541">Servicios</a>
+      <a href="#precios" class="nav-link" style="text-decoration: none; color: #1C2541">Precios</a>
+      <a href="#como" class="nav-link" style="text-decoration: none; color: #1C2541">Cómo funciona</a>
+      <a href="#cobertura" class="nav-link" style="text-decoration: none; color: #1C2541">Cobertura</a>
+      <a href="#faq" class="nav-link" style="text-decoration: none; color: #1C2541">Preguntas frecuentes</a>
+      <a href="#contacto-info" class="nav-link" style="text-decoration: none; color: #1C2541">Contacto</a>
     </nav>
     <a class="b3d b3d-orange" href="{{waAgenda}}" style="font-size: 15px; padding: 12px 20px">Agendar retiro</a>
   </div>
 </header>
 
 <!-- HERO -->
-<section id="inicio" style="background: linear-gradient(160deg,#FF8DB8 0%,#FF7AAC 45%,#F2689D 100%); position: relative; overflow: hidden">
+<section id="inicio" style="background: linear-gradient(160deg,#FFFAF6 0%,#FFF1EA 55%,#FFE6DC 100%); position: relative; overflow: hidden">
   <div aria-hidden="true" class="lpp-dots-light" style="position: absolute; inset: 0"></div>
-  <div aria-hidden="true" class="orb" style="width: 420px; height: 420px; left: -120px; top: -80px; background: #8E7CF0"></div>
-  <div aria-hidden="true" class="orb" style="width: 360px; height: 360px; right: 8%; bottom: -120px; background: #FFC59E; animation-delay: -4s"></div>
+  <div aria-hidden="true" class="orb" style="width: 420px; height: 420px; left: -120px; top: -80px; background: #FFD2C4"></div>
+  <div aria-hidden="true" class="orb" style="width: 360px; height: 360px; right: 8%; bottom: -120px; background: #FFD2C4; animation-delay: -4s"></div>
   <div aria-hidden="true">
     <span class="bubble-soap" style="left: 6%; width: 34px; height: 34px; animation-duration: 11s"></span>
     <span class="bubble-soap" style="left: 18%; width: 18px; height: 18px; animation-duration: 8s; animation-delay: -3s"></span>
@@ -222,27 +401,27 @@ a{color:#C2410C}a:hover{color:#7C2D12}
   </div>
   <div class="lpp-section" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 56px 24px 0; display: flex; flex-wrap: wrap; align-items: flex-end; gap: 32px">
     <div class="lpp-hero-copy" style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 22px; padding-bottom: 72px">
-      <a href="#resenas" style="align-self: flex-start; text-decoration: none; display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,.85); backdrop-filter: blur(8px); color: #3B1F14; padding: 8px 16px 8px 10px; border-radius: 999px; font-size: 14px; font-weight: 700; box-shadow: 0 10px 24px -14px rgba(59,31,20,.6), inset 0 1px 0 #fff">
-        <span style="background: #3B1F14; color: #FFD166; border-radius: 999px; padding: 4px 10px; font-weight: 800">★ 4,8</span>
+      <a href="#resenas" style="align-self: flex-start; text-decoration: none; display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,.85); backdrop-filter: blur(8px); color: #1C2541; padding: 8px 16px 8px 10px; border-radius: 999px; font-size: 14px; font-weight: 700; box-shadow: 0 10px 24px -14px rgba(28,37,65,.6), inset 0 1px 0 #fff">
+        <span style="background: #1C2541; color: #FFD166; border-radius: 999px; padding: 4px 10px; font-weight: 800">★ 4,8</span>
         23 reseñas en Google
       </a>
-      <h1 class="lpp-h1" style="margin: 0; font-family: Fraunces, Georgia, serif; font-style: italic; font-weight: 800; font-size: 70px; line-height: 1; color: #3B1F14">¡Hola! Soy la Pancha.<br><span style="color: #FFFFFF">Y yo plancho por ti.</span></h1>
-      <p style="margin: 0; font-size: 21px; line-height: 1.5; max-width: 540px; color: #3B1F14; font-weight: 600">Retiro tu ropa en tu casa, la lavo, la plancho y te la devuelvo <strong style="background: #FFFFFF; padding: 0 6px; border-radius: 6px">lista en 48 horas</strong>. Doblada, con rico aroma y a un precio que te va a gustar.</p>
+      <h1 class="lpp-h1" style="margin: 0; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 70px; line-height: 1; color: #1C2541">¡Hola! Soy la Pancha.<br>Y yo <span class="scr">plancho por ti.</span></h1>
+      <p style="margin: 0; font-size: 21px; line-height: 1.5; max-width: 540px; color: #1C2541; font-weight: 600">Retiro tu ropa en tu casa, la lavo, la plancho y te la devuelvo <strong style="background: #FFE9E3; color: #E8462F; padding: 0 6px; border-radius: 6px">lista en 48 horas</strong>. Doblada, con rico aroma y a un precio que te va a gustar.</p>
       <div style="display: flex; flex-wrap: wrap; gap: 12px">
         <a class="b3d b3d-dark" href="{{waAgenda}}" style="font-size: 18px; padding: 18px 28px">
           <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7BE0A3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.5 7.4L3 20.5l1.6-5.3A8.4 8.4 0 1 1 21 11.5z"></path></svg>
           Agenda tu retiro por WhatsApp
         </a>
-        <a class="b3d b3d-white" href="#cotizador" style="font-size: 18px; padding: 18px 28px">Cotiza tu pedido</a>
+        <a class="b3d b3d-white" href="#precios" style="font-size: 18px; padding: 18px 28px">Cotiza tu pedido</a>
       </div>
-      <p style="margin: 0; font-size: 15px; font-weight: 700">Retiro y entrega a domicilio · Lunes a viernes · Santiago oriente, centro y Colina</p>
+      <p class="hand" style="margin: 0; font-size: 24px; color: #2BA3B4; line-height: 1.1">Retiro y entrega a domicilio · Lunes a viernes · Santiago oriente, centro y Colina</p>
     </div>
     <div class="lpp-hero-visual" style="flex: 1 1 420px; min-width: 0; position: relative; display: flex; justify-content: center; align-items: flex-end; min-height: 660px">
-      <div aria-hidden="true" style="position: absolute; bottom: 70px; width: 440px; max-width: 92%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 50% 40%, rgba(255,255,255,.55), rgba(255,255,255,.08) 60%, transparent 70%); border: 2px solid rgba(255,255,255,.45)"></div>
-      <div aria-hidden="true" style="position: absolute; bottom: -34px; width: 420px; max-width: 90%; height: 90px; border-radius: 50%; background: radial-gradient(ellipse at 50% 35%, #FFD3E3 0%, #FF9DC2 45%, #E2588C 100%); box-shadow: 0 -2px 0 rgba(255,255,255,.7) inset, 0 24px 40px -10px rgba(59,31,20,.45)"></div>
-      <div class="float-chip" style="left: -12px; bottom: 60px; --r: -4deg; animation-delay: -1s"><span class="sphere" style="--c: #1E7F46; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 13px">48h</span><span style="display: flex; flex-direction: column; line-height: 1.15"><span style="font-size: 15px">Lista en 48 h</span><span style="font-size: 12px; color: #6B4A3B; font-weight: 700">retiro y entrega</span></span></div>
-      <div class="float-chip" style="right: -12px; bottom: 120px; --r: 3deg; animation-delay: -2.5s"><span class="sphere" style="--c: #FFB020; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #3B1F14; font-size: 15px">★</span><span style="display: flex; flex-direction: column; line-height: 1.15"><span style="font-size: 15px">4,8 en Google</span><span style="font-size: 12px; color: #6B4A3B; font-weight: 700">23 reseñas</span></span></div>
-      <div class="lpp-bubble" style="position: absolute; top: 0; left: 0; z-index: 3; background: #FFFFFF; border-radius: 22px 22px 22px 4px; padding: 12px 18px; max-width: 320px; min-height: 22px; font-weight: 700; font-size: 16px; line-height: 1.35; box-shadow: 0 14px 30px -18px rgba(59,31,20,.6); opacity: {{heroBubbleOp}}; transition: opacity .4s ease" aria-live="polite">{{heroText}}</div>
+      <div aria-hidden="true" style="position: absolute; bottom: 70px; width: 440px; max-width: 92%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 50% 40%, #FFFFFF, #FFEDE6 62%, transparent 71%); border: 2px dashed rgba(242,85,61,.25)"></div>
+      <div aria-hidden="true" style="position: absolute; bottom: -34px; width: 420px; max-width: 90%; height: 90px; border-radius: 50%; background: radial-gradient(ellipse at 50% 35%, #FFE1D8 0%, #FFB7A6 50%, #F2553D 100%); box-shadow: 0 -2px 0 rgba(255,255,255,.7) inset, 0 24px 40px -14px rgba(28,37,65,.35)"></div>
+      <div class="float-chip" style="left: -12px; bottom: 60px; --r: -4deg; animation-delay: -1s"><span class="sphere" style="--c: #1E7F46; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 13px">48h</span><span style="display: flex; flex-direction: column; line-height: 1.15"><span style="font-size: 15px">Lista en 48 h</span><span style="font-size: 12px; color: #5B6478; font-weight: 700">retiro y entrega</span></span></div>
+      <div class="float-chip" style="right: -12px; bottom: 120px; --r: 3deg; animation-delay: -2.5s"><span class="sphere" style="--c: #FFB020; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #1C2541; font-size: 15px">★</span><span style="display: flex; flex-direction: column; line-height: 1.15"><span style="font-size: 15px">4,8 en Google</span><span style="font-size: 12px; color: #5B6478; font-weight: 700">23 reseñas</span></span></div>
+      <div class="lpp-bubble" style="position: absolute; top: 0; left: 0; z-index: 3; background: #FFFFFF; border-radius: 22px 22px 22px 4px; padding: 12px 18px; max-width: 320px; min-height: 22px; font-weight: 700; font-size: 16px; line-height: 1.35; box-shadow: 0 14px 30px -18px rgba(28,37,65,.6); opacity: {{heroBubbleOp}}; transition: opacity .4s ease" aria-live="polite">{{heroText}}</div>
       <div style="position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; transform: translateX({{heroX}}); transition: transform 2.6s linear">
         <video id="lpp-hero-walk" aria-hidden="true" style="position: absolute; left: 50%; top: 91px; height: 655px; width: auto; max-width: none; transform: translateX(-50%); opacity: {{heroWalkOp}}; transition: opacity .55s ease; pointer-events: none; border-radius: {{heroRadius}}">
           <source src="{{hw1}}" type="{{heroType1}}">
@@ -262,53 +441,53 @@ a{color:#C2410C}a:hover{color:#7C2D12}
 </section>
 
 <!-- CIFRAS -->
-<section aria-label="La Pancha en números" class="glow-top lpp-grid-light" style="background-color: #2C160D; color: #FFFFFF">
+<section aria-label="La Pancha en números" class="glow-top lpp-grid-light" style="background-color: #1C2541; color: #FFFFFF">
   <div style="max-width: 1240px; margin: 0 auto; padding: 28px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; text-align: center">
-    <div><div class="stat-num" style="font-family: Fraunces, serif; font-style: italic; font-size: 44px; font-weight: 800">+28.000</div><div style="font-size: 15px; color: #F6DCCB">pedidos entregados desde 2021</div></div>
-    <div><div class="stat-num" style="font-family: Fraunces, serif; font-style: italic; font-size: 44px; font-weight: 800">+2.900</div><div style="font-size: 15px; color: #F6DCCB">clientes en Santiago</div></div>
-    <div><div class="stat-num" style="font-family: Fraunces, serif; font-style: italic; font-size: 44px; font-weight: 800">48 h</div><div style="font-size: 15px; color: #F6DCCB">y tu ropa vuelve lista</div></div>
-    <div><div class="stat-num" style="font-family: Fraunces, serif; font-style: italic; font-size: 44px; font-weight: 800">4,8 ★</div><div style="font-size: 15px; color: #F6DCCB">en Google Maps</div></div>
+    <div><div class="stat-num" style="font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-size: 44px; font-weight: 900">+28.000</div><div style="font-size: 15px; color: #F0E4DD">pedidos entregados desde 2021</div></div>
+    <div><div class="stat-num" style="font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-size: 44px; font-weight: 900">+2.900</div><div style="font-size: 15px; color: #F0E4DD">clientes en Santiago</div></div>
+    <div><div class="stat-num" style="font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-size: 44px; font-weight: 900">48 h</div><div style="font-size: 15px; color: #F0E4DD">y tu ropa vuelve lista</div></div>
+    <div><div class="stat-num" style="font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-size: 44px; font-weight: 900">4,8 ★</div><div style="font-size: 15px; color: #F0E4DD">en Google Maps</div></div>
   </div>
 </section>
 
-<div aria-hidden="true" style="background: #FFE6D6; border-bottom: 1px solid rgba(217,72,28,.12); padding: 18px 0; overflow: hidden"><div class="marquee"><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Camisas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Sábanas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Plumones<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Cortinas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Trajes<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Vestidos de fiesta<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Toallas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Manteles<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Cubrecamas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Uniformes<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Camisas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Sábanas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Plumones<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Cortinas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Trajes<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Vestidos de fiesta<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Toallas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Manteles<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Cubrecamas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; color: #3B1F14">Uniformes<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FF7AAC; display: inline-block"></span></span></div></div>
+<div aria-hidden="true" style="background: #FFF3EE; border-bottom: 1px solid rgba(232,70,47,.12); padding: 18px 0; overflow: hidden"><div class="marquee"><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 26px; color: #1C2541">Camisas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #F2553D; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 26px; color: #1C2541">Sábanas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #F2553D; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 26px; color: #1C2541">Plumones<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #F2553D; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 26px; color: #1C2541">Cortinas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #F2553D; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 26px; color: #1C2541">Trajes<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #F2553D; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 26px; color: #1C2541">Vestidos de fiesta<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #F2553D; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 26px; color: #1C2541">Toallas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #F2553D; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 26px; color: #1C2541">Manteles<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #F2553D; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 26px; color: #1C2541">Cubrecamas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #F2553D; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 26px; color: #1C2541">Uniformes<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #F2553D; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 26px; color: #1C2541">Camisas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #F2553D; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 26px; color: #1C2541">Sábanas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #F2553D; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 26px; color: #1C2541">Plumones<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #F2553D; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 26px; color: #1C2541">Cortinas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #F2553D; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 26px; color: #1C2541">Trajes<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #F2553D; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 26px; color: #1C2541">Vestidos de fiesta<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #F2553D; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 26px; color: #1C2541">Toallas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #F2553D; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 26px; color: #1C2541">Manteles<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #F2553D; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 26px; color: #1C2541">Cubrecamas<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #F2553D; display: inline-block"></span></span><span style="display: inline-flex; align-items: center; gap: 14px; padding: 0 22px; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 26px; color: #1C2541">Uniformes<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #F2553D; display: inline-block"></span></span></div></div>
 
 <!-- COMO FUNCIONA -->
 <section id="como" class="lpp-section" style="max-width: 1240px; margin: 0 auto; padding: 104px 24px 56px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
     <div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
     <span class="chip" style="align-self: flex-start"><i></i>Así de fácil</span>
-    <h2 class="lpp-h2 rv" style="margin: 0; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 52px; line-height: 1.02">Tres pasos y te olvidas del planchado.</h2>
+    <h2 class="lpp-h2 rv" style="margin: 0; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 52px; line-height: 1.02">Tres pasos y te olvidas del <span class="scr">planchado.</span></h2>
     <ol id="lpp-pasos" style="position: relative; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 18px">
       <li aria-hidden="true" class="steps-line"></li>
       <li id="step1" class="glass rv" style="position: relative; display: flex; gap: 18px; align-items: flex-start; border-radius: 24px; padding: 22px 24px">
-        <span class="sphere" style="--c: #FF7AAC; flex: none; width: 52px; height: 52px; border-radius: 50%; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; display: flex; align-items: center; justify-content: center">1</span>
-        <span style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 20px">Me escribes por WhatsApp</strong><span style="font-size: 16px; line-height: 1.5; color: #6B4A3B">Me dices qué necesitas y elegimos juntas el día del retiro.</span></span>
+        <span class="sphere" style="--c: #F2553D; flex: none; width: 52px; height: 52px; border-radius: 50%; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 26px; display: flex; align-items: center; justify-content: center">1</span>
+        <span style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 20px">Me escribes por WhatsApp</strong><span style="font-size: 16px; line-height: 1.5; color: #5B6478">Me dices qué necesitas y elegimos juntas el día del retiro.</span></span>
       </li>
       <li id="step2" class="glass rv" style="position: relative; display: flex; gap: 18px; align-items: flex-start; border-radius: 24px; padding: 22px 24px">
-        <span class="sphere" style="--c: #FFB07A; flex: none; width: 52px; height: 52px; border-radius: 50%; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; display: flex; align-items: center; justify-content: center">2</span>
-        <span style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 20px">Paso a buscar tu ropa</strong><span style="font-size: 16px; line-height: 1.5; color: #6B4A3B">Anoto cada prenda en tu orden. La lavo, saco las manchas difíciles y la plancho con cariño.</span></span>
+        <span class="sphere" style="--c: #FFB07A; flex: none; width: 52px; height: 52px; border-radius: 50%; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 26px; display: flex; align-items: center; justify-content: center">2</span>
+        <span style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 20px">Paso a buscar tu ropa</strong><span style="font-size: 16px; line-height: 1.5; color: #5B6478">Anoto cada prenda en tu orden. La lavo, saco las manchas difíciles y la plancho con cariño.</span></span>
       </li>
       <li id="step3" class="glass rv" style="position: relative; display: flex; gap: 18px; align-items: flex-start; border-radius: 24px; padding: 22px 24px">
-        <span class="sphere" style="--c: #3B1F14; color: #FFD166; flex: none; width: 52px; height: 52px; border-radius: 50%; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 26px; display: flex; align-items: center; justify-content: center">3</span>
-        <span style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 20px">Te la devuelvo lista en 48 horas</strong><span style="font-size: 16px; line-height: 1.5; color: #6B4A3B">Doblada o colgada, lista para guardar. Te aviso por WhatsApp cuando voy en camino.</span></span>
+        <span class="sphere" style="--c: #1C2541; color: #FFD166; flex: none; width: 52px; height: 52px; border-radius: 50%; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 26px; display: flex; align-items: center; justify-content: center">3</span>
+        <span style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 20px">Te la devuelvo lista en 48 horas</strong><span style="font-size: 16px; line-height: 1.5; color: #5B6478">Doblada o colgada, lista para guardar. Te aviso por WhatsApp cuando voy en camino.</span></span>
       </li>
     </ol>
   </div>
 </section>
 
 <!-- SERVICIOS -->
-<section id="servicios" class="lpp-dots" style="background-color: #FFE6D6">
+<section id="servicios" class="lpp-dots" style="background-color: #FFF3EE">
   <div class="lpp-section" style="max-width: 1240px; margin: 0 auto; padding: 96px 24px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
     <div style="flex: 1 1 640px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
       <span class="chip" style="align-self: flex-start"><i></i>Servicios</span>
-      <h2 class="lpp-h2 rv" style="margin: 0; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 52px; line-height: 1.02">Lo que se lava, se plancha o se cuida, <span style="color: #D9481C">yo lo hago.</span></h2>
+      <h2 class="lpp-h2 rv" style="margin: 0; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 52px; line-height: 1.02">Lo que se lava, se plancha o se cuida, <span class="scr">yo lo hago.</span></h2>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px">
         <template data-sc-for="servicios" data-as="s">
           <div id="{{s.id}}" class="glass rv" style="border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 8px">
-            <span class="tile3d" style="width: 52px; height: 52px; border-radius: 16px; background: {{s.bg}}; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B1F14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{s.icon}}"></path></svg></span>
+            <span class="tile3d" style="width: 52px; height: 52px; border-radius: 16px; background: {{s.bg}}; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1C2541" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{s.icon}}"></path></svg></span>
             <strong style="font-size: 19px">{{s.title}}</strong>
-            <span style="font-size: 15px; line-height: 1.45; color: #6B4A3B">{{s.desc}}</span>
-            <span style="margin-top: 4px; font-weight: 800; color: #D9481C">{{s.price}}</span>
+            <span style="font-size: 15px; line-height: 1.45; color: #5B6478">{{s.desc}}</span>
+            <span style="margin-top: 4px; font-weight: 800; color: #E8462F">{{s.price}}</span>
           </div>
         </template>
       </div>
@@ -316,76 +495,182 @@ a{color:#C2410C}a:hover{color:#7C2D12}
       </div>
 </section>
 
-<!-- PRECIOS + COTIZADOR -->
-<section id="precios" class="lpp-section" style="max-width: 1240px; margin: 0 auto; padding: 104px 24px; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start">
-  <div style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
-    <span class="chip" style="align-self: flex-start"><i></i>Los mejores precios</span>
-    <h2 class="lpp-h2 rv" style="margin: 0; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 52px; line-height: 1.02">Precio por prenda, claro y sin letra chica.</h2>
-    <div id="lpp-tabla" class="glass rv" style="border-radius: 24px; overflow: hidden">
+<!-- PRECIOS + COTIZADOR (asistente de 3 pasos, como la maqueta de la clienta) -->
+<section id="precios" class="lpp-section" style="max-width: 1240px; margin: 0 auto; padding: 96px 24px">
+  <div id="lpp-cot-top" class="cot-grid">
+    <div class="cot-main">
+      <span class="chip chip-paso" style="align-self: flex-start">{{pasoText}}</span>
+      <h2 class="lpp-h2" style="margin: 0; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 56px; line-height: 1.02">{{cotTitleA}} <span class="scr">{{cotTitleB}}</span></h2>
+      <p style="margin: 0; font-size: 18px; line-height: 1.5; color: #5B6478; max-width: 560px">{{cotSub}}</p>
+
+      <ol class="stepper" aria-label="Pasos de tu solicitud">
+        <li class="stp {{st1}}"><span class="stp-dot" aria-hidden="true"><svg class="stp-ok" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"></path></svg><b>1</b></span><span class="stp-bar"></span><span class="stp-lbl">Servicio y prendas</span></li>
+        <li class="stp {{st2}}"><span class="stp-dot" aria-hidden="true"><svg class="stp-ok" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"></path></svg><b>2</b></span><span class="stp-bar"></span><span class="stp-lbl">Recogida y datos</span></li>
+        <li class="stp {{st3}}"><span class="stp-dot" aria-hidden="true"><svg class="stp-ok" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"></path></svg><b>3</b></span><span class="stp-bar"></span><span class="stp-lbl">Resumen</span></li>
+      </ol>
+
+      <div id="lpp-cot-paso" style="display: flex; flex-direction: column; gap: 18px; border-radius: 24px">
+        <!-- PASO 1 -->
+        <div style="display: {{s1Disp}}; flex-direction: column; gap: 18px">
+          <div class="svc-grid" role="radiogroup" aria-label="Elige el servicio">
+            <button type="button" role="radio" aria-checked="{{svcPlOn}}" class="svc-card {{svcPlCls}}" onClick="{{pickPl}}">
+              <span class="svc-radio" aria-hidden="true"></span>
+              <span class="svc-ico" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="#F2553D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 34h30a4 4 0 0 0 4-4v-2c0-6.6-5.4-12-12-12H17L6 34z"></path><path d="M17 16v-4h10"></path><circle cx="16" cy="28" r="1.4"></circle><circle cx="22" cy="28" r="1.4"></circle><circle cx="28" cy="28" r="1.4"></circle></svg></span>
+              <strong>Solo planchado</strong>
+              <span class="svc-desc">Tú la lavas, yo la dejo impecable y lista para usar.</span>
+            </button>
+            <button type="button" role="radio" aria-checked="{{svcLpOn}}" class="svc-card {{svcLpCls}}" onClick="{{pickLp}}">
+              <span class="svc-radio" aria-hidden="true"></span>
+              <span class="svc-ico" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="#F2553D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="6" width="30" height="36" rx="4"></rect><path d="M9 14h30"></path><circle cx="24" cy="28" r="8"></circle><path d="M18 29c3-2 6 2 12-1"></path><circle cx="15" cy="10" r="1.2"></circle><circle cx="20" cy="10" r="1.2"></circle></svg></span>
+              <span class="svc-plus" aria-hidden="true">+</span>
+              <span class="svc-ico" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="#F2553D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 34h30a4 4 0 0 0 4-4v-2c0-6.6-5.4-12-12-12H17L6 34z"></path><path d="M17 16v-4h10"></path><circle cx="16" cy="28" r="1.4"></circle><circle cx="22" cy="28" r="1.4"></circle><circle cx="28" cy="28" r="1.4"></circle></svg></span>
+              <strong>Lavado + planchado</strong>
+              <span class="svc-desc">Ropa limpia, planchada y lista para disfrutar.</span>
+            </button>
+          </div>
+
+          <h3 class="cot-h3">Tus prendas</h3>
+          <div class="cot-head" aria-hidden="true"><span></span><span>Prenda</span><span>Precio unitario</span><span>Cantidad</span><span>Subtotal</span><span></span></div>
+          <div style="display: flex; flex-direction: column; gap: 10px">
+            <template data-sc-for="rows" data-as="it">
+              <div class="cot-row">
+                <span class="cot-ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F2553D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{it.icon}}"></path></svg></span>
+                <span class="cot-name">{{it.name}}<small class="cot-unit-m">{{it.priceText}} c/u</small></span>
+                <span class="cot-unit">{{it.priceText}}</span>
+                <span class="cot-qty"><button type="button" onClick="{{it.dec}}" aria-label="{{it.decLabel}}">−</button><span aria-live="polite">{{it.qty}}</span><button type="button" onClick="{{it.inc}}" aria-label="{{it.incLabel}}">+</button></span>
+                <span class="cot-subt">{{it.subText}}</span>
+                <button type="button" class="cot-del" onClick="{{it.del}}" aria-label="{{it.delLabel}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"></path></svg></button>
+              </div>
+            </template>
+            <p style="display: {{emptyDisp}}; margin: 0; padding: 16px; border-radius: 16px; border: 1.5px dashed #F0E4DD; color: #5B6478; text-align: center">Aún no agregas prendas. Elige abajo lo que quieres enviar.</p>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px">
+            <span style="font-weight: 800; font-size: 15px; color: #E8462F">⊕ Agregar otra prenda</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px">
+              <template data-sc-for="addables" data-as="ad">
+                <button type="button" class="cot-add" onClick="{{ad.add}}">+ {{ad.name}} <small>{{ad.priceText}}</small></button>
+              </template>
+            </div>
+            <p style="margin: 0; font-size: 13px; color: #5B6478">{{svcNote}}</p>
+          </div>
+        </div>
+
+        <!-- PASO 2 -->
+        <div style="display: {{s2Disp}}; flex-direction: column; gap: 18px">
+          <div class="cot-box">
+            <h3 class="cot-h3 cot-h3i"><span class="cot-hi" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F2553D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg></span>Datos de recogida</h3>
+            <div class="cot-fields">
+              <label class="fld"><span>Comuna</span>
+                <select id="lpp-comuna" value="{{comuna}}" onChange="{{setComuna}}">
+                  <template data-sc-for="comunas" data-as="c"><option value="{{c}}">{{c}}</option></template>
+                </select></label>
+              <label class="fld"><span>Dirección</span><input type="text" autocomplete="street-address" placeholder="Calle, número, depto." value="{{fDir}}" onInput="{{setDir}}"></label>
+              <label class="fld"><span>Fecha de recogida</span><input type="date" min="{{minFecha}}" value="{{fFecha}}" onInput="{{setFecha}}" onChange="{{setFecha}}"></label>
+              <label class="fld"><span>Franja horaria preferida</span>
+                <select value="{{fFranja}}" onChange="{{setFranja}}">
+                  <template data-sc-for="franjas" data-as="fr"><option value="{{fr}}">{{fr}}</option></template>
+                </select></label>
+            </div>
+          </div>
+          <div class="cot-box">
+            <h3 class="cot-h3 cot-h3i"><span class="cot-hi" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F2553D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"></path></svg></span>Tus datos de contacto</h3>
+            <div class="cot-fields">
+              <label class="fld"><span>Nombre</span><input type="text" autocomplete="given-name" placeholder="¿Cómo te llamas?" value="{{fNombre}}" onInput="{{setNombre}}"></label>
+              <label class="fld"><span>WhatsApp</span><input type="tel" autocomplete="tel" placeholder="+56 9 1234 5678" value="{{fWsp}}" onInput="{{setWsp}}"></label>
+              <label class="fld fld-full"><span>Correo electrónico <em>(opcional)</em></span><input type="email" autocomplete="email" placeholder="tucorreo@ejemplo.cl" value="{{fEmail}}" onInput="{{setEmail}}"></label>
+              <label class="fld fld-full"><span>Observaciones <em>(opcional)</em></span><textarea rows="3" placeholder="Ej. indicaciones de acceso, conserjería, piso, referencias." value="{{fObs}}" onInput="{{setObs}}"></textarea></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- PASO 3 -->
+        <div style="display: {{s3Disp}}; flex-direction: column; gap: 14px">
+          <div class="cot-box cot-sum">
+            <span class="cot-hi cot-hi-lg" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 48 48" fill="none" stroke="#F2553D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 34h30a4 4 0 0 0 4-4v-2c0-6.6-5.4-12-12-12H17L6 34z"></path><path d="M17 16v-4h10"></path></svg></span>
+            <div style="flex: 1; min-width: 0"><small class="sum-k">Servicio seleccionado</small><strong class="sum-t">{{svcName}}</strong><span class="sum-d">{{svcDesc}}</span></div>
+            <button type="button" class="cot-edit" onClick="{{goStep1}}">✎ Editar</button>
+          </div>
+          <div class="cot-box cot-sum">
+            <span class="cot-hi cot-hi-lg" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F2553D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6a2 2 0 1 1 2 2c-1 .4-2 1-2 2v1L3 17a1 1 0 0 0 .6 2h16.8a1 1 0 0 0 .6-2l-9-6"></path></svg></span>
+            <div style="flex: 1; min-width: 0"><strong class="sum-t">Prendas</strong>
+              <template data-sc-for="rows" data-as="r3">
+                <div class="sum-line"><span>{{r3.name}}</span><span>{{r3.priceText}} × {{r3.qty}}</span><b>{{r3.subText}}</b></div>
+              </template>
+            </div>
+            <button type="button" class="cot-edit" onClick="{{goStep1}}">✎ Editar</button>
+          </div>
+          <div class="cot-box cot-sum">
+            <span class="cot-hi cot-hi-lg" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F2553D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg></span>
+            <div style="flex: 1; min-width: 0"><strong class="sum-t">Recogida</strong>
+              <div class="sum-kv"><span><small>Comuna</small>{{comuna}}</span><span><small>Dirección</small>{{fDir}}</span><span><small>Fecha</small>{{fechaText}}</span><span><small>Franja</small>{{fFranja}}</span></div>
+            </div>
+            <button type="button" class="cot-edit" onClick="{{goStep2}}">✎ Editar</button>
+          </div>
+          <div class="cot-box cot-sum">
+            <span class="cot-hi cot-hi-lg" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F2553D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"></path></svg></span>
+            <div style="flex: 1; min-width: 0"><strong class="sum-t">Tus datos</strong>
+              <div class="sum-kv"><span><small>Nombre</small>{{fNombre}}</span><span><small>WhatsApp</small>{{fWsp}}</span><span><small>Correo</small>{{emailText}}</span></div>
+            </div>
+            <button type="button" class="cot-edit" onClick="{{goStep2}}">✎ Editar</button>
+          </div>
+        </div>
+        <p role="alert" style="display: {{errDisp}}; margin: 0; padding: 12px 16px; border-radius: 14px; background: #FFE9E3; color: #B8301E; font-weight: 700">{{cotErr}}</p>
+      </div>
+    </div>
+
+    <aside class="cot-side">
+      <div class="cot-pose">
+        <img src="{{poseSrc}}" alt="" aria-hidden="true">
+        <p class="hand cot-note">{{poseNote}} <span style="color: #F2553D">♥</span></p>
+      </div>
+      <div id="cotizador" class="cot-card">
+        <h3 class="cot-h3" style="font-size: 26px">Tu estimado <span class="scrib" aria-hidden="true"></span></h3>
+        <div class="est-line"><span>Servicio</span><span>{{svcName}}</span></div>
+        <div class="est-line"><span>Prendas</span><span>{{prendasCount}}</span></div>
+        <div class="est-line"><span>Subtotal prendas</span><span>{{subtotalText}}</span></div>
+        <div class="est-line"><span>Despacho ({{comuna}})</span><span>{{despachoText}}</span></div>
+        <hr style="border: none; border-top: 1px solid #F0E4DD; margin: 6px 0">
+        <strong style="font-size: 17px">Total estimado</strong>
+        <div class="est-total">{{totalText}}</div>
+        <div class="est-info"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C98A00" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6M12 7.5v.5"></path></svg><span>Valor estimado. El valor final se confirma después de revisar tus prendas.</span></div>
+        <button type="button" class="b3d b3d-orange est-btn" style="display: {{primDisp}}" onClick="{{primaryAct}}">{{primaryLabel}} →</button>
+        <a class="b3d b3d-orange est-btn" style="display: {{sendDisp}}" href="{{waSolicitud}}" target="_blank" rel="noopener">Enviar solicitud por WhatsApp →</a>
+        <button type="button" class="b3d b3d-white est-btn est-back" style="display: {{backDisp}}" onClick="{{goBack}}">Volver</button>
+        <p class="est-foot" style="display: {{sendDisp}}"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F2553D" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg><span>Se abre WhatsApp con tu solicitud lista. Te respondemos para confirmar la recogida y el valor final.</span></p>
+        <p class="est-priv">Tus datos no se guardan en esta página: solo viajan por WhatsApp cuando tocas Enviar. <a href="privacidad/">Política de privacidad</a>.</p>
+      </div>
+    </aside>
+  </div>
+
+  <details class="cot-lista">
+    <summary>Ver lista de precios completa</summary>
+    <div id="lpp-tabla" class="glass" style="border-radius: 24px; overflow: hidden">
       <table style="width: 100%; border-collapse: collapse; font-size: 16px">
-        <caption style="text-align: left; padding: 16px 20px 4px; font-weight: 800; color: #6B4A3B">Lo más pedido (por unidad)</caption>
-        <thead><tr style="color: #6B4A3B; font-size: 13px"><th scope="col" style="text-align: left; padding: 10px 20px; font-weight: 700">Prenda</th><th scope="col" style="text-align: right; padding: 10px 12px; font-weight: 700">Solo planchado</th><th scope="col" style="text-align: right; padding: 10px 20px; font-weight: 700">Lavado + planchado</th></tr></thead>
+        <caption style="text-align: left; padding: 16px 20px 4px; font-weight: 800; color: #5B6478">Lo más pedido (por unidad)</caption>
+        <thead><tr style="color: #5B6478; font-size: 13px"><th scope="col" style="text-align: left; padding: 10px 20px; font-weight: 700">Prenda</th><th scope="col" style="text-align: right; padding: 10px 12px; font-weight: 700">Solo planchado</th><th scope="col" style="text-align: right; padding: 10px 20px; font-weight: 700">Lavado + planchado</th></tr></thead>
         <tbody>
-          <tr style="border-top: 1px solid #F6DCCB"><th scope="row" style="text-align: left; padding: 12px 20px; font-weight: 600">Prenda de vestir</th><td style="text-align: right; padding: 12px">$1.500</td><td style="text-align: right; padding: 12px 20px; font-weight: 800">$2.600</td></tr>
-          <tr style="border-top: 1px solid #F6DCCB"><th scope="row" style="text-align: left; padding: 12px 20px; font-weight: 600">Sábana</th><td style="text-align: right; padding: 12px">$1.800</td><td style="text-align: right; padding: 12px 20px; font-weight: 800">$2.500</td></tr>
-          <tr style="border-top: 1px solid #F6DCCB"><th scope="row" style="text-align: left; padding: 12px 20px; font-weight: 600">Funda de almohada</th><td style="text-align: right; padding: 12px">$1.000</td><td style="text-align: right; padding: 12px 20px; font-weight: 800">$1.300</td></tr>
-          <tr style="border-top: 1px solid #F6DCCB"><th scope="row" style="text-align: left; padding: 12px 20px; font-weight: 600">Cubreplumón</th><td style="text-align: right; padding: 12px">$2.900</td><td style="text-align: right; padding: 12px 20px; font-weight: 800">$5.500</td></tr>
-          <tr style="border-top: 1px solid #F6DCCB"><th scope="row" style="text-align: left; padding: 12px 20px; font-weight: 600">Toalla de baño</th><td style="text-align: right; padding: 12px">$1.900</td><td style="text-align: right; padding: 12px 20px; font-weight: 800">$2.500</td></tr>
-          <tr style="border-top: 1px solid #F6DCCB"><th scope="row" style="text-align: left; padding: 12px 20px; font-weight: 600">Mantel</th><td style="text-align: right; padding: 12px">$2.400</td><td style="text-align: right; padding: 12px 20px; font-weight: 800">$4.500</td></tr>
+          <tr style="border-top: 1px solid #F0E4DD"><th scope="row" style="text-align: left; padding: 12px 20px; font-weight: 600">Prenda de vestir</th><td style="text-align: right; padding: 12px">$1.500</td><td style="text-align: right; padding: 12px 20px; font-weight: 800">$2.600</td></tr>
+          <tr style="border-top: 1px solid #F0E4DD"><th scope="row" style="text-align: left; padding: 12px 20px; font-weight: 600">Sábana</th><td style="text-align: right; padding: 12px">$1.800</td><td style="text-align: right; padding: 12px 20px; font-weight: 800">$2.500</td></tr>
+          <tr style="border-top: 1px solid #F0E4DD"><th scope="row" style="text-align: left; padding: 12px 20px; font-weight: 600">Funda de almohada</th><td style="text-align: right; padding: 12px">$1.000</td><td style="text-align: right; padding: 12px 20px; font-weight: 800">$1.300</td></tr>
+          <tr style="border-top: 1px solid #F0E4DD"><th scope="row" style="text-align: left; padding: 12px 20px; font-weight: 600">Cubreplumón</th><td style="text-align: right; padding: 12px">$2.900</td><td style="text-align: right; padding: 12px 20px; font-weight: 800">$5.500</td></tr>
+          <tr style="border-top: 1px solid #F0E4DD"><th scope="row" style="text-align: left; padding: 12px 20px; font-weight: 600">Toalla de baño</th><td style="text-align: right; padding: 12px">$1.900</td><td style="text-align: right; padding: 12px 20px; font-weight: 800">$2.500</td></tr>
+          <tr style="border-top: 1px solid #F0E4DD"><th scope="row" style="text-align: left; padding: 12px 20px; font-weight: 600">Mantel</th><td style="text-align: right; padding: 12px">$2.400</td><td style="text-align: right; padding: 12px 20px; font-weight: 800">$4.500</td></tr>
         </tbody>
       </table>
     </div>
-    <p style="margin: 0; font-size: 15px; color: #6B4A3B">Despacho (retiro + entrega en un solo cobro): Colina $1.500 · otras comunas $3.500.</p>
-      </div>
-
-  <div id="cotizador" class="neon" style="flex: 1 1 460px; min-width: 0; background: linear-gradient(180deg,#FFFFFF,#FFF8F3); border-radius: 32px; padding: 32px; box-shadow: 0 40px 70px -40px rgba(59,31,20,.6)">
-    <span class="chip" style="margin-bottom: 10px"><i></i>Cotizador en vivo</span>
-    <h3 style="margin: 0 0 4px; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 32px">Cotiza tu pedido</h3>
-    <p style="margin: 0 0 20px; color: #6B4A3B; font-size: 15px">Elige tus prendas y agenda con el total por WhatsApp.</p>
-    <div style="display: flex; flex-direction: column; gap: 10px">
-      <template data-sc-for="items" data-as="item">
-        <div class="lpp-cot-row" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; border-radius: 16px; background: #FFF4EA; border: 1px solid rgba(217,72,28,.1); box-shadow: inset 0 1px 0 #fff">
-          <div style="display: flex; flex-direction: column; min-width: 0">
-            <span class="lpp-cot-name" style="font-weight: 700; font-size: 15px">{{item.name}}</span>
-            <span style="font-size: 13px; color: #6B4A3B">{{item.priceText}} c/u</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 8px">
-            <button type="button" onClick="{{item.dec}}" aria-label="{{item.decLabel}}" class="b3d b3d-white b3d-sq lpp-cot-btn" style="width: 44px; height: 44px; font-size: 22px; padding: 0">−</button>
-            <span class="lpp-cot-qty" aria-live="polite" style="min-width: 28px; text-align: center; font-size: 22px; font-weight: 800">{{item.qty}}</span>
-            <button type="button" onClick="{{item.inc}}" aria-label="{{item.incLabel}}" class="b3d b3d-orange b3d-sq lpp-cot-btn" style="width: 44px; height: 44px; font-size: 22px; padding: 0">+</button>
-          </div>
-        </div>
-      </template>
-    </div>
-    <label for="lpp-comuna" style="display: block; margin: 20px 0 6px; font-weight: 800; font-size: 14px">¿En qué comuna estás?</label>
-    <select id="lpp-comuna" value="{{comuna}}" onChange="{{setComuna}}" style="width: 100%; height: 48px; border-radius: 14px; border: 2px solid #F6DCCB; padding: 0 14px; font-size: 16px; font-family: Nunito, sans-serif; color: #3B1F14; background: #FFFFFF">
-      <template data-sc-for="comunas" data-as="c">
-        <option value="{{c}}">{{c}}</option>
-      </template>
-    </select>
-    <div class="lpp-grid-light" style="margin-top: 20px; padding: 18px 20px; border-radius: 20px; background-color: #2C160D; color: #FFFFFF; display: flex; flex-direction: column; gap: 6px; box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 14px 24px -14px rgba(59,31,20,.8)">
-      <div style="display: flex; justify-content: space-between; font-size: 14px; color: #F6DCCB"><span>Prendas</span><span>{{subtotalText}}</span></div>
-      <div style="display: flex; justify-content: space-between; font-size: 14px; color: #F6DCCB"><span>Despacho ({{comuna}})</span><span>{{despachoText}}</span></div>
-      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 4px"><span style="font-weight: 700">Total estimado</span><span style="font-family: Fraunces, serif; font-style: italic; font-size: 36px; font-weight: 800; color: #FFD166">{{totalText}}</span></div>
-    </div>
-    <a class="b3d b3d-green" href="{{waCotiza}}" style="margin-top: 18px; display: flex; font-size: 17px; padding: 18px">
-      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.5 7.4L3 20.5l1.6-5.3A8.4 8.4 0 1 1 21 11.5z"></path></svg>
-      Agendar retiro con este pedido
-    </a>
-    <p style="margin: 10px 0 0; font-size: 12px; color: #6B4A3B; text-align: center">Valor referencial. El total final se confirma al recibir tus prendas.</p>
-    <p style="margin: 6px 0 0; font-size: 12px; color: #6B4A3B; text-align: center">Al escribirme por WhatsApp uso tus datos solo para agendar y atender tu pedido. <a href="privacidad/" style="color: #C2410C; font-weight: 700">Política de privacidad</a>.</p>
-  </div>
+    <p style="margin: 12px 4px 0; font-size: 15px; color: #5B6478">Despacho (retiro + entrega en un solo cobro): Colina $1.500 · otras comunas $3.500. Cobertores, plumones y tintorería: cotízalos en el paso 1 o escríbeme.</p>
+  </details>
 </section>
 
 <!-- LO NUEVO -->
-<section id="novedades" class="lpp-grid-light" style="background-color: #3F2F99; color: #FFFFFF; position: relative; overflow: hidden">
-  <div aria-hidden="true" class="orb" style="width: 480px; height: 480px; right: -140px; top: -120px; background: #FF7AAC; opacity: .35"></div>
+<section id="novedades" class="lpp-grid-light" style="background-color: #1C2541; color: #FFFFFF; position: relative; overflow: hidden">
+  <div aria-hidden="true" class="orb" style="width: 480px; height: 480px; right: -140px; top: -120px; background: #F2553D; opacity: .35"></div>
   <div aria-hidden="true" class="orb" style="width: 380px; height: 380px; left: -120px; bottom: -160px; background: #2EC5FF; opacity: .25; animation-delay: -6s"></div>
   <div class="lpp-section" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 96px 24px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
     <div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
       <span class="chip chip-dark" style="align-self: flex-start"><i></i>Lo nuevo de la Pancha</span>
-      <h2 class="lpp-h2" style="margin: 0; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 50px; line-height: 1.02">Ahora te respondo al instante, a cualquier hora.</h2>
-      <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #E6E0FF">Me puse al día con inteligencia artificial para atenderte mejor. Tú lo notas en cosas simples:</p>
+      <h2 class="lpp-h2" style="margin: 0; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 50px; line-height: 1.02">Ahora te respondo al instante, <span class="scr scr-light">a cualquier hora.</span></h2>
+      <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #E3F4F6">Me puse al día con inteligencia artificial para atenderte mejor. Tú lo notas en cosas simples:</p>
       <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 17px">
         <li class="rv" style="display: flex; gap: 12px; align-items: flex-start; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 16px; padding: 12px 14px; backdrop-filter: blur(6px)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFD166" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span><strong>Cotizas y agendas por WhatsApp</strong> sin esperar a que alguien conteste.</span></li>
         <li class="rv" style="display: flex; gap: 12px; align-items: flex-start; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 16px; padding: 12px 14px; backdrop-filter: blur(6px)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFD166" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 2px"><path d="M20 6 9 17l-5-5"></path></svg><span><strong>Te aviso en cada paso:</strong> cuando retiro, cuando está lista y cuando voy en camino.</span></li>
@@ -394,10 +679,10 @@ a{color:#C2410C}a:hover{color:#7C2D12}
       </ul>
     </div>
     <div style="flex: 1 1 440px; min-width: 0; display: flex; align-items: flex-end; gap: 0; justify-content: center">
-      <div id="lpp-chat" class="phone3d" style="background: #15121F; border-radius: 44px; padding: 12px; box-shadow: inset 0 0 0 2px #3A3450, 0 50px 80px -30px rgba(0,0,0,.7), -20px 30px 60px -30px rgba(255,122,172,.5)">
+      <div id="lpp-chat" class="phone3d" style="background: #15121F; border-radius: 44px; padding: 12px; box-shadow: inset 0 0 0 2px #3A3450, 0 50px 80px -30px rgba(0,0,0,.7), -20px 30px 60px -30px rgba(242,85,61,.5)">
       <div style="background: #EDE7DF; border-radius: 34px; padding: 18px; width: 330px; max-width: 100%; display: flex; flex-direction: column; gap: 10px; color: #1F2937; font-size: 15px">
         <div style="display: flex; align-items: center; gap: 10px; padding-bottom: 8px; border-bottom: 1px solid #D6CFC6">
-          <img src="assets/av-busto.png" alt="" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; object-position: top; background: #FF7AAC">
+          <img src="assets/av-busto.png" alt="" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; object-position: top; background: #F2553D">
           <span style="display: flex; flex-direction: column"><strong>La Pancha Plancha</strong><span style="font-size: 12px; color: #1E7F46">en línea</span></span>
         </div>
         <div style="align-self: flex-end; background: #D9FDD3; border-radius: 14px 14px 4px 14px; padding: 8px 12px; max-width: 80%">Hola Pancha, ¿pueden retirar mañana en Ñuñoa?</div>
@@ -413,29 +698,29 @@ a{color:#C2410C}a:hover{color:#7C2D12}
 </section>
 
 <!-- RESEÑAS -->
-<section id="resenas" class="lpp-dots" style="background-color: #FFE3EC">
+<section id="resenas" class="lpp-dots" style="background-color: #FFF1EC">
   <div class="lpp-section" style="max-width: 1240px; margin: 0 auto; padding: 112px 24px 96px">
     <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 40px">
-      <div style="display: flex; flex-direction: column; gap: 14px"><span class="chip" style="align-self: flex-start"><i></i>Reseñas reales de Google</span><h2 class="lpp-h2 rv" style="margin: 0; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 52px; line-height: 1.02; max-width: 680px">“Impecable” y “puntuales”: <span style="color: #D9481C">las dos palabras que más se repiten.</span></h2></div>
+      <div style="display: flex; flex-direction: column; gap: 14px"><span class="chip" style="align-self: flex-start"><i></i>Reseñas reales de Google</span><h2 class="lpp-h2 rv" style="margin: 0; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 52px; line-height: 1.02; max-width: 680px">“Impecable” y “puntuales”: <span class="scr">las dos palabras que más se repiten.</span></h2></div>
       <div class="glass" style="border-radius: 24px; padding: 18px 22px; display: flex; align-items: center; gap: 14px">
-        <span style="font-family: Fraunces, serif; font-style: italic; font-size: 52px; font-weight: 800; line-height: 1">4,8</span>
-        <span style="display: flex; flex-direction: column; gap: 2px"><span role="img" aria-label="4,8 de 5 estrellas" style="color: #E8A400; font-size: 22px; letter-spacing: 2px">★★★★★</span><span style="font-size: 14px; color: #6B4A3B">23 reseñas · 22 de 5 estrellas</span></span>
+        <span style="font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-size: 52px; font-weight: 900; line-height: 1">4,8</span>
+        <span style="display: flex; flex-direction: column; gap: 2px"><span role="img" aria-label="4,8 de 5 estrellas" style="color: #E8A400; font-size: 22px; letter-spacing: 2px">★★★★★</span><span style="font-size: 14px; color: #5B6478">23 reseñas · 22 de 5 estrellas</span></span>
       </div>
     </div>
     <div id="lpp-reviews" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; border-radius: 32px">
       <template data-sc-for="reviews" data-as="r">
         <figure class="glass rv" style="position: relative; margin: 0; border-radius: 28px; padding: 26px; display: flex; flex-direction: column; gap: 12px">
-          <span aria-hidden="true" style="position: absolute; right: 22px; top: 6px; font-family: Fraunces, serif; font-size: 90px; line-height: 1; color: rgba(255,122,172,.25)">”</span>
+          <span aria-hidden="true" style="position: absolute; right: 22px; top: 6px; font-family: Nunito, system-ui, sans-serif; font-size: 90px; line-height: 1; color: rgba(242,85,61,.25)">”</span>
           <span role="img" aria-label="5 de 5 estrellas" style="color: #E8A400; font-size: 18px; letter-spacing: 2px">★★★★★</span>
           <blockquote style="margin: 0; font-size: 17px; line-height: 1.55">“{{r.text}}”</blockquote>
           <figcaption style="margin-top: auto; display: flex; align-items: center; gap: 12px">
             <span aria-hidden="true" class="tile3d" style="width: 40px; height: 40px; border-radius: 50%; background: {{r.bg}}; font-weight: 800; display: flex; align-items: center; justify-content: center">{{r.initial}}</span>
-            <span style="display: flex; flex-direction: column"><strong style="font-size: 15px">{{r.name}}</strong><span style="font-size: 13px; color: #6B4A3B">Reseña en Google</span></span>
+            <span style="display: flex; flex-direction: column"><strong style="font-size: 15px">{{r.name}}</strong><span style="font-size: 13px; color: #5B6478">Reseña en Google</span></span>
           </figcaption>
         </figure>
       </template>
     </div>
-    <p class="lpp-mob-only" aria-hidden="true" style="margin: 2px 0 0; font-size: 14px; font-weight: 800; color: #D9481C">Desliza para ver más reseñas →</p>
+    <p class="lpp-mob-only" aria-hidden="true" style="margin: 2px 0 0; font-size: 14px; font-weight: 800; color: #E8462F">Desliza para ver más reseñas →</p>
     <div style="margin-top: 32px; display: flex; justify-content: center">
       <a class="b3d b3d-dark" href="https://www.google.com/maps/search/La+Pancha+Plancha" style="padding: 16px 26px">Ver todas las reseñas en Google</a>
     </div>
@@ -446,21 +731,43 @@ a{color:#C2410C}a:hover{color:#7C2D12}
 <section id="cobertura" class="lpp-section" style="max-width: 1240px; margin: 0 auto; padding: 104px 24px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
   <div style="flex: 1 1 500px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
     <span class="chip" style="align-self: flex-start"><i></i>Solo a domicilio</span>
-    <h2 class="lpp-h2 rv" style="margin: 0; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 52px; line-height: 1.02">No tienes que ir a la lavandería. <span style="color: #D9481C">Yo voy a tu casa.</span></h2>
-    <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #6B4A3B">Trabajo solo a domicilio, no atiendo en local. Paso con mi auto morado por estas comunas:</p>
+    <h2 class="lpp-h2 rv" style="margin: 0; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 52px; line-height: 1.02">No tienes que ir a la lavandería. <span class="scr">Yo voy a tu casa.</span></h2>
+    <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #5B6478">Trabajo solo a domicilio, no atiendo en local. Paso con mi auto morado por estas comunas:</p>
     <ul id="lpp-comunas" aria-label="Comunas con cobertura" style="border-radius: 24px; padding: 6px; list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px">
       <template data-sc-for="comunas" data-as="c">
-        <li class="glass" style="display: flex; align-items: center; gap: 8px; border-radius: 999px; padding: 10px 18px; font-weight: 800; font-size: 15px"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D9481C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"></path></svg>{{c}}</li>
+        <li class="glass" style="display: flex; align-items: center; gap: 8px; border-radius: 999px; padding: 10px 18px; font-weight: 800; font-size: 15px"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E8462F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"></path></svg>{{c}}</li>
       </template>
     </ul>
-    <p style="margin: 0; font-size: 16px; color: #6B4A3B">¿Tu comuna no está? <a href="{{waComuna}}" style="font-weight: 800">Escríbeme</a> y lo vemos.</p>
+    <p style="margin: 0; font-size: 16px; color: #5B6478">¿Tu comuna no está? <a href="{{waComuna}}" style="font-weight: 800">Escríbeme</a> y lo vemos.</p>
     <div style="display: flex; flex-wrap: wrap; gap: 14px">
-      <div class="glass" style="border-radius: 20px; padding: 14px 20px"><strong style="display: block">Horario</strong><span style="font-size: 15px; color: #6B4A3B">Lunes a viernes, 8:00 a 20:00</span></div>
-      <div class="glass" style="border-radius: 20px; padding: 14px 20px"><strong style="display: block">Despacho</strong><span style="font-size: 15px; color: #6B4A3B">Colina $1.500 · resto $3.500</span></div>
+      <div class="glass" style="border-radius: 20px; padding: 14px 20px"><strong style="display: block">Horario</strong><span style="font-size: 15px; color: #5B6478">Lunes a viernes, 8:00 a 20:00</span></div>
+      <div class="glass" style="border-radius: 20px; padding: 14px 20px"><strong style="display: block">Despacho</strong><span style="font-size: 15px; color: #5B6478">Colina $1.500 · resto $3.500</span></div>
     </div>
   </div>
   <div style="flex: 1 1 440px; min-width: 0; display: flex; justify-content: center">
-    <div class="lpp-drive-in" style="width: 100%; max-width: 560px"><img id="lpp-auto" class="lpp-engine" src="assets/auto3d.png" alt="La Pancha manejando su auto morado con ropa doblada en el techo" style="display: block; width: 100%; height: auto; filter: drop-shadow(0 30px 24px rgba(59,31,20,.25))"></div>
+    <div class="lpp-drive-in" style="width: 100%; max-width: 560px"><img id="lpp-auto" class="lpp-engine" src="assets/auto3d.png" alt="La Pancha manejando su auto morado con ropa doblada en el techo" style="display: block; width: 100%; height: auto; filter: drop-shadow(0 30px 24px rgba(28,37,65,.25))"></div>
+  </div>
+</section>
+
+<!-- PREGUNTAS FRECUENTES -->
+<section id="faq" style="background-color: #FFF3EE">
+  <div class="lpp-section" style="max-width: 1240px; margin: 0 auto; padding: 96px 24px; display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start">
+    <div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+      <span class="chip" style="align-self: flex-start"><i></i>Preguntas frecuentes</span>
+      <h2 class="lpp-h2 rv" style="margin: 0; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 52px; line-height: 1.02">Lo que más me <span class="scr">preguntan.</span></h2>
+      <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #5B6478">¿Tienes otra duda? Escríbeme por WhatsApp y te respondo al tiro.</p>
+      <a class="b3d b3d-green" href="{{waAgenda}}" style="align-self: flex-start; font-size: 16px; padding: 14px 22px">Preguntar por WhatsApp</a>
+    </div>
+    <div class="faq-list" style="flex: 2 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+      <details class="faq" open><summary>¿Cuánto se demora mi ropa?</summary><p>Te la devuelvo lista en 48 horas desde que la retiro: lavada, planchada, doblada y con rico aroma.</p></details>
+      <details class="faq"><summary>¿Tienen local para ir a dejar la ropa?</summary><p>No. Trabajo solo a domicilio: paso a buscar tu ropa a tu casa y te la vuelvo a dejar ahí mismo.</p></details>
+      <details class="faq"><summary>¿A qué comunas llegan?</summary><p>Colina, Lo Barnechea, Vitacura, Las Condes, Providencia, La Reina, Peñalolén, Ñuñoa, Macul y La Florida. Si tu comuna no está, escríbeme y lo vemos.</p></details>
+      <details class="faq"><summary>¿Cuánto cuesta el despacho?</summary><p>Un solo cobro por el retiro y la entrega: $1.500 en Colina y $3.500 en las demás comunas.</p></details>
+      <details class="faq"><summary>¿Qué días y en qué horario retiran?</summary><p>De lunes a viernes, entre las 8:00 y las 20:00. En el cotizador eliges el día y la franja que más te acomoda, y te confirmo por WhatsApp.</p></details>
+      <details class="faq"><summary>¿El precio del cotizador es el final?</summary><p>Es un valor estimado. El valor final se confirma cuando reviso tus prendas, por ejemplo si hay piezas especiales o más prendas de las que anotaste.</p></details>
+      <details class="faq"><summary>¿Cómo puedo pagar?</summary><p>Como quieras: efectivo, transferencia, tarjeta o link de pago.</p></details>
+      <details class="faq"><summary>¿Qué tipo de ropa reciben?</summary><p>Ropa del día a día, camisas, sábanas, plumones, cortinas, tintorería como trajes y vestidos de fiesta, y también reparaciones de ropa.</p></details>
+    </div>
   </div>
 </section>
 
@@ -468,7 +775,7 @@ a{color:#C2410C}a:hover{color:#7C2D12}
 <div id="contacto" aria-hidden="true" style="height: 24px"></div>
 
 <!-- FOOTER -->
-<footer class="glow-top lpp-grid-light" style="background-color: #2C160D; color: #F6DCCB">
+<footer id="contacto-info" class="glow-top lpp-grid-light" style="background-color: #1C2541; color: #F0E4DD">
   <div style="max-width: 1240px; margin: 0 auto; padding: 48px 24px 120px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; font-size: 15px">
     <div style="display: flex; flex-direction: column; gap: 10px; max-width: 320px">
       <img class="logo3d" src="assets/logo-lpp.svg" alt="La Pancha Plancha" style="height: 80px; width: auto; align-self: flex-start">
@@ -476,15 +783,15 @@ a{color:#C2410C}a:hover{color:#7C2D12}
     </div>
     <div style="display: flex; flex-direction: column; gap: 8px">
       <strong style="color: #FFFFFF">Contacto</strong>
-      <a href="{{waAgenda}}" style="color: #F6DCCB">WhatsApp +56 9 5377 8977</a>
-      <a href="mailto:contacto@lapanchaplancha.cl" style="color: #F6DCCB">contacto@lapanchaplancha.cl</a>
-      <a href="https://www.instagram.com/lapanchaplancha/" style="color: #F6DCCB">Instagram @LaPanchaPlancha</a>
-      <a href="https://www.facebook.com/LaPanchaPlancha" style="color: #F6DCCB">Facebook La Pancha Plancha</a>
+      <a href="{{waAgenda}}" style="color: #F0E4DD">WhatsApp +56 9 5377 8977</a>
+      <a href="mailto:contacto@lapanchaplancha.cl" style="color: #F0E4DD">contacto@lapanchaplancha.cl</a>
+      <a href="https://www.instagram.com/lapanchaplancha/" style="color: #F0E4DD">Instagram @LaPanchaPlancha</a>
+      <a href="https://www.facebook.com/LaPanchaPlancha" style="color: #F0E4DD">Facebook La Pancha Plancha</a>
     </div>
     <div style="display: flex; flex-direction: column; gap: 8px">
       <strong style="color: #FFFFFF">Información</strong>
-      <a href="https://lapanchaplancha.cl/wp-content/uploads/TERMINOS-DE-SERVICIO-LPP.pdf" style="color: #F6DCCB">Términos del servicio</a>
-      <a href="privacidad/" style="color: #F6DCCB">Política de privacidad</a>
+      <a href="https://lapanchaplancha.cl/wp-content/uploads/TERMINOS-DE-SERVICIO-LPP.pdf" style="color: #F0E4DD">Términos del servicio</a>
+      <a href="privacidad/" style="color: #F0E4DD">Política de privacidad</a>
       <span>Lunes a viernes, 8:00 a 20:00</span>
       <span style="font-size: 13px; opacity: .8">La Pancha Plancha SpA · Av. Los Leones 1707, Providencia</span>
       <span style="font-size: 13px; opacity: .8">Este sitio no usa cookies ni herramientas de seguimiento.</span>
@@ -499,28 +806,28 @@ a{color:#C2410C}a:hover{color:#7C2D12}
 
 <!-- BIENVENIDA: el primer toque habilita el sonido -->
 <template data-sc-if="showGate">
-  <div role="dialog" aria-modal="true" aria-label="Bienvenida de La Pancha Plancha" style="position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(255,122,172,.55); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px)">
+  <div role="dialog" aria-modal="true" aria-label="Bienvenida de La Pancha Plancha" style="position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(242,85,61,.55); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px)">
     <div class="glass" style="width: 100%; max-width: 440px; box-sizing: border-box; border-radius: 36px; padding: 34px 30px 28px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center">
       <img class="logo3d" src="assets/logo-lpp.svg" alt="La Pancha Plancha" style="height: 64px; width: auto">
-      <div style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden; background: radial-gradient(circle at 50% 35%, #FFD3E3, #FF7AAC); box-shadow: inset 0 -6px 14px rgba(0,0,0,.12), 0 16px 30px -14px rgba(59,31,20,.6)">
+      <div style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden; background: radial-gradient(circle at 50% 35%, #FFE1D8, #F2553D); box-shadow: inset 0 -6px 14px rgba(0,0,0,.12), 0 16px 30px -14px rgba(28,37,65,.6)">
         <img src="assets/av-busto.png" alt="La Pancha" style="width: 100%; height: 100%; object-fit: cover; object-position: top">
       </div>
-      <h2 style="margin: 4px 0 0; font-family: Fraunces, serif; font-style: italic; font-weight: 800; font-size: 32px; line-height: 1.05">¡Hola! Te quiero contar algo.</h2>
-      <p style="margin: 0; font-size: 16px; color: #6B4A3B">Sube el volumen y deja que la Pancha te muestre cómo funciona.</p>
+      <h2 style="margin: 4px 0 0; font-family: Nunito, system-ui, sans-serif; letter-spacing: -.02em; font-weight: 900; font-size: 32px; line-height: 1.05">¡Hola! Te quiero contar algo.</h2>
+      <p style="margin: 0; font-size: 16px; color: #5B6478">Sube el volumen y deja que la Pancha te muestre cómo funciona.</p>
       <button type="button" class="b3d b3d-dark lpp-ask" onClick="{{enterWithSound}}" style="margin-top: 6px; font-size: 18px; padding: 18px 28px; gap: 10px">
         <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFD166" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path><path d="M19 5a10 10 0 0 1 0 14"></path></svg>
         Entrar y escuchar a la Pancha
       </button>
-      <button type="button" onClick="{{enterSilent}}" style="border: none; background: transparent; color: #6B4A3B; font-family: Nunito, sans-serif; font-weight: 700; font-size: 14px; text-decoration: underline; cursor: pointer; padding: 8px">Entrar sin sonido</button>
+      <button type="button" onClick="{{enterSilent}}" style="border: none; background: transparent; color: #5B6478; font-family: Nunito, sans-serif; font-weight: 700; font-size: 14px; text-decoration: underline; cursor: pointer; padding: 8px">Entrar sin sonido</button>
     </div>
   </div>
 </template>
 
 <!-- RECORRIDO GUIADO -->
 <template data-sc-if="showTourBar">
-  <div class="lpp-tourbar" role="status" style="position: fixed; top: 84px; left: 50%; translate: -50% 0; z-index: 40; display: flex; align-items: center; gap: 8px; background: rgba(59,31,20,.55); backdrop-filter: blur(6px); color: #FFF4EA; padding: 4px 4px 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; white-space: nowrap">
+  <div class="lpp-tourbar" role="status" style="position: fixed; top: 84px; left: 50%; translate: -50% 0; z-index: 40; display: flex; align-items: center; gap: 8px; background: rgba(28,37,65,.55); backdrop-filter: blur(6px); color: #FFFAF6; padding: 4px 4px 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; white-space: nowrap">
     <span class="lpp-tour-label" style="display: flex; align-items: center; gap: 7px"><span style="width: 7px; height: 7px; border-radius: 50%; background: #7BE0A3"></span>{{tourLabel}}</span>
-    <button type="button" onClick="{{skipTour}}" style="border: none; background: rgba(255,244,234,.85); color: #3B1F14; font-family: Nunito, sans-serif; font-weight: 800; font-size: 12px; padding: 5px 10px; border-radius: 999px; cursor: pointer">Saltar ✕</button>
+    <button type="button" onClick="{{skipTour}}" style="border: none; background: rgba(255,255,255,.85); color: #1C2541; font-family: Nunito, sans-serif; font-weight: 800; font-size: 12px; padding: 5px 10px; border-radius: 999px; cursor: pointer">Saltar ✕</button>
   </div>
 </template>
 
@@ -533,7 +840,7 @@ a{color:#C2410C}a:hover{color:#7C2D12}
 <div style="position: fixed; left: 0; bottom: 0; z-index: 30; pointer-events: none; transform: translateX({{guideX}}); transition: transform {{guideDur}} linear">
   <div class="lpp-guide-inner" style="position: relative; width: 190px; display: flex; flex-direction: column; align-items: center">
     <template data-sc-if="showBubble">
-      <div class="lpp-guide-bubble" role="status" aria-live="polite" style="position: absolute; bottom: 130px; {{bubbleSide}}: 150px; z-index: 2; background: rgba(255,255,255,.95); backdrop-filter: blur(6px); color: #3B1F14; border-radius: {{bubbleRadius}}; padding: 8px 11px; width: 210px; box-sizing: border-box; font-weight: 700; font-size: 13px; line-height: 1.3; box-shadow: 0 10px 22px -12px rgba(59,31,20,.6); border: 1px solid rgba(217,72,28,.18)">{{guideTyped}}</div>
+      <div class="lpp-guide-bubble" role="status" aria-live="polite" style="position: absolute; bottom: 130px; {{bubbleSide}}: 150px; z-index: 2; background: rgba(255,255,255,.95); backdrop-filter: blur(6px); color: #1C2541; border-radius: {{bubbleRadius}}; padding: 8px 11px; width: 210px; box-sizing: border-box; font-weight: 700; font-size: 13px; line-height: 1.3; box-shadow: 0 10px 22px -12px rgba(28,37,65,.6); border: 1px solid rgba(232,70,47,.18)">{{guideTyped}}</div>
     </template>
     <div class="{{bodyClass}}" style="position: relative; height: 240px; width: 180px; display: flex; justify-content: center; align-items: flex-end">
       <video id="lpp-guide-vid" preload="auto" onEnded="{{guideEnded}}" aria-hidden="true" style="display: block; opacity: {{vidOp}}; transition: opacity .5s ease; height: 240px; width: 180px; object-fit: contain; border-radius: {{guideRadius}}">
@@ -551,11 +858,11 @@ a{color:#C2410C}a:hover{color:#7C2D12}
         <button type="button" onClick="{{hideGuide}}" aria-label="Ocultar a la Pancha" title="Ocultar a la Pancha" class="b3d b3d-white" style="width: 40px; height: 40px; padding: 0; font-size: 20px">×</button>
       </div>
     </div>
-    <div aria-hidden="true" style="width: 100px; height: 12px; margin-top: -8px; border-radius: 50%; background: rgba(59,31,20,.25); filter: blur(3px)"></div>
+    <div aria-hidden="true" style="width: 100px; height: 12px; margin-top: -8px; border-radius: 50%; background: rgba(28,37,65,.25); filter: blur(3px)"></div>
   </div>
 </div>
 <template data-sc-if="guideHidden">
-  <button type="button" onClick="{{showGuide}}" aria-label="Mostrar a la Pancha" title="Mostrar a la Pancha" class="b3d b3d-white" style="position: fixed; right: 100px; bottom: 22px; z-index: 31; width: 64px; height: 64px; padding: 0; overflow: hidden; border: 3px solid #FF7AAC">
+  <button type="button" onClick="{{showGuide}}" aria-label="Mostrar a la Pancha" title="Mostrar a la Pancha" class="b3d b3d-white" style="position: fixed; right: 100px; bottom: 22px; z-index: 31; width: 64px; height: 64px; padding: 0; overflow: hidden; border: 3px solid #F2553D">
     <img src="assets/av-busto.png" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: top">
   </button>
 </template>
@@ -565,7 +872,7 @@ a{color:#C2410C}a:hover{color:#7C2D12}
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { qty: {}, comuna: 'Providencia', section: 'inicio', showBubble: true, count: 0, phase: 'off', soundOn: false, heroPlaying: false, walkDir: 'L', guideMs: 1900, heroX: '115%', heroPhase: 'walk', heroCount: 0, started: false, touring: false, tourStep: 0, clipKey: null };
+    this.state = { qty: { pv: 1 }, svc: 'lp', step: 1, cotErr: '', f: { dir: '', fecha: '', franja: 'Mañana (8:00 a 12:00)', nombre: '', wsp: '', email: '', obs: '' }, comuna: 'Providencia', section: 'inicio', showBubble: true, count: 0, phase: 'off', soundOn: false, heroPlaying: false, walkDir: 'L', guideMs: 1900, heroX: '115%', heroPhase: 'walk', heroCount: 0, started: false, touring: false, tourStep: 0, clipKey: null };
     this.spoken = {}; this.tourDone = false; this.tourT = null; this.ctaIv = null;
     this.tourOrder = ['como', 'servicios', 'precios', 'novedades', 'resenas', 'cobertura', 'contacto'];
     this.interruptTour = this.interruptTour.bind(this);
@@ -643,7 +950,7 @@ class Component extends DCLogic {
       inicio: { side: 'off', dur: 9.3, text: '¡Hola! Soy la Pancha. Yo retiro tu ropa, la lavo, la plancho y te la devuelvo lista en 48 horas. ¡Ven, te muestro cómo!', v: V.inicio },
       como: { cues: [[0.2,'lpp-pasos'],[3.0,'step1'],[4.6,'step2'],[6.4,'step3']], side: 'right', dur: 11.7, text: 'Mira, son solo tres pasos: me escribes por WhatsApp, paso a buscar tu ropa, y en 48 horas la tienes de vuelta, dobladita y con rico olor.', v: V.como },
       servicios: { cues: [[0.0,'srv-0'],[1.0,'srv-2'],[2.25,'srv-4'],[3.6,'srv-3'],[5.2,'']], side: 'right', dur: 8.0, text: 'Camisas, sábanas, plumones, cortinas, ¡hasta el traje del matrimonio! Lo que se lava o se plancha, yo me encargo.', v: V.servicios },
-      precios: { cues: [[1.2,'lpp-tabla'],[6.2,'cotizador!']], side: 'center', dur: 9.7, text: 'Acá están mis precios, clarito y sin letra chica. Suma tus prendas en el cotizador y mándame el pedido al tiro.', v: V.precios },
+      precios: { cues: [[1.2,'lpp-cot-paso'],[6.2,'cotizador!']], side: 'center', dur: 9.7, text: 'Acá están mis precios, clarito y sin letra chica. Suma tus prendas en el cotizador y mándame el pedido al tiro.', v: V.precios },
       novedades: { cues: [[2.2,'lpp-chat']], side: 'right', dur: 9.5, text: '¿Y sabes qué? Ahora te respondo al instante, a cualquier hora. ¡Hasta un domingo en la noche!', v: V.novedades },
       resenas: { cues: [[0.4,'lpp-reviews']], side: 'left', dur: 7.0, text: 'Ay, mira lo que dicen de mí. ¡Me sonrojo! Gracias a todas mis clientas.', v: V.resenas },
       cobertura: { cues: [[0.9,'lpp-auto'],[2.3,'lpp-comunas'],[4.3,'lpp-wa-float']], side: 'right', dur: 7.0, text: 'Yo paso con mi auto morado por tu casa. ¿Estás en una de estas comunas? ¡Te agendo un retiro!', v: V.cobertura },
@@ -837,34 +1144,110 @@ class Component extends DCLogic {
     var isMob = (typeof window !== 'undefined') && window.matchMedia && window.matchMedia('(max-width: 860px)').matches;
     var self = this;
     var fmt = function (n) { return '$' + Math.round(n).toLocaleString('es-CL'); };
+    // ===== Cotizador de 3 pasos (servicio y prendas -> recogida y datos -> resumen) =====
+    var IC = {
+      shirt: 'M8 3 4 6l2 4 2-1v12h8V9l2 1 2-4-4-3c0 1.7-1.8 3-4 3S8 4.7 8 3z',
+      bed: 'M3 18V8m0 6h18v4M3 11h6a2 2 0 0 1 2 2v1M21 18v-5a3 3 0 0 0-3-3h-7',
+      pillow: 'M4 8c0-2 1-3 3-3h10c2 0 3 1 3 3v8c0 2-1 3-3 3H7c-2 0-3-1-3-3zM8 9c1 1 7 1 8 0',
+      quilt: 'M3 7h18v10H3zM3 12h18M9 7v10M15 7v10',
+      towel: 'M6 4h12v16H6zM6 8h12M6 16h12',
+      cloth: 'M4 6h16l-2 12H6zM8 10h8M9 14h6',
+      blanket: 'M4 9c0-2 2-4 8-4s8 2 8 4v8H4zM4 13h16',
+      hanger: 'M12 6a2 2 0 1 1 2 2c-1 .4-2 1-2 2v1L3 17a1 1 0 0 0 .6 2h16.8a1 1 0 0 0 .6-2l-9-6'
+    };
     var catalog = [
-      { id: 'pv', name: 'Prenda de vestir (lavado + planchado)', price: 2600 },
-      { id: 'pl', name: 'Solo planchado (prenda)', price: 1500 },
-      { id: 'sa', name: 'Sábana (lavado + planchado)', price: 2500 },
-      { id: 'to', name: 'Toalla de baño (lavado)', price: 1900 },
-      { id: 'cg', name: 'Cobertor grueso o plumón sintético', price: 15000 },
-      { id: 't2', name: 'Traje 2 piezas (tintorería)', price: 12500 }
+      { id: 'pv', name: 'Prenda de vestir', p: { pl: 1500, lp: 2600 }, icon: IC.shirt },
+      { id: 'sa', name: 'Sábana', p: { pl: 1800, lp: 2500 }, icon: IC.bed },
+      { id: 'fu', name: 'Funda de almohada', p: { pl: 1000, lp: 1300 }, icon: IC.pillow },
+      { id: 'cp', name: 'Cubreplumón', p: { pl: 2900, lp: 5500 }, icon: IC.quilt },
+      { id: 'to', name: 'Toalla de baño', p: { pl: 1900, lp: 2500 }, icon: IC.towel },
+      { id: 'ma', name: 'Mantel', p: { pl: 2400, lp: 4500 }, icon: IC.cloth },
+      { id: 'cg', name: 'Cobertor grueso o plumón', p: { lp: 15000 }, icon: IC.blanket },
+      { id: 't2', name: 'Traje 2 piezas (tintorería)', p: { pl: 12500, lp: 12500 }, icon: IC.hanger }
     ];
+    var svc = this.state.svc;
+    var SVC = { pl: { name: 'Solo planchado', desc: 'Tú la lavas, yo la dejo impecable y lista para usar.' }, lp: { name: 'Lavado + planchado', desc: 'Ropa limpia, planchada y lista para disfrutar.' } };
     var qty = this.state.qty;
-    var subtotal = 0;
+    var step = this.state.step;
+    var f = this.state.f;
+    var subtotal = 0, count = 0;
     var lines = [];
-    var items = catalog.map(function (c) {
+    var setQ = function (id, v) { var n = Object.assign({}, self.state.qty); n[id] = Math.max(0, v); self.setState({ qty: n, cotErr: '' }); };
+    var rows = [], addables = [];
+    catalog.forEach(function (c) {
+      var pr = c.p[svc];
+      if (pr == null) { return; }
       var q = qty[c.id] || 0;
-      subtotal += q * c.price;
-      if (q > 0) { lines.push(q + ' x ' + c.name); }
-      return {
-        name: c.name, priceText: fmt(c.price), qty: q,
-        incLabel: 'Agregar ' + c.name, decLabel: 'Quitar ' + c.name,
-        inc: function () { var n = Object.assign({}, self.state.qty); n[c.id] = (n[c.id] || 0) + 1; self.setState({ qty: n }); },
-        dec: function () { var n = Object.assign({}, self.state.qty); n[c.id] = Math.max(0, (n[c.id] || 0) - 1); self.setState({ qty: n }); }
-      };
+      if (q > 0) {
+        subtotal += q * pr; count += q;
+        lines.push('• ' + q + ' x ' + c.name + ' (' + fmt(pr) + ' c/u) = ' + fmt(q * pr));
+        rows.push({
+          name: c.name, icon: c.icon, priceText: fmt(pr), qty: q, subText: fmt(q * pr),
+          incLabel: 'Sumar ' + c.name, decLabel: 'Restar ' + c.name, delLabel: 'Quitar ' + c.name,
+          inc: function () { setQ(c.id, (self.state.qty[c.id] || 0) + 1); },
+          dec: function () { setQ(c.id, (self.state.qty[c.id] || 0) - 1); },
+          del: function () { setQ(c.id, 0); }
+        });
+      } else {
+        addables.push({ name: c.name, priceText: fmt(pr), add: function () { setQ(c.id, 1); } });
+      }
     });
+    var items = rows;
     var comunas = ['Colina', 'Lo Barnechea', 'Vitacura', 'Las Condes', 'Providencia', 'La Reina', 'Peñalolén', 'Ñuñoa', 'Macul', 'La Florida'];
     var comuna = this.state.comuna;
     var despacho = comuna === 'Colina' ? 1500 : 3500;
     var total = subtotal + (subtotal > 0 ? despacho : 0);
     var wa = function (t) { return 'https://wa.me/56953778977?text=' + encodeURIComponent(t); };
-    var msgCot = '¡Hola Pancha! Quiero agendar un retiro en ' + comuna + '.' + (lines.length ? ' Mi pedido: ' + lines.join(', ') + '. Total estimado: ' + fmt(total) + '.' : '');
+    var franjas = ['Mañana (8:00 a 12:00)', 'Mediodía (12:00 a 16:00)', 'Tarde (16:00 a 20:00)'];
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    var tm = new Date(); tm.setDate(tm.getDate() + 1);
+    var minFecha = tm.getFullYear() + '-' + pad(tm.getMonth() + 1) + '-' + pad(tm.getDate());
+    var DIAS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+    var fechaText = '—';
+    var fechaDow = -1;
+    if (f.fecha && /^\d{4}-\d{2}-\d{2}$/.test(f.fecha)) {
+      var fp = f.fecha.split('-'); var fd = new Date(+fp[0], +fp[1] - 1, +fp[2]);
+      fechaDow = fd.getDay();
+      fechaText = DIAS[fechaDow] + ' ' + fp[2] + '/' + fp[1] + '/' + fp[0];
+    }
+    var setF = function (k) { return function (e) { var n = Object.assign({}, self.state.f); n[k] = e.target.value; self.setState({ f: n, cotErr: '' }); }; };
+    var toTop = function () { setTimeout(function () { var el = document.getElementById('lpp-cot-top'); if (el) { var y = el.getBoundingClientRect().top + window.pageYOffset - 90; window.scrollTo({ top: y, behavior: 'smooth' }); } }, 30); };
+    var goStep = function (n) { self.setState({ step: n, cotErr: '' }); toTop(); };
+    var next = function () {
+      var st = self.state;
+      if (st.step === 1) {
+        if (count === 0) { self.setState({ cotErr: 'Agrega al menos una prenda para seguir.' }); return; }
+        goStep(2); return;
+      }
+      if (st.step === 2) {
+        var g = st.f;
+        if (!g.dir.trim() || !g.fecha || !g.nombre.trim() || !g.wsp.trim()) { self.setState({ cotErr: 'Completa la dirección, la fecha, tu nombre y tu WhatsApp para seguir.' }); return; }
+        if (fechaDow === 0 || fechaDow === 6) { self.setState({ cotErr: 'Retiro de lunes a viernes. Elige un día hábil, porfa.' }); return; }
+        goStep(3);
+      }
+    };
+    var msgSol = '¡Hola Pancha! Quiero agendar un retiro 🧺\n\n' +
+      '*Servicio:* ' + SVC[svc].name + '\n' +
+      '*Prendas:*\n' + lines.join('\n') + '\n' +
+      '*Despacho (' + comuna + '):* ' + fmt(despacho) + '\n' +
+      '*Total estimado:* ' + fmt(total) + '\n\n' +
+      '*Recogida:* ' + f.dir + ', ' + comuna + '\n' +
+      '*Fecha:* ' + fechaText + ' · ' + f.franja + '\n' +
+      '*Nombre:* ' + f.nombre + '\n' +
+      '*WhatsApp:* ' + f.wsp + (f.email ? '\n*Correo:* ' + f.email : '') +
+      (f.obs ? '\n*Observaciones:* ' + f.obs : '');
+    var msgCot = '¡Hola Pancha! Quiero agendar un retiro en ' + comuna + '.' + (lines.length ? ' Mi pedido (' + SVC[svc].name + '): ' + lines.join(' ').replace(/• /g, '') + ' Total estimado: ' + fmt(total) + '.' : '');
+    var POSE = {
+      1: { src: 'assets/pose-camisas.webp', note: 'Tu ropa en las mejores manos' },
+      2: { src: 'assets/pose-hola.webp', note: '¡Yo paso a buscarla!' },
+      3: { src: 'assets/pose-apunta.webp', note: '¡Todo listo para tu recogida!' }
+    };
+    var TIT = {
+      1: ['Cotiza tu', 'servicio', 'Elige el servicio y las prendas que necesitas. Verás un valor estimado mientras completas tu solicitud.'],
+      2: ['Coordina tu', 'recogida', 'Cuéntanos dónde y cuándo paso por tu ropa, y tus datos de contacto para coordinar.'],
+      3: ['Revisa tu', 'solicitud', 'Confirma que todo esté correcto antes de enviar. Puedes editar cualquier dato si lo necesitas.']
+    };
+    var stc = function (n) { return n < step ? 'done' : (n === step ? 'cur' : ''); };
     var P = {
       shirt: 'M8 3 4 6l2 4 2-1v12h8V9l2 1 2-4-4-3c0 1.7-1.8 3-4 3S8 4.7 8 3z',
       bed: 'M3 18V8m0 6h18v4M3 11h6a2 2 0 0 1 2 2v1M21 18v-5a3 3 0 0 0-3-3h-7',
@@ -874,12 +1257,12 @@ class Component extends DCLogic {
       drop: 'M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z'
     };
     var servicios0 = [
-      { title: 'Planchado', desc: 'Camisas, blusas, pantalones y vestidos. Doblados o colgados.', price: 'Desde $1.500', icon: P.shirt, bg: '#FFE3EC' },
-      { title: 'Lavado y planchado', desc: 'La ropa del día a día, lavada, planchada y con rico aroma.', price: 'Desde $2.600', icon: P.drop, bg: '#FFE6D6' },
-      { title: 'Ropa de cama', desc: 'Sábanas, plumones, quilts, mantas, frazadas y almohadas.', price: 'Cobertor desde $9.200', icon: P.bed, bg: '#E6E0FF' },
-      { title: 'Tintorería', desc: 'Trajes, abrigos, vestidos de fiesta y de novia.', price: 'Desde $7.500', icon: P.hanger, bg: '#FFE3EC' },
-      { title: 'Cortinas y fundas', desc: 'Cortinas por m², cortinas de baño y fundas de terraza.', price: 'Desde $3.000', icon: P.curtain, bg: '#FFE6D6' },
-      { title: 'Reparación de ropa', desc: 'Bastas, cierres y arreglos para que tu ropa dure más.', price: 'Consúltame', icon: P.needle, bg: '#E6E0FF' }
+      { title: 'Planchado', desc: 'Camisas, blusas, pantalones y vestidos. Doblados o colgados.', price: 'Desde $1.500', icon: P.shirt, bg: '#FFF1EC' },
+      { title: 'Lavado y planchado', desc: 'La ropa del día a día, lavada, planchada y con rico aroma.', price: 'Desde $2.600', icon: P.drop, bg: '#FFF3EE' },
+      { title: 'Ropa de cama', desc: 'Sábanas, plumones, quilts, mantas, frazadas y almohadas.', price: 'Cobertor desde $9.200', icon: P.bed, bg: '#E3F4F6' },
+      { title: 'Tintorería', desc: 'Trajes, abrigos, vestidos de fiesta y de novia.', price: 'Desde $7.500', icon: P.hanger, bg: '#FFF1EC' },
+      { title: 'Cortinas y fundas', desc: 'Cortinas por m², cortinas de baño y fundas de terraza.', price: 'Desde $3.000', icon: P.curtain, bg: '#FFF3EE' },
+      { title: 'Reparación de ropa', desc: 'Bastas, cierres y arreglos para que tu ropa dure más.', price: 'Consúltame', icon: P.needle, bg: '#E3F4F6' }
     ];
     var reviews = [
       { name: 'Francisca J.', text: 'Fueron a retirar en el día y horario acordado. Mis cubrecamas llegaron impeques, súper bien planchados y con rico aroma.' },
@@ -892,9 +1275,35 @@ class Component extends DCLogic {
     var gc = this.clips(); var gcur = gc[this.state.clipKey || this.state.section] || gc.inicio;
     var saf = this.isSafari; var ph = this.state.phase;
     var WALK = { R: { webm: 'assets/walkL.webm', mp4: 'assets/walkL.mp4' }, L: { webm: 'assets/walkR.webm', mp4: 'assets/walkR.mp4' } };
-    var bgs = ['#FFC9DD', '#FFC59E', '#D9CFFF', '#FFE7B0', '#FFC9DD', '#FFC59E'];
+    var bgs = ['#FFD2C4', '#FFD2C4', '#C8EBEF', '#FFE7B0', '#FFD2C4', '#FFD2C4'];
     return {
       items: items,
+      rows: rows,
+      addables: addables,
+      franjas: franjas,
+      pasoText: 'Paso ' + step + ' de 3',
+      cotTitleA: TIT[step][0], cotTitleB: TIT[step][1], cotSub: TIT[step][2],
+      st1: stc(1), st2: stc(2), st3: stc(3),
+      s1Disp: step === 1 ? 'flex' : 'none', s2Disp: step === 2 ? 'flex' : 'none', s3Disp: step === 3 ? 'flex' : 'none',
+      svcPlOn: svc === 'pl' ? 'true' : 'false', svcLpOn: svc === 'lp' ? 'true' : 'false',
+      svcPlCls: svc === 'pl' ? 'on' : '', svcLpCls: svc === 'lp' ? 'on' : '',
+      pickPl: function () { self.setState({ svc: 'pl', cotErr: '' }); },
+      pickLp: function () { self.setState({ svc: 'lp', cotErr: '' }); },
+      svcName: SVC[svc].name, svcDesc: SVC[svc].desc,
+      svcNote: svc === 'pl' ? 'Cobertores gruesos y plumones van con lavado: elige Lavado + planchado para agregarlos.' : 'Precios por unidad. Tintorería y piezas especiales se confirman al revisar tus prendas.',
+      emptyDisp: rows.length ? 'none' : 'block',
+      prendasCount: String(count),
+      fDir: f.dir, fFecha: f.fecha, fFranja: f.franja, fNombre: f.nombre, fWsp: f.wsp, fEmail: f.email, fObs: f.obs,
+      emailText: f.email || '—', fechaText: fechaText, minFecha: minFecha,
+      setDir: setF('dir'), setFecha: setF('fecha'), setFranja: setF('franja'), setNombre: setF('nombre'), setWsp: setF('wsp'), setEmail: setF('email'), setObs: setF('obs'),
+      goStep1: function () { goStep(1); }, goStep2: function () { goStep(2); },
+      goBack: function () { goStep(Math.max(1, self.state.step - 1)); },
+      primaryAct: next,
+      primaryLabel: step === 1 ? 'Continuar con la recogida' : 'Revisar mi solicitud',
+      primDisp: step < 3 ? 'flex' : 'none', sendDisp: step === 3 ? 'flex' : 'none', backDisp: step > 1 ? 'flex' : 'none',
+      waSolicitud: wa(msgSol),
+      cotErr: this.state.cotErr, errDisp: this.state.cotErr ? 'block' : 'none',
+      poseSrc: POSE[step].src, poseNote: POSE[step].note,
       comunas: comunas,
       comuna: comuna,
       setComuna: function (e) { self.setState({ comuna: e.target.value }); },
